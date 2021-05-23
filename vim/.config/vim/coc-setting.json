@@ -1,0 +1,20 @@
+{
+	"go.goplsOptions": {
+		"completeUnimported": true,
+		"suggest.removeDuplicateItems": true
+	},
+	"languageserver": {
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.mod",
+				".vim/",
+				".git/",
+				".hg/"
+			],
+			"filetypes": [
+				"go"
+			]
+		}
+	}
+}

@@ -1,0 +1,7 @@
+--target=~
+
+# ignore platfrom-related software
+--ignore=.*platform.*
+--ignore=.*rime.*
+
+# --no-folding
