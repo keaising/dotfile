@@ -1,7 +1,13 @@
+# target folder
 --target=~
 
 # ignore platfrom-related software
 --ignore=.*platform.*
 --ignore=.*rime.*
 
-# --no-folding
+# verbose
+-v
+
+# only create links for files rather than folders, 
+# because some config comes from both confidential and unconfidential repo.
+--no-folding
