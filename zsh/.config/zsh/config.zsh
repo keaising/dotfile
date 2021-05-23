@@ -30,6 +30,9 @@ for _enabled_path in $_enabled_paths[@]; do
 	[[ -d "${_enabled_path}" ]] && PATH="$PATH:${_enabled_path}"
 done
 
+# tab completion ignore case 
+# https://superuser.com/questions/1092033/how-can-i-make-zsh-tab-completion-fix-capitalization-errors-for-directories-and
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # History config
 HISTSIZE=10000
