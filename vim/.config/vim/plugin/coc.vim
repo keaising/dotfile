@@ -8,7 +8,7 @@ nmap     <silent>[g <Plug>(coc-diagnostic-prev)
 nmap     <silent>]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
-nmap     <silent><m-k>      <Plug>(coc-rename)
+" nmap     <silent><m-k>      <Plug>(coc-rename)
 nmap     <silent>gi         <Plug>(coc-implementation)
 nmap     <silent>gr         <Plug>(coc-references)
 nmap     <silent><leader>rn <Plug>(coc-rename)
