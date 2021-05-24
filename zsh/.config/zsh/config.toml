@@ -11,6 +11,7 @@ format = "[$branch]($style) "
 
 [golang]
 format = "[$symbol()]($style)"
+disabled = true
 
 [cmd_duration]
 format = "[$duration]($style) "
@@ -18,8 +19,8 @@ min_time = 3_000
 
 [character]
 success_symbol = "[Δ](bold green)"
-error_symbol = "[✗](bold red)"
-vicmd_symbol = "[V](bold blue) "
+error_symbol = "[✘](bold red)"
+vicmd_symbol = "[Ε](bold blue) "
 
 [username]
 style_user = "yellow bold"
@@ -31,6 +32,10 @@ disabled = false
 ssh_only = true
 format =  "[$hostname](bold yellow) "
 disabled = false
+
+[git_status]
+format = '([\[$conflicted$deleted$renamed$modified$staged$untracked\]]($style))'
+conflicted = '!'
 
 [package]
 disabled = true

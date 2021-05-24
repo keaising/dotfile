@@ -13,9 +13,10 @@ window:
 font:
   normal:
     # family: Menlo
-    family: Iosevka Term SS01 
+    # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
-  size: 16
+    family: JetBrains Mono NL
+  size: 14
 
 key_bindings:
   # (macOS only)

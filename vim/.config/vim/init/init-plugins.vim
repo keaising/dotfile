@@ -263,13 +263,13 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " --no-ignore
-let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git/'
+let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
 nnoremap <leader>ss :Files<CR>
 nnoremap <leader>ff :Rg<CR> 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden -g !.git/  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
+" command! -bang -nargs=* Rg
+  " \ call fzf#vim#grep(
+  " \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  " \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
 
 
 
@@ -353,9 +353,10 @@ if has("nvim")
 	" ========================================================== 
 	" Plug 'lewis6991/gitsigns.nvim'
 	Plug 'keaising/nvim-blame-line'
-	let g:blameLineMessageWhenNotYetCommited = ''
-	autocmd BufEnter * EnableBlameLine
+	let g:blameLineMessageWhenNotYetCommited = ' '
 	nnoremap <silent> <leader>bl :ToggleBlameLine<CR>
+	" 不能打开默认页面，会导致每行 git blame 信息都打开一个tab
+	" autocmd BufEnter * EnableBlameLine
 	nnoremap <m-n> :DiffviewOpen<CR><C-n>
 endif
 
