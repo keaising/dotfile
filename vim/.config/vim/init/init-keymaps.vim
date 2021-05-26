@@ -41,6 +41,7 @@ nnoremap <C-e>           7<C-e>
 nnoremap <C-y>           7<C-y>
 
 " move in insert mode
+" Ctrl
 inoremap <C-h>           <left>
 inoremap <C-j>           <down>
 inoremap <C-k>           <up>
@@ -48,6 +49,14 @@ inoremap <C-l>           <right>
 inoremap <C-b>           <C-o>b
 inoremap <C-w>           <C-o>w
 inoremap <C-e>           <C-o>e
+" Alt 
+inoremap <m-h>           <left>
+inoremap <m-j>           <down>
+inoremap <m-k>           <up>
+inoremap <m-l>           <right>
+inoremap <m-b>           <C-o>b
+inoremap <m-w>           <C-o>w
+inoremap <m-e>           <C-o>e
 
 " format json
 " nnoremap <leader>json    :set syntax=json; %!jq<CR>

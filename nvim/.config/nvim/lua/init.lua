@@ -1,11 +1,13 @@
-require('FTerm').setup()
+-- require('FTerm').setup()
 -- Keybinding
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 
 -- Closer to the metal
-map('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
-map('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+-- local map = vim.api.nvim_set_keymap
+-- map('n', '<C-i>', '<CMD>lua require("FTerm").toggle()<CR>', opts)
+-- map('t', '<C-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>', opts)
+-- map('n', '<Tab>', '<Nop>', opts)
+
 
 
 require('nvim-treesitter.configs').setup({
@@ -39,11 +41,11 @@ require("lsp-colors").setup({
 	})
 
 
-require("trouble").setup {
+-- require("trouble").setup {
 	  -- your configuration comes here
 	  -- or leave it empty to use the default settings
 	  -- refer to the configuration section below
-}
+-- }
 
 
 local cb = require('diffview.config').diffview_callback

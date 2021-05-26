@@ -142,13 +142,13 @@ if index(g:bundle_group, 'enhanced') >= 0
 	nmap ga <Plug>(EasyAlign)
 
 	" terminal
-	Plug 'skywind3000/vim-terminal-help'
-	let g:terminal_height = 15
+	" Plug 'skywind3000/vim-terminal-help'
+	" let g:terminal_height = 15
 
-	function SetTerminalHeight(height) 
-		let g:terminal_height = a:height
-	endfunction
-	nnoremap <A-C-h> :call SetTerminalHeight(
+	" function SetTerminalHeight(height) 
+		" let g:terminal_height = a:height
+	" endfunction
+	" nnoremap <A-C-h> :call SetTerminalHeight(
 
 	Plug 'ruanyl/vim-gh-line'
 	let g:gh_line_map_default = 0
@@ -266,10 +266,10 @@ Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
 nnoremap <leader>ss :Files<CR>
 nnoremap <leader>ff :Rg<CR> 
-" command! -bang -nargs=* Rg
-  " \ call fzf#vim#grep(
-  " \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  " \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
 
 
 
@@ -279,6 +279,9 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
+
+Plug 'voldikss/vim-floaterm'
+let g:floaterm_keymap_toggle = '<C-i>'
  
 
 "----------------------------------------------------------------------
@@ -322,7 +325,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 if has("nvim")
 	" best terminal in nvim ever
-	Plug 'numtostr/FTerm.nvim'
+	" Plug 'numtostr/FTerm.nvim'
 
 	" some foundamental plugin
 	Plug 'nvim-lua/popup.nvim'
