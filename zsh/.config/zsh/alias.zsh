@@ -13,6 +13,7 @@ alias cr='cargo run'
 alias gd='git dif'
 alias ga='git add .'
 alias gc='git commit -m'
+alias g='gitui'
 
 # docker
 alias d='docker'

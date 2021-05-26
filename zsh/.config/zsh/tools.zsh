@@ -18,6 +18,10 @@ if ! type bat > /dev/null; then
 	echo bat not found! use 'install_bat' to install.
 fi
 
+if ! type gitui > /dev/null; then
+	echo gitui not found! use 'install_gitui' to install.
+fi
+
 if ! type nvim > /dev/null; then
 	echo nvim not found! use 'update_nvim' to install.
 fi
@@ -91,6 +95,21 @@ install_bat () {
 	bat --version
 }
 
+install_gitui () {
+	setpx
+	set -e
+	set -o xtrace
+	export GITUI_REPO=$GITHUB_LOCATION/extrawurst/gitui
+	if [ ! -d "$GITUI_REPO" ]; then
+		git clone https://github.com/extrawurst/gitui.git $GITUI_REPO
+	fi
+	cd $GITUI_REPO
+	cargo build --release
+	mkdir -p $LOCAL_BIN
+	ln -sf $GITHUB_LOCATION/extrawurst/gitui/target/release/gitui $LOCAL_BIN
+	gitui --version
+}
+
 update_nvim () {
 	setpx
 	set -e
@@ -123,3 +142,5 @@ update_vim () {
 	cd -
 	vim --version
 }
+
+

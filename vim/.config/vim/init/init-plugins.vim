@@ -283,6 +283,8 @@ let g:fzf_action = {
 Plug 'voldikss/vim-floaterm'
 " Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
 let g:floaterm_keymap_toggle = '<m-m>'
+let g:floaterm_width=0.85
+let g:floaterm_height=0.95
  
 
 "----------------------------------------------------------------------
