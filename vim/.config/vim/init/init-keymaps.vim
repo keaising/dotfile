@@ -65,6 +65,8 @@ vnoremap ==j :set syntax:json<CR> <Bar> :%!jq<CR>
 
 " Keep search pattern at the center of the screen.
 nnoremap <silent>        n       nzz
+nnoremap <silent>        j       gj
+nnoremap <silent>        k       gk
 nnoremap <silent>        N       Nzz
 nnoremap <silent>        *       *zz
 nnoremap <silent>        #       #zz
