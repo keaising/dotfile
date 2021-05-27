@@ -110,6 +110,16 @@ install_gitui () {
 	gitui --version
 }
 
+install_tpm () {
+	setpx
+	set -e
+	set -o xtrace
+	export GITUI_REPO=$GITHUB_LOCATION/tmux-plugins/tpm
+	if [ ! -d "$TPM_REPO" ]; then
+		git clone https://github.com/tmux-plugins/tpm.git $TPM_REPO
+	fi
+}
+
 update_nvim () {
 	setpx
 	set -e
