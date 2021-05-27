@@ -45,10 +45,11 @@ set splitright
 set t_Co=256
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
-color dracula
-" colorscheme dracula
+" color dracula
+colorscheme dracula
 " set background=dark
 
+set termguicolors
 
 "----------------------------------------------------------------------
 " 状态栏设置

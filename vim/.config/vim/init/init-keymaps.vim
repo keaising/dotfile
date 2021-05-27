@@ -2,9 +2,9 @@
 map      <Space>         <Leader>
 
 " save & quit in window
-inoremap <silent><m-s>   <ESC>:w<CR>
-nnoremap <silent><m-s>   :w<CR>
-nnoremap <silent><m-w>   :q<CR>
+inoremap <m-s>   <ESC>:w<CR>
+nnoremap <m-s>   :w<CR>
+nnoremap <m-w>   :q<cr>
 
 " switch tabs
 " nnoremap <leader>[ :tabprevious<CR>

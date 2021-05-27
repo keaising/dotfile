@@ -2,8 +2,6 @@
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-go']
 
-autocmd User CocLocationsChange CocList --normal location
-
 nmap     <silent>[g <Plug>(coc-diagnostic-prev)
 nmap     <silent>]g <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
@@ -24,5 +22,6 @@ inoremap <silent><expr> <c-@> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+autocmd User CocLocationsChange CocList --normal location
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')

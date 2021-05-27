@@ -307,7 +307,7 @@ if index(g:bundle_group, 'nerdtree') >= 0
 	" Open the existing NERDTree on each new tab.
 	autocmd  BufWinEnter * silent NERDTreeMirror
 	" key bindings
-	nnoremap <leader>n   :NERDTreeFocus<CR>
+	" nnoremap <leader>n   :NERDTreeFocus<CR>
 	nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
 	" nnoremap <C-f> :NERDTreeFind<CR>
 endif

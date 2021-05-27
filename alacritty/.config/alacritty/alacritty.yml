@@ -43,10 +43,6 @@ key_bindings:
   - { key: B,              mods: Command,         action: ReceiveChar  }
 
   # https://github.com/alacritty/alacritty/issues/93
-  - { key: W,        mods: Alt,       chars:  "\x1bw" }
-  - { key: B,        mods: Alt,       chars:  "\x1bb" }
-  - { key: S,        mods: Alt,       chars:  "\x1bs" }
-  - { key: K,        mods: Alt,       chars:  "\x1bk" }
   - { key: V,        mods: Alt,       action: Paste   }
   - { key: C,        mods: Alt,       action: Copy    }
   - { key: Minus,    mods: Alt,       chars:  "\x1b-" }
