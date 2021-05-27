@@ -342,7 +342,8 @@ if has("nvim")
 	" Plug 'neovim/nvim-lspconfig'
 
 	" diffview
-	Plug 'sindrets/diffview.nvim'
+	" Plug 'sindrets/diffview.nvim'
+	" nnoremap <m-n> :DiffviewOpen<CR><C-n>
 
 	" show all problems
 	Plug 'folke/trouble.nvim'
@@ -363,7 +364,6 @@ if has("nvim")
 	nnoremap <silent> <leader>bl :ToggleBlameLine<CR>
 	" 不能打开默认页面，会导致每行 git blame 信息都打开一个tab
 	" autocmd BufEnter * EnableBlameLine
-	nnoremap <m-n> :DiffviewOpen<CR><C-n>
 endif
 
 
