@@ -39,7 +39,9 @@ set splitright
 "----------------------------------------------------------------------
 
 " 设置黑色背景
-" set background=dark
+set background=dark
+
+set termguicolors
 
 " 允许 256 色
 set t_Co=256
@@ -48,12 +50,13 @@ set t_Co=256
 " color dracula
 " colorscheme dracula
 " set background=dark
-colorscheme everforest
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_disable_italic_comment = 1
+" colorscheme everforest
+" let g:everforest_background = 'hard'
+" let g:everforest_enable_italic = 1
+" let g:everforest_disable_italic_comment = 1
+" colorscheme edge
+colorscheme gruvbox-material
 
-set termguicolors
 
 "----------------------------------------------------------------------
 " 状态栏设置

@@ -221,6 +221,8 @@ endif
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/everforest'
+Plug 'sainnhe/edge'
+Plug 'sainnhe/gruvbox-material'
 
 if index(g:bundle_group, 'airline') >= 0
 
