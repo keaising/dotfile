@@ -16,6 +16,8 @@ eval "$(lua $ZSH_CONF/z.lua  --init zsh)"    # ZSH 初始化
 source "$ZSH_CONF/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+# wtf? auto completion need this guy
+autoload -U compinit && compinit
 
 
 # set keybinding after plugins
