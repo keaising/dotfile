@@ -220,6 +220,7 @@ endif
 " colorscheme 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'rafi/awesome-vim-colorschemes'
+Plug 'sainnhe/everforest'
 
 if index(g:bundle_group, 'airline') >= 0
 
@@ -232,7 +233,8 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_powerline_fonts = 0
 	let g:airline_exclude_preview = 1
 	let g:airline_section_b = '%n'
-	let g:airline_theme='deus'
+	" let g:airline_theme='deus'
+	let g:airline_theme = 'everforest'
 
 	" tab 
 	let g:airline#extensions#tabline#enabled = 1

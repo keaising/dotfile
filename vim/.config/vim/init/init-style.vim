@@ -46,8 +46,12 @@ set t_Co=256
 
 " 设置颜色主题，会在所有 runtimepaths 的 colors 目录寻找同名配置
 " color dracula
-colorscheme dracula
+" colorscheme dracula
 " set background=dark
+colorscheme everforest
+let g:everforest_background = 'hard'
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
 
 set termguicolors
 
