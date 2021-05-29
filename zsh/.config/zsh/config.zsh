@@ -4,6 +4,9 @@ export VISUAL=nvim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+
 # for tmux in wezterm, kitty
 export TERM="xterm-256color"
 
