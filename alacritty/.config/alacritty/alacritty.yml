@@ -12,11 +12,13 @@ window:
 
 font:
   normal:
-    family: Consolas NF
+    # family: Consolas NF
     # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
     # family: JetBrains Mono NL
-  size: 15
+    family: RecursiveCodeiCursiveCg Nerd Font
+    style: Regular
+  size: 14
 
 key_bindings:
   # (macOS only)
