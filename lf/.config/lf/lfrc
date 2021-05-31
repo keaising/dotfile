@@ -13,7 +13,11 @@ cmd mkdir %{{
     mkdir -p -- "$@"
     lf -remote "send $id select \"$@\""
 }}
-map a push :mkdir<space>
+map <a-a> push :mkdir<space>
+map a push :touch<space>
+
+cmd touch %touch $1 && lf -remote "send $id load" && lf -remote "send $id select $1"
+cmd mkdir %mkdir -p $1 && lf -remote "send $id load" && lf -remote "send $id select $1"
 
 map <a-d> trash
 
@@ -68,7 +72,7 @@ cmd open ${{
 
 # move current file or selected files to trash folder
 # (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
+cmd trash %set -f; mv $fx ~/.trash/
 
 # define a custom 'delete' command
 cmd delete ${{
