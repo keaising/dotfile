@@ -7,9 +7,6 @@ set drawbox
 # show hidden files
 set hidden false
 
-# show icons
-set icons true
-
 # use "a" as appending new directory
 cmd mkdir %{{
     IFS=" "
