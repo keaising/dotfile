@@ -8,7 +8,6 @@ source "$ZSH_CONF/golang.zsh"
 source "$ZSH_CONF/config.zsh"
 source "$ZSH_CONF/function.zsh"
 source "$ZSH_CONF/starship.zsh"
-source "$ZSH_CONF/tools.zsh"
 
 # install plugins
 # source "$ZSH_CONF/zplug.zsh"
@@ -51,3 +50,5 @@ export _ZL_CMD=j
 export _ZL_ADD_ONCE=1
 eval "$(lua $ZSH_CONF/z.lua  --init zsh)" #  once enhanced)"
 
+# check tools in the end
+source "$ZSH_CONF/tools.zsh"

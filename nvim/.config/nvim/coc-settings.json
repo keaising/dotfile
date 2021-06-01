@@ -1,20 +1,3 @@
 {
-	"go.goplsOptions": {
-		"completeUnimported": true
-	},
-	"languageserver": {
-		"golang": {
-			"command": "gopls",
-			"rootPatterns": [
-				"go.mod",
-				".vim/",
-				".git/",
-				".hg/"
-			],
-			"filetypes": [
-				"go"
-			]
-		}
-	},
 	"git.addGBlameToVirtualText": true
 }
