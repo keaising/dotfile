@@ -51,10 +51,27 @@ set t_Co=256
 " colorscheme one
 " colorscheme dracula
 " set background=dark
+
+" everforest
 let g:everforest_background = 'soft'
 let g:everforest_enable_italic = 1
 let g:everforest_disable_italic_comment = 1
 colorscheme everforest
+
+" monokai 
+" let g:go_highlight_format_strings = 1
+" let g:go_highlight_function_arguments = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_generate_tags = 1
+" let g:go_highlight_variable_assignments = 1
+" let g:go_highlight_variable_declarations = 1
+" colorscheme sublimemonokai
+
 " colorscheme edge
 " let g:gruvbox_material_palette = 'original'
 " colorscheme gruvbox-material
