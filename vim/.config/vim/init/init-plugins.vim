@@ -223,6 +223,7 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sainnhe/everforest'
 Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
+Plug 'ErichDonGubler/vim-sublime-monokai'
 
 if index(g:bundle_group, 'airline') >= 0
 
@@ -265,6 +266,10 @@ endif
 "----------------------------------------------------------------------
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
+" git blame info
+Plug 'zivyangll/git-blame.vim'
+nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 " --no-ignore
 let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
@@ -364,9 +369,9 @@ if has("nvim")
 	" Git blame
 	" ========================================================== 
 	" Plug 'lewis6991/gitsigns.nvim'
-	Plug 'keaising/nvim-blame-line'
-	let g:blameLineMessageWhenNotYetCommited = ' '
-	nnoremap <silent> <leader>bl :ToggleBlameLine<CR>
+	" Plug 'keaising/nvim-blame-line'
+	" let g:blameLineMessageWhenNotYetCommited = ' '
+	" nnoremap <silent> <leader>bl :ToggleBlameLine<CR>
 	" 不能打开默认页面，会导致每行 git blame 信息都打开一个tab
 	" autocmd BufEnter * EnableBlameLine
 endif
