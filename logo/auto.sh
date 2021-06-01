@@ -8,7 +8,7 @@ if [ ! -f "$largfile" ]; then
   convert -background none -resize 1024x1024 "$1" "$largfile"
 fi
 for s in "${sizes[@]}"; do
-  echo $s
+  # echo $s
   convert -background none -resize ${s}x${s} "$largfile" "icon_${s}x$s.png"
 done
 
@@ -17,6 +17,20 @@ mv 'icon_64x64.png'     'icon_32x32@2x.png'
 cp 'icon_256x256.png'   'icon_128x128@2x.png'
 cp 'icon_512x512.png'   'icon_256x256@2x.png'
 
-mkdir icon.iconset
-mv icon_*x*.png icon.iconset
-iconutil -c icns icon.iconset
+IN="$1"
+fileName=(${IN//./ })
+folder=${fileName[0]}
+
+iconset="$folder.iconset"
+mkdir -p "$iconset"
+
+mv icon_*x*.png "$iconset"
+iconutil -c icns "$iconset"
+
+rm "$iconset"/icon_*x*.png
+
+mv "$folder.icns" "$iconset"
+mv "$1" "$iconset"
+
+mv "$iconset" "$folder"
+
