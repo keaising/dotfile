@@ -8,8 +8,7 @@ source "$ZSH_CONF/golang.zsh"
 source "$ZSH_CONF/config.zsh"
 source "$ZSH_CONF/function.zsh"
 source "$ZSH_CONF/starship.zsh"
-# import z.lua
-eval "$(lua $ZSH_CONF/z.lua  --init zsh)"    # ZSH 初始化
+source "$ZSH_CONF/tools.zsh"
 
 # install plugins
 # source "$ZSH_CONF/zplug.zsh"
@@ -36,12 +35,19 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 	source "$ZSH_CONF/config.macos.zsh"
 fi
 
+#########################################################################
+# these external tools need to be imported in the end 
+#########################################################################
+
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_COMPLETION_TRIGGER='ll'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# check tools
-source "$ZSH_CONF/tools.zsh"
+# z.lua
+export _ZL_MATCH_MODE=1
+export _ZL_CMD=j
+export _ZL_ADD_ONCE=1
+eval "$(lua $ZSH_CONF/z.lua  --init zsh)" #  once enhanced)"
 
