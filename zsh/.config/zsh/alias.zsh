@@ -28,6 +28,7 @@ alias pi='https_proxy=http://10.10.43.3:1080 http_proxy=http://10.10.43.3:1080 a
 # rust
 alias cb='cargo build'
 alias cr='cargo run'
+alias cf='cargo fmt'
 
 # script
 alias python='python3'
