@@ -6,6 +6,14 @@ inoremap <m-s>   <ESC>:w<CR>
 nnoremap <m-s>   :w<CR>
 nnoremap <m-w>   :q<cr>
 
+" resize window
+nnoremap <m-=>     :vertical resize +5<CR>
+nnoremap <m-->     :vertical resize -5<CR>
+nnoremap <m-Left>  :vertical resize +5<CR>
+nnoremap <m-Right> :vertical resize -5<CR>
+nnoremap <m-Up>    :resize   +5<CR>
+nnoremap <m-Down>  :resize   -5<CR>
+
 " switch tabs
 " nnoremap <leader>[ :tabprevious<CR>
 " nnoremap <leader>] :tabnext<CR>
@@ -17,46 +25,43 @@ nnoremap <m-h> :bp<CR>
 nnoremap <m-d> :bd<CR>
 
 " switch window
-" Alt+Shift+HJKL 预留给 Terminal 插件了
-noremap  <C-h>           <c-w>h
-noremap  <C-l>           <c-w>l
-noremap  <C-j>           <c-w>j
-noremap  <C-k>           <c-w>k
-inoremap <m-H>           <esc><c-w>h
-inoremap <m-L>           <esc><c-w>l
-inoremap <m-J>           <esc><c-w>j
-inoremap <m-K>           <esc><c-w>k
+noremap  <C-h> <c-w>h
+noremap  <C-l> <c-w>l
+noremap  <C-j> <c-w>j
+noremap  <C-k> <c-w>k
+inoremap <m-H> <esc><c-w>h
+inoremap <m-L> <esc><c-w>l
+inoremap <m-J> <esc><c-w>j
+inoremap <m-K> <esc><c-w>k
 
 " switch location
-nnoremap <silent><m-o> <C-o>
-nnoremap <silent><m-i> <C-i>
-noremap  <m-[>         <C-o>
-noremap  <m-]>         <C-i>
+noremap <m-[>  <C-o>
+noremap <m-]>  <C-i>
 " for ssh to clinkz
-noremap  <ESC>[        <C-o>
-noremap  <ESC>]        <C-i>
+noremap <ESC>[ <C-o>
+noremap <ESC>] <C-i>
 
 " faster movement
-nnoremap <C-e>           7<C-e>
-nnoremap <C-y>           7<C-y>
+nnoremap <C-e> 7<C-e>
+nnoremap <C-y> 7<C-y>
 
 " move in insert mode
 " Ctrl
-inoremap <C-h>           <left>
-inoremap <C-j>           <down>
-inoremap <C-k>           <up>
-inoremap <C-l>           <right>
-inoremap <C-b>           <C-o>b
-inoremap <C-w>           <C-o>w
-inoremap <C-e>           <C-o>e
+inoremap <C-h> <left>
+inoremap <C-j> <down>
+inoremap <C-k> <up>
+inoremap <C-l> <right>
+inoremap <C-b> <C-o>b
+inoremap <C-w> <C-o>w
+inoremap <C-e> <C-o>e
 " Alt 
-inoremap <m-h>           <left>
-inoremap <m-j>           <down>
-inoremap <m-k>           <up>
-inoremap <m-l>           <right>
-inoremap <m-b>           <C-o>b
-inoremap <m-w>           <C-o>w
-inoremap <m-e>           <C-o>e
+inoremap <m-h> <left>
+inoremap <m-j> <down>
+inoremap <m-k> <up>
+inoremap <m-l> <right>
+inoremap <m-b> <C-o>b
+inoremap <m-w> <C-o>w
+inoremap <m-e> <C-o>e
 
 " format json
 " nnoremap <leader>json    :set syntax=json; %!jq<CR>
@@ -64,16 +69,16 @@ nnoremap ==j :set syntax:json<CR> <Bar> :%!jq<CR>
 vnoremap ==j :set syntax:json<CR> <Bar> :%!jq<CR>
 
 " Keep search pattern at the center of the screen.
-nnoremap <silent>        n       nzz
-nnoremap <silent>        j       gj
-nnoremap <silent>        k       gk
-nnoremap <silent>        N       Nzz
-nnoremap <silent>        *       *zz
-nnoremap <silent>        #       #zz
-nnoremap <silent>        g*      g*zz
+nnoremap <silent> n  nzz
+nnoremap <silent> j  gj
+nnoremap <silent> k  gk
+nnoremap <silent> N  Nzz
+nnoremap <silent> *  *zz
+nnoremap <silent> #  #zz
+nnoremap <silent> g* g*zz
 
 " resource configuration
-nnoremap <leader>sv      :source $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
@@ -84,6 +89,14 @@ noremap  L $
 
 " mark
 nnoremap ' `
+
+" fold
+nmap zo zO
+nmap <C-o> zO
+nmap <C-m> zm
+
+" disable 
+nnoremap <C-p> <nop>
 
 
 " Tabularize

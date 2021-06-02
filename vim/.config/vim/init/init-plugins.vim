@@ -328,7 +328,7 @@ endif
 " Language
 "----------------------------------------------------------------------
 
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 
