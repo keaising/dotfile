@@ -4,6 +4,9 @@ export VISUAL=nvim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
 
+# rust
+RUST_BACKTRACE=1
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
