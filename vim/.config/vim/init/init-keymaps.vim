@@ -92,8 +92,9 @@ nnoremap ' `
 
 " fold
 nmap zo zO
+nmap zr zR
 nmap <C-o> zO
-nmap <C-m> zm
+nmap <C-m> zM
 
 " disable 
 nnoremap <C-p> <nop>
