@@ -29,11 +29,13 @@ alias pi='https_proxy=http://10.10.43.3:1080 http_proxy=http://10.10.43.3:1080 a
 alias cb='cargo build'
 alias cr='cargo run'
 alias cf='cargo fmt'
+alias ct='cargo test'
+alias e='exercism'
 
 # script
 alias python='python3'
 alias pip='pip3'
-alias z='zerotier-cli'
+# alias z='zerotier-cli'
 alias y='yarn'
 
 # tmux
@@ -50,6 +52,7 @@ alias v='nvim'
 # others
 alias now='date +%s'
 alias sz="source $HOME/.zshrc"
+alias j='z'
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 
 # macos only
