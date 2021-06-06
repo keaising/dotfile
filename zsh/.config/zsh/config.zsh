@@ -4,6 +4,9 @@ export VISUAL=nvim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
 
+# gem
+export GEM_HOME="$HOME/code/gems"
+
 # rust
 RUST_BACKTRACE=1
 
@@ -24,9 +27,7 @@ _enabled_paths=(
 	"$HOME/.local/bin" # normal install destination
 	"$HOME/.cargo/bin" # cargo install destination
 
-	"$HOME/code/scripts"
-	"$HOME/.scripts"
-	"$HOME/app"
+	"$HOME/code/gems/bin" # gems
 
 	"/usr/local/opt/openjdk/bin"   # macos
 	"$HOME/Library/Python/3.9/bin" # ansible
