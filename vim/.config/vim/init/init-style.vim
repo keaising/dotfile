@@ -3,6 +3,10 @@
 " 显示设置
 "----------------------------------------------------------------------
 
+" tab size
+autocmd FileType go setlocal tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
 " 总是显示状态栏
 set laststatus=2
 
