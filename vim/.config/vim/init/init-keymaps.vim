@@ -95,6 +95,7 @@ nmap zo zO
 nmap zr zR
 nmap <C-o> zO
 nmap <C-m> zM
+" zm will fold current block
 
 " disable 
 nnoremap <C-p> <nop>
