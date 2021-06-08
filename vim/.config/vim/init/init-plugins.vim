@@ -330,6 +330,7 @@ endif
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
 
 
 "----------------------------------------------------------------------
