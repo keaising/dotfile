@@ -1,9 +1,9 @@
 {
 	"git.addGBlameToVirtualText": true,
 	"coc.source.emoji.filetypes": null,
-	"coc.source.word.priority": 0,
-	"coc.source.dictionary.priority": 1,
-	"coc.source.emoji.shortcut": "/e",
+	"coc.source.word.priority": -1,
+	"coc.source.dictionary.priority": -1,
+	"coc.source.emoji.triggerCharacters": [ "/" ],
 	"coc.preferences.colorSupport": true,
-	"coc.preferences.formatOnSaveFiletypes": ["go", "markdown"]
+	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rs"]
 }
