@@ -36,17 +36,16 @@ source "$ZINIT_PATH/zinit.zsh"
 zinit light jocelynmallon/zshmarks
 zinit light mafredri/zsh-async
 # zinit light zdharma/fast-syntax-highlighting
-zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
 
+zinit ice wait lucid atload"zicompinit"
+zinit light zsh-users/zsh-completions
 
 # ==================================================================
 # update zinit, only run update or first install
 # ==================================================================
 # zinit self-update
-
-
 
 # ==================================================================
 # plugin config
