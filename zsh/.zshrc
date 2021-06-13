@@ -14,9 +14,7 @@ source "$ZSH_CONF/starship.zsh"
 source "$ZSH_CONF/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
-# wtf? auto completion need this guy
-autoload -U compinit && compinit
-
+ 
 
 # set keybinding after plugins
 source "$ZSH_CONF/keymap.zsh"
@@ -34,11 +32,11 @@ if [ "$(uname 2> /dev/null)" = "Darwin" ]; then
 	source "$ZSH_CONF/config.macos.zsh"
 fi
 
-#########################################################################
+#------------------------------------------------------------------------
 # these external tools need to be imported in the end 
-#########################################################################
+#------------------------------------------------------------------------
 
-# fzf
+# # fzf
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_COMPLETION_TRIGGER='ll'
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
