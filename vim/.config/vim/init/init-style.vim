@@ -17,7 +17,7 @@ set relativenumber
 set signcolumn=yes
 
 " 显示列宽
-set colorcolumn=97
+set colorcolumn=88
 
 " 总是显示标签栏
 set showtabline=2

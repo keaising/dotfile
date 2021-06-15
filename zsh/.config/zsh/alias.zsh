@@ -46,8 +46,8 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 
 # vim
-alias vi='nvim'
-alias v='nvim'
+alias vi='vim'
+alias v='vim'
 
 # others
 alias now='date +%s'
