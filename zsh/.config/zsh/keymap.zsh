@@ -32,6 +32,7 @@ bindkey -s '\e;' 'll\n'
 
 
 # auto suggestion
+autoload -U autosuggest-excute
 bindkey '^\' autosuggest-excute
 bindkey '^n' autosuggest-accept
 
