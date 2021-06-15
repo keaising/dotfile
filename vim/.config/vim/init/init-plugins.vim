@@ -331,6 +331,16 @@ endif
 "----------------------------------------------------------------------
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let g:go_auto_sameids = 1
+let g:go_updatetime = 300
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
 
