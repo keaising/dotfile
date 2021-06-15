@@ -55,11 +55,14 @@ set t_Co=256
 " colorscheme dracula
 " set background=dark
 
+colorscheme spring-night
+" colo seoul256
+
 " everforest
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_disable_italic_comment = 1
-colorscheme everforest
+" let g:everforest_background = 'hard'
+" let g:everforest_enable_italic = 1
+" let g:everforest_disable_italic_comment = 1
+" colorscheme everforest
 
 " monokai 
 " let g:go_highlight_format_strings = 1

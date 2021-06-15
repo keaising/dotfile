@@ -137,7 +137,7 @@ update_nvim () {
 	fi
 	cd $NVIM_REPO
 	git pull origin master
-	make CMAKE_BUILD_TYPE=Release
+	sudo make CMAKE_BUILD_TYPE=Release
 	sudo make install
 	cd -
 	nvim --version
