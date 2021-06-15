@@ -18,7 +18,7 @@ set hidden
 set autowrite
 
 " y/d/c copy to/from system clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed,unnamedplus
 
 
 " ========================================================== 
@@ -57,8 +57,9 @@ set ttimeoutlen=50
 set ruler
 
 " 切换光标
-autocmd InsertEnter,InsertLeave * set cul!
-
+" autocmd InsertEnter,InsertLeave * set cul!
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
 " auto reload when file on disk changed
 set autoread
 au CursorHold * checktime  

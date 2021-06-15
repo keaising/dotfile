@@ -331,8 +331,8 @@ endif
 "----------------------------------------------------------------------
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_auto_sameids = 1
-let g:go_updatetime = 300
+let g:go_auto_sameids = 0
+" let g:go_updatetime = 800
 let g:go_highlight_functions = 1
 let g:go_highlight_function_parameters = 1
 let g:go_highlight_function_calls = 1
