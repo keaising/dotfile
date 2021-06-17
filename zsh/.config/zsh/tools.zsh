@@ -160,4 +160,43 @@ update_vim () {
 	vim --version
 }
 
+go_tools () {
+	cd $HOME/code
+	setpx
+	export GOPROXY=https://goproxy.io 
+	# gopls
+	local _gogettools=(
+		"golang.org/x/tools/gopls@latest"
+		"github.com/uudashr/gopkgs/cmd/gopkgs"
+		"github.com/ramya-rao-a/go-outline"
+		"github.com/haya14busa/goplay/cmd/goplay"
+		"github.com/fatih/gomodifytags"
+		"github.com/josharian/impl"
+		"github.com/cweill/gotests/..."
+		"github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
+		"golang.org/x/tools/cmd/goimports"
+	)
 
+	echo $PWD
+	echo update go get tools
+	for _gogettool in $_gogettools; do
+		echo update go get tools: $_gogettool
+		GO111MODULE=on go get -u $_gogettool
+	done
+
+	local -A _gotools=(
+		"go-delve/delve" "go-delve/delve/cmd/dlv"
+	)
+	
+	echo update go install tools
+	for k v (${(kv)_gotools}) {
+		echo update go install tools: $k
+		local local_location=$GITHUB_LOCATION/$k
+		local repo_url=https://github.com/$k
+		if [ ! -d "$local_location" ]; then
+			git clone $repo_url $local_location
+		fi
+		cd $local_location
+		go install github.com/$v
+	}
+}
