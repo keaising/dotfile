@@ -25,7 +25,7 @@ bindkey '\e[1;3B' end-of-line
 
 
 # shortcuts
-bindkey -s '\ee' 'vim .\n'
+bindkey -s '\ee' 'nvim .\n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 

@@ -179,6 +179,7 @@ if index(g:bundle_group, 'textobj') >= 0
 
 	" 参数文本对象：i,/a, 包括参数或者列表元素
 	Plug 'sgur/vim-textobj-parameter'
+	let g:vim_textobj_parameter_mapping = 'a'
 
 	" 提供 uri/url 的文本对象，iu/au 表示
 	Plug 'jceb/vim-textobj-uri'
@@ -226,6 +227,8 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'ErichDonGubler/vim-sublime-monokai'
 Plug 'rhysd/vim-color-spring-night'
 Plug 'junegunn/seoul256.vim'
+Plug 'arzg/vim-colors-xcode'
+Plug 'morhetz/gruvbox'
 
 if index(g:bundle_group, 'airline') >= 0
 
@@ -275,7 +278,7 @@ nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 " --no-ignore
 let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-nnoremap <leader>ss :Files<CR>
+nnoremap <leader>s  :Files<CR>
 nnoremap <leader>ff :Rg<CR> 
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(

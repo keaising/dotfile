@@ -1,6 +1,6 @@
 # env
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
 
