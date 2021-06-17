@@ -39,6 +39,7 @@ alias pip='pip3'
 alias y='yarn'
 
 # tmux
+alias tmux='tmux'
 alias t='tmux'
 alias ta='tmux attach-session -t'
 alias tn='tmux new -s'
@@ -46,8 +47,8 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 
 # vim
-alias vi='vim'
-alias v='vim'
+alias vi='nvim'
+alias v='nvim'
 
 # others
 alias now='date +%s'

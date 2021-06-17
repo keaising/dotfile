@@ -35,7 +35,7 @@ set showcmd
 " 水平切割窗口时，默认在右边显示新窗口
 set splitright
 
-
+set updatetime=800
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
@@ -44,8 +44,6 @@ set splitright
 " 设置黑色背景
 set background=dark
 
-set termguicolors
-
 " 允许 256 色
 set t_Co=256
 
@@ -53,10 +51,19 @@ set t_Co=256
 " color dracula
 " colorscheme one
 " colorscheme dracula
-" set background=dark
+set background=dark
+
+" color in tmux
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " colorscheme spring-night
 " colo seoul256
+" colorscheme xcodedark
+" colorscheme gruvbox
 
 " everforest
 let g:everforest_background = 'hard'
@@ -123,6 +130,7 @@ colorscheme everforest
 hi! SignColumn guibg=NONE ctermbg=NONE
 
 " 修改行号为浅灰色，默认主题的黄色行号很难看，换主题可以仿照修改
+
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE 
 	\ gui=NONE guifg=DarkGrey guibg=NONE
 
