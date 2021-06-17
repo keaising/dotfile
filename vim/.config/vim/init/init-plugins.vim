@@ -344,6 +344,11 @@ let g:go_highlight_fields = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+Plug 'buoto/gotests-vim'
+" :GoTests/:GoTestsAll
+
+
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
 

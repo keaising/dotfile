@@ -36,6 +36,7 @@ set showcmd
 set splitright
 
 set updatetime=800
+set autoindent
 
 "----------------------------------------------------------------------
 " 颜色主题：色彩文件位于 colors 目录中
