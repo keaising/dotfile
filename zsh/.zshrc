@@ -50,3 +50,4 @@ eval "$(lua $ZSH_CONF/z.lua  --init zsh)" #  once enhanced)"
 
 # check tools in the end
 source "$ZSH_CONF/tools.zsh"
+
