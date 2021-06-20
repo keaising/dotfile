@@ -7,6 +7,9 @@ export LANG="en_US.UTF-8"
 # gem
 export GEM_HOME="$HOME/code/gems"
 
+# Added by n-install (see http://git.io/n-install-repo).
+export N_PREFIX="$HOME/code/n"
+
 # rust
 RUST_BACKTRACE=1
 
@@ -29,12 +32,17 @@ _enabled_paths=(
 
 	"$HOME/code/gems/bin" # gems
 
+	"$N_PREFIX/bin" #n
+
 	"/usr/local/opt/openjdk/bin"   # macos
 	"$HOME/Library/Python/3.9/bin" # ansible
 )
 
 for _enabled_path in $_enabled_paths[@]; do
-	[[ -d "${_enabled_path}" ]] && PATH="$PATH:${_enabled_path}"
+	# only add to $PATH when path exist and path not in $PATH
+	[[ -d "${_enabled_path}" ]] && \
+	[[ ! :$PATH: == *":${_enabled_path}:"* ]] && \
+	PATH="$PATH:${_enabled_path}"
 done
 
 # tab completion ignore case 
