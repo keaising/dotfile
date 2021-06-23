@@ -368,7 +368,7 @@ if has("nvim")
 	Plug 'folke/lsp-colors.nvim'
 
 	" more accurate highlight
-	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 	" Plug 'neovim/nvim-lspconfig'
 
