@@ -67,10 +67,10 @@ endif
 " colorscheme gruvbox
 
 " everforest
-let g:everforest_background = 'hard'
-let g:everforest_enable_italic = 1
-let g:everforest_disable_italic_comment = 1
-colorscheme everforest
+" let g:everforest_background = 'hard'
+" let g:everforest_enable_italic = 1
+" let g:everforest_disable_italic_comment = 1
+" colorscheme everforest
 
 " monokai 
 " let g:go_highlight_format_strings = 1
@@ -88,7 +88,7 @@ colorscheme everforest
 
 " colorscheme edge
 " let g:gruvbox_material_palette = 'original'
-" colorscheme gruvbox-material
+colorscheme gruvbox-material
 
 
 "----------------------------------------------------------------------
