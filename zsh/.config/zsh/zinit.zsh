@@ -55,3 +55,4 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 # ZSH_AUTOSUGGEST
 ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_HIGHLIGHT_STYLES[comment]=fg=245
