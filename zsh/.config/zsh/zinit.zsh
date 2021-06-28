@@ -41,8 +41,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 
 # If completion is needed, de-comment lines below.
 # this will add 200ms loading time.
-# zinit ice wait lucid atload"zicompinit"
-# zinit light zsh-users/zsh-completions
+zinit ice wait lucid atload"zicompinit"
+zinit light zsh-users/zsh-completions
 
 # ==================================================================
 # update zinit, only run update or first install
