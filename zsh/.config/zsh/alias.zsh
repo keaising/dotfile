@@ -1,3 +1,6 @@
+# ci
+alias trigger='git amend && git push -f'
+
 # dir
 alias .='cd .'
 alias ..='cd ..'
