@@ -8,10 +8,11 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 # export GOBIN=$HOME/go/bin
 # export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
-alias golint='golangci-lint run --skip-dirs=static --skip-dirs-use-default -E gosec -E goimports --exclude G107'
+alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
+alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
 alias fmt='goimports -w . && go mod tidy'
-alias gocc='fmt && golint && go vet ./...'
-alias gs='golangci-lint run -E golint,depguard,gocognit,goconst,gofmt,misspell'
+alias gocc='fmt && goci'
+alias goss='fmt && gostrict'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gr='APP_ENV=stage go run main.go'
