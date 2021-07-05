@@ -2,12 +2,16 @@
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 let g:coc_global_extensions = [
 	\ 'coc-json',
+	\ 'coc-prettier',
 	\ 'coc-git',
 	\ 'coc-go',
+	\ 'coc-tsserver',
 	\ 'coc-snippets',
 	\ 'coc-dictionary',
 	\ 'coc-word',
 	\ 'coc-emoji' ]
+
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " ----------------------------------------------------
 "  completion
