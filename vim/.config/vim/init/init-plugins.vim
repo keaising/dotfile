@@ -340,7 +340,6 @@ endif
 "----------------------------------------------------------------------
 " Language
 "----------------------------------------------------------------------
-
 if index(g:bundle_group, 'language') >= 0
 	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 	let g:go_auto_sameids = 0
@@ -356,11 +355,16 @@ if index(g:bundle_group, 'language') >= 0
 	Plug 'buoto/gotests-vim'
 	" :GoTests/:GoTestsAll
 	
-	
-	
 	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
-
+	let g:coc_global_extensions = [ 
+		\ 'coc-json', 
+		\ 'coc-git', 
+		\ 'coc-go', 
+		\ 'coc-sources', 
+		\ 'coc-rls', 
+		\ 'coc-dictionary', 
+		\ 'coc-emoji', 
+		\'coc-tssever' ]
 endif
 
 "----------------------------------------------------------------------

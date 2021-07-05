@@ -1,9 +1,17 @@
 {
-	"git.addGBlameToVirtualText": true,
-	"coc.source.emoji.filetypes": null,
-	"coc.source.word.priority": -1,
-	"coc.source.dictionary.priority": -1,
-	"coc.source.emoji.triggerCharacters": [ "/" ],
-	"coc.preferences.colorSupport": true,
-	"coc.preferences.formatOnSaveFiletypes": ["markdown", "rs"]
+  "git.addGBlameToVirtualText": true,
+  "coc.source.emoji.filetypes": null,
+  "coc.source.word.priority": -1,
+  "coc.source.dictionary.priority": -1,
+  "coc.source.emoji.triggerCharacters": ["/"],
+  "coc.preferences.colorSupport": true,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "markdown",
+    "rs",
+    "javascriptreact",
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ]
 }
