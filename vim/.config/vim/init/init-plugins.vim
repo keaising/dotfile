@@ -341,7 +341,7 @@ endif
 " Language
 "----------------------------------------------------------------------
 if index(g:bundle_group, 'language') >= 0
-	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 	let g:go_auto_sameids = 0
 	" let g:go_updatetime = 800
 	let g:go_highlight_functions = 1
