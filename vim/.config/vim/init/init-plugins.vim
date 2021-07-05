@@ -2,9 +2,10 @@
 " 默认情况下的分组，可以再前面覆盖之
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
-	let g:bundle_group =  ['basic', 'tags',    'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags',  'airline', 'nerdtree', 'ale',       'echodoc']
-	let g:bundle_group += ['leaderf']
+	let g:bundle_group =  ['default', 'basic', 'enhanced', 'textobj', 'filetypes']
+	let g:bundle_group += ['colorscheme', 'interface']
+	let g:bundle_group += ['nerdtree', 'language']
+	let g:bundle_group += ['nvim']
 endif
 
 
@@ -40,6 +41,7 @@ call plug#begin()
 " 默认插件 
 "----------------------------------------------------------------------
 
+if index(g:bundle_group, 'default') >= 0
 " Diff 增强，支持 histogram / patience 等更科学的 diff 算法
 Plug 'chrisbra/vim-diff-enhanced'
 " enable the patience diff algorithm when starting as vimdiff / git difftool /
@@ -65,6 +67,8 @@ nmap s         <Plug>(easymotion-s2)
 " different highlight method and have some other features )
 " map  n         <Plug>(easymotion-next)
 " map  N         <Plug>(easymotion-prev)
+
+endif
 
 
 "----------------------------------------------------------------------
@@ -219,19 +223,20 @@ endif
 " Colorfull
 "----------------------------------------------------------------------
 " colorscheme 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/gruvbox-material'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'junegunn/seoul256.vim'
-Plug 'arzg/vim-colors-xcode'
-Plug 'morhetz/gruvbox'
+if index(g:bundle_group, 'colorscheme') >= 0
+	Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'rafi/awesome-vim-colorschemes'
+	Plug 'sainnhe/everforest'
+	Plug 'sainnhe/edge'
+	Plug 'sainnhe/gruvbox-material'
+	Plug 'ErichDonGubler/vim-sublime-monokai'
+	Plug 'rhysd/vim-color-spring-night'
+	Plug 'junegunn/seoul256.vim'
+	Plug 'arzg/vim-colors-xcode'
+	Plug 'morhetz/gruvbox'
 
-if index(g:bundle_group, 'airline') >= 0
 
+	" airline
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	let g:airline_left_sep = ''
@@ -269,36 +274,39 @@ endif
 "----------------------------------------------------------------------
 " Interface
 "----------------------------------------------------------------------
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+if index(g:bundle_group, 'interface') >= 0
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	
+	" git blame info
+	Plug 'zivyangll/git-blame.vim'
+	nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+	
+	" --no-ignore
+	let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
+	nnoremap <leader>s  :Files<CR>
+	nnoremap <leader>ff :Rg<CR> 
+	command! -bang -nargs=* Rg
+	  \ call fzf#vim#grep(
+	  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+	  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
+	
+	
+	
+	let g:fzf_action = {
+	  \ 'enter':  'tab split',
+	  \ 'ctrl-o': 'e', 
+	  \ 'ctrl-x': 'split',
+	  \ 'ctrl-v': 'vsplit' }
+	
+	
+	Plug 'voldikss/vim-floaterm'
+	" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
+	let g:floaterm_keymap_toggle = '<m-m>'
+	let g:floaterm_width=0.85
+	let g:floaterm_height=0.95
 
-" git blame info
-Plug 'zivyangll/git-blame.vim'
-nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
-
-" --no-ignore
-let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-nnoremap <leader>s  :Files<CR>
-nnoremap <leader>ff :Rg<CR> 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
-
-
-
-let g:fzf_action = {
-  \ 'enter':  'tab split',
-  \ 'ctrl-o': 'e', 
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-
-Plug 'voldikss/vim-floaterm'
-" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
-let g:floaterm_keymap_toggle = '<m-m>'
-let g:floaterm_width=0.85
-let g:floaterm_height=0.95
+endif
  
 
 "----------------------------------------------------------------------
@@ -333,31 +341,33 @@ endif
 " Language
 "----------------------------------------------------------------------
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_auto_sameids = 0
-" let g:go_updatetime = 800
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-Plug 'buoto/gotests-vim'
-" :GoTests/:GoTestsAll
+if index(g:bundle_group, 'language') >= 0
+	Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+	let g:go_auto_sameids = 0
+	" let g:go_updatetime = 800
+	let g:go_highlight_functions = 1
+	let g:go_highlight_function_parameters = 1
+	let g:go_highlight_function_calls = 1
+	let g:go_highlight_types = 1
+	let g:go_highlight_fields = 1
+	let g:go_highlight_format_strings = 1
+	let g:go_highlight_variable_declarations = 1
+	let g:go_highlight_variable_assignments = 1
+	Plug 'buoto/gotests-vim'
+	" :GoTests/:GoTestsAll
+	
+	
+	
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
 
-
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [ 'coc-json', 'coc-git', 'coc-go', 'coc-sources', 'coc-rls', 'coc-dictionary', 'coc-emoji', 'coc-tssever' ]
-
+endif
 
 "----------------------------------------------------------------------
 " NeoVIM only plugins
 "----------------------------------------------------------------------
 
-if has("nvim")
+if has("nvim") && (index(g:bundle_group, 'nvim') >= 0)
 	" best terminal in nvim ever
 	" Plug 'numtostr/FTerm.nvim'
 
