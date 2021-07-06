@@ -9,6 +9,7 @@ let g:coc_global_extensions = [
 	\ 'coc-snippets',
 	\ 'coc-dictionary',
 	\ 'coc-word',
+	\ 'coc-sql',
 	\ 'coc-emoji' ]
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')

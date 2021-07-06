@@ -23,6 +23,10 @@ alias gd='git dif'
 alias ga='git add .'
 alias gc='git commit -m'
 alias g='gitui'
+alias gl='pc invoke'
+alias glp='pc invoke -p'
+alias glm='pc invoke -m'
+alias glb='pc invoke -b'
 
 # proxy
 alias pl='https_proxy=http://127.0.0.1:1080 http_proxy=http://127.0.0.1:1080 all_proxy=socks5://127.0.0.1:1081 '

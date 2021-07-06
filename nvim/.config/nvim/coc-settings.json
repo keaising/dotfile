@@ -12,6 +12,7 @@
     "javascript",
     "typescript",
     "typescriptreact",
-    "json"
+    "json",
+    "sql"
   ]
 }
