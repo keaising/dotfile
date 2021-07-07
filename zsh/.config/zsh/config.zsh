@@ -10,6 +10,9 @@ export GEM_HOME="$HOME/code/gems"
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="$HOME/code/n"
 
+# jabba
+export JABBA_HOME="$HOME/code/jabba"
+
 # rust
 RUST_BACKTRACE=1
 
