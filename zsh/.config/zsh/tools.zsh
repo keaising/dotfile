@@ -37,6 +37,9 @@ if [ -d "$HOME/.config/nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
+
+[ -s "$JABBA_HOME/jabba.sh" ] && source "$JABBA_HOME/jabba.sh"
+
 # ===================================================================
 # install tools exist
 # ===================================================================
