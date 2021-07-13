@@ -112,6 +112,10 @@ if index(g:bundle_group, 'enhanced') >= 0
 
 	Plug 'wesQ3/vim-windowswap'
 
+	" 自动更新 tab name
+	Plug 'gcmt/taboo.vim'
+	let g:taboo_tab_format="%N %f%m"
+
 	" 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
 	Plug 'terryma/vim-expand-region'
 
