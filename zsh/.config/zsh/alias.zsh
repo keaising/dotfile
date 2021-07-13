@@ -14,9 +14,9 @@ alias jb='j -b'
 
 # docker
 alias d='docker'
-alias dc='docker-compose'
-alias dcup='docker-compose up'
-alias da='docker attach'
+alias dc='docker compose'
+alias dcup='docker compose up'
+alias da='docker exec -it'
 
 # git
 alias gd='git dif'
