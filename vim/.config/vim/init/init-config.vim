@@ -150,6 +150,8 @@ augroup InitFileTypesGroup
 	" markdown 允许自动换行
 	au FileType markdown setlocal wrap
 
+	au FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
 	" lisp 进行微调
 	au FileType lisp setlocal ts=8 sts=2 sw=2 et
 

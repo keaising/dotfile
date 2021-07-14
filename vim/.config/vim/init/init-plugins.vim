@@ -238,6 +238,7 @@ if index(g:bundle_group, 'colorscheme') >= 0
 	Plug 'junegunn/seoul256.vim'
 	Plug 'arzg/vim-colors-xcode'
 	Plug 'morhetz/gruvbox'
+	Plug 'liuchengxu/space-vim-theme'
 
 
 	" airline
