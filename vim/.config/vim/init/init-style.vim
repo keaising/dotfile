@@ -4,7 +4,8 @@
 "----------------------------------------------------------------------
 
 " tab size
-autocmd FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set tabstop=4
+set shiftwidth=4
 
 " 总是显示状态栏
 set laststatus=2
@@ -60,6 +61,8 @@ if exists('+termguicolors')
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
 endif
+
+" colorscheme space_vim_theme
 
 " colorscheme spring-night
 " colo seoul256
