@@ -24,16 +24,42 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet errf "With Single Field"
+snippet err "With Single Field"
 if err != nil {
 	logrus.WithField("${1}": ${1}).Errorln("${2}", err)
 }
 ${0}
 endsnippet
 
-snippet errfs "With Fields"
+snippet errf "With Fields"
 if err != nil {
-	logrus.WithFields(fields).Errorln("${1}", err)
+	logrus.WithFields(logrus.Fields{"${0}: ${1}"}).Errorln("${2}", err)
 }
 ${0}
+endsnippet
+
+snippet nowdate "now date" 
+time.Now().Format("2006-01-02") ${0}
+endsnippet
+
+snippet yyyy "now date" 
+"2006-01-02" ${0}
+endsnippet
+
+snippet type "new type" 
+type ${1} struct {
+	${2} ${3} \`json:"${4}"\`
+}${0}
+endsnippet
+
+snippet map "new map" 
+${1} := map[${2}]${3}{
+	"${4}": ${5},
+}${0}
+endsnippet
+
+snippet fields "new logrus fields" 
+fields := logrus.Fields{
+	"${1}": ${2},
+}${0}
 endsnippet
