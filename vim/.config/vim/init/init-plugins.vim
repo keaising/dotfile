@@ -386,6 +386,8 @@ if has("nvim") && (index(g:bundle_group, 'nvim') >= 0)
 	Plug 'kyazdani42/nvim-web-devicons'
 	Plug 'folke/lsp-colors.nvim'
 
+	Plug 'glepnir/smartinput.nvim'
+
 	" more accurate highlight
 	" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -395,16 +397,16 @@ if has("nvim") && (index(g:bundle_group, 'nvim') >= 0)
 	" Plug 'sindrets/diffview.nvim'
 	" nnoremap <m-n> :DiffviewOpen<CR><C-n>
 
-	" show all problems
-	Plug 'folke/trouble.nvim'
-	nnoremap <leader>xt <cmd>TroubleToggle<cr>
-	nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
-	nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
-	nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
-	nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
-	nnoremap <leader>xr <cmd>TroubleToggle lsp_references<cr>
+	" ----------- show all problems ----------- 
+	" Plug 'folke/trouble.nvim'
+	" nnoremap <leader>xt <cmd>TroubleToggle<cr>
+	" nnoremap <leader>xw <cmd>TroubleToggle lsp_workspace_diagnostics<cr>
+	" nnoremap <leader>xd <cmd>TroubleToggle lsp_document_diagnostics<cr>
+	" nnoremap <leader>xq <cmd>TroubleToggle quickfix<cr>
+	" nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
+	" nnoremap <leader>xr <cmd>TroubleToggle lsp_references<cr>
+	" autocmd WinEnter * if winnr('$') == 1 && &ft == 'LspTrouble' | q | endif
 
-	autocmd WinEnter * if winnr('$') == 1 && &ft == 'LspTrouble' | q | endif
 	" ========================================================== 
 	" Git blame
 	" ========================================================== 

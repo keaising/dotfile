@@ -152,6 +152,8 @@ augroup InitFileTypesGroup
 
 	au FileType python setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
+	au FileType golang setlocal tabstop=8 shiftwidth=8
+
 	" lisp 进行微调
 	au FileType lisp setlocal ts=8 sts=2 sw=2 et
 
