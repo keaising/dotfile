@@ -289,12 +289,14 @@ if index(g:bundle_group, 'interface') >= 0
 	
 	" --no-ignore
 	let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-	nnoremap <leader>s  :Files<CR>
+	nnoremap <leader>ss :Files<CR>
 	nnoremap <leader>ff :Rg<CR> 
 	command! -bang -nargs=* Rg
 	  \ call fzf#vim#grep(
 	  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
 	  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
+	" It's a problem of nvim for fzf-vim will be very slow in startup, workround at: https://github.com/neovim/neovim/issues/8939#issuecomment-417797284
+	let g:projectionist_ignore_man=1
 	
 	
 	
