@@ -101,6 +101,12 @@ nmap <C-m> zM
 " disable 
 nnoremap <C-p> <nop>
 
+" search selected content in visual mode: https://blog.twofei.com/610/
+vnoremap // y/<c-r>"<cr>
+
+" save file with sudo
+cnoremap sudow w !sudo tee % >/dev/null
+
 
 " Tabularize
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
