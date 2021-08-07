@@ -77,6 +77,7 @@ nnoremap <silent> *     *zz
 nnoremap <silent> #     #zz
 nnoremap <silent> g*    g*zz
 nnoremap <silent> <Tab> %
+vnoremap <silent> <Tab> %
 
 " resource configuration
 nnoremap <leader>sv :source $MYVIMRC<CR>
@@ -93,9 +94,10 @@ nnoremap ' `
 
 " fold
 nmap zo zO
-nmap zr zR
-nmap <C-o> zO
-nmap <C-m> zM
+" nmap zr zR
+nmap <C-o> zo
+" nmap zm zM
+nmap <C-m> zm
 " zm will fold current block
 
 " disable 
