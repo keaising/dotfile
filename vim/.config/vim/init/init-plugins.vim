@@ -310,6 +310,8 @@ if index(g:bundle_group, 'interface') >= 0
 	
 	Plug 'voldikss/vim-floaterm'
 	nnoremap <leader>lf :FloatermNew lf<cr>
+	nnoremap <leader>fk :FloatermKill lf<cr>
+
 	nnoremap <m-n> :FloatermNew<CR>
 	tnoremap <m-p> <C-\><C-n>:FloatermPrev<CR>
 	tnoremap <m-n> <C-\><C-n>:FloatermNext<CR>
