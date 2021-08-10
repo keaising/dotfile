@@ -52,9 +52,14 @@ type ${1} struct {
 }${0}
 endsnippet
 
+snippet nf "new field" 
+${1} ${2} \`json:"${1}"\`
+${0}
+endsnippet
+
 snippet map "new map" 
-${1} := map[${2}]${3}{
-	"${4}": ${5},
+${1} := map[string]string{
+	"${2}": ${3},
 }${0}
 endsnippet
 
@@ -62,4 +67,8 @@ snippet fields "new logrus fields"
 fields := logrus.Fields{
 	"${1}": ${2},
 }${0}
+endsnippet
+
+snippet pc "pakcage" b
+package 
 endsnippet
