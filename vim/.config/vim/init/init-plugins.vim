@@ -109,6 +109,7 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" automate actions
 	Plug 'tpope/vim-repeat'
 	Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-abolish'
 
 	Plug 'wesQ3/vim-windowswap'
 
@@ -308,6 +309,10 @@ if index(g:bundle_group, 'interface') >= 0
 	
 	
 	Plug 'voldikss/vim-floaterm'
+	nnoremap <leader>lf :FloatermNew lf<cr>
+	nnoremap <m-n> :FloatermNew<CR>
+	tnoremap <m-p> <C-\><C-n>:FloatermPrev<CR>
+	tnoremap <m-n> <C-\><C-n>:FloatermNext<CR>
 	" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
 	let g:floaterm_keymap_toggle = '<m-m>'
 	let g:floaterm_width=0.85
