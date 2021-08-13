@@ -310,9 +310,9 @@ if index(g:bundle_group, 'interface') >= 0
 	
 	Plug 'voldikss/vim-floaterm'
 	nnoremap <leader>lf :FloatermNew lf<cr>
-	nnoremap <leader>fk :FloatermKill lf<cr>
+	nnoremap <leader>ln :FloatermNew<CR>
+	nnoremap <leader>lk :FloatermKill<cr>
 
-	nnoremap <m-n> :FloatermNew<CR>
 	tnoremap <m-p> <C-\><C-n>:FloatermPrev<CR>
 	tnoremap <m-n> <C-\><C-n>:FloatermNext<CR>
 	" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
