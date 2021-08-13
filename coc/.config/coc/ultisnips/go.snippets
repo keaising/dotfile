@@ -38,23 +38,17 @@ if err != nil {
 ${0}
 endsnippet
 
-snippet nowdate "now date" 
-time.Now().Format("2006-01-02") ${0}
-endsnippet
-
-snippet yyyy "now date" 
-"2006-01-02" ${0}
-endsnippet
-
-snippet type "new type" 
-type ${1} struct {
-	${2} ${3} \`json:"${4}"\`
-}${0}
+snippet lf "logrus Fields" b
+logrus.Fields{"${1}": ${1}}${0}
 endsnippet
 
 snippet nf "new field" 
 ${1} ${2} \`json:"${1}"\`
 ${0}
+endsnippet
+
+snippet nowdate "now date" 
+time.Now().Format("2006-01-02") ${0}
 endsnippet
 
 snippet map "new map" 
@@ -63,12 +57,16 @@ ${1} := map[string]string{
 }${0}
 endsnippet
 
-snippet fields "new logrus fields" 
-fields := logrus.Fields{
-	"${1}": ${2},
-}${0}
-endsnippet
-
 snippet pc "pakcage" b
 package 
 endsnippet
+
+snippet ty "new type" 
+type ${1} struct {
+}${0}
+endsnippet
+
+snippet yyyy "now date" 
+"2006-01-02" ${0}
+endsnippet
+
