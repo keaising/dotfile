@@ -24,27 +24,30 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet err "With Single Field"
-if err != nil {
-	logrus.WithField("${1}": ${1}).Errorln("${2}", err)
-}
-${0}
+snippet bs "bson" i
+bson:"${1}"
 endsnippet
 
-snippet errf "With Fields"
+snippet iferr "With Single Field"
 if err != nil {
-	logrus.WithFields(logrus.Fields{"${0}: ${1}"}).Errorln("${2}", err)
-}
-${0}
+	${1}
+}${0}
 endsnippet
 
-snippet lf "logrus Fields" b
+snippet js "json" i
+json:"${1}"
+endsnippet
+
+snippet logr "With Fields" i
+logrus.WithFields(logrus.Fields{"${1}": ${1}})${0}
+endsnippet
+
+snippet logf "logrus Fields" i
 logrus.Fields{"${1}": ${1}}${0}
 endsnippet
 
 snippet nf "new field" 
-${1} ${2} \`json:"${1}"\`
-${0}
+${1} ${2} \`json:"${1}" bson:"${1}"\`${0}
 endsnippet
 
 snippet nowdate "now date" 
@@ -57,11 +60,11 @@ ${1} := map[string]string{
 }${0}
 endsnippet
 
-snippet pc "pakcage" b
+snippet pac "package" i
 package 
 endsnippet
 
-snippet ty "new type" 
+snippet type "new type" 
 type ${1} struct {
 }${0}
 endsnippet
