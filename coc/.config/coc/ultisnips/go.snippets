@@ -39,11 +39,11 @@ json:"${1}"
 endsnippet
 
 snippet logr "With Fields" i
-logrus.WithFields(logrus.Fields{"${1}": ${1}})${0}
+logrus.WithFields(logrus.Fields{"${1}": ${2}})${0}
 endsnippet
 
 snippet logf "logrus Fields" i
-logrus.Fields{"${1}": ${1}}${0}
+logrus.Fields{"${1}": ${2}}${0}
 endsnippet
 
 snippet nf "new field" 

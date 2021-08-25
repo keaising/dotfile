@@ -9,9 +9,9 @@
 -- map('n', '<Tab>', '<Nop>', opts)
 
 
-require('smartinput').setup {
-	['go'] = { ';',':=',';;'}
-}
+-- require('smartinput').setup {
+	-- ['go'] = { ';',':=',';',';;'}
+-- }
 
 
 -- require('nvim-treesitter.configs').setup({
