@@ -38,6 +38,10 @@ inoremap <silent><expr> <c-@> coc#refresh()
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
+" Alt+j/k to go to next/previous selection
+inoremap <expr> <m-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <m-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 autocmd User CocLocationsChange CocList --normal location
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
