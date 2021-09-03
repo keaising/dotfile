@@ -3,6 +3,7 @@
 let g:coc_global_extensions = [
 	\ 'coc-json',
 	\ 'coc-prettier',
+	\ 'coc-spell-checker',
 	\ 'coc-git',
 	\ 'coc-go',
 	\ 'coc-java',
@@ -30,6 +31,9 @@ nmap     <silent><leader>rn <Plug>(coc-rename)
 xmap     <silent><leader>f  <Plug>(coc-format-selected)
 nmap     <silent><leader>f  <Plug>(coc-format-selected)
 nnoremap <silent><leader>l  :CocList --normal --first diagnostics<cr>
+
+vmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-@> coc#refresh()

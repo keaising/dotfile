@@ -13,5 +13,12 @@
     "typescript",
     "typescriptreact",
     "java"
+  ],
+  "cSpell.userWords": [
+    "Errorln",
+    "Ymmdd",
+    "bson",
+    "golibs",
+    "wwoauth"
   ]
 }
