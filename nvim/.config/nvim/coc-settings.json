@@ -16,9 +16,23 @@
   ],
   "cSpell.userWords": [
     "Errorln",
+    "Lookupd",
+    "NSQD",
     "Ymmdd",
+    "agollo",
     "bson",
+    "dbname",
+    "dtask",
+    "eshop",
     "golibs",
-    "wwoauth"
+    "mitchellh",
+    "mongodb",
+    "nsqh",
+    "nsqlookupd",
+    "strs",
+    "touser",
+    "unionid",
+    "wwoauth",
+    "yorozuya"
   ]
 }
