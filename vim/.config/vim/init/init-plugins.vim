@@ -257,22 +257,24 @@ if index(g:bundle_group, 'colorscheme') >= 0
 
 	" tab 
 	let g:airline#extensions#tabline#enabled = 1
-	let g:airline#extensions#tabline#show_buffers = 1
+	let g:airline#extensions#tabline#show_buffers = 0
 	let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 	let g:airline#extensions#tabline#show_tab_nr = 0
-	let g:airline#extensions#tabline#formatter = 'unique_tail'
+	let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 	" enable/disable displaying buffers with a single tab. (c) >
-	let g:airline#extensions#tabline#show_buffers = 0
+	let g:airline#extensions#tabline#show_buffers = 1
 	let g:airline#extensions#tabline#show_tab_type = 1
 	let g:airline#extensions#tabline#buffers_label = 'b'
 	let g:airline#extensions#tabline#tabs_label = 't'
 
-	let g:airline#extensions#branch#enabled = 0
+	let g:airline#extensions#branch#enabled = 1
 	let g:airline#extensions#syntastic#enabled = 0
 	let g:airline#extensions#fugitiveline#enabled = 0
-	let g:airline#extensions#csv#enabled = 0
+	let g:airline#extensions#csv#enabled = 1
 	let g:airline#extensions#vimagit#enabled = 0
+
+	Plug 'ryanoasis/vim-devicons'
 endif
 
 
