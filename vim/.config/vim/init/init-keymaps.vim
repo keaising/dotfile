@@ -105,6 +105,7 @@ nnoremap <C-p> <nop>
 
 " search selected content in visual mode: https://blog.twofei.com/610/
 vnoremap // y/<c-r>"<cr>
+nnoremap // :noh<CR>
 
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null

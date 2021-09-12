@@ -19,8 +19,8 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 " ----------------------------------------------------
 "  completion
 " ----------------------------------------------------
-nmap     <silent>[g <Plug>(coc-diagnostic-prev)
-nmap     <silent>]g <Plug>(coc-diagnostic-next)
+nmap     <silent>[[ <Plug>(coc-diagnostic-prev)
+nmap     <silent>]] <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
 nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
 " nmap     <silent><m-k>      <Plug>(coc-rename)
@@ -30,7 +30,7 @@ nmap     <silent><leader>rn <Plug>(coc-rename)
 " Formatting selected code.
 xmap     <silent><leader>f  <Plug>(coc-format-selected)
 nmap     <silent><leader>f  <Plug>(coc-format-selected)
-nnoremap <silent><leader>l  :CocList --normal --first diagnostics<cr>
+nnoremap <silent><leader>l  :CocList --normal diagnostics<cr>
 
 vmap <leader>a <Plug>(coc-codeaction-selected)
 nmap <leader>a <Plug>(coc-codeaction-selected)
