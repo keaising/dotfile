@@ -7,16 +7,8 @@
     "/"
   ],
   "coc.preferences.colorSupport": true,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "markdown",
-    "rs",
-    "javascriptreact",
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "java"
-  ],
   "cSpell.userWords": [
+    "Debugln",
     "Errorf",
     "Errorln",
     "Lookupd",
@@ -41,6 +33,7 @@
     "tidwall",
     "touser",
     "unionid",
+    "wesociety",
     "wwoauth",
     "yorozuya"
   ]
