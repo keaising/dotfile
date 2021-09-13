@@ -24,8 +24,8 @@ set rtp+=~/.vim
 "----------------------------------------------------------------------
 
 " load configuration in vim
-" source $HOME/.config/vim/init.vim
-source $HOME/.vimrc
+source $HOME/.config/vim/init.vim
+" source $HOME/.vimrc
 
 " load neovim specific configs
 " LoadScript init/init-plugins.vim
