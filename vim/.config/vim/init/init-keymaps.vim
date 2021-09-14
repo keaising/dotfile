@@ -92,10 +92,12 @@ noremap  L $
 " mark
 nnoremap ' `
 
-" close all fold
+" close all recursively
 nmap zm zM
 " open current recursively
 nmap zo zO
+" open all recursively
+nmap zr zR
 " close current: zc
 " open/close current: za
 
