@@ -92,13 +92,12 @@ noremap  L $
 " mark
 nnoremap ' `
 
-" fold
+" close all fold
+nmap zm zM
+" open current recursively
 nmap zo zO
-" nmap zr zR
-nmap <C-o> zo
-" nmap zm zM
-nmap <C-m> zm
-" zm will fold current block
+" close current: zc
+" open/close current: za
 
 " disable 
 nnoremap <C-p> <nop>
@@ -126,3 +125,4 @@ endfunction
 
 " insert mode specials
 inoremap ;; :=
+nnoremap <leader>p :let @+ = expand("%:p")<cr>
