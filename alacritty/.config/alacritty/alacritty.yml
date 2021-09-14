@@ -1,6 +1,7 @@
 env:
   TERM: xterm-256color
 
+
 window:
   dimensions:
     columns: 140
@@ -20,8 +21,30 @@ font:
     style: Regular
   size: 14
 
+
 key_bindings:
-  # (macOS only)
+
+# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+#
+# Documents:
+#
+#
+# Useful commands to get code-points and key names:
+# https://github.com/alexherbo2/alacritty-extended-keys
+# showkey --ascii
+# alacritty --print-events
+
+# Fix keyboard input on terminals: http://www.leonerd.org.uk/hacks/fixterms/
+# Key names: https://docs.rs/glutin/latest/glutin/event/enum.VirtualKeyCode.html
+
+# Support for CSI u mode:
+  - { key: Return, mods: Control, chars: "\x1b[13;5u" }
+  - { key: H, mods: Control, chars: "\x1b[104;5u" }
+  - { key: I, mods: Control, chars: "\x1b[105;5u" }
+  - { key: J, mods: Control, chars: "\x1b[106;5u" }
+  - { key: M, mods: Control, chars: "\x1b[109;5u" }
+
+# (macOS only)
   - { key: K,              mods: Command,         mode:   ~Vi|~Search, action: ReceiveChar }
   - { key: K,              mods: Command,         mode:   ~Vi|~Search, action: ReceiveChar }
   - { key: Key0,           mods: Command,         action: ReceiveChar  }
