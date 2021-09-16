@@ -19,20 +19,16 @@ nnoremap <m-Down>  :resize   -5<CR>
 " nnoremap <leader>] :tabnext<CR>
 nnoremap <m-{> :tabprevious<CR>
 nnoremap <m-}> :tabnext<CR>
-nnoremap <m-l> :bn<CR>
-nnoremap <m-h> :bp<CR>
+nnoremap <m-l> :tabprevious<CR>
+nnoremap <m-h> :tabnext<CR>
 " delete buffer
-nnoremap <m-d> :bd<CR>
+" nnoremap <m-d> :bd<CR>
 
 " switch window
 noremap  <C-h> <c-w>h
 noremap  <C-l> <c-w>l
 noremap  <C-j> <c-w>j
 noremap  <C-k> <c-w>k
-inoremap <m-H> <esc><c-w>h
-inoremap <m-L> <esc><c-w>l
-inoremap <m-J> <esc><c-w>j
-inoremap <m-K> <esc><c-w>k
 
 " switch location
 noremap <m-[>  <C-o>
@@ -42,8 +38,8 @@ noremap <ESC>[ <C-o>
 noremap <ESC>] <C-i>
 
 " faster movement
-nnoremap <C-e> 7<C-e>
-nnoremap <C-y> 7<C-y>
+nnoremap <C-e> 8<C-e>
+nnoremap <C-y> 8<C-y>
 
 " move in insert mode
 " Ctrl - comflict with coc-snippets
@@ -62,11 +58,6 @@ inoremap <m-l> <right>
 inoremap <m-b> <C-o>b
 inoremap <m-w> <C-o>w
 inoremap <m-e> <C-o>e
-
-" format json
-" nnoremap <leader>json    :set syntax=json; %!jq<CR>
-nnoremap ==j :set syntax:json<CR> <Bar> :%!jq<CR>
-vnoremap ==j :set syntax:json<CR> <Bar> :%!jq<CR>
 
 " Keep search pattern at the center of the screen.
 nnoremap <silent> n     nzz
