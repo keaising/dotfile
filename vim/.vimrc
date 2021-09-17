@@ -218,10 +218,8 @@ Plug 'xolox/vim-misc'
 " 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
 Plug 'kshenoy/vim-signature'
 
-" 使用 ALT+e 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转
+" 使用 - 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转
 Plug 't9md/vim-choosewin'
-" 使用 ALT+E 来选择窗口
-nmap <m-e> <Plug>(choosewin)
 nmap -     <Plug>(choosewin)
 
 Plug 'tpope/vim-repeat'     " advanced repeat
@@ -337,17 +335,6 @@ let g:fzf_action = {
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
 
-Plug 'voldikss/vim-floaterm'
-nnoremap <leader>lf :FloatermNew lf<CR>
-nnoremap <leader>ln :FloatermNew<CR>
-nnoremap <leader>lk :FloatermKill<CR>
-tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
-tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
-" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
-let g:floaterm_keymap_toggle = '<m-m>'
-let g:floaterm_width=0.85
-let g:floaterm_height=0.95
-
 Plug 'preservim/nerdtree'
 let g:NERDTreeMinimalUI    = 1
 let g:NERDTreeDirArrows    = 1
@@ -394,18 +381,16 @@ let g:coc_global_extensions = [
 nmap     <silent>g[ <Plug>(coc-diagnostic-prev)
 nmap     <silent>g] <Plug>(coc-diagnostic-next)
 " GoTo code navigation.
-nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
+nmap     <silent><C-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
 nmap     <silent>gi         <Plug>(coc-implementation)
 nmap     <silent>gr         <Plug>(coc-references)
 nmap     <silent><leader>rn <Plug>(coc-rename)
-nnoremap <silent><leader>l  :CocList --normal diagnostics<CR>
+nnoremap <silent><leader>lc  :CocList --normal diagnostics<CR>
 " Make <CR> auto-select the first completion item and notify coc.nvim to
 " format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Alt+j/k to go to next/previous selection
-inoremap <expr> <m-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <m-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 autocmd User CocLocationsChange CocList --normal location
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
