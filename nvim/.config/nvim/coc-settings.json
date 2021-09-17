@@ -11,6 +11,7 @@
     "Debugln",
     "Errorf",
     "Errorln",
+    "IDIs",
     "Lookupd",
     "NSQD",
     "SKUID",
