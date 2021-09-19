@@ -80,9 +80,10 @@ augroup filetype_vim
 augroup END
 " }}} 
 
-augroup filetype_zsh
+augroup filetype_terminal
     autocmd!
-    autocmd FileType zsh setlocal foldmethod=marker
+    autocmd FileType zsh  setlocal foldmethod=marker
+    autocmd FileType tmux setlocal foldmethod=marker
 augroup END
 
 " }}}
