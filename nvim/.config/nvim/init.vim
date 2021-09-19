@@ -179,6 +179,8 @@ inoremap ;; :=
 " resource configuration
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
+nnoremap <leader>sf :set filetype=
+
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
 
