@@ -2,6 +2,9 @@
 " basic -----{{{
 
 set autoindent
+set tabstop=4                     "按下 Tab 键时，Vim 显示的空格数
+set shiftwidth=4
+set softtabstop=0                 "关闭softtabstop 永远不要将空格和tab混合输入
 set cursorline
 set showmatch
 set hlsearch
@@ -34,6 +37,8 @@ set backupdir=~/.vim/tmp          " 备份文件地址，统一管理
 set backupext=.bak                " 备份文件扩展名
 set noswapfile                    " 禁用交换文件
 set noundofile                    " 禁用 undo文件
+set scrolloff=5                   "垂直滚动时，光标距离顶部/底部的位置（单位：行）
+set sidescrolloff=15              "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
 
 syntax enable
 syntax on
@@ -84,6 +89,11 @@ augroup filetype_terminal
     autocmd!
     autocmd FileType zsh  setlocal foldmethod=marker
     autocmd FileType tmux setlocal foldmethod=marker
+augroup END
+
+augroup filetype_golang
+	autocmd!
+	au FileType go     setlocal tabstop=8 shiftwidth=8
 augroup END
 
 " }}}
@@ -325,8 +335,6 @@ let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_tab_nr = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" enable/disable displaying buffers with a single tab. (c) >
-let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#show_tab_type = 1
 let g:airline#extensions#tabline#buffers_label = 'b'
 let g:airline#extensions#tabline#tabs_label = 't'
