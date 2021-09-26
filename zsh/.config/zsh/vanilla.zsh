@@ -96,6 +96,7 @@ alias gocc='fmt && goci'
 alias goss='fmt && gostrict'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
+alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 alias gr='APP_ENV=stage go run main.go'
 # }}}
 
