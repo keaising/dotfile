@@ -64,6 +64,10 @@ snippet pac "package" i
 package 
 endsnippet
 
+snippet spew "spew" i
+spew.Printf("${1}: %#+v\n", ${1})${0}
+endsnippet
+
 snippet type "new type" 
 type ${1} struct {
 }${0}
