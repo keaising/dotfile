@@ -315,7 +315,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'arzg/vim-colors-xcode'
 Plug 'morhetz/gruvbox'
 Plug 'liuchengxu/space-vim-theme'
-
+Plug 'sainnhe/gruvbox-material'
 Plug 'ryanoasis/vim-devicons'
 
 " airline
