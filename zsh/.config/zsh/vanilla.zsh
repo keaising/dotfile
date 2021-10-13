@@ -117,6 +117,7 @@ export N_PREFIX="$HOME/code/n"
 
 # jabba
 export JABBA_HOME="$HOME/code/jabba"
+[ -s "$JABBA_HOME/jabba.sh" ] && source "$JABBA_HOME/jabba.sh"
 
 # rust
 RUST_BACKTRACE=1
