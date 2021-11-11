@@ -165,26 +165,26 @@ update_vim () {
 
 go_tools () {
 	cd $HOME/code
-	setpx
+	nopx
 	export GOPROXY=https://goproxy.io 
 	# gopls
 	local _gogettools=(
-		"golang.org/x/tools/gopls@latest"
+		"golang.org/x/tools/gopls"
 		"github.com/uudashr/gopkgs/cmd/gopkgs"
 		"github.com/ramya-rao-a/go-outline"
 		"github.com/haya14busa/goplay/cmd/goplay"
 		"github.com/fatih/gomodifytags"
 		"github.com/josharian/impl"
 		"github.com/cweill/gotests/..."
-		"github.com/golangci/golangci-lint/cmd/golangci-lint@latest"
+		"github.com/golangci/golangci-lint/cmd/golangci-lint"
 		"golang.org/x/tools/cmd/goimports"
 	)
 
 	echo $PWD
-	echo update go get tools
+	echo update go tools
 	for _gogettool in $_gogettools; do
-		echo update go get tools: $_gogettool
-		GO111MODULE=on go get -u $_gogettool
+		echo update go install tools: $_gogettool
+		GO111MODULE=on go install $_gogettool@latest
 	done
 
 	local -A _gotools=(
