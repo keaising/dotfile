@@ -42,6 +42,7 @@
     "eshop",
     "gjson",
     "golibs",
+    "gorm",
     "indexs",
     "jsonb",
     "localtime",
