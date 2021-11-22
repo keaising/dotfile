@@ -400,6 +400,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
+let g:go_imports_mode = 'gosimports'
 Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 nnoremap <leader>ggt :GoTests<CR>
 
