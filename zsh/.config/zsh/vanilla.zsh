@@ -73,10 +73,9 @@ alias v='nvim'
 alias now='date +%s'
 alias sz="source $HOME/.zshrc"
 alias j='z'
+alias dnsm='sudo brew services restart dnsmasq'
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 
-# macos only
-alias refresh-dns='sudo killall -HUP mDNSResponder'
 
 
 # }}}
@@ -91,7 +90,7 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
 alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
-alias fmt='goimports -w . && go mod tidy'
+alias fmt='gosimports -w . && go mod tidy'
 alias gocc='fmt && goci'
 alias goss='fmt && gostrict'
 alias gdv='godotenv'
@@ -220,6 +219,15 @@ setpx () {
 	else
 		px
 	fi
+}
+
+
+# macos only
+dns () {
+for i in {1..$1}
+do
+        sudo killall -HUP mDNSResponder
+done
 }
 
 # --- }}}

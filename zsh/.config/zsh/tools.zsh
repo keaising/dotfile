@@ -178,6 +178,7 @@ go_tools () {
 		"github.com/cweill/gotests/..."
 		"github.com/golangci/golangci-lint/cmd/golangci-lint"
 		"golang.org/x/tools/cmd/goimports"
+		"github.com/rinchsan/gosimports/cmd/gosimports"
 	)
 
 	echo $PWD
