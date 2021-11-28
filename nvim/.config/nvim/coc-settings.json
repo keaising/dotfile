@@ -47,6 +47,7 @@
     "gorm",
     "indexs",
     "jsonb",
+    "keaising",
     "localtime",
     "misaki",
     "mitchellh",
