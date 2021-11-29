@@ -134,15 +134,14 @@ update_nvim () {
 	setpx
 	set -e
 	set -o xtrace
-	export NVIM_REPO=$GITHUB_LOCATION/neovim/neovim
-	if [ ! -d "$NVIM_REPO" ]; then
-		git clone https://github.com/neovim/neovim.git $NVIM_REPO
-	fi
-	cd $NVIM_REPO
-	git pull origin master
-	sudo make CMAKE_BUILD_TYPE=Release
-	sudo make install
-	cd -
+	wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+	tar -zxf nvim-macos.tar.gz
+	rm nvim-macos.tar.gz
+	mkdir -p ~/.local/bin/nvim
+	sudo rm -rf ~/.local/bin/nvim
+	mv nvim-osx64 ~/.local/bin/nvim
+	sudo rm -f /usr/local/bin/nvim
+	ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
 	nvim --version
 }
 
