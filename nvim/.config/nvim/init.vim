@@ -293,6 +293,7 @@ let g:gh_line_blame_map_default = 1
 let g:gh_line_map = '<leader>gh'
 let g:gh_line_blame_map = '<leader>gb'
 let g:gh_gitlab_domain = "git.curiostack.com"
+let g:gh_use_canonical = 0
 Plug 'zivyangll/git-blame.vim' " git blame info
 nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
