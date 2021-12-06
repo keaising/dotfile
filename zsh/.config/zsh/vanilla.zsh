@@ -90,9 +90,10 @@ export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
 alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
-alias fmt='goimports -w . && go mod tidy'
+alias fmt='gofumpt -l -w . && go mod tidy'
+alias fmto='goimports -w . && go mod tidy'
 alias fmts='gosimports -w . && go mod tidy'
-alias gocc='fmt && goci'
+alias gocc='fmt && goci --allow-parallel-runners'
 alias goss='fmt && gostrict'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
