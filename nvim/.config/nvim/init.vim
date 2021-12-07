@@ -190,6 +190,7 @@ inoremap ;; :=
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 nnoremap <leader>sf :set filetype=
+nnoremap <leader>st :set syntax=
 
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
