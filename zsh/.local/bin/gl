@@ -1,0 +1,105 @@
+#! /usr/bin/env lua
+
+-- execute command in bash
+function exec(command)
+	local handle = io.popen(command)
+	local result = handle:read("*a")
+	handle:close()
+	return trim_space(result)
+end
+
+function trim_space(s)
+	return s:match"^%s*(.*)":match"(.-)%s*$"
+end
+
+-- copy from https://github.com/skywind3000/z.lua/blob/master/z.lua#L137
+function string:split(sSeparator, nMax, bRegexp)
+	assert(sSeparator ~= '')
+	assert(nMax == nil or nMax >= 1)
+	local aRecord = {}
+	if self:len() > 0 then
+		local bPlain = not bRegexp
+		nMax = nMax or -1
+		local nField, nStart = 1, 1
+		local nFirst, nLast = self:find(sSeparator, nStart, bPlain)
+		while nFirst and nMax ~= 0 do
+			aRecord[nField] = self:sub(nStart, nFirst - 1)
+			nField = nField + 1
+			nStart = nLast + 1
+			nFirst, nLast = self:find(sSeparator, nStart, bPlain)
+			nMax = nMax - 1
+		end
+		aRecord[nField] = self:sub(nStart)
+	else
+		aRecord[1] = ''
+	end
+	return aRecord
+end
+
+function string:endswith(text)
+	return text == "" or self:sub(-#text) == text
+end
+
+function open(url) 
+	return function() 
+		exec('open '..url)
+	end
+end
+
+local is_git = exec('git rev-parse --is-inside-work-tree 2>/dev/null')
+if is_git ~= 'true' then
+	print('not in git repo')
+	os.exit(0)
+end
+
+-- url: git@github.com:keaising/group/dotfile.git
+local url = exec('git config --get remote.origin.url')
+
+-- path: git, github.com:keaising/group/dotfile.git
+local path = url:split('@')
+
+-- domain_group: github.com, keaising/group/dotfile.git
+local domain_group = path[2]:split(':')
+
+-- domain: github.com
+local domain = domain_group[1]
+-- group: keaising/group/dotfile.git
+local group = domain_group[2]
+
+if group:endswith('.git') then
+	group = group:gsub("%.git", "")
+end
+
+-- root_url: https://github.com/keaising/group/dotfile
+local root_url = 'https://'..domain..'/'..group
+
+-- branch: dev
+local branch = exec('git rev-parse --abbrev-ref HEAD 2>/dev/null')
+local commit_id = exec('git rev-parse HEAD')
+
+local gitlab_merge = root_url..'/-/merge_requests/new?merge_request[source_branch]='..branch
+local tree = root_url..'/-/tree/'..branch
+local current_commit = root_url..'/-/commit/'..commit_id
+local pipeline = root_url..'/-/pipelines'
+
+if domain == 'github.com' then
+	tree = root_url..'/tree/'..branch
+	current_commit = root_url..'/commit/'..commit_id
+	pipeline = root_url..'/actions'
+end
+
+local action = {
+	['-m'] = open(gitlab_merge),
+	['-p'] = open(pipeline),
+	['-b'] = open(tree),
+	['-c'] = open(current_commit),
+	['']   = open(root_url) ,
+}
+
+local arg1 = arg[1]
+if arg1 == nil then
+	arg1 = ''
+end
+
+action[arg1]()
+
