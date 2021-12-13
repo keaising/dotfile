@@ -8,7 +8,7 @@ alias an='ansible'
 alias ap='ansible-playbook'
 
 # ci
-alias trigger='git amend && git push -f'
+alias trigger='git add -A && git amend && git push -f'
 
 # dir
 alias .='cd .'
