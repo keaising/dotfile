@@ -455,7 +455,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 autocmd User CocLocationsChange CocList --normal location
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
