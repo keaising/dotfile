@@ -35,7 +35,7 @@
 
     edit_file: Some(( code: Char('I'), modifiers: ( bits: 1,),)),
 
-    status_reset_item: Some(( code: Char('U'), modifiers: ( bits: 1,),)),
+    status_reset_item: Some(( code: Char('u'), modifiers: ( bits: 0,),)),
 
     diff_reset_lines: Some(( code: Char('u'), modifiers: ( bits: 0,),)),
     diff_stage_lines: Some(( code: Char('s'), modifiers: ( bits: 0,),)),
