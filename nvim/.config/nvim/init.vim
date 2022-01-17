@@ -195,6 +195,10 @@ nnoremap <leader>st :set syntax=
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
 
+" exit
+nnoremap <leader>wa :wa<CR>
+nnoremap <m-q> :qa<CR>
+
 " }}}
 
 
