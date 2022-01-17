@@ -109,4 +109,7 @@ source "$ZSH_CONF/tools.zsh"
 
 # --- }}
 
-[ -s "/Users/taiga/code/jabba/jabba.sh" ] && source "/Users/taiga/code/jabba/jabba.sh"
+# https://github.com/shyiko/jabba java version management
+if [ -s "/Users/taiga/code/jabba/jabba.sh" ]; then
+	source "/Users/taiga/code/jabba/jabba.sh"
+fi

@@ -1,0 +1,6 @@
+fzf
+ripgrep
+fd
+bat
+gitui
+

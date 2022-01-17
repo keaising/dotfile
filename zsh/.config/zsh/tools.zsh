@@ -37,9 +37,6 @@ if [ -d "$HOME/.config/nvm" ]; then
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 fi
 
-
-[ -s "$JABBA_HOME/jabba.sh" ] && source "$JABBA_HOME/jabba.sh"
-
 # ===================================================================
 # install tools exist
 # ===================================================================
@@ -56,68 +53,6 @@ install_fzf () {
 	$FZF_REPO/install
 	cd -
 	fzf --version
-}
-
-install_ripgrep () {
-	setpx
-	set -e
-	set -o xtrace
-	export RG_REPO=$GITHUB_LOCATION/BurntSushi/ripgrep
-	if [ ! -d "$RG_REPO" ]; then
-		git clone https://github.com/BurntSushi/ripgrep.git $RG_REPO
-	fi 
-	cd $RG_REPO
-	git pull origin master
-	cargo build --release
-	mkdir -p $LOCAL_BIN
-	ln -sf $GITHUB_LOCATION/BurntSushi/ripgrep/target/release/rg $LOCAL_BIN
-	rg --version
-}
-
-install_fd () {
-	setpx
-	set -e
-	set -o xtrace
-	export FD_REPO=$GITHUB_LOCATION/sharkdp/fd
-	if [ ! -d "$FD_REPO" ]; then
-		git clone https://github.com/sharkdp/fd.git $FD_REPO
-	fi 
-	cd $FD_REPO
-	git pull origin master
-	cargo build --release
-	mkdir -p $LOCAL_BIN
-	ln -sf $GITHUB_LOCATION/sharkdp/fd/target/release/fd $LOCAL_BIN
-	fd --version
-}
-
-install_bat () {
-	setpx
-	set -e
-	set -o xtrace
-	export BAT_REPO=$GITHUB_LOCATION/sharkdp/bat
-	if [ ! -d "$BAT_REPO" ]; then
-		git clone https://github.com/sharkdp/bat.git $BAT_REPO
-	fi
-	cd $BAT_REPO
-	cargo build --release
-	mkdir -p $LOCAL_BIN
-	ln -sf $GITHUB_LOCATION/sharkdp/bat/target/release/bat $LOCAL_BIN
-	bat --version
-}
-
-install_gitui () {
-	setpx
-	set -e
-	set -o xtrace
-	export GITUI_REPO=$GITHUB_LOCATION/extrawurst/gitui
-	if [ ! -d "$GITUI_REPO" ]; then
-		git clone https://github.com/extrawurst/gitui.git $GITUI_REPO
-	fi
-	cd $GITUI_REPO
-	cargo build --release
-	mkdir -p $LOCAL_BIN
-	ln -sf $GITHUB_LOCATION/extrawurst/gitui/target/release/gitui $LOCAL_BIN
-	gitui --version
 }
 
 install_tpm () {
@@ -143,23 +78,6 @@ update_nvim () {
 	sudo rm -f /usr/local/bin/nvim
 	ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
 	nvim --version
-}
-
-update_vim () {
-	setpx
-	set -e
-	set -o xtrace
-	export VIM_REPO=$GITHUB_LOCATION/vim/vim
-	if [ ! -d "$VIM_REPO" ]; then
-		git clone https://github.com/vim/vim.git $VIM_REPO
-	fi
-	cd $VIM_REPO
-	git pull origin master
-	# https://github.com/vim/vim/blob/master/src/INSTALL
-	make 
-	sudo make install
-	cd -
-	vim --version
 }
 
 go_tools () {
