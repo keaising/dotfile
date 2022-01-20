@@ -55,6 +55,11 @@ install_fzf () {
 	fzf --version
 }
 
+# 调整 mac 鼠标灵敏度
+fix_mac_mouse () {
+	defaults write -g com.apple.mouse.scaling 30
+}
+
 install_tpm () {
 	setpx
 	set -e
