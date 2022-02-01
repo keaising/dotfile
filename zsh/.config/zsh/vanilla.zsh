@@ -74,6 +74,7 @@ alias now='date +%s'
 alias sz="source $HOME/.zshrc"
 alias j='z'
 alias dnsm='sudo brew services restart dnsmasq'
+alias y=yarn
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 alias dfp='datahub-field-parse'
 
