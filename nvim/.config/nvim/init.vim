@@ -255,12 +255,12 @@ Plug 'kshenoy/vim-signature'
 " 使用 - 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转
 Plug 't9md/vim-choosewin'
 nmap -     <Plug>(choosewin)
-
-Plug 'tpope/vim-repeat'     " advanced repeat
-Plug 'tpope/vim-surround'   " surround
-Plug 'tpope/vim-abolish'    " crs/crm/crc
 Plug 'wesQ3/vim-windowswap'
+
+Plug 'tpope/vim-abolish'    " crs/crm/crc
 Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
+
+Plug 'machakann/vim-sandwich'
 
 Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
 " ALT_+/- 用于按分隔符扩大缩小 v 选区
@@ -527,6 +527,9 @@ let g:neoformat_only_msg_on_error = 1
 
 
 call plug#end()
+
+" After plug installation
+runtime macros/sandwich/keymap/surround.vim
 
 " }}}
 
