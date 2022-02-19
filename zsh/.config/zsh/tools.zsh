@@ -3,27 +3,27 @@
 # ===================================================================
 
 if ! type fzf > /dev/null; then
-	echo fzf not found! use 'install_fzf' to install.
+	echo fzf not found!
 fi
 
 if ! type rg > /dev/null; then
-	echo rg not found! use 'install_ripgrep' to install.
+	echo rg not found!
 fi
 
 if ! type fd > /dev/null; then
-	echo fd not found! use 'install_fd' to install.
+	echo fd not found!
 fi
 
 if ! type bat > /dev/null; then
-	echo bat not found! use 'install_bat' to install.
+	echo bat not found!
 fi
 
 if ! type gitui > /dev/null; then
-	echo gitui not found! use 'install_gitui' to install.
+	echo gitui not found!
 fi
 
 if ! type nvim > /dev/null; then
-	echo nvim not found! use 'update_nvim' to install.
+	echo nvim not found!
 fi
 
 
@@ -88,6 +88,7 @@ update_nvim () {
 go_tools () {
 	cd $HOME/code
 	nopx
+	go version
 	export GOPROXY=https://goproxy.io 
 	# gopls
 	local _gogettools=(

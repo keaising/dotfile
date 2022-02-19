@@ -100,8 +100,8 @@ alias goss='fmt && gostrict'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
-if type go1.18beta1 > /dev/null; then
-	alias go=go1.18beta1
+if type go1.18rc1 > /dev/null; then
+	alias go=go1.18rc1
 fi
 # }}}
 
