@@ -21,6 +21,8 @@ font:
     style: Regular
   size: 14
 
+import:
+  - ~/.config/alacritty/themes/papercolor_dark.yaml
 
 key_bindings:
 
