@@ -9,6 +9,7 @@
   "coc.preferences.colorSupport": true,
   "cSpell.userWords": [
     "BAID",
+    "CLAO",
     "CLIEN",
     "Conv",
     "Debugln",
@@ -27,6 +28,7 @@
     "SQLs",
     "Shadowsocks",
     "Tabularize",
+    "Tian",
     "Typee",
     "Weibo",
     "Weixin",
@@ -87,6 +89,7 @@
     "unionid",
     "wesociety",
     "wwoauth",
+    "xjson",
     "yorozuya",
     "zoneinfo"
   ]
