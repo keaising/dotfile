@@ -118,7 +118,7 @@ export LANG="en_US.UTF-8"
 export GEM_HOME="$HOME/code/gems"
 
 # Added by n-install (see http://git.io/n-install-repo).
-export N_PREFIX="$HOME/code/n"
+export N_PREFIX="$HOME/code"
 
 # jabba
 export JABBA_HOME="$HOME/code/jabba"
