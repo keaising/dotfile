@@ -24,53 +24,34 @@
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
-snippet bs "bson" i
-bson:"${1}"
-endsnippet
-
 snippet iferr "With Single Field"
 if err != nil {
 	${1}
 }${0}
 endsnippet
 
-snippet js "json" i
-json:"${1}"
+snippet logr "With Fields" i
+logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
 
-snippet logr "With Fields" i
-logrus.WithFields(logrus.Fields{"${1}": ${2}})${0}
+snippet logrr "With Fields" i
+logrus.WithFields(logrus.Fields{"${1}": ${2}}).Errorln("${3}", err)${0}
 endsnippet
 
 snippet logf "logrus Fields" i
 logrus.Fields{"${1}": ${2}}${0}
 endsnippet
 
-snippet nf "new field" 
-${1} ${2} \`json:"${3}" bson:"${3}"\`${0}
-endsnippet
-
 snippet nowdate "now date" 
 time.Now().Format("2006-01-02") ${0}
 endsnippet
 
-snippet map "new map" 
-${1} := map[string]string{
-	"${2}": ${3},
-}${0}
-endsnippet
-
-snippet pac "package" i
-package 
+snippet now "now" 
+time.Now().Unix()${0}
 endsnippet
 
 snippet spew "spew" i
 spew.Printf("${1}: %#+v\n", ${1})${0}
-endsnippet
-
-snippet type "new type" 
-type ${1} struct {
-}${0}
 endsnippet
 
 snippet yyyy "now date" 
