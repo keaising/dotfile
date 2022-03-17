@@ -102,13 +102,8 @@ alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 
 glone () {
-	cd $(go-clone $1 2>/dev/null | tail -n1)
-}
-
-generic () {
-	if type go1.18rc1 > /dev/null; then
-		alias go=go1.18rc1
-	fi
+	goclone $1 | tee /tmp/goclone
+	cd $(cat /tmp/goclone | head -n 1 | awk '{print $4}')
 }
 
 # }}}
