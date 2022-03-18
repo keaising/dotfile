@@ -411,7 +411,6 @@ let g:go_gopls_gofumpt = v:true
 Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 nnoremap <leader>ggt :GoTests<CR>
 
-Plug 'github/copilot.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
