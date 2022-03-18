@@ -91,10 +91,10 @@ augroup filetype_terminal
     autocmd FileType tmux setlocal foldmethod=marker
 augroup END
 
-augroup filetype_golang
-	autocmd!
-	au FileType go     setlocal tabstop=8 shiftwidth=8
-augroup END
+" augroup filetype_golang
+" 	autocmd!
+" 	au FileType go     setlocal tabstop=8 shiftwidth=8
+" augroup END
 
 " }}}
 
