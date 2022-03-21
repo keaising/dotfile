@@ -3,7 +3,6 @@ return function(packer)
         'nvim-telescope/telescope.nvim',
         requires = {{'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}},
         config = function()
-            vim.g.NERDSpaceDelims = 1
 
             local actions = require("telescope.actions")
             require("telescope").setup({
@@ -52,11 +51,11 @@ return function(packer)
         requires = {'kyazdani42/nvim-web-devicons'},
         config = function()
             require('nvim-tree').setup({
+                auto_close = true,
+                auto_reload_on_write = true,
+                open_on_setup = true,
+                open_on_tab = true,
                 view = {
-                    auto_close = true,
-                    auto_reload_on_write = true,
-                    open_on_tab = true,
-                    disable_netrw = true,
                     width = 35,
                     -- height = 30,
                     side = "left",
@@ -65,10 +64,63 @@ return function(packer)
                     signcolumn = "yes",
                     mappings = {
                         custom_only = false,
-                        list = {
-                            -- user mappings go here
-                        }
+                        list = { -- user mappings go here
+                        {
+                            key = "<CR>",
+                            action = "tabnew"
+                        }}
                     }
+                }
+            })
+        end
+    }
+
+    packer {
+        'preservim/nerdcommenter',
+        config = function()
+            vim.g.NERDDefaultAlign = 'left'
+            vim.g.NERDSpaceDelims = 1
+        end
+    }
+
+    packer {
+        'nvim-lualine/lualine.nvim',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            opt = true
+        },
+        config = function()
+            require('lualine').setup({
+                options = {
+                    theme = 'ayu',
+                    component_separators = {
+                        left = ' ',
+                        right = ' '
+                    },
+                    section_separators = {
+                        left = ' ',
+                        right = ' '
+                    }
+                }
+            })
+        end
+    }
+
+    packer {
+        'keaising/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            vim.opt.termguicolors = true
+
+            local util = require('util')
+            util.noremap('n', '<m-{>', ':BufferLineCycleNext<CR>')
+            util.noremap('n', '<m-}>', ':BufferLineCyclePrev<CR>')
+            util.noremap('n', '<m-w>', ':bd<CR>')
+            util.noremap('n', '<m-e>', ':BufferLinePick<CR>')
+            require("bufferline").setup({
+                options = {
+                    -- mode = 'tabs'
+                    numbers = "buffer_id"
                 }
             })
         end

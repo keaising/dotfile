@@ -72,8 +72,8 @@ return function(packer)
     util.noremap('n', '<m-Down>', ':resize -5<CR>')
 
     -- " switch tabs
-    util.noremap('n', '<m-{>', ':tabprevious<CR>')
-    util.noremap('n', '<m-}>', ':tabnext<CR>')
+    -- util.noremap('n', '<m-{>', ':tabprevious<CR>')
+    -- util.noremap('n', '<m-}>', ':tabnext<CR>')
     util.noremap('n', '<M-l>', ':tabnext<CR>')
     util.noremap('n', '<M-h>', ':tabprevious<CR>')
 
