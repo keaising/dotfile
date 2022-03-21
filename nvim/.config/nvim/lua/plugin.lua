@@ -11,19 +11,20 @@ return function(packer)
                     vimgrep_arguments = {'rg', "--color=never", "--no-heading", "--with-filename", "--line-number",
                                          "--column", '--hidden', '--smart-case'},
                     file_ignore_patterns = {".git/", "node_modules"},
-                    sorting_strategy = 'ascending',
                     default_mappings = false,
                     mappings = {
                         i = {
                             ["<esc>"] = actions.close,
                             ["<CR>"] = actions.select_tab,
                             ["<C-k>"] = actions.move_selection_previous,
-                            ["<C-o>"] = actions.select_default
+                            ["<C-o>"] = actions.select_default,
                             -- maybe bug, don't take effect:
                             -- ["<C-l>"] = actions.move_selection_next,
+                            ["<C-l>"] = false
                         }
-                    },
-                    layout_strategy = "cursor"
+                    }
+                    -- layout_strategy = "cursor"
+                    -- sorting_strategy = 'ascending',
                 },
                 pickers = {
                     find_files = {
@@ -39,7 +40,7 @@ return function(packer)
 
             local util = require('util')
             util.noremap('n', '<leader>ss', ':Telescope find_files<CR>')
-            util.noremap('n', '<leader>fg', ':Telescope live_grep<CR>')
+            util.noremap('n', '<leader>ff', ':Telescope live_grep<CR>')
             util.noremap('n', '<leader>fb', ':Telescope buffers<CR>')
             util.noremap('n', '<leader>fh', ':Telescope help_tags<CR>')
 
@@ -56,7 +57,7 @@ return function(packer)
                     auto_reload_on_write = true,
                     open_on_tab = true,
                     disable_netrw = true,
-                    width = 30,
+                    width = 35,
                     -- height = 30,
                     side = "left",
                     -- preserve_window_proportions = true,
