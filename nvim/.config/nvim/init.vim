@@ -117,8 +117,8 @@ nnoremap <m-Up>    :resize   +5<CR>
 nnoremap <m-Down>  :resize   -5<CR>
 
 " switch tabs
-nnoremap <m-{> :tabprevious<CR>
-nnoremap <m-}> :tabnext<CR>
+"  nnoremap <m-{> :tabprevious<CR>
+"  nnoremap <m-}> :tabnext<CR>
 nnoremap <m-l> :tabnext<CR>
 nnoremap <m-h> :tabprevious<CR>
 
@@ -267,9 +267,6 @@ Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分�
 vmap v     <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-Plug 'preservim/nerdcommenter'
-let g:NERDSpaceDelims = 1
-
 " 表格对齐，使用命令 Tabularize
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
@@ -325,30 +322,30 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'ryanoasis/vim-devicons'
 
 " airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_powerline_fonts = 0
-let g:airline_exclude_preview = 1
-let g:airline_section_b = '%n'
-let g:airline_theme='deus'
-" tab 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buffers_label = 'b'
-let g:airline#extensions#tabline#tabs_label = 't'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#fugitiveline#enabled = 0
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#vimagit#enabled = 0
+"  Plug 'vim-airline/vim-airline'
+"  Plug 'vim-airline/vim-airline-themes'
+"  let g:airline_left_sep = ''
+"  let g:airline_left_alt_sep = ''
+"  let g:airline_right_sep = ''
+"  let g:airline_right_alt_sep = ''
+"  let g:airline_powerline_fonts = 0
+"  let g:airline_exclude_preview = 1
+"  let g:airline_section_b = '%n'
+"  let g:airline_theme='deus'
+"  " tab 
+"  let g:airline#extensions#tabline#enabled = 1
+"  let g:airline#extensions#tabline#show_buffers = 0
+"  let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+"  let g:airline#extensions#tabline#show_tab_nr = 0
+"  let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+"  let g:airline#extensions#tabline#show_tab_type = 1
+"  let g:airline#extensions#tabline#buffers_label = 'b'
+"  let g:airline#extensions#tabline#tabs_label = 't'
+"  let g:airline#extensions#branch#enabled = 1
+"  let g:airline#extensions#syntastic#enabled = 0
+"  let g:airline#extensions#fugitiveline#enabled = 0
+"  let g:airline#extensions#csv#enabled = 1
+"  let g:airline#extensions#vimagit#enabled = 0
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
@@ -379,21 +376,21 @@ let g:floaterm_keymap_toggle = '<m-m>'
 let g:floaterm_width=0.85
 let g:floaterm_height=0.95
 
-Plug 'preservim/nerdtree'
-let g:NERDTreeMinimalUI    = 1
-let g:NERDTreeDirArrows    = 1
-let g:NERDTreeMapOpenInTab = '<ENTER>'
-let g:NERDTreeShowHidden   = 1
-let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Open the existing NERDTree on each new tab.
-autocmd  BufWinEnter * silent NERDTreeMirror
-nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
+"  Plug 'preservim/nerdtree'
+"  let g:NERDTreeMinimalUI    = 1
+"  let g:NERDTreeDirArrows    = 1
+"  let g:NERDTreeMapOpenInTab = '<ENTER>'
+"  let g:NERDTreeShowHidden   = 1
+"  let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
+"  " Exit Vim if NERDTree is the only window left.
+"  autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"  			\ quit | endif
+"  " Exit Vim if NERDTree is the only window left.
+"  autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+"  			\ quit | endif
+"  " Open the existing NERDTree on each new tab.
+"  autocmd  BufWinEnter * silent NERDTreeMirror
+"  nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
 
 Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
 let g:go_auto_sameids = 0
