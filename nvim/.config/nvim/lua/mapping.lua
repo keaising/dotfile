@@ -78,10 +78,10 @@ return function(packer)
     util.noremap('n', '<M-h>', ':tabprevious<CR>')
 
     -- " switch window
-    util.noremap('n', '<C-h>', '<cw>h')
-    util.noremap('n', '<C-l>', '<cw>l')
-    util.noremap('n', '<C-j>', '<cw>j')
-    util.noremap('n', '<C-k>', '<cw>k')
+    util.noremap('n', '<C-h>', '<C-w>h')
+    util.noremap('n', '<C-l>', '<C-w>l')
+    util.noremap('n', '<C-j>', '<C-w>j')
+    util.noremap('n', '<C-k>', '<C-w>k')
 
     -- " switch location
     util.noremap('n', '<m-[>', '<C-o>')
