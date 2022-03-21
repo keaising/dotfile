@@ -63,7 +63,7 @@ return function(packer)
     util.noremap('n', '<M-q>', ':qa<CR>')
     util.noremap('n', '<M-s>', ':wa<CR>')
     util.noremap('n', '<M-w>', '<C-w>q')
-    util.noremap('n', '<C-n>', ':NvimTreeToggle<CR>')
+    util.noremap('n', '<C-n>', ':NvimTreeToggle<CR><C-w>w')
 
     -- " resize window
     util.noremap('n', '<m-Left>', ':vertical resize +5<CR>')
@@ -95,10 +95,10 @@ return function(packer)
     util.noremap('n', '<C-y>', '9<C-y>')
 
     -- " move in insert mode
-    util.noremap('i', '<m-h>', 'left')
-    util.noremap('i', '<m-j>', 'down')
-    util.noremap('i', '<m-k>', 'up')
-    util.noremap('i', '<m-l>', 'right')
+    util.noremap('i', '<m-h>', '<left>')
+    util.noremap('i', '<m-j>', '<down>')
+    util.noremap('i', '<m-k>', '<up>')
+    util.noremap('i', '<m-l>', '<right>')
     util.noremap('i', '<m-b>', '<C-o>b')
     util.noremap('i', '<m-w>', '<C-o>w')
     util.noremap('i', '<m-e>', '<C-o>e')
