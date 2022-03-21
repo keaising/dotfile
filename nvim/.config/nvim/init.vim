@@ -80,7 +80,7 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
     " edit vimrc
     :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-    :nnoremap <leader>sv :source $MYVIMRC<cr>
+    " :nnoremap <leader>sv :source $MYVIMRC<cr>
     autocmd FileType vim :iabbrev <buffer> --- -----{{{
 augroup END
 " }}} 
@@ -187,7 +187,7 @@ inoremap ;; :=
 " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
 " resource configuration
-nnoremap <leader>sv :source $MYVIMRC<CR>
+" nnoremap <leader>sv :source $MYVIMRC<CR>
 
 nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
