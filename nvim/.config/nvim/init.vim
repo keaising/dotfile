@@ -1,44 +1,44 @@
 
 " basic -----{{{
 
-set autoindent
-set tabstop=4                     "按下 Tab 键时，Vim 显示的空格数
-set shiftwidth=4
-set softtabstop=0                 "关闭softtabstop 永远不要将空格和tab混合输入
-set cursorline
-set showmatch
-set hlsearch
-set noswapfile
-set hidden
-set autowrite
-set clipboard=unnamed,unnamedplus " y/d/c copy to/from system clipboard
-set autoindent
-set winaltkeys=no                 " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
-set ttimeout                      " 功能键超时检测 50 毫秒
-set ttimeoutlen=50
-set ruler                         " 显示光标位置
-set autoread                      " auto reload when file on disk changed
-set ignorecase                    " 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
-set smartcase
-set hlsearch                      " 高亮搜索内容
-set incsearch                     " 查找输入时动态增量显示查找结果
-set showmatch                     " 显示匹配的括号
-set matchtime=2                   " 显示括号匹配的时间
-set display=lastline              " 显示最后一行
-set wildmenu                      " 允许下方显示目录
-set formatoptions+=B              " 合并两行中文时，不在中间加空格
-set ffs=unix,dos,mac              " 文件换行符，默认使用 unix 换行符
-set foldenable                    " 允许代码折叠
-set fdm=indent                    " 代码折叠默认使用缩进
-set foldlevel=99                  " 默认打开所有缩进
-set backup                        " 允许备份
-set writebackup                   " 保存时备份
+"  set autoindent
+"  set tabstop=4                     "按下 Tab 键时，Vim 显示的空格数
+"  set shiftwidth=4
+"  set softtabstop=0                 "关闭softtabstop 永远不要将空格和tab混合输入
+"  set cursorline
+"  set showmatch
+"  set hlsearch
+"  set noswapfile
+"  set hidden
+"  set autowrite
+"  set clipboard=unnamed,unnamedplus " y/d/c copy to/from system clipboard
+"  set autoindent
+"  set winaltkeys=no                 " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
+"  set ttimeout                      " 功能键超时检测 50 毫秒
+"  set ttimeoutlen=50
+"  set ruler                         " 显示光标位置
+"  set autoread                      " auto reload when file on disk changed
+"  set ignorecase                    " 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
+"  set smartcase
+"  set hlsearch                      " 高亮搜索内容
+"  set incsearch                     " 查找输入时动态增量显示查找结果
+"  set showmatch                     " 显示匹配的括号
+"  set matchtime=2                   " 显示括号匹配的时间
+"  set display=lastline              " 显示最后一行
+"  set wildmenu                      " 允许下方显示目录
+"  set formatoptions+=B              " 合并两行中文时，不在中间加空格
+"  set ffs=unix,dos,mac              " 文件换行符，默认使用 unix 换行符
+"  set foldenable                    " 允许代码折叠
+"  set fdm=indent                    " 代码折叠默认使用缩进
+"  set foldlevel=99                  " 默认打开所有缩进
+"  set backup                        " 允许备份
+"  set writebackup                   " 保存时备份
 set backupdir=~/.vim/tmp          " 备份文件地址，统一管理
 set backupext=.bak                " 备份文件扩展名
-set noswapfile                    " 禁用交换文件
-set noundofile                    " 禁用 undo文件
-set scrolloff=5                   "垂直滚动时，光标距离顶部/底部的位置（单位：行）
-set sidescrolloff=15              "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
+"  set noswapfile                    " 禁用交换文件
+"  set noundofile                    " 禁用 undo文件
+"  set scrolloff=5                   "垂直滚动时，光标距离顶部/底部的位置（单位：行）
+"  set sidescrolloff=15              "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
 
 syntax enable
 syntax on
@@ -102,102 +102,102 @@ augroup END
 
 " key_map -----{{{ 
 
-" Leader key
-map      <Space>         <Leader>
+"  " Leader key
+"  map      <Space>         <Leader>
 
-" save & quit in window
-inoremap <m-s>   <ESC>:w<CR>
-nnoremap <m-s>   :w<CR>
-nnoremap <m-w>   :q<cr>
+"  " save & quit in window
+"  inoremap <m-s>   <ESC>:w<CR>
+"  nnoremap <m-s>   :w<CR>
+"  nnoremap <m-w>   :q<cr>
 
-" resize window
-nnoremap <m-Left>  :vertical resize +5<CR>
-nnoremap <m-Right> :vertical resize -5<CR>
-nnoremap <m-Up>    :resize   +5<CR>
-nnoremap <m-Down>  :resize   -5<CR>
+"  " resize window
+"  nnoremap <m-Left>  :vertical resize +5<CR>
+"  nnoremap <m-Right> :vertical resize -5<CR>
+"  nnoremap <m-Up>    :resize   +5<CR>
+"  nnoremap <m-Down>  :resize   -5<CR>
 
-" switch tabs
-"  nnoremap <m-{> :tabprevious<CR>
-"  nnoremap <m-}> :tabnext<CR>
-nnoremap <m-l> :tabnext<CR>
-nnoremap <m-h> :tabprevious<CR>
+"  " switch tabs
+"  "  nnoremap <m-{> :tabprevious<CR>
+"  "  nnoremap <m-}> :tabnext<CR>
+"  nnoremap <m-l> :tabnext<CR>
+"  nnoremap <m-h> :tabprevious<CR>
 
-" switch window
-noremap  <C-h> <c-w>h
-noremap  <C-l> <c-w>l
-noremap  <C-j> <c-w>j
-noremap  <C-k> <c-w>k
+"  " switch window
+"  noremap  <C-h> <c-w>h
+"  noremap  <C-l> <c-w>l
+"  noremap  <C-j> <c-w>j
+"  noremap  <C-k> <c-w>k
 
-" switch location
-noremap <m-[>  <C-o>
-noremap <m-]>  <C-i>
-" for ssh to clinkz
-noremap <ESC>[ <C-o>
-noremap <ESC>] <C-i>
+"  " switch location
+"  noremap <m-[>  <C-o>
+"  noremap <m-]>  <C-i>
+"  " for ssh to clinkz
+"  noremap <ESC>[ <C-o>
+"  noremap <ESC>] <C-i>
 
-" faster movement
-nnoremap <C-e> 9<C-e>
-nnoremap <C-y> 9<C-y>
+"  " faster movement
+"  nnoremap <C-e> 9<C-e>
+"  nnoremap <C-y> 9<C-y>
 
-" move in insert mode
-inoremap <m-h> <left>
-inoremap <m-j> <down>
-inoremap <m-k> <up>
-inoremap <m-l> <right>
-inoremap <m-b> <C-o>b
-inoremap <m-w> <C-o>w
-inoremap <m-e> <C-o>e
+"  " move in insert mode
+"  inoremap <m-h> <left>
+"  inoremap <m-j> <down>
+"  inoremap <m-k> <up>
+"  inoremap <m-l> <right>
+"  inoremap <m-b> <C-o>b
+"  inoremap <m-w> <C-o>w
+"  inoremap <m-e> <C-o>e
 
-" Keep search pattern at the center of the screen.
-nnoremap <silent> n     nzz
-nnoremap <silent> j     gj
-nnoremap <silent> k     gk
-nnoremap <silent> N     Nzz
-nnoremap <silent> *     *zz
-nnoremap <silent> #     #zz
-nnoremap <silent> g*    g*zz
-nnoremap <silent> <Tab> %
-vnoremap <silent> <Tab> %
+"  " Keep search pattern at the center of the screen.
+"  nnoremap <silent> n     nzz
+"  nnoremap <silent> j     gj
+"  nnoremap <silent> k     gk
+"  nnoremap <silent> N     Nzz
+"  nnoremap <silent> *     *zz
+"  nnoremap <silent> #     #zz
+"  nnoremap <silent> g*    g*zz
+"  nnoremap <silent> <Tab> %
+"  vnoremap <silent> <Tab> %
 
-" move to line start/end
-noremap  H ^
-noremap  L $
+"  " move to line start/end
+"  noremap  H ^
+"  noremap  L $
 
-" mark
-nnoremap ' `
+"  " mark
+"  nnoremap ' `
 
-" close all recursively
-nmap zm zM
-" open current recursively
-nmap zo zO
-" open all recursively
-nmap zr zR
-" close current: zc
-" open/close current: za
+"  " close all recursively
+"  nmap zm zM
+"  " open current recursively
+"  nmap zo zO
+"  " open all recursively
+"  nmap zr zR
+"  " close current: zc
+"  " open/close current: za
 
-" disable 
-nnoremap <C-p> <nop>
+"  " disable 
+"  nnoremap <C-p> <nop>
 
-" search selected content in visual mode: https://blog.twofei.com/610/
-vnoremap // y/<c-r>"<cr>
-nnoremap // :noh<CR>
+"  " search selected content in visual mode: https://blog.twofei.com/610/
+"  vnoremap // y/<c-r>"<cr>
+"  nnoremap // :noh<CR>
 
-" insert mode specials
-inoremap ;; :=
-" nnoremap <leader>p :let @+ = expand("%:p")<cr>
+"  " insert mode specials
+"  inoremap ;; :=
+"  " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
-" resource configuration
-" nnoremap <leader>sv :source $MYVIMRC<CR>
+"  " resource configuration
+"  " nnoremap <leader>sv :source $MYVIMRC<CR>
 
-nnoremap <leader>sf :set filetype=
-nnoremap <leader>st :set syntax=
+"  nnoremap <leader>sf :set filetype=
+"  nnoremap <leader>st :set syntax=
 
-" save file with sudo
-cnoremap sudow w !sudo tee % >/dev/null
+"  " save file with sudo
+"  cnoremap sudow w !sudo tee % >/dev/null
 
-" exit
-nnoremap <leader>wa :wa<CR>
-nnoremap <m-q> :qa<CR>
+"  " exit
+"  nnoremap <leader>wa :wa<CR>
+"  nnoremap <m-q> :qa<CR>
 
 " }}}
 
@@ -347,23 +347,23 @@ Plug 'ryanoasis/vim-devicons'
 "  let g:airline#extensions#csv#enabled = 1
 "  let g:airline#extensions#vimagit#enabled = 0
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" --no-ignore
-let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-nnoremap <leader>ss :Files<CR>
-nnoremap <leader>ff :Rg<CR> 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
-" It's a problem of nvim for fzf-vim will be very slow in startup, workround at: https://github.com/neovim/neovim/issues/8939#issuecomment-417797284
-let g:projectionist_ignore_man=1
-let g:fzf_action = {
-  \ 'enter':  'tab split',
-  \ 'ctrl-o': 'e', 
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
+"  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"  Plug 'junegunn/fzf.vim'
+"  " --no-ignore
+"  let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
+"  nnoremap <leader>ss :Files<CR>
+"  nnoremap <leader>ff :Rg<CR> 
+"  command! -bang -nargs=* Rg
+"    \ call fzf#vim#grep(
+"    \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+"    \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
+"  " It's a problem of nvim for fzf-vim will be very slow in startup, workround at: https://github.com/neovim/neovim/issues/8939#issuecomment-417797284
+"  let g:projectionist_ignore_man=1
+"  let g:fzf_action = {
+"    \ 'enter':  'tab split',
+"    \ 'ctrl-o': 'e', 
+"    \ 'ctrl-x': 'split',
+"    \ 'ctrl-v': 'vsplit' }
 
 Plug 'voldikss/vim-floaterm'
 nnoremap <leader>lf :FloatermNew lf<cr>
@@ -392,21 +392,21 @@ let g:floaterm_height=0.95
 "  autocmd  BufWinEnter * silent NERDTreeMirror
 "  nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
 
-Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-let g:go_auto_sameids = 0
-" let g:go_updatetime = 800
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_imports_mode = 'gopls'
-let g:go_gopls_gofumpt = v:true
-Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
-nnoremap <leader>ggt :GoTests<CR>
+"  Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
+"  let g:go_auto_sameids = 0
+"  " let g:go_updatetime = 800
+"  let g:go_highlight_functions = 1
+"  let g:go_highlight_function_parameters = 1
+"  let g:go_highlight_function_calls = 1
+"  let g:go_highlight_types = 1
+"  let g:go_highlight_fields = 1
+"  let g:go_highlight_format_strings = 1
+"  let g:go_highlight_variable_declarations = 1
+"  let g:go_highlight_variable_assignments = 1
+"  let g:go_imports_mode = 'gopls'
+"  let g:go_gopls_gofumpt = v:true
+"  Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
+"  nnoremap <leader>ggt :GoTests<CR>
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 

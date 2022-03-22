@@ -19,7 +19,9 @@ require("packer").startup(function(p)
 	})
 	require("plugin")(p)
 	require("mapping")(p)
+	require("treesitter")(p)
 	require("lang/formater")(p)
+	require("lang/go")(p)
 
 	if packer_bootstrap then
 		require("packer").sync()
