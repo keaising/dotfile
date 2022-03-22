@@ -104,6 +104,13 @@ return function(packer)
 	})
 
 	packer({
+		"bluz71/vim-nightfly-guicolors",
+		config = function()
+			vim.cmd([[colorscheme nightfly]])
+		end,
+	})
+
+	packer({
 		"nvim-lualine/lualine.nvim",
 		requires = {
 			"kyazdani42/nvim-web-devicons",
@@ -112,7 +119,8 @@ return function(packer)
 		config = function()
 			require("lualine").setup({
 				options = {
-					theme = "palenight",
+					-- theme = "palenight",
+					theme = "nightfly",
 					component_separators = {
 						left = " ",
 						right = " ",
@@ -146,13 +154,4 @@ return function(packer)
 		end,
 	})
 
-	packer({
-		"catppuccin/nvim",
-		as = "catppuccin",
-		config = function()
-			local catppuccin = require("catppuccin")
-			catppuccin.setup()
-			vim.cmd([[colorscheme catppuccin]])
-		end,
-	})
 end
