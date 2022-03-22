@@ -29,7 +29,7 @@ return function(packer)
 	vim.opt.foldlevel = 99 -- " 默认打开所有缩进
 	vim.opt.backup = true -- " 允许备份
 	vim.opt.writebackup = true -- " 保存时备份
-	vim.opt.backupdir = "~/.vim/tmp" -- " 备份文件地址，统一管理
+	-- vim.opt.backupdir = "~/.vim/tmp" -- " 备份文件地址，统一管理
 	vim.opt.backupext = ".bak" -- " 备份文件扩展名
 	-- vim.opt.noswapfile = true -- " 禁用交换文件
 	-- vim.opt.noundofile = true -- " 禁用 undo文件
