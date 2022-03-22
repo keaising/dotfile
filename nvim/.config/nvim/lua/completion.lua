@@ -44,7 +44,7 @@ function M.init(packer)
 					end,
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
-							cmp.select_next_item()
+							cmp.confirm()
 							-- elseif vim.fn["vsnip#available"](1) == 1 then
 							-- feedkey("<Plug>(vsnip-expand-or-jump)", "")
 							-- elseif has_words_before() then

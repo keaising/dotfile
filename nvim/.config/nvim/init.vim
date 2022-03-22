@@ -262,10 +262,10 @@ Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
 
 Plug 'machakann/vim-sandwich'
 
-Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
-" ALT_+/- 用于按分隔符扩大缩小 v 选区
-vmap v     <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
+"  Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
+"  " ALT_+/- 用于按分隔符扩大缩小 v 选区
+"  vmap v     <Plug>(expand_region_expand)
+"  vmap <C-v> <Plug>(expand_region_shrink)
 
 " 表格对齐，使用命令 Tabularize
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
@@ -307,19 +307,19 @@ let g:vim_textobj_parameter_mapping = 'a'
 Plug 'sgur/vim-textobj-parameter' " 参数文本对象：i,/a, 包括参数或者列表元素
 Plug 'jceb/vim-textobj-uri' " 提供 uri/url 的文本对象，iu/au 表示
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/gruvbox-material'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'junegunn/seoul256.vim'
-Plug 'arzg/vim-colors-xcode'
-Plug 'morhetz/gruvbox'
-Plug 'liuchengxu/space-vim-theme'
-Plug 'sainnhe/gruvbox-material'
-Plug 'ryanoasis/vim-devicons'
+"  Plug 'dracula/vim', { 'as': 'dracula' }
+"  Plug 'rafi/awesome-vim-colorschemes'
+"  Plug 'sainnhe/everforest'
+"  Plug 'sainnhe/edge'
+"  Plug 'sainnhe/gruvbox-material'
+"  Plug 'ErichDonGubler/vim-sublime-monokai'
+"  Plug 'rhysd/vim-color-spring-night'
+"  Plug 'junegunn/seoul256.vim'
+"  Plug 'arzg/vim-colors-xcode'
+"  Plug 'morhetz/gruvbox'
+"  Plug 'liuchengxu/space-vim-theme'
+"  Plug 'sainnhe/gruvbox-material'
+"  Plug 'ryanoasis/vim-devicons'
 
 " airline
 "  Plug 'vim-airline/vim-airline'
@@ -365,16 +365,16 @@ Plug 'ryanoasis/vim-devicons'
 "    \ 'ctrl-x': 'split',
 "    \ 'ctrl-v': 'vsplit' }
 
-Plug 'voldikss/vim-floaterm'
-nnoremap <leader>lf :FloatermNew lf<cr>
-nnoremap <leader>ln :FloatermNew<CR>
-nnoremap <leader>lk :FloatermKill<cr>
-tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
-tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
-" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
-let g:floaterm_keymap_toggle = '<m-m>'
-let g:floaterm_width=0.85
-let g:floaterm_height=0.95
+"  Plug 'voldikss/vim-floaterm'
+"  nnoremap <leader>lf :FloatermNew lf<cr>
+"  nnoremap <leader>ln :FloatermNew<CR>
+"  nnoremap <leader>lk :FloatermKill<cr>
+"  tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
+"  tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
+"  " Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
+"  let g:floaterm_keymap_toggle = '<m-m>'
+"  let g:floaterm_width=0.85
+"  let g:floaterm_height=0.95
 
 "  Plug 'preservim/nerdtree'
 "  let g:NERDTreeMinimalUI    = 1
@@ -408,69 +408,69 @@ let g:floaterm_height=0.95
 "  Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 "  nnoremap <leader>ggt :GoTests<CR>
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = [
-	\ 'coc-json',
-	\ 'coc-prettier',
-	\ 'coc-spell-checker',
-	\ 'coc-git',
-	\ 'coc-go',
-	\ 'coc-java',
-	\ 'coc-tsserver',
-	\ 'coc-snippets',
-	\ 'coc-dictionary',
-	\ 'coc-word',
-	\ 'coc-sql',
-	\ 'coc-emoji' ]
+"  let g:coc_global_extensions = [
+"  	\ 'coc-json',
+"  	\ 'coc-prettier',
+"  	\ 'coc-spell-checker',
+"  	\ 'coc-git',
+"  	\ 'coc-go',
+"  	\ 'coc-java',
+"  	\ 'coc-tsserver',
+"  	\ 'coc-snippets',
+"  	\ 'coc-dictionary',
+"  	\ 'coc-word',
+"  	\ 'coc-sql',
+"  	\ 'coc-emoji' ]
 
-nmap [[         <Plug>(coc-diagnostic-prev)
-nmap ]]         <Plug>(coc-diagnostic-next)
-nmap <m-k>      <Plug>(coc-rename)
-nmap gi         <Plug>(coc-implementation)
-nmap gr         <Plug>(coc-references)
-nmap <m-r>      <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <m-k>      <Plug>(coc-rename)
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap gn         <Plug>(coc-diagnostic-prev)
-nmap gp         <Plug>(coc-diagnostic-next)
+"  nmap [[         <Plug>(coc-diagnostic-prev)
+"  nmap ]]         <Plug>(coc-diagnostic-next)
+"  nmap <m-k>      <Plug>(coc-rename)
+"  nmap gi         <Plug>(coc-implementation)
+"  nmap gr         <Plug>(coc-references)
+"  nmap <m-r>      <Plug>(coc-references)
+"  nmap <leader>rn <Plug>(coc-rename)
+"  nmap <m-k>      <Plug>(coc-rename)
+"  vmap <leader>a  <Plug>(coc-codeaction-selected)
+"  nmap <leader>a  <Plug>(coc-codeaction-selected)
+"  nmap gn         <Plug>(coc-diagnostic-prev)
+"  nmap gp         <Plug>(coc-diagnostic-next)
 
-nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
-nnoremap <silent><leader>l  :CocList --normal diagnostics<cr>
-" Alt+j/k to go to next/previous selection
-inoremap <expr> <m-j> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <m-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"  nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
+"  nnoremap <silent><leader>l  :CocList --normal diagnostics<cr>
+"  " Alt+j/k to go to next/previous selection
+"  inoremap <expr> <m-j> pumvisible() ? "\<C-n>" : "\<Tab>"
+"  inoremap <expr> <m-k> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+"  inoremap <silent><expr> <TAB>
+"        \ pumvisible() ? coc#_select_confirm() :
+"        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"        \ <SID>check_back_space() ? "\<TAB>" :
+"        \ coc#refresh()
+"  " Make <CR> auto-select the first completion item and notify coc.nvim to
+"  " format on enter, <cr> could be remapped by other vim plugin
+"  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+"  			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-autocmd User CocLocationsChange CocList --normal location
-" Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+"  autocmd User CocLocationsChange CocList --normal location
+"  " Highlight the symbol and its references when holding the cursor.
+"  " autocmd CursorHold * silent call CocActionAsync('highlight')
+"  command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-" let g:coc_snippet_prev = '<c-k>'
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-" let g:coc_snippet_next = '<c-j>'
-let g:coc_snippet_next = '<tab>'
+"  " Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+"  " let g:coc_snippet_prev = '<c-k>'
+"  " Use <C-j> for jump to next placeholder, it's default of coc.nvim
+"  " let g:coc_snippet_next = '<c-j>'
+"  let g:coc_snippet_next = '<tab>'
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+"  function! s:check_back_space() abort
+"    let col = col('.') - 1
+"    return !col || getline('.')[col - 1]  =~# '\s'
+"  endfunction
 
-" tree sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"  " tree sitter
+"  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " format tools
 Plug 'sbdchd/neoformat'
@@ -568,7 +568,7 @@ set termguicolors
 " color dracula
 " colorscheme one
 " colorscheme dracula
-colorscheme gruvbox-material
+"  colorscheme gruvbox-material
 
 " }}}
 
