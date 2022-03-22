@@ -485,6 +485,7 @@ let g:neoformat_json_jq = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_json = ['jq']
+
 let g:neoformat_pg_sql_pg_format = {
         \ 'exe': 'pg_format',
         \ 'args': ['--keyword-case 2 --wrap-limit 80'],
@@ -494,6 +495,7 @@ let g:neoformat_pg_sql_pg_format = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_pg_sql = ['pg_format']
+
 let g:neoformat_javascript_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -502,6 +504,7 @@ let g:neoformat_javascript_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_javascript = ['prettier']
+
 let g:neoformat_typescript_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -510,6 +513,7 @@ let g:neoformat_typescript_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_typescript = ['prettier']
+
 let g:neoformat_markdown_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -518,8 +522,16 @@ let g:neoformat_markdown_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_markdown = ['prettier']
-let g:neoformat_try_formatprg = 1
-let g:neoformat_only_msg_on_error = 1
+
+" let g:neoformat_lua_stylua = {
+"         \ 'exe': 'stylua',
+"         \ 'args': ['--search-parent-directories', '--stdin-filepath', '"%:p"', '--', '-'],
+"         \ 'stdin': 1,
+"         \ }
+" let g:neoformat_enabled_lua = ['stylua']
+
+" let g:neoformat_try_formatprg = 1
+" let g:neoformat_only_msg_on_error = 1
 
 
 call plug#end()

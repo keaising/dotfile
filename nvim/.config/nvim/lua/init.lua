@@ -1,15 +1,27 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-                                  install_path})
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
 end
 
-require('packer').startup(function(p)
-    require('plugin')(p)
-    require('mapping')(p)
+require("packer").startup(function(p)
+	-- manage packer itself, avoid alerting in every PakcerSync time
+	p({
+		"wbthomason/packer.nvim",
+		opt = true,
+	})
+	require("plugin")(p)
+	require("mapping")(p)
+	require("lang/formater")(p)
 
-    if packer_bootstrap then
-        require('packer').sync()
-    end
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
