@@ -15,11 +15,11 @@ return function(packer)
                         i = {
                             ["<esc>"] = actions.close,
                             ["<CR>"] = actions.select_tab,
-                            ["<C-k>"] = actions.move_selection_previous,
-                            ["<C-o>"] = actions.select_default,
+                            ["<C-n>"] = actions.move_selection_previous,
+                            ["<C-p>"] = actions.move_selection_next,
+                            ["<C-o>"] = actions.select_default
                             -- maybe bug, don't take effect:
                             -- ["<C-l>"] = actions.move_selection_next,
-                            ["<C-l>"] = false
                         }
                     }
                     -- layout_strategy = "cursor"
@@ -95,7 +95,7 @@ return function(packer)
         config = function()
             require('lualine').setup({
                 options = {
-                    theme = 'ayu',
+                    theme = 'palenight',
                     component_separators = {
                         left = ' ',
                         right = ' '
@@ -110,20 +110,20 @@ return function(packer)
     }
 
     packer {
-        'keaising/bufferline.nvim',
+        'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
         config = function()
             vim.opt.termguicolors = true
 
             local util = require('util')
-            util.noremap('n', '<m-{>', ':BufferLineCycleNext<CR>')
-            util.noremap('n', '<m-}>', ':BufferLineCyclePrev<CR>')
+            util.noremap('n', '<m-{>', ':BufferLineCyclePrev<CR>')
+            util.noremap('n', '<m-}>', ':BufferLineCycleNext<CR>')
             util.noremap('n', '<m-w>', ':bd<CR>')
-            util.noremap('n', '<m-e>', ':BufferLinePick<CR>')
+            -- util.noremap('n', '<m-e>', ':BufferLineSortByRelativeDirectory<CR>')
             require("bufferline").setup({
                 options = {
                     -- mode = 'tabs'
-                    numbers = "buffer_id"
+                    numbers = "ordinal"
                 }
             })
         end
