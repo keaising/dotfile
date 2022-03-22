@@ -12,14 +12,17 @@ return function(packer)
 			local augroup = util.augroup
 			local autocmd = util.autocmd
 
-			augroup("fmt", {
-				autocmd("BufNewFile,BufRead", "*.go", "setlocal noexpandtab tabstop=8 shiftwidth=8"),
-				autocmd("BufWritePre", "*.go", "lua require('go.format').goimport()"),
-			})
+			augroup(
+				"fmt",
+				{
+					autocmd("BufNewFile,BufRead", "*.go", "setlocal noexpandtab tabstop=8 shiftwidth=8"),
+					autocmd("BufWritePre", "*.go", "lua require('go.format').goimport()"),
+				}
+			)
 
 			cfg = {
 				on_attach = require("lsp").on_attach(),
-				capabilities = require("plugin-cmp").capabilities(),
+				-- capabilities = require("plugin-cmp").capabilities(),
 			}
 
 			local nvim_lsp = require("lspconfig")

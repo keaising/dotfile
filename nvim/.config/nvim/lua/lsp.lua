@@ -86,8 +86,8 @@ function M.on_attach()
 			set_highlight("LspReferenceText", { cterm = "bold", ctermbg = "red", guibg = "LightYellow" })
 			set_highlight("LspReferenceWrite", { cterm = "bold", ctermbg = "red", guibg = "LightYellow" })
 			augroup("lsp_document_highlight", {
-				autocmd("CursorHold", "<buffer>", "lua vim.lsp.buf.document_highlight()"),
-				autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
+				-- autocmd("CursorHold", "<buffer>", "lua vim.lsp.buf.document_highlight()"),
+				-- autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
 				autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.open_float()"),
 			})
 		end
