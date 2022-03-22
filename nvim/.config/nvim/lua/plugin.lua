@@ -70,6 +70,9 @@ return function(packer)
                             action = "tabnew"
                         }}
                     }
+                },
+                filters = {
+                    custom = {".git"}
                 }
             })
         end
