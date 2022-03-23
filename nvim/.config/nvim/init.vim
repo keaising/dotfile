@@ -258,7 +258,7 @@ nmap -     <Plug>(choosewin)
 Plug 'wesQ3/vim-windowswap'
 
 Plug 'tpope/vim-abolish'    " crs/crm/crc
-Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
+" Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
 
 Plug 'machakann/vim-sandwich'
 
