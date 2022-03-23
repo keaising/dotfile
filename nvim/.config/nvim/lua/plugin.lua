@@ -144,7 +144,7 @@ return function(packer)
 			util.noremap("n", "<m-{>", ":BufferLineCyclePrev<CR>")
 			util.noremap("n", "<m-}>", ":BufferLineCycleNext<CR>")
 			util.noremap("n", "<m-w>", ":bd<CR>")
-			-- util.noremap('n', '<m-e>', ':BufferLineSortByRelativeDirectory<CR>')
+			util.noremap('n', '<m-e>', ':BufferLinePick<CR>')
 			require("bufferline").setup({
 				options = {
 					-- mode = 'tabs'
