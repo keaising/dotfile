@@ -100,6 +100,9 @@ return function(packer)
 		config = function()
 			vim.g.NERDDefaultAlign = "left"
 			vim.g.NERDSpaceDelims = 1
+			local util = require("util")
+			util.noremap("n", "<m-/>", ":NERDCommenterToggle<CR>")
+			util.noremap("v", "<m-/>", ":NERDCommenterToggle<CR>")
 		end,
 	})
 
@@ -144,7 +147,7 @@ return function(packer)
 			util.noremap("n", "<m-{>", ":BufferLineCyclePrev<CR>")
 			util.noremap("n", "<m-}>", ":BufferLineCycleNext<CR>")
 			util.noremap("n", "<m-w>", ":bd<CR>")
-			util.noremap('n', '<m-e>', ':BufferLinePick<CR>')
+			util.noremap("n", "<m-e>", ":BufferLinePick<CR>")
 			require("bufferline").setup({
 				options = {
 					-- mode = 'tabs'
@@ -154,12 +157,24 @@ return function(packer)
 		end,
 	})
 
-	packer {
-    'Raimondi/delimitMate',
-    config = function()
-      vim.g.delimitMate_expand_cr = 1
-      vim.g.delimitMate_expand_space = 1
-      vim.g.delimitMate_jump_expansion = 1
-    end,
-  }
+	packer({
+		"Raimondi/delimitMate",
+		config = function()
+			vim.g.delimitMate_expand_cr = 1
+			vim.g.delimitMate_expand_space = 1
+			vim.g.delimitMate_jump_expansion = 1
+		end,
+	})
+
+	-- https://forge.chapril.org/swytch/dotfiles/src/branch/main/.config/nvim/lua/plugin/lsp_installer.lua
+	-- packer({
+	--     "williamboman/nvim-lsp-installer",
+	--     cmd = {
+	--         "LspInstall",
+	--         "LspInstallInfo",
+	--     },
+	--     config = function()
+	--         require("nvim-lsp-installer").setup()
+	--     end,
+	-- })
 end

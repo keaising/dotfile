@@ -1,10 +1,10 @@
 return function(packer)
-  vim.opt.backspace = 'indent,eol,start'
-  vim.opt.autoindent = true
-  vim.opt.smartindent = true
-  vim.cmd 'filetype on'
-  vim.cmd 'filetype plugin on'
-  vim.cmd 'filetype indent on'
+	vim.opt.backspace = "indent,eol,start"
+	vim.opt.autoindent = true
+	vim.opt.smartindent = true
+	vim.cmd("filetype on")
+	vim.cmd("filetype plugin on")
+	vim.cmd("filetype indent on")
 
 	vim.opt.tabstop = 4 -- "按下 Tab 键时，Vim 显示的空格数
 	vim.opt.shiftwidth = 4
@@ -31,7 +31,7 @@ return function(packer)
 	-- vim.opt.formatoptions+=B              -- " 合并两行中文时，不在中间加空格
 	vim.opt.ffs = "unix,dos,mac" -- " 文件换行符，默认使用 unix 换行符
 	vim.opt.foldenable = true -- " 允许代码折叠
-	vim.opt.fdm = "indent" -- " 代码折叠默认使用缩进
+	-- vim.opt.fdm = "indent" -- " 代码折叠默认使用缩进
 	vim.opt.foldlevel = 99 -- " 默认打开所有缩进
 	vim.opt.backup = true -- " 允许备份
 	vim.opt.writebackup = true -- " 保存时备份

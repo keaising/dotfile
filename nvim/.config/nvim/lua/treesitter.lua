@@ -17,9 +17,6 @@ return function(packer)
 						node_decremental = "grm",
 					},
 				},
-				indent = {
-					enable = true,
-				},
 			})
 			vim.wo.foldmethod = "expr"
 			vim.wo.foldexpr = "nvim_treesitter#foldexpr()"

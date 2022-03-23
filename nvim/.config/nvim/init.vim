@@ -542,7 +542,6 @@ runtime macros/sandwich/keymap/surround.vim
 " }}}
 
 
-
 " style ------------------------ {{{
 
 set tabstop=4       " tab size
@@ -557,7 +556,7 @@ set list            " 设置显示制表符等隐藏字符
 set showcmd         " 右下角显示命令
 set splitright      " 水平切割窗口时，默认在右边显示新窗口
 set updatetime=800
-set autoindent
+" set autoindent
 set background=dark " 设置黑色背景
 set t_Co=256        " 允许256色
 
