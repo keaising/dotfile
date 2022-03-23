@@ -1,5 +1,11 @@
 return function(packer)
-	vim.opt.autoindent = true
+  vim.opt.backspace = 'indent,eol,start'
+  vim.opt.autoindent = true
+  vim.opt.smartindent = true
+  vim.cmd 'filetype on'
+  vim.cmd 'filetype plugin on'
+  vim.cmd 'filetype indent on'
+
 	vim.opt.tabstop = 4 -- "按下 Tab 键时，Vim 显示的空格数
 	vim.opt.shiftwidth = 4
 	vim.opt.softtabstop = 0 -- "关闭softtabstop 永远不要将空格和tab混合输入
