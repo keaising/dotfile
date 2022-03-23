@@ -17,22 +17,30 @@ function M.init(packer)
 				vim.cmd(string.format("sign define %s %s", name, arg))
 			end
 
-			sign_define(
-				"LspDiagnosticsSignError",
-				{ text = "x", texthl = "LspDiagnosticsError", linehl = "", numhl = "" }
-			)
-			sign_define(
-				"LspDiagnosticsSignWarning",
-				{ text = "!", texthl = "LspDiagnosticsWarning", linehl = "", numhl = "" }
-			)
-			sign_define(
-				"LspDiagnosticsSignInformation",
-				{ text = "~", texthl = "LspDiagnosticsInformation", linehl = "", numhl = "" }
-			)
-			sign_define(
-				"LspDiagnosticsSignHint",
-				{ text = "?", texthl = "LspDiagnosticsHint", linehl = "", numhl = "" }
-			)
+			sign_define("LspDiagnosticsSignError", {
+				text = "x",
+				texthl = "LspDiagnosticsError",
+				linehl = "",
+				numhl = "",
+			})
+			sign_define("LspDiagnosticsSignWarning", {
+				text = "!",
+				texthl = "LspDiagnosticsWarning",
+				linehl = "",
+				numhl = "",
+			})
+			sign_define("LspDiagnosticsSignInformation", {
+				text = "~",
+				texthl = "LspDiagnosticsInformation",
+				linehl = "",
+				numhl = "",
+			})
+			sign_define("LspDiagnosticsSignHint", {
+				text = "?",
+				texthl = "LspDiagnosticsHint",
+				linehl = "",
+				numhl = "",
+			})
 		end,
 	})
 	packer("ray-x/lsp_signature.nvim")
@@ -61,7 +69,10 @@ function M.on_attach()
 		buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
 		-- Mappings.
-		local opts = { noremap = true, silent = true }
+		local opts = {
+			noremap = true,
+			silent = true,
+		}
 		buf_set_keymap("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 		buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 		buf_set_keymap("n", "<m-b>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -77,20 +88,37 @@ function M.on_attach()
 		buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
 		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 		buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-		buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+		buf_set_keymap("n", "<leader>oo", "<cmd>lua vim.diagnostic.show()<CR>", opts)
+		buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
+		buf_set_keymap("n", "<leader>//", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
 		-- Set autocommands conditional on server_capabilities
 		if client.resolved_capabilities.document_highlight then
-			set_highlight("LspReferenceRead", { cterm = "bold", ctermbg = "red", guibg = "LightYellow" })
-			set_highlight("LspReferenceText", { cterm = "bold", ctermbg = "red", guibg = "LightYellow" })
-			set_highlight("LspReferenceWrite", { cterm = "bold", ctermbg = "red", guibg = "LightYellow" })
+			set_highlight("LspReferenceRead", {
+				cterm = "bold",
+				ctermbg = "red",
+				guibg = "LightYellow",
+			})
+			set_highlight("LspReferenceText", {
+				cterm = "bold",
+				ctermbg = "red",
+				guibg = "LightYellow",
+			})
+			set_highlight("LspReferenceWrite", {
+				cterm = "bold",
+				ctermbg = "red",
+				guibg = "LightYellow",
+			})
 			augroup("lsp_document_highlight", {
 				-- autocmd("CursorHold", "<buffer>", "lua vim.lsp.buf.document_highlight()"),
 				-- autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
-				autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.open_float()"),
+				-- autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.open_float()"),
 			})
 		end
 
+		-- auto close quickfix list when select one item in quickfi list
+		vim.cmd("autocmd FileType qf nnoremap <buffer> <CR>  <CR>:cclose<CR>")
+		vim.cmd("autocmd FileType qf nnoremap <buffer> <ESC> :cclose<CR>")
 		-- format_on_save
 		augroup("format_on_save", {
 			autocmd("BufWritePre", "<buffer>", ':silent! lua require("lsp_settings").fmt()'),
