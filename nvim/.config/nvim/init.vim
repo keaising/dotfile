@@ -296,8 +296,8 @@ let g:gh_line_map = '<leader>gh'
 let g:gh_line_blame_map = '<leader>gb'
 let g:gh_gitlab_domain = "git.curiostack.com"
 let g:gh_use_canonical = 0
-Plug 'zivyangll/git-blame.vim' " git blame info
-nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+" Plug 'zivyangll/git-blame.vim' " git blame info
+" nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 Plug 'kana/vim-textobj-user' " 基础插件：提供让用户方便的自定义文本对象的接口
 Plug 'kana/vim-textobj-indent' " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进

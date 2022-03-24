@@ -107,10 +107,20 @@ return function(packer)
 	})
 
 	packer({
-		"bluz71/vim-nightfly-guicolors",
+		"sainnhe/gruvbox-material",
 		config = function()
-			vim.cmd([[colorscheme nightfly]])
+			-- vim.cmd 'set termguicolors'
+			vim.cmd("color gruvbox-material")
+			vim.cmd("hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f")
 		end,
+	})
+
+	packer({
+		"f-person/git-blame.nvim",
+		config = function()
+			vim.g.gitblame_message_template = '       <author> <date> <summary>'
+			vim.g.gitblame_date_format = '%Y-%m-%d %H:%M'
+		end
 	})
 
 	packer({
@@ -122,8 +132,7 @@ return function(packer)
 		config = function()
 			require("lualine").setup({
 				options = {
-					-- theme = "palenight",
-					theme = "nightfly",
+					theme = "jellybeans",
 					component_separators = {
 						left = " ",
 						right = " ",
@@ -131,6 +140,19 @@ return function(packer)
 					section_separators = {
 						left = " ",
 						right = " ",
+					},
+				},
+				sections = {
+					lualine_c = {
+						{
+							"filename",
+							path = 1, -- show relative path
+							symbols = {
+								modified = "[+]", -- Text to show when the file is modified.
+								readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
+								unnamed = "[No Name]", -- Text to show for unnamed buffers.
+							},
+						},
 					},
 				},
 			})

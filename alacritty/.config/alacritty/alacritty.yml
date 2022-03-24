@@ -22,7 +22,7 @@ font:
   size: 14
 
 import:
-  - ~/.config/alacritty/themes/papercolor_dark.yaml
+  - ~/.config/alacritty/themes/omni.yaml
 
 key_bindings:
 
