@@ -92,6 +92,7 @@ function M.on_attach()
 		buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
 		buf_set_keymap("n", "<leader>//", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
+		buf_set_keymap("n", "<m-h>", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts)
 		-- Set autocommands conditional on server_capabilities
 		if client.resolved_capabilities.document_highlight then
 			set_highlight("LspReferenceRead", {
@@ -111,7 +112,7 @@ function M.on_attach()
 			})
 			augroup("lsp_document_highlight", {
 				-- autocmd("CursorHold", "<buffer>", "lua vim.lsp.buf.document_highlight()"),
-				-- autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
+				autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
 				-- autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.open_float()"),
 			})
 		end
