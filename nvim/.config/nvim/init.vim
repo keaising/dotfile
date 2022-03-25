@@ -33,40 +33,40 @@
 "  set foldlevel=99                  " 默认打开所有缩进
 "  set backup                        " 允许备份
 "  set writebackup                   " 保存时备份
-set backupdir=~/.vim/tmp          " 备份文件地址，统一管理
-set backupext=.bak                " 备份文件扩展名
+" set backupdir=~/.vim/tmp          " 备份文件地址，统一管理
+" set backupext=.bak                " 备份文件扩展名
 "  set noswapfile                    " 禁用交换文件
 "  set noundofile                    " 禁用 undo文件
 "  set scrolloff=5                   "垂直滚动时，光标距离顶部/底部的位置（单位：行）
 "  set sidescrolloff=15              "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
 
-syntax enable
-syntax on
-let &t_SI="\e[6 q" "切换光标
-let &t_EI="\e[2 q"
-au CursorHold * checktime
-set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m " 错误格式
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
+" syntax enable
+" syntax on
+" let &t_SI="\e[6 q" "切换光标
+" let &t_EI="\e[2 q"
+" au CursorHold * checktime
+" set errorformat+=[%f:%l]\ ->\ %m,[%f:%l]:%m " 错误格式
+" set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 
-set fileencoding=utf-8                                         " 文件默认编码
-set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1 " 打开文件时自动尝试下面顺序的编码
-set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class
-set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib "stuff to ignore when tab completing
-set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
-set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz    " MacOSX/Linux
-set wildignore+=*DS_Store*,*.ipch
-set wildignore+=*.gem
-set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
-set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/.rbenv/**
-set wildignore+=*/.nx/**,*.app,*.git,.git
-set wildignore+=*.wav,*.mp3,*.ogg,*.pcm
-set wildignore+=*.mht,*.suo,*.sdf,*.jnlp
-set wildignore+=*.chm,*.epub,*.pdf,*.mobi,*.ttf
-set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
-set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
-set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
-set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
-set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
+" set fileencoding=utf-8                                         " 文件默认编码
+" set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1 " 打开文件时自动尝试下面顺序的编码
+" set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class
+" set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib "stuff to ignore when tab completing
+" set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex
+" set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz    " MacOSX/Linux
+" set wildignore+=*DS_Store*,*.ipch
+" set wildignore+=*.gem
+" set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso
+" set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/.rbenv/**
+" set wildignore+=*/.nx/**,*.app,*.git,.git
+" set wildignore+=*.wav,*.mp3,*.ogg,*.pcm
+" set wildignore+=*.mht,*.suo,*.sdf,*.jnlp
+" set wildignore+=*.chm,*.epub,*.pdf,*.mobi,*.ttf
+" set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc
+" set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps
+" set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu
+" set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc
+" set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android
 
 
 " }}}
@@ -300,10 +300,9 @@ let g:gh_use_canonical = 0
 " nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 Plug 'kana/vim-textobj-user' " 基础插件：提供让用户方便的自定义文本对象的接口
-Plug 'kana/vim-textobj-indent' " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
+let g:vim_textobj_parameter_mapping = 'a'
 Plug 'kana/vim-textobj-syntax' " 语法文本对象：iy/ay 基于语法的文本对象
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'javascript', 'go', 'python', 'typescript'] } " 函数文本对象：if/af 支持 c/c++/vim/java
-let g:vim_textobj_parameter_mapping = 'a'
 Plug 'sgur/vim-textobj-parameter' " 参数文本对象：i,/a, 包括参数或者列表元素
 Plug 'jceb/vim-textobj-uri' " 提供 uri/url 的文本对象，iu/au 表示
 
@@ -365,16 +364,16 @@ Plug 'jceb/vim-textobj-uri' " 提供 uri/url 的文本对象，iu/au 表示
 "    \ 'ctrl-x': 'split',
 "    \ 'ctrl-v': 'vsplit' }
 
-"  Plug 'voldikss/vim-floaterm'
+ Plug 'voldikss/vim-floaterm'
 "  nnoremap <leader>lf :FloatermNew lf<cr>
 "  nnoremap <leader>ln :FloatermNew<CR>
 "  nnoremap <leader>lk :FloatermKill<cr>
-"  tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
+ " tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
 "  tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
 "  " Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
-"  let g:floaterm_keymap_toggle = '<m-m>'
-"  let g:floaterm_width=0.85
-"  let g:floaterm_height=0.95
+ let g:floaterm_keymap_toggle = '<m-m>'
+ let g:floaterm_width=0.85
+ let g:floaterm_height=0.95
 
 "  Plug 'preservim/nerdtree'
 "  let g:NERDTreeMinimalUI    = 1

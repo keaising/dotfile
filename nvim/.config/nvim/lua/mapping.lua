@@ -28,19 +28,22 @@ return function(packer)
 	vim.opt.matchtime = 2 -- " 显示括号匹配的时间
 	vim.opt.display = "lastline" -- " 显示最后一行
 	vim.opt.wildmenu = true -- " 允许下方显示目录
-	-- vim.opt.formatoptions+=B              -- " 合并两行中文时，不在中间加空格
 	vim.opt.ffs = "unix,dos,mac" -- " 文件换行符，默认使用 unix 换行符
 	vim.opt.foldenable = true -- " 允许代码折叠
-	-- vim.opt.fdm = "indent" -- " 代码折叠默认使用缩进
+	vim.opt.fdm = "indent" -- " 代码折叠默认使用缩进
 	vim.opt.foldlevel = 99 -- " 默认打开所有缩进
 	vim.opt.backup = true -- " 允许备份
 	vim.opt.writebackup = true -- " 保存时备份
 	-- vim.opt.backupdir = "~/.vim/tmp" -- " 备份文件地址，统一管理
 	vim.opt.backupext = ".bak" -- " 备份文件扩展名
-	-- vim.opt.noswapfile = true -- " 禁用交换文件
-	-- vim.opt.noundofile = true -- " 禁用 undo文件
 	vim.opt.scrolloff = 5 -- "垂直滚动时，光标距离顶部/底部的位置（单位：行）
 	vim.opt.sidescrolloff = 15 -- "水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
+
+	vim.cmd("set formatoptions+=B") -- 合并两行中文时，不在中间加空格
+	vim.cmd("set backupdir=~/.vim/tmp") -- 备份文件地址，统一管理
+	vim.cmd("set backupext=.bak") -- 备份文件扩展名
+	vim.cmd("set noswapfile") -- 禁用交换文件
+	vim.cmd("set noundofile") -- 禁用 undo文件
 
 	vim.cmd("syntax enable")
 	vim.cmd("syntax on")
@@ -50,6 +53,35 @@ return function(packer)
 	vim.cmd("au CursorHold * checktime")
 	vim.cmd("set errorformat+=[%f:%l]\\ ->\\ %m,[%f:%l]:%m") -- " 错误格式
 	vim.cmd("set listchars=tab:\\|\\ ,trail:.,extends:>,precedes:<") -- " 设置分隔符可视
+
+	vim.cmd("set fileencoding=utf-8") -- 文件默认编码
+	vim.cmd("set fileencodings=ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1") -- 打开文件时自动尝试下面顺序的编码
+	vim.cmd("set suffixes=.bak,~,.o,.h,.info,.swp,.obj,.pyc,.pyo,.egg-info,.class")
+	vim.cmd("set wildignore=*.o,*.obj,*~,*.exe,*.a,*.pdb,*.lib") -- stuff to ignore when tab completing
+	vim.cmd("set wildignore+=*.so,*.dll,*.swp,*.egg,*.jar,*.class,*.pyc,*.pyo,*.bin,*.dex")
+	vim.cmd("set wildignore+=*.zip,*.7z,*.rar,*.gz,*.tar,*.gzip,*.bz2,*.tgz,*.xz") -- MacOSX/Linux
+	vim.cmd("set wildignore+=*DS_Store*,*.ipch")
+	vim.cmd("set wildignore+=*.gem")
+	vim.cmd("set wildignore+=*.png,*.jpg,*.gif,*.bmp,*.tga,*.pcx,*.ppm,*.img,*.iso")
+	vim.cmd("set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/.rbenv/**")
+	vim.cmd("set wildignore+=*/.nx/**,*.app,*.git,.git")
+	vim.cmd("set wildignore+=*.wav,*.mp3,*.ogg,*.pcm")
+	vim.cmd("set wildignore+=*.mht,*.suo,*.sdf,*.jnlp")
+	vim.cmd("set wildignore+=*.chm,*.epub,*.pdf,*.mobi,*.ttf")
+	vim.cmd("set wildignore+=*.mp4,*.avi,*.flv,*.mov,*.mkv,*.swf,*.swc")
+	vim.cmd("set wildignore+=*.ppt,*.pptx,*.docx,*.xlt,*.xls,*.xlsx,*.odt,*.wps")
+	vim.cmd("set wildignore+=*.msi,*.crx,*.deb,*.vfd,*.apk,*.ipa,*.bin,*.msu")
+	vim.cmd("set wildignore+=*.gba,*.sfc,*.078,*.nds,*.smd,*.smc")
+	vim.cmd("set wildignore+=*.linux2,*.win32,*.darwin,*.freebsd,*.linux,*.android")
+
+
+
+	--
+	--
+	--
+	--
+	
+
 
 	local util = require("util")
 	util.noremap("n", "<Space>", "<Leader>")
