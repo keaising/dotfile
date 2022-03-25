@@ -12,6 +12,7 @@ require("packer").startup(function(p)
     require("plugin")(p)
     require("mapping")(p)
     require("treesitter")(p)
+    require("git")(p)
 
     require("lsp").init(p)
     require("completion").init(p)
