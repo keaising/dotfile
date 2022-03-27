@@ -5,6 +5,7 @@ function M.init(packer)
 	packer("hrsh7th/cmp-buffer")
 	packer("hrsh7th/cmp-path")
 	packer("hrsh7th/cmp-cmdline")
+	packer("hrsh7th/cmp-emoji")
 
 	packer({
 		"hrsh7th/nvim-cmp",
@@ -39,7 +40,9 @@ function M.init(packer)
 						if cmp.visible() then
 							cmp.confirm()
 						else
-							fallback() -- If you are using vim-endwise, this fallback function will be behaive as the vim-endwise.
+							cmp.mapping.select_next_item()
+							cmp.confirm()
+							-- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 						end
 					end,
 					["<Tab>"] = cmp.mapping(function(fallback)
@@ -50,7 +53,9 @@ function M.init(packer)
 							-- elseif has_words_before() then
 							-- cmp.complete()
 						else
-							fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+							cmp.mapping.select_next_item()
+							cmp.confirm()
+							-- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function()
@@ -67,6 +72,7 @@ function M.init(packer)
 						name = "dictionary",
 						keyword_length = 2,
 					},
+					{ name = "emoji" },
 					-- { name = 'vsnip' }, -- For vsnip users.
 					-- { name = 'luasnip' }, -- For luasnip users.
 					-- { name = 'ultisnips' }, -- For ultisnips users.
