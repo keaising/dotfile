@@ -112,8 +112,8 @@ return function(packer)
 	-- " switch tabs
 	-- util.noremap('n', '<m-{>', ':tabprevious<CR>')
 	-- util.noremap('n', '<m-}>', ':tabnext<CR>')
-	util.noremap("n", "<M-l>", ":tabnext<CR>")
-	util.noremap("n", "<M-h>", ":tabprevious<CR>")
+	-- util.noremap("n", "<M-l>", ":tabnext<CR>")
+	-- util.noremap("n", "<M-h>", ":tabprevious<CR>")
 
 	-- " switch window
 	util.noremap("n", "<C-h>", "<C-w>h")
