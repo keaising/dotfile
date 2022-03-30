@@ -1,6 +1,7 @@
 local M = {}
 
 function M.init(packer)
+	packer("ray-x/lsp_signature.nvim")
 	packer({
 		"neovim/nvim-lspconfig",
 		config = function()
@@ -43,7 +44,6 @@ function M.init(packer)
 			})
 		end,
 	})
-	packer("ray-x/lsp_signature.nvim")
 end
 
 function M.on_attach()
@@ -73,26 +73,21 @@ function M.on_attach()
 			noremap = true,
 			silent = true,
 		}
-		buf_set_keymap("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-		buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-		buf_set_keymap("n", "<m-b>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+		buf_set_keymap("n", "ga", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+		buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+		buf_set_keymap("n", "<m-b>", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 		buf_set_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 		buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 		buf_set_keymap("n", "gt", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-		buf_set_keymap("n", "<m-k>", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-		buf_set_keymap("n", "[g", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
-		buf_set_keymap("n", "]g", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-		buf_set_keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-		buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
-		buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
-		buf_set_keymap("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
-		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+		buf_set_keymap("n", "<leader>r", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
 		buf_set_keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-		buf_set_keymap("n", "<leader>oo", "<cmd>lua vim.diagnostic.show()<CR>", opts)
-		buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
-		buf_set_keymap("n", "<leader>//", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+		-- buf_set_keymap("n", "<m-k>", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
+		buf_set_keymap("n", "<m-j>", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
+		buf_set_keymap("n", "<m-k>", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+		buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
-		buf_set_keymap("n", "<m-h>", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts)
+		buf_set_keymap("v", "<leader>hl", "<cmd>lua vim.lsp.buf.document_highlight()<CR>", opts)
+		buf_set_keymap("n", "<leader>nl", "<cmd>lua vim.lsp.buf.clear_references()<CR>", opts)
 		-- Set autocommands conditional on server_capabilities
 		if client.resolved_capabilities.document_highlight then
 			set_highlight("LspReferenceRead", {
@@ -112,7 +107,7 @@ function M.on_attach()
 			})
 			augroup("lsp_document_highlight", {
 				-- autocmd("CursorHold", "<buffer>", "lua vim.lsp.buf.document_highlight()"),
-				autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
+				-- autocmd("CursorMoved", "<buffer>", "lua vim.lsp.buf.clear_references()"),
 				-- autocmd("CursorHold", "<buffer>", "lua vim.diagnostic.open_float()"),
 			})
 		end

@@ -40,9 +40,9 @@ function M.init(packer)
 						if cmp.visible() then
 							cmp.confirm()
 						else
-							cmp.mapping.select_next_item()
-							cmp.confirm()
-							-- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+							-- cmp.mapping.select_next_item()
+							-- cmp.confirm()
+							fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 						end
 					end,
 					["<Tab>"] = cmp.mapping(function(fallback)
@@ -53,9 +53,9 @@ function M.init(packer)
 							-- elseif has_words_before() then
 							-- cmp.complete()
 						else
-							cmp.mapping.select_next_item()
-							cmp.confirm()
-							-- fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+							-- cmp.mapping.select_next_item()
+							-- cmp.confirm()
+							fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
 						end
 					end, { "i", "s" }),
 					["<S-Tab>"] = cmp.mapping(function()

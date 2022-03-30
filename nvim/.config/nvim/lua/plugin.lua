@@ -67,7 +67,6 @@ return function(packer)
 		requires = { "kyazdani42/nvim-web-devicons" },
 		config = function()
 			require("nvim-tree").setup({
-				auto_close = true,
 				auto_reload_on_write = true,
 				open_on_setup = true,
 				open_on_tab = true,
@@ -92,6 +91,7 @@ return function(packer)
 					custom = { ".git" },
 				},
 			})
+			vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 		end,
 	})
 
@@ -106,23 +106,23 @@ return function(packer)
 		end,
 	})
 
-	-- packer({
-	--     "sainnhe/gruvbox-material",
-	--     config = function()
-	--         -- vim.cmd 'set termguicolors'
-	--         vim.cmd("color gruvbox-material")
-	--         vim.cmd("hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f")
-	--     end,
-	-- })
-
 	packer({
-		"sainnhe/everforest",
+		"sainnhe/gruvbox-material",
 		config = function()
-			vim.cmd("set background=dark")
-			vim.g.everforest_background='soft'
-			vim.cmd("colorscheme everforest")
-		end
+			-- vim.cmd 'set termguicolors'
+			vim.cmd("color gruvbox-material")
+			vim.cmd("hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f")
+		end,
 	})
+
+	-- packer({
+	--     "sainnhe/everforest",
+	--     config = function()
+	--         vim.cmd("set background=dark")
+	--         vim.g.everforest_background='soft'
+	--         vim.cmd("colorscheme everforest")
+	--     end
+	-- })
 
 	packer({
 		"f-person/git-blame.nvim",
