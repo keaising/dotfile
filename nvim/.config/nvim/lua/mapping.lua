@@ -100,7 +100,7 @@ return function(packer)
 	util.noremap("n", "<Space>wa", ":wa<CR>")
 	util.noremap("n", "<M-q>", ":qa<CR>")
 	util.noremap("n", "<M-s>", ":wa<CR>")
-	util.noremap("n", "<M-w>", "<C-w>q")
+	-- util.noremap("n", "<M-w>", "<C-w>q")
 	util.noremap("n", "<C-n>", ":NvimTreeToggle<CR><C-w>w")
 
 	-- " resize window
@@ -154,6 +154,8 @@ return function(packer)
 	-- " move to line start/end
 	util.noremap("n", "H", "^")
 	util.noremap("n", "L", "$")
+	util.noremap("v", "H", "^")
+	util.noremap("v", "L", "$")
 
 	-- " mark
 	util.noremap("n", "'", "`")
