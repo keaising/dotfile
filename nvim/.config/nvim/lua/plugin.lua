@@ -22,8 +22,8 @@ return function(packer)
 						i = {
 							["<esc>"] = actions.close,
 							["<CR>"] = actions.select_tab,
-							["<C-n>"] = actions.move_selection_previous,
-							["<C-p>"] = actions.move_selection_next,
+							-- ["<C-n>"] = actions.move_selection_previous,
+							-- ["<C-p>"] = actions.move_selection_next,
 							["<C-o>"] = actions.select_default,
 							-- maybe bug, don't take effect:
 							-- ["<C-l>"] = actions.move_selection_next,
