@@ -91,6 +91,20 @@ return function(packer)
 	vim.g.mapleader = " "
 	vim.g.maplocalleader = " "
 
+	-- " Coc
+	vim.cmd("nmap [[         <Plug>(coc-diagnostic-prev)")
+	vim.cmd("nmap ]]         <Plug>(coc-diagnostic-next)")
+	vim.cmd("nmap <m-k>      <Plug>(coc-rename)")
+	vim.cmd("nmap gi         <Plug>(coc-implementation)")
+	vim.cmd("nmap gr         <Plug>(coc-references)")
+	vim.cmd("nmap <m-r>      <Plug>(coc-references)")
+	vim.cmd("nmap <leader>rn <Plug>(coc-rename)")
+	vim.cmd("nmap <m-k>      <Plug>(coc-rename)")
+	vim.cmd("vmap <leader>a  <Plug>(coc-codeaction-selected)")
+	vim.cmd("nmap <leader>a  <Plug>(coc-codeaction-selected)")
+	vim.cmd("nmap gn         <Plug>(coc-diagnostic-prev)")
+	vim.cmd("nmap gp         <Plug>(coc-diagnostic-next)")
+
 	-- " save & quit in window
 	util.noremap("i", "<m-s>", "<ESC>:w<CR>")
 	util.noremap("i", "<m-s>", "<ESC>:w<CR>")

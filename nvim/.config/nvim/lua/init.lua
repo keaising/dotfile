@@ -15,7 +15,7 @@ require("packer").startup(function(p)
     require("git")(p)
 
     require("lsp").init(p)
-    require("completion").init(p)
+    -- require("completion").init(p)
     require("lang/formater")(p)
     require("lang/go")(p)
 

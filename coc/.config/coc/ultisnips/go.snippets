@@ -30,6 +30,10 @@ if err != nil {
 }${0}
 endsnippet
 
+snippet cc "With Fields" i
+ctx context.Context
+endsnippet
+
 snippet logr "With Fields" i
 logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
