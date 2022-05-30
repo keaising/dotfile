@@ -65,10 +65,6 @@ alias tn='tmux new -s'
 alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 
-# vim
-alias vi='nvim'
-alias v='nvim'
-
 # others
 alias now='date +%s'
 alias sz="source $HOME/.zshrc"
@@ -240,6 +236,13 @@ do
 done
 }
 
+vi () {
+if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
+	tmux rename-window "#{b:pane_current_path}"
+fi
+nvim "$@"
+}
+
 # --- }}}
 
 
@@ -268,7 +271,7 @@ bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
 # shortcuts
-bindkey -s '\ee' 'nvim \n'
+bindkey -s '\ee' 'vi \n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 
