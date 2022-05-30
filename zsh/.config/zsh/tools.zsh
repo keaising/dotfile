@@ -81,9 +81,9 @@ update_nvim () {
 
 go_tools () {
 	cd $HOME/code
-	nopx
+	# setpx
 	go version
-	export GOPROXY=https://goproxy.io 
+	# export GOPROXY=https://goproxy.io 
 	# gopls
 	local _gogettools=(
 		"golang.org/x/tools/gopls"
