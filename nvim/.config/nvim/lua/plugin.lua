@@ -88,7 +88,7 @@ return function(packer)
 					},
 				},
 				filters = {
-					custom = { ".git" },
+					dotfiles = false,
 				},
 			})
 			vim.cmd(
@@ -237,6 +237,14 @@ return function(packer)
 	})
 
 	packer({
+		"famiu/bufdelete.nvim",
+		config = function()
+			local util = require("util")
+			util.noremap("n", "<m-w>", ":Bdelete<CR>")
+		end,
+	})
+
+	packer({
 		"akinsho/bufferline.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
@@ -247,7 +255,8 @@ return function(packer)
 			util.noremap("n", "<m-}>", ":BufferLineCycleNext<CR>")
 			util.noremap("n", "<m-<>", ":BufferLineMovePrev<CR>")
 			util.noremap("n", "<m->>", ":BufferLineMoveNext<CR>")
-			util.noremap("n", "<m-w>", ":bd<CR>")
+			util.noremap("n", "<leader>wh", ":BufferLineCloseLeft<CR>")
+			util.noremap("n", "<leader>wl", ":BufferLineCloseRight<CR>")
 			util.noremap("n", "<m-e>", ":BufferLinePick<CR>")
 			require("bufferline").setup({
 				options = {
