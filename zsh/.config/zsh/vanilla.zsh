@@ -237,9 +237,7 @@ done
 }
 
 vi () {
-if ! { [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; } then
-	tmux rename-window "#{b:pane_current_path}"
-fi
+[[ -n "$TMUX" ]] && tmux rename-window "#{b:pane_current_path}"
 nvim "$@"
 }
 
