@@ -97,44 +97,27 @@ return function(packer)
 		end,
 	})
 
-	packer({
-		"preservim/nerdcommenter",
-		config = function()
-			vim.g.NERDDefaultAlign = "left"
-			vim.g.NERDSpaceDelims = 1
-			local util = require("util")
-			util.noremap("n", "<m-/>", ":NERDCommenterToggle<CR>")
-			util.noremap("v", "<m-/>", ":NERDCommenterToggle<CR>")
-		end,
-	})
-
-	packer({
-		"sainnhe/gruvbox-material",
-		config = function()
-			-- vim.cmd 'set termguicolors'
-			vim.cmd("color gruvbox-material")
-			vim.cmd(
-				"hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f"
-			)
-		end,
-	})
-
 	-- packer({
-	--     "sainnhe/everforest",
+	--     "preservim/nerdcommenter",
 	--     config = function()
-	--         vim.cmd("set background=dark")
-	--         vim.g.everforest_background='soft'
-	--         vim.cmd("colorscheme everforest")
-	--     end
+	--         vim.g.NERDDefaultAlign = "left"
+	--         vim.g.NERDSpaceDelims = 1
+	--         local util = require("util")
+	--         util.noremap("n", "<m-/>", ":NERDCommenterToggle<CR>")
+	--         util.noremap("v", "<m-/>", ":NERDCommenterToggle<CR>")
+	--     end,
 	-- })
 
-	packer({
-		"f-person/git-blame.nvim",
-		config = function()
-			vim.g.gitblame_message_template = "       <author> <date> <summary>"
-			vim.g.gitblame_date_format = "%Y-%m-%d %H:%M"
-		end,
-	})
+	-- packer({
+	--     "sainnhe/gruvbox-material",
+	--     config = function()
+	--         -- vim.cmd 'set termguicolors'
+	--         vim.cmd("color gruvbox-material")
+	--         vim.cmd(
+	--             "hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f"
+	--         )
+	--     end,
+	-- })
 
 	packer({
 		"folke/trouble.nvim",
@@ -269,25 +252,4 @@ return function(packer)
 			})
 		end,
 	})
-
-	packer({
-		"Raimondi/delimitMate",
-		config = function()
-			vim.g.delimitMate_expand_cr = 1
-			vim.g.delimitMate_expand_space = 1
-			vim.g.delimitMate_jump_expansion = 1
-		end,
-	})
-
-	-- https://forge.chapril.org/swytch/dotfiles/src/branch/main/.config/nvim/lua/plugin/lsp_installer.lua
-	-- packer({
-	--     "williamboman/nvim-lsp-installer",
-	--     cmd = {
-	--         "LspInstall",
-	--         "LspInstallInfo",
-	--     },
-	--     config = function()
-	--         require("nvim-lsp-installer").setup()
-	--     end,
-	-- })
 end

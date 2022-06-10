@@ -10,14 +10,14 @@ require("packer").startup(function(p)
     p "wbthomason/packer.nvim"
 
     require("plugin")(p)
-    require("mapping")(p)
     require("treesitter")(p)
-    require("git")(p)
-
     require("lsp").init(p)
+
     -- require("completion").init(p)
-    require("lang/formater")(p)
-    require("lang/go")(p)
+    -- require("lang/formater")(p)
+    -- require("lang/go")(p)
+    -- require("git")(p)
+    -- require("mapping")(p)
 
     if packer_bootstrap then
         require("packer").sync()
