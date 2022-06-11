@@ -10,9 +10,9 @@ require("packer").startup(function(p)
     p "wbthomason/packer.nvim"
 
     require("plugin")(p)
-    require("treesitter")(p)
     require("lsp").init(p)
 
+    -- require("treesitter")(p)
     -- require("completion").init(p)
     -- require("lang/formater")(p)
     -- require("lang/go")(p)
