@@ -1,5 +1,45 @@
 return function(packer)
 	packer({
+		"nvim-treesitter/nvim-treesitter-textobjects",
+	})
+
+	packer({
+		"nvim-treesitter/nvim-treesitter",
+		-- run = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = "all",
+				highlight = {
+					enable = true,
+				},
+				incremental_selection = {
+					enable = true,
+					keymaps = {
+						init_selection = "gnn",
+						node_incremental = "grn",
+						scope_incremental = "grc",
+						node_decremental = "grm",
+					},
+				},
+				textobjects = {
+					select = {
+						enable = true,
+						-- Automatically jump forward to textobj, similar to targets.vim
+						lookahead = true,
+						keymaps = {
+							-- You can use the capture groups defined in textobjects.scm
+							["af"] = "@function.outer",
+							["if"] = "@function.inner",
+						},
+					},
+				},
+			})
+			vim.wo.foldmethod = "expr"
+			vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+		end,
+	})
+
+	packer({
 		"nvim-telescope/telescope.nvim",
 		requires = { { "nvim-lua/popup.nvim", "nvim-lua/plenary.nvim" } },
 		config = function()
