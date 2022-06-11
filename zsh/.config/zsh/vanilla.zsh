@@ -65,10 +65,6 @@ alias tn='tmux new -s'
 alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 
-# vim
-alias vi='nvim'
-alias v='nvim'
-
 # others
 alias now='date +%s'
 alias sz="source $HOME/.zshrc"
@@ -115,6 +111,8 @@ export VISUAL=nvim
 export EDITOR=vim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
+# if line ends without lf, show this mark rather than '%'
+export PROMPT_EOL_MARK='⏎'
 
 # gem
 export GEM_HOME="$HOME/code/gems"
@@ -238,6 +236,11 @@ do
 done
 }
 
+vi () {
+[[ -n "$TMUX" ]] && tmux rename-window "#{b:pane_current_path}"
+nvim "$@"
+}
+
 # --- }}}
 
 
@@ -266,7 +269,7 @@ bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
 # shortcuts
-bindkey -s '\ee' 'nvim .\n'
+bindkey -s '\ee' 'vi \n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 

@@ -1,4 +1,10 @@
 
+" lua -----{{{
+
+lua require("init")
+
+" }}}
+
 " basic -----{{{
 
 set autoindent
@@ -80,7 +86,7 @@ augroup filetype_vim
     autocmd FileType vim setlocal foldmethod=marker
     " edit vimrc
     :nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-    :nnoremap <leader>sv :source $MYVIMRC<cr>
+    " :nnoremap <leader>sv :source $MYVIMRC<cr>
     autocmd FileType vim :iabbrev <buffer> --- -----{{{
 augroup END
 " }}} 
@@ -91,10 +97,10 @@ augroup filetype_terminal
     autocmd FileType tmux setlocal foldmethod=marker
 augroup END
 
-" augroup filetype_golang
-" 	autocmd!
-" 	au FileType go     setlocal tabstop=8 shiftwidth=8
-" augroup END
+augroup filetype_golang
+	autocmd!
+	au FileType go     setlocal tabstop=8 shiftwidth=8
+augroup END
 
 " }}}
 
@@ -102,102 +108,103 @@ augroup END
 
 " key_map -----{{{ 
 
-" Leader key
-map      <Space>         <Leader>
+ " Leader key
+ map      <Space>         <Leader>
 
-" save & quit in window
-inoremap <m-s>   <ESC>:w<CR>
-nnoremap <m-s>   :w<CR>
-nnoremap <m-w>   :q<cr>
+ " save & quit in window
+ inoremap <m-s>   <ESC>:w<CR>
+ nnoremap <m-s>   :w<CR>
+ nnoremap <m-w>   :q<cr>
 
-" resize window
-nnoremap <m-Left>  :vertical resize +5<CR>
-nnoremap <m-Right> :vertical resize -5<CR>
-nnoremap <m-Up>    :resize   +5<CR>
-nnoremap <m-Down>  :resize   -5<CR>
+ " resize window
+ nnoremap <m-Left>  :vertical resize +5<CR>
+ nnoremap <m-Right> :vertical resize -5<CR>
+ nnoremap <m-Up>    :resize   +5<CR>
+ nnoremap <m-Down>  :resize   -5<CR>
 
-" switch tabs
-nnoremap <m-{> :tabprevious<CR>
-nnoremap <m-}> :tabnext<CR>
-nnoremap <m-l> :tabnext<CR>
-nnoremap <m-h> :tabprevious<CR>
+ " switch tabs
+ "  nnoremap <m-{> :tabprevious<CR>
+ "  nnoremap <m-}> :tabnext<CR>
+ nnoremap <m-l> :tabnext<CR>
+ nnoremap <m-h> :tabprevious<CR>
 
-" switch window
-noremap  <C-h> <c-w>h
-noremap  <C-l> <c-w>l
-noremap  <C-j> <c-w>j
-noremap  <C-k> <c-w>k
+ " switch window
+ noremap  <C-h> <c-w>h
+ noremap  <C-l> <c-w>l
+ noremap  <C-j> <c-w>j
+ noremap  <C-k> <c-w>k
 
-" switch location
-noremap <m-[>  <C-o>
-noremap <m-]>  <C-i>
-" for ssh to clinkz
-noremap <ESC>[ <C-o>
-noremap <ESC>] <C-i>
+ " switch location
+ noremap <m-[>  <C-o>
+ noremap <m-]>  <C-i>
+ " for ssh to clinkz
+ noremap <ESC>[ <C-o>
+ noremap <ESC>] <C-i>
 
-" faster movement
-nnoremap <C-e> 9<C-e>
-nnoremap <C-y> 9<C-y>
+ " faster movement
+ nnoremap <C-e> 9<C-e>
+ nnoremap <C-y> 9<C-y>
 
-" move in insert mode
-inoremap <m-h> <left>
-inoremap <m-j> <down>
-inoremap <m-k> <up>
-inoremap <m-l> <right>
-inoremap <m-b> <C-o>b
-inoremap <m-w> <C-o>w
-inoremap <m-e> <C-o>e
+ " move in insert mode
+ inoremap <m-h> <left>
+ inoremap <m-j> <down>
+ inoremap <m-k> <up>
+ inoremap <m-l> <right>
+ inoremap <m-b> <C-o>b
+ inoremap <m-w> <C-o>w
+ inoremap <m-e> <C-o>e
 
-" Keep search pattern at the center of the screen.
-nnoremap <silent> n     nzz
-nnoremap <silent> j     gj
-nnoremap <silent> k     gk
-nnoremap <silent> N     Nzz
-nnoremap <silent> *     *zz
-nnoremap <silent> #     #zz
-nnoremap <silent> g*    g*zz
-nnoremap <silent> <Tab> %
-vnoremap <silent> <Tab> %
+ " Keep search pattern at the center of the screen.
+ nnoremap <silent> n     nzz
+ nnoremap <silent> j     gj
+ nnoremap <silent> k     gk
+ nnoremap <silent> N     Nzz
+ nnoremap <silent> *     *zz
+ nnoremap <silent> #     #zz
+ nnoremap <silent> g*    g*zz
+ nnoremap <silent> <Tab> %
+ vnoremap <silent> <Tab> %
 
-" move to line start/end
-noremap  H ^
-noremap  L $
+ " move to line start/end
+ noremap  H ^
+ noremap  L $
 
-" mark
-nnoremap ' `
+ " mark
+ nnoremap ' `
 
-" close all recursively
-nmap zm zM
-" open current recursively
-nmap zo zO
-" open all recursively
-nmap zr zR
-" close current: zc
-" open/close current: za
+ " close all recursively
+ nmap zm zM
+ " open current recursively
+ nmap zo zO
+ " open all recursively
+ nmap zr zR
+ " close current: zc
+ " open/close current: za
 
-" disable 
-nnoremap <C-p> <nop>
+ " disable 
+ nnoremap <C-p> <nop>
 
-" search selected content in visual mode: https://blog.twofei.com/610/
-vnoremap // y/<c-r>"<cr>
-nnoremap // :noh<CR>
+ " search selected content in visual mode: https://blog.twofei.com/610/
+ vnoremap // y/<c-r>"<cr>
+ nnoremap // :noh<CR>
 
-" insert mode specials
-inoremap ;; :=
-" nnoremap <leader>p :let @+ = expand("%:p")<cr>
+ " insert mode specials
+ inoremap ;; :=
+ " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
-" resource configuration
-nnoremap <leader>sv :source $MYVIMRC<CR>
+ " resource configuration
+ " nnoremap <leader>sv :source $MYVIMRC<CR>
 
-nnoremap <leader>sf :set filetype=
-nnoremap <leader>st :set syntax=
+ nnoremap <leader>sf :set filetype=
+ nnoremap <leader>st :set syntax=
+ nnoremap <leader>sv :PackerSync<CR>
 
-" save file with sudo
-cnoremap sudow w !sudo tee % >/dev/null
+ " save file with sudo
+ cnoremap sudow w !sudo tee % >/dev/null
 
-" exit
-nnoremap <leader>wa :wa<CR>
-nnoremap <m-q> :qa<CR>
+ " exit
+ nnoremap <leader>wa :wa<CR>
+ nnoremap <m-q> :qa<CR>
 
 " }}}
 
@@ -259,16 +266,16 @@ Plug 'wesQ3/vim-windowswap'
 
 Plug 'tpope/vim-abolish'    " crs/crm/crc
 Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+let delimitMate_jump_expansion = 1
 
 Plug 'machakann/vim-sandwich'
 
-Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
-" ALT_+/- 用于按分隔符扩大缩小 v 选区
-vmap v     <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-Plug 'preservim/nerdcommenter'
-let g:NERDSpaceDelims = 1
+ Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
+ " ALT_+/- 用于按分隔符扩大缩小 v 选区
+ vmap v     <Plug>(expand_region_expand)
+ vmap <C-v> <Plug>(expand_region_shrink)
 
 " 表格对齐，使用命令 Tabularize
 Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
@@ -299,115 +306,59 @@ let g:gh_line_map = '<leader>gh'
 let g:gh_line_blame_map = '<leader>gb'
 let g:gh_gitlab_domain = "git.curiostack.com"
 let g:gh_use_canonical = 0
-Plug 'zivyangll/git-blame.vim' " git blame info
-nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
+" Plug 'zivyangll/git-blame.vim' " git blame info
+" nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
 
 Plug 'kana/vim-textobj-user' " 基础插件：提供让用户方便的自定义文本对象的接口
-Plug 'kana/vim-textobj-indent' " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
+let g:vim_textobj_parameter_mapping = 'a'
 Plug 'kana/vim-textobj-syntax' " 语法文本对象：iy/ay 基于语法的文本对象
 Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'javascript', 'go', 'python', 'typescript'] } " 函数文本对象：if/af 支持 c/c++/vim/java
-let g:vim_textobj_parameter_mapping = 'a'
 Plug 'sgur/vim-textobj-parameter' " 参数文本对象：i,/a, 包括参数或者列表元素
 Plug 'jceb/vim-textobj-uri' " 提供 uri/url 的文本对象，iu/au 表示
 
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/edge'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'junegunn/seoul256.vim'
-Plug 'arzg/vim-colors-xcode'
-Plug 'morhetz/gruvbox'
-Plug 'liuchengxu/space-vim-theme'
-Plug 'sainnhe/gruvbox-material'
-Plug 'ryanoasis/vim-devicons'
+"  Plug 'dracula/vim', { 'as': 'dracula' }
+"  Plug 'rafi/awesome-vim-colorschemes'
+"  Plug 'sainnhe/everforest'
+"  Plug 'sainnhe/edge'
+"  Plug 'ErichDonGubler/vim-sublime-monokai'
+"  Plug 'rhysd/vim-color-spring-night'
+"  Plug 'junegunn/seoul256.vim'
+"  Plug 'arzg/vim-colors-xcode'
+"  Plug 'morhetz/gruvbox'
+"  Plug 'liuchengxu/space-vim-theme'
+"  Plug 'ryanoasis/vim-devicons'
 
-" airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_powerline_fonts = 0
-let g:airline_exclude_preview = 1
-let g:airline_section_b = '%n'
-let g:airline_theme='deus'
-" tab 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buffers_label = 'b'
-let g:airline#extensions#tabline#tabs_label = 't'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#fugitiveline#enabled = 0
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#vimagit#enabled = 0
+ Plug 'voldikss/vim-floaterm'
+"  nnoremap <leader>lf :FloatermNew lf<cr>
+"  nnoremap <leader>ln :FloatermNew<CR>
+"  nnoremap <leader>lk :FloatermKill<cr>
+ " tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
+"  tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
+"  " Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
+ let g:floaterm_keymap_toggle = '<m-m>'
+ let g:floaterm_width=0.85
+ let g:floaterm_height=0.95
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" --no-ignore
-let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-nnoremap <leader>ss :Files<CR>
-nnoremap <leader>ff :Rg<CR> 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
-" It's a problem of nvim for fzf-vim will be very slow in startup, workround at: https://github.com/neovim/neovim/issues/8939#issuecomment-417797284
-let g:projectionist_ignore_man=1
-let g:fzf_action = {
-  \ 'enter':  'tab split',
-  \ 'ctrl-o': 'e', 
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
 
-Plug 'voldikss/vim-floaterm'
-nnoremap <leader>lf :FloatermNew lf<cr>
-nnoremap <leader>ln :FloatermNew<CR>
-nnoremap <leader>lk :FloatermKill<cr>
-tnoremap <m-p>      <C-\><C-n>:FloatermPrev<CR>
-tnoremap <m-n>      <C-\><C-n>:FloatermNext<CR>
-" Can't use <C-i>, https://unix.stackexchange.com/questions/563469/conflict-ctrl-i-with-tab-in-normal-mode/563480#563480
-let g:floaterm_keymap_toggle = '<m-m>'
-let g:floaterm_width=0.85
-let g:floaterm_height=0.95
+Plug 'preservim/nerdcommenter'
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = "left"
 
-Plug 'preservim/nerdtree'
-let g:NERDTreeMinimalUI    = 1
-let g:NERDTreeDirArrows    = 1
-let g:NERDTreeMapOpenInTab = '<ENTER>'
-let g:NERDTreeShowHidden   = 1
-let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Open the existing NERDTree on each new tab.
-autocmd  BufWinEnter * silent NERDTreeMirror
-nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
+"  Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
+"  let g:go_auto_sameids = 0
+"  " let g:go_updatetime = 800
+"  let g:go_highlight_functions = 1
+"  let g:go_highlight_function_parameters = 1
+"  let g:go_highlight_function_calls = 1
+"  let g:go_highlight_types = 1
+"  let g:go_highlight_fields = 1
+"  let g:go_highlight_format_strings = 1
+"  let g:go_highlight_variable_declarations = 1
+"  let g:go_highlight_variable_assignments = 1
+"  let g:go_imports_mode = 'gopls'
+"  let g:go_gopls_gofumpt = v:true
 
-Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-let g:go_auto_sameids = 0
-" let g:go_updatetime = 800
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_imports_mode = 'gopls'
-let g:go_gopls_gofumpt = v:true
 Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 nnoremap <leader>ggt :GoTests<CR>
 
@@ -427,18 +378,18 @@ let g:coc_global_extensions = [
 	\ 'coc-sql',
 	\ 'coc-emoji' ]
 
-nmap [[         <Plug>(coc-diagnostic-prev)
-nmap ]]         <Plug>(coc-diagnostic-next)
-nmap <m-k>      <Plug>(coc-rename)
-nmap gi         <Plug>(coc-implementation)
-nmap gr         <Plug>(coc-references)
-nmap <m-r>      <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nmap <m-k>      <Plug>(coc-rename)
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap gn         <Plug>(coc-diagnostic-prev)
-nmap gp         <Plug>(coc-diagnostic-next)
+" nmap [[         <Plug>(coc-diagnostic-prev)
+" nmap ]]         <Plug>(coc-diagnostic-next)
+" nmap <m-k>      <Plug>(coc-rename)
+" nmap gi         <Plug>(coc-implementation)
+" nmap gr         <Plug>(coc-references)
+" nmap <m-r>      <Plug>(coc-references)
+" nmap <leader>rn <Plug>(coc-rename)
+" nmap <m-k>      <Plug>(coc-rename)
+" vmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap gn         <Plug>(coc-diagnostic-prev)
+" nmap gp         <Plug>(coc-diagnostic-next)
 
 nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
 nnoremap <silent><leader>l  :CocList --normal diagnostics<cr>
@@ -472,8 +423,8 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" tree sitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+"  " tree sitter
+"  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " format tools
 Plug 'sbdchd/neoformat'
@@ -488,6 +439,7 @@ let g:neoformat_json_jq = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_json = ['jq']
+
 let g:neoformat_pg_sql_pg_format = {
         \ 'exe': 'pg_format',
         \ 'args': ['--keyword-case 2 --wrap-limit 80'],
@@ -497,6 +449,7 @@ let g:neoformat_pg_sql_pg_format = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_pg_sql = ['pg_format']
+
 let g:neoformat_javascript_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -505,6 +458,7 @@ let g:neoformat_javascript_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_javascript = ['prettier']
+
 let g:neoformat_typescript_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -513,6 +467,7 @@ let g:neoformat_typescript_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_typescript = ['prettier']
+
 let g:neoformat_markdown_prettier = {
         \ 'exe': 'prettier',
         \ 'args': ['--stdin-filepath', '"%:p"'],
@@ -521,6 +476,14 @@ let g:neoformat_markdown_prettier = {
         \ 'no_append': 1,
         \ }
 let g:neoformat_enabled_markdown = ['prettier']
+
+let g:neoformat_lua_stylua = {
+		\ 'exe': 'stylua',
+		\ 'args': ['--search-parent-directories', '--stdin-filepath', '"%:p"', '--', '-'],
+		\ 'stdin': 1,
+		\ }
+let g:neoformat_enabled_lua = ['stylua']
+
 let g:neoformat_try_formatprg = 1
 let g:neoformat_only_msg_on_error = 1
 
@@ -531,7 +494,6 @@ call plug#end()
 runtime macros/sandwich/keymap/surround.vim
 
 " }}}
-
 
 
 " style ------------------------ {{{
@@ -548,7 +510,7 @@ set list            " 设置显示制表符等隐藏字符
 set showcmd         " 右下角显示命令
 set splitright      " 水平切割窗口时，默认在右边显示新窗口
 set updatetime=800
-set autoindent
+" set autoindent
 set background=dark " 设置黑色背景
 set t_Co=256        " 允许256色
 
@@ -560,13 +522,9 @@ set termguicolors
 " colorscheme one
 " colorscheme dracula
 colorscheme gruvbox-material
+hi LspSignatureActiveParameter guifg=NONE ctermfg=NONE guibg=#1d1f21 ctermbg=53 gui=Bold,underline,Italic cterm=Bold,underline,Italic guisp=#fbec9f
 
 " }}}
 
 
 
-" lua -----{{{
-
-lua require("init")
-
-" }}}
