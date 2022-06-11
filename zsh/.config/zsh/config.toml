@@ -49,3 +49,6 @@ disabled = true
 
 [dotnet]
 disabled = true
+
+[lua]
+disabled = true

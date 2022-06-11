@@ -92,27 +92,6 @@ augroup END
 " config -----{{{
  
 
-
-" 终端下允许 ALT
-if has('nvim') == 0 && has('gui_running') == 0
-	function! s:metacode(key)
-		exec "set <M-".a:key.">=\e".a:key
-	endfunc
-	for i in range(10)
-		call s:metacode(nr2char(char2nr('0') + i))
-	endfor
-	for i in range(26)
-		call s:metacode(nr2char(char2nr('a') + i))
-		call s:metacode(nr2char(char2nr('A') + i))
-	endfor
-	for c in [',', '.', '/', ';', '[', ']', '{', '}']
-		call s:metacode(c)
-	endfor
-	for c in ['?', ':', '-', '_', '+', '=', "'"]
-		call s:metacode(c)
-	endfor
-endif
-
 " 打开文件时恢复上一次光标所在位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
