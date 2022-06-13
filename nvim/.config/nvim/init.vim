@@ -378,18 +378,18 @@ let g:coc_global_extensions = [
 	\ 'coc-sql',
 	\ 'coc-emoji' ]
 
-" nmap [[         <Plug>(coc-diagnostic-prev)
-" nmap ]]         <Plug>(coc-diagnostic-next)
-" nmap <m-k>      <Plug>(coc-rename)
-" nmap gi         <Plug>(coc-implementation)
-" nmap gr         <Plug>(coc-references)
-" nmap <m-r>      <Plug>(coc-references)
-" nmap <leader>rn <Plug>(coc-rename)
-" nmap <m-k>      <Plug>(coc-rename)
-" vmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap <leader>a  <Plug>(coc-codeaction-selected)
-" nmap gn         <Plug>(coc-diagnostic-prev)
-" nmap gp         <Plug>(coc-diagnostic-next)
+nmap [[         <Plug>(coc-diagnostic-prev)
+nmap ]]         <Plug>(coc-diagnostic-next)
+nmap <m-k>      <Plug>(coc-rename)
+nmap gi         <Plug>(coc-implementation)
+nmap gr         <Plug>(coc-references)
+nmap <m-r>      <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <m-k>      <Plug>(coc-rename)
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap gn         <Plug>(coc-diagnostic-prev)
+nmap gp         <Plug>(coc-diagnostic-next)
 
 nmap     <silent><m-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
 nnoremap <silent><leader>l  :CocList --normal diagnostics<cr>
