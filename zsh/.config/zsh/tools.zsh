@@ -68,7 +68,8 @@ update_nvim () {
 	setpx
 	set -e
 	set -o xtrace
-	wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+	# wget https://github.com/neovim/neovim/releases/download/nightly/nvim-macos.tar.gz
+	wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-macos.tar.gz
 	tar -zxf nvim-macos.tar.gz
 	rm nvim-macos.tar.gz
 	mkdir -p ~/.local/bin/nvim
