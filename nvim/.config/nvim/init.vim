@@ -293,6 +293,21 @@ endfunction
 
 " align
 Plug 'junegunn/vim-easy-align'
+
+" | Keystrokes | Description                        | 等价的命令          | 描述                          |
+" | ---------- | -----------                        | ------              | --                            |
+" | 2<Space>   | Around 2nd whitespaces             | :'<,'>EasyAlign2\   | 第二个空格分隔                |
+" | -<Space>   | Around the last whitespaces        | :'<,'>EasyAlign-\   | 最后一个空格分隔              |
+" | -2<Space>  | Around the 2nd to last whitespaces | :'<,'>EasyAlign-2\  | 倒数第二个空格分隔            |
+" | :          | Around 1st colon (key: value)      | :'<,'>EasyAlign:    | 第一个 : 分隔                 |
+" | <Right>:   | Around 1st colon (key : value)     | :'<,'>EasyAlign:>l1 | 同上, 分隔符右对齐            |
+" | =          | Around 1st operators with =        | :'<,'>EasyAlign=    | 第一个 = 分隔                 |
+" | 3=         | Around 3rd operators with =        | :'<,'>EasyAlign3=   | 第三个 = 分隔                 |
+" | *=         | Around all operators with =        | :'<,'>EasyAlign*=   | 所有的 = 分隔                 |
+" | **=        | Left-right alternating around =    | :'<,'>EasyAlign**=  | = 先左->右对齐,然后交错对齐   |
+" | <Enter>=   | Right alignment around 1st =       | :'<,'>EasyAlign!=   | 第一个 = 前的右对齐, 其他不变 |
+" | <Enter>**= | Right-left alternating around =    | :'<,'>EasyAlign!**= | = 先右->左对齐,然后交错对齐   |
+
 " tutorial: https://xu3352.github.io/linux/2018/10/18/vim-table-format-in-html-or-markdown
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
@@ -345,19 +360,19 @@ Plug 'preservim/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = "left"
 
-"  Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-"  let g:go_auto_sameids = 0
-"  " let g:go_updatetime = 800
-"  let g:go_highlight_functions = 1
-"  let g:go_highlight_function_parameters = 1
-"  let g:go_highlight_function_calls = 1
-"  let g:go_highlight_types = 1
-"  let g:go_highlight_fields = 1
-"  let g:go_highlight_format_strings = 1
-"  let g:go_highlight_variable_declarations = 1
-"  let g:go_highlight_variable_assignments = 1
-"  let g:go_imports_mode = 'gopls'
-"  let g:go_gopls_gofumpt = v:true
+Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
+let g:go_auto_sameids = 0
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_imports_mode = 'gopls'
+let g:go_gopls_gofumpt = v:true
+" let g:go_updatetime = 800
 
 Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 nnoremap <leader>ggt :GoTests<CR>
