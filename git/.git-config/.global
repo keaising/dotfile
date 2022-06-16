@@ -1,0 +1,66 @@
+[clone]
+	directory = $HOME/code
+[color]
+	ui = true
+[alias]
+	co = checkout
+	new = checkout -b
+	cm = commit -m 
+	cp = cherry-pick
+	st = !echo 'untracked' && \
+		git ls-files . --exclude-standard --others && \
+		echo && \
+		echo 'unstaged' && \
+		git diff --stat && \
+		echo '\nstaged' &&  \
+		git diff --cached --stat
+	sts = status -s
+	br = branch
+	ci = commit -a -v
+	com = checkout master
+	rc = rebase --continue
+	mc = merge --continue
+	unstage = reset HEAD--
+	last = log-1 HEAD
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	amend = commit --amend --no-edit
+	dif = diff HEAD
+	diffc = diff --cached
+	up = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	to = !git branch | fzf | xargs git switch -q
+	d = !git branch | fzf | xargs git br -d
+	dd = !git branch | fzf | xargs git br -D
+	dr = !git branch -r | fzf | xargs | sed -e 's/^origin\\///' | xargs -I {} git push origin :{}
+[core]
+	excludesfile = ~/.git-config/.gitignore_global
+	hooksPath = ~/.git-config/hooks/
+	pager = delta
+[push]
+	default = current
+[pull]
+	rebase = true
+[remote "origin"]
+	prune = true
+
+
+
+; delta
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = side-by-side decorations line-numbers 
+	syntax-theme = Dracula
+	plus-style = syntax "#003800"
+	minus-style = syntax "#3f0001"
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
+	hunk-header-decoration-style = cyan box ul
+[delta "line-numbers"]
+	line-numbers-left-style = cyan
+	line-numbers-right-style = cyan
+	line-numbers-minus-style = 124
+	line-numbers-plus-style = 28
+
