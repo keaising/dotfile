@@ -49,11 +49,6 @@ install_fzf () {
 	fzf --version
 }
 
-# 调整 mac 鼠标灵敏度
-fix_mac_mouse () {
-	defaults write -g com.apple.mouse.scaling 30
-}
-
 install_tpm () {
 	setpx
 	set -e
@@ -100,7 +95,7 @@ go_tools () {
 	)
 
 	echo $PWD
-	echo update go tools
+	echo -------------------- update go tools -------------------- 
 	for _gogettool in $_gogettools; do
 		echo update go install tools: $_gogettool
 		GO111MODULE=on go install $_gogettool@latest
@@ -110,7 +105,7 @@ go_tools () {
 		"go-delve/delve" "go-delve/delve/cmd/dlv"
 	)
 	
-	echo update go install tools
+	echo -------------------- update go install tools -------------------- 
 	for k v (${(kv)_gotools}) {
 		echo update go install tools: $k
 		local local_location=$GITHUB_LOCATION/$k
@@ -121,51 +116,4 @@ go_tools () {
 		cd $local_location
 		go install github.com/$v
 	}
-}
-
-function get_arch() {
-	a=$(uname -m)
-	case ${a} in
-	"x86_64" | "amd64")
-	    echo "amd64"
-	    ;;
-	"i386" | "i486" | "i586")
-	    echo "386"
-	    ;;
-	"aarch64" | "arm64")
-	    echo "arm64"
-	    ;;
-	"armv6l" | "armv7l")
-	    echo "arm"
-	;;
-	*)
-	    echo ${NIL}
-	    ;;
-	esac
-}
-
-function get_os() {
-	echo $(uname -s | awk '{print tolower($0)}')
-}
-
-install_gvm () {
-	local release="1.3.0"
-	local os=$(get_os)
-	local arch=$(get_arch)
-	local dest_file="${HOME}/g${release}.${os}-${arch}.tar.gz"
-	local url="https://github.com/voidint/g/releases/download/v${release}/g${release}.${os}-${arch}.tar.gz"
-	
-	echo "[1/3] Downloading ${url}"
-	rm -f "${dest_file}"
-	if [ -x "$(command -v wget)" ]; then
-	    wget -q -P "${HOME}" "${url}"
-	else
-	    curl -s -S -L -o "${dest_file}" "${url}"
-	fi
-	
-	echo "[2/3] Install g to the ${HOME}/.local/bin"
-	mkdir -p "${HOME}/.local/bin"
-	tar -xz -f "${dest_file}" -C "${HOME}/.local/bin"
-	mv "${HOME}/.local/bin/g" "${HOME}/.local/bin/gvm"
-	chmod +x "${HOME}/.local/bin/gvm"
 }
