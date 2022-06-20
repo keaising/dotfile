@@ -32,7 +32,7 @@
 	dd = !git branch | fzf | xargs git br -D
 	dr = !git branch -r | fzf | xargs | sed -e 's/^origin\\///' | xargs -I {} git push origin :{}
 [core]
-	excludesfile = ~/.git-config/.gitignore_global
+	excludesfile = ~/.git-config/global.gitignore
 	hooksPath = ~/.git-config/hooks/
 	pager = delta
 [push]
