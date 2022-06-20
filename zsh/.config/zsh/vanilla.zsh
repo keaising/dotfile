@@ -254,10 +254,8 @@ bindkey '\ei' edit-command-line
 bindkey '^n' autosuggest-accept # auto suggestion
 
 # move cursor
-bindkey '\eH' backward-char
-bindkey '\eL' forward-char
-bindkey '\eJ' down-line-or-history
-bindkey '\eK' up-line-or-history
+bindkey '^P'  up-line-or-history
+bindkey '^N'  down-line-or-history
 bindkey '\eh' backward-word
 bindkey '\el' forward-word
 bindkey '\ej' beginning-of-line
