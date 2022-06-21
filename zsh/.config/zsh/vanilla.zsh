@@ -64,6 +64,7 @@ alias ta='tmux attach-session -t'
 alias tn='tmux new -s'
 alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
+alias tx='tmuxp'
 
 # others
 alias now='date +%s'
