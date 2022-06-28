@@ -373,6 +373,10 @@ let g:go_highlight_variable_assignments = 1
 let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
 " let g:go_updatetime = 800
+nnoremap <leader>tj :GoAddTags json<CR>
+vnoremap <leader>tj :GoAddTags json<CR>
+nnoremap <leader>tb :GoAddTags json bson<CR>
+vnoremap <leader>tb :GoAddTags json bson<CR>
 
 Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
 nnoremap <leader>ggt :GoTests<CR>
