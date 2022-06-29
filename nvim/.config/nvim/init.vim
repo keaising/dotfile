@@ -445,6 +445,10 @@ endfunction
 "  " tree sitter
 "  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+Plug 'brglng/vim-im-select'
+let g:im_select_get_im_cmd = ['im-select']
+let g:im_select_default = 'com.apple.keylayout.ABC'
+
 " format tools
 Plug 'sbdchd/neoformat'
 nnoremap <leader>ft  :Neoformat<CR>
