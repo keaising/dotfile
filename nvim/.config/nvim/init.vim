@@ -112,8 +112,8 @@ augroup END
  map      <Space>         <Leader>
 
  " save & quit in window
- inoremap <m-s>   <ESC>:w<CR>
- nnoremap <m-s>   :w<CR>
+ inoremap <m-s>   <ESC>:wa<CR>
+ nnoremap <m-s>   :wa<CR>
  nnoremap <m-w>   :q<cr>
 
  " resize window
