@@ -4,11 +4,11 @@ env:
 
 window:
   dimensions:
-    columns: 140
-    lines: 60
+    columns: 120
+    lines: 70
   padding:
-    x: 5
-    y: 5
+    x: 3
+    y: 3
   decorations: full
 
 font:
