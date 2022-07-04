@@ -25,7 +25,9 @@ alias jb='j -b'
 alias d='docker'
 alias dc='docker compose'
 alias dcup='docker compose up'
-alias da='docker exec -it'
+da () {
+	docker exec -it $1 /bin/bash
+}
 
 # git
 alias gd='git dif'
@@ -233,14 +235,18 @@ note () {
 	port=$1
 	case $port in
 	l|ls) # ls
-		docker container ls | grep jupyter >&2
+		docker container ls | grep jupyter
 		;;
 	k|ki|kill) # kill
 		docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
 		;;
 	*)   # new
+		[ -z "$port" ] && port=8888
+		name=$2
+		[ -z "$name" ] && name=$(basename $(dirname $PWD))_$(basename $PWD)
 		docker run \
-			-d \
+			-d --rm \
+			--name "$name" \
 			-p "$port":8888 \
 			-v "$PWD":/home/jovyan \
 			jupyter/scipy-notebook \
