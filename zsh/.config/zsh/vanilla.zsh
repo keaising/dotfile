@@ -228,6 +228,27 @@ setpx () {
 	fi
 }
 
+# new note
+note () {
+	port=$1
+	case $port in
+	l|ls) # ls
+		docker container ls | grep jupyter >&2
+		;;
+	k|ki|kill) # kill
+		docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
+		;;
+	*)   # new
+		docker run \
+			-d \
+			-p "$port":8888 \
+			-v "$PWD":/home/jovyan \
+			jupyter/scipy-notebook \
+			jupyter-lab --NotebookApp.token= --NotebookApp.password=
+		open "http://127.0.0.1:${port}/lab"
+	esac
+}
+
 
 # macos only
 dns () {
