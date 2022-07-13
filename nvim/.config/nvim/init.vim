@@ -192,12 +192,10 @@ augroup END
  inoremap ;; :=
  " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
- " resource configuration
- " nnoremap <leader>sv :source $MYVIMRC<CR>
-
  nnoremap <leader>sf :set filetype=
  nnoremap <leader>st :set syntax=
  nnoremap <leader>sv :PackerSync<CR>
+ nnoremap <leader>sb :source $MYVIMRC<CR>
 
  " save file with sudo
  cnoremap sudow w !sudo tee % >/dev/null
@@ -445,9 +443,26 @@ endfunction
 "  " tree sitter
 "  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
-Plug 'brglng/vim-im-select'
-let g:im_select_get_im_cmd = ['im-select']
-let g:im_select_default = 'com.apple.keylayout.ABC'
+" let hostname=system('hostname -s')
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "WARLOCK" 
+	Plug 'brglng/vim-im-select'
+	let g:im_select_get_im_cmd = ['im-select']
+	let g:im_select_default = 'com.apple.keylayout.ABC'
+elseif hostname == "ffcncn060.local"
+	" poorman's im-switch
+	function! AutoIM(event)
+		let current = system('im-select')
+		let is_abc = current == 'com.apple.keylayout.ABC'
+		if a:event == 'leave'
+			if !is_abc
+				silent !im-select com.apple.keylayout.ABC
+			end
+		end
+	endfunction
+	autocmd InsertEnter * call AutoIM("enter")
+	autocmd InsertLeave * call AutoIM("leave")
+endif
 
 " format tools
 Plug 'sbdchd/neoformat'
