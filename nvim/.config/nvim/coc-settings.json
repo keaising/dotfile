@@ -109,6 +109,7 @@
     "timestamptz",
     "touser",
     "unionid",
+    "upserter",
     "wecom",
     "wesociety",
     "wwoauth",
