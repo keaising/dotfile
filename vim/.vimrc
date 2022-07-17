@@ -11,7 +11,7 @@ set clipboard=unnamed,unnamedplus " y/d/c copy to/from system clipboard
 set autoindent
 set winaltkeys=no                 " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
 set ttimeout                      " 功能键超时检测 50 毫秒
-set timeoutlen=100
+set timeoutlen=800
 set ttimeoutlen=5
 set ruler                         " 显示光标位置
 set autoread                      " auto reload when file on disk changed
