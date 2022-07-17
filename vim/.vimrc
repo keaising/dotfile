@@ -1,6 +1,3 @@
-
-
-
 " basic -----{{{
 
 set autoindent
@@ -14,7 +11,8 @@ set clipboard=unnamed,unnamedplus " y/d/c copy to/from system clipboard
 set autoindent
 set winaltkeys=no                 " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
 set ttimeout                      " 功能键超时检测 50 毫秒
-set ttimeoutlen=50
+set timeoutlen=100
+set ttimeoutlen=5
 set ruler                         " 显示光标位置
 set autoread                      " auto reload when file on disk changed
 set ignorecase                    " 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
@@ -108,35 +106,33 @@ autocmd BufReadPost *
 map <Space> <Leader>
 
 " save & quit in window
-inoremap <C-s>   <ESC>:w<CR>
-nnoremap <C-s>   :w<CR>
+inoremap <ESC>s <ESC>:w<CR>
+nnoremap <ESC>s :w<CR>
+nnoremap <ESC>q :qa<CR>
+nnoremap <ESC>w :q<CR>
 
 " resize window
-nnoremap <leader>rh :vertical resize +5<CR>
-nnoremap <leader>rl :vertical resize -5<CR>
-nnoremap <leader>rk :resize   +5<CR>
-nnoremap <leader>rj :resize   -5<CR>
+nnoremap <ESC>[1;3D :vertical resize +5<CR>
+nnoremap <ESC>[1;3C :vertical resize -5<CR>
+nnoremap <ESC>[1;3B :resize   +5<CR>
+nnoremap <ESC>[1;3A :resize   -5<CR>
 
 " switch tabs
-nnoremap <leader>hh :tabprevious<CR>
-nnoremap <leader>ll :tabnext<CR>
-
-" switch location
-noremap <C-h> <C-o>
-noremap <C-l> <C-i>
+nnoremap <ESC>{ :tabprevious<CR>
+nnoremap <ESC>} :tabnext<CR>
 
 " faster movement
 nnoremap <C-e> 9<C-e>
 nnoremap <C-y> 9<C-y>
 
 " move in insert mode
-inoremap <C-h> <left>
-inoremap <C-j> <down>
-inoremap <C-k> <up>
-inoremap <C-l> <right>
-inoremap <C-b> <C-o>b
-inoremap <C-w> <C-o>w
-inoremap <C-e> <C-o>e
+inoremap <ESC>h <left>
+inoremap <ESC>j <down>
+inoremap <ESC>k <up>
+inoremap <ESC>l <right>
+inoremap <ESC>b <C-o>b
+inoremap <ESC>w <C-o>w
+inoremap <ESC>e <C-o>e
 
 " Keep search pattern at the center of the screen.
 nnoremap <silent> n     nzz
@@ -173,259 +169,10 @@ inoremap ;; :=
 vnoremap //         y/<c-r>"<cr>
 nnoremap <leader>// :noh<CR>
 
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
-
-" }}}
-
-
-
-" plugin -----{{{
-
-call plug#begin()
-
-" There is a bug in easymotion, waiting for fixing.
-" https://github.com/easymotion/vim-easymotion/issues/402
-" 全文快速移动，<leader><leader>f{char} 即可触发
-Plug 'easymotion/vim-easymotion'
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap s         <Plug>(easymotion-s2)
-
-" 支持库，给其他插件用的函数库
-Plug 'xolox/vim-misc'
-
-" 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
-Plug 'kshenoy/vim-signature'
-
-" 使用 - 会在不同窗口/标签上显示 A/B/C 等编号，然后字母直接跳转
-Plug 't9md/vim-choosewin'
-nmap -     <Plug>(choosewin)
-
-Plug 'tpope/vim-repeat'     " advanced repeat
-Plug 'tpope/vim-surround'   " surround
-Plug 'tpope/vim-abolish'    " crs/crm/crc
-Plug 'wesQ3/vim-windowswap'
-Plug 'Raimondi/delimitMate' " 配对括号和引号自动补全
-
-Plug 'terryma/vim-expand-region' " 用 v 选中一个区域后，ALT_+/- 按分隔符扩大/缩小选区
-" ALT_+/- 用于按分隔符扩大缩小 v 选区
-vmap v     <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-Plug 'preservim/nerdcommenter'
-let g:NERDSpaceDelims = 1
-
-" 表格对齐，使用命令 Tabularize
-Plug 'godlygeek/tabular', { 'on': 'Tabularize' }
-inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
-function! s:align()
-	let p = '^\s*|\s.*\s|\s*$'
-	if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
-		let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
-		let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
-		Tabularize/|/l1
-		normal! 0
-		call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
-	endif
-endfunction
-
-" align
-Plug 'junegunn/vim-easy-align'
-" tutorial: https://xu3352.github.io/linux/2018/10/18/vim-table-format-in-html-or-markdown
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
-
-Plug 'ruanyl/vim-gh-line' " invoke github/gitlab from vim
-let g:gh_line_map_default = 0
-let g:gh_line_blame_map_default = 1
-let g:gh_line_map = '<leader>gh'
-let g:gh_line_blame_map = '<leader>gb'
-let g:gh_gitlab_domain = "git.curiostack.com"
-let g:gh_use_canonical = 0
-Plug 'zivyangll/git-blame.vim' " git blame info
-nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
-
-Plug 'kana/vim-textobj-user' " 基础插件：提供让用户方便的自定义文本对象的接口
-Plug 'kana/vim-textobj-indent' " indent 文本对象：ii/ai 表示当前缩进，vii 选中当缩进，cii 改写缩进
-Plug 'kana/vim-textobj-syntax' " 语法文本对象：iy/ay 基于语法的文本对象
-Plug 'kana/vim-textobj-function', { 'for':['c', 'cpp', 'vim', 'java', 'javascript', 'go', 'python', 'typescript'] } " 函数文本对象：if/af 支持 c/c++/vim/java
-let g:vim_textobj_parameter_mapping = 'a'
-Plug 'sgur/vim-textobj-parameter' " 参数文本对象：i,/a, 包括参数或者列表元素
-Plug 'jceb/vim-textobj-uri' " 提供 uri/url 的文本对象，iu/au 表示
-
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/gruvbox-material'
-Plug 'ErichDonGubler/vim-sublime-monokai'
-Plug 'rhysd/vim-color-spring-night'
-Plug 'junegunn/seoul256.vim'
-Plug 'arzg/vim-colors-xcode'
-Plug 'morhetz/gruvbox'
-Plug 'liuchengxu/space-vim-theme'
-
-Plug 'ryanoasis/vim-devicons'
-
-" airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_powerline_fonts = 0
-let g:airline_exclude_preview = 1
-let g:airline_section_b = '%n'
-let g:airline_theme='deus'
-" tab 
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 0
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#show_tab_nr = 0
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-" enable/disable displaying buffers with a single tab. (c) >
-let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#show_tab_type = 1
-let g:airline#extensions#tabline#buffers_label = 'b'
-let g:airline#extensions#tabline#tabs_label = 't'
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#fugitiveline#enabled = 0
-let g:airline#extensions#csv#enabled = 1
-let g:airline#extensions#vimagit#enabled = 0
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-" --no-ignore
-let $FZF_DEFAULT_COMMAND='rg --hidden --files -g !.git'
-nnoremap <leader>ss :Files<CR>
-nnoremap <leader>ff :Rg<CR> 
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden -g !.git  --sort path --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
-  \   fzf#vim#with_preview('up', 'ctrl-/'), <bang>0)
-" It's a problem of nvim for fzf-vim will be very slow in startup, workround at: https://github.com/neovim/neovim/issues/8939#issuecomment-417797284
-let g:projectionist_ignore_man=1
-let g:fzf_action = {
-  \ 'enter':  'tab split',
-  \ 'ctrl-o': 'e', 
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-Plug 'preservim/nerdtree'
-let g:NERDTreeMinimalUI    = 1
-let g:NERDTreeDirArrows    = 1
-let g:NERDTreeMapOpenInTab = '<ENTER>'
-let g:NERDTreeShowHidden   = 1
-let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$']
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-			\ quit | endif
-" Open the existing NERDTree on each new tab.
-autocmd  BufWinEnter * silent NERDTreeMirror
-nnoremap <C-n>       :NERDTreeToggle<CR><C-w>w
-
-Plug 'fatih/vim-go' ", { 'do': ':GoUpdateBinaries' }
-let g:go_auto_sameids = 0
-" let g:go_updatetime = 800
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-Plug 'buoto/gotests-vim'  " :GoTests/:GoTestsAll
-
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-	\ 'coc-json',
-	\ 'coc-prettier',
-	\ 'coc-spell-checker',
-	\ 'coc-git',
-	\ 'coc-go',
-	\ 'coc-java',
-	\ 'coc-tsserver',
-	\ 'coc-snippets',
-	\ 'coc-dictionary',
-	\ 'coc-word',
-	\ 'coc-sql',
-	\ 'coc-emoji' ]
-nmap     <silent>g[ <Plug>(coc-diagnostic-prev)
-nmap     <silent>g] <Plug>(coc-diagnostic-next)
-" GoTo code navigation.
-nmap     <silent><C-b>      :<C-u>call CocActionAsync('jumpDefinition')<CR>zz
-nmap     <silent>gi         <Plug>(coc-implementation)
-nmap     <silent>gr         <Plug>(coc-references)
-nmap     <silent><leader>rn <Plug>(coc-rename)
-nnoremap <silent><leader>lc  :CocList --normal diagnostics<CR>
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" Alt+j/k to go to next/previous selection
-autocmd User CocLocationsChange CocList --normal location
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" format tools
-Plug 'sbdchd/neoformat'
-nnoremap <leader>ft  :Neoformat<CR>
-vnoremap <leader>ft  :Neoformat<CR>
-let g:neoformat_json_jq = {
-        \ 'exe': 'jq',
-        \ 'args': ['--indent 4'],
-        \ 'stdin': 1, 
-        \ 'env': ["DEBUG=1"], 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_json = ['jq']
-let g:neoformat_pg_sql_pg_format = {
-        \ 'exe': 'pg_format',
-        \ 'args': ['--keyword-case 2 --wrap-limit 80'],
-        \ 'stdin': 1, 
-        \ 'env': ["DEBUG=1"], 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_pg_sql = ['pg_format']
-let g:neoformat_javascript_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_typescript_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_typescript = ['prettier']
-let g:neoformat_markdown_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_markdown = ['prettier']
-let g:neoformat_try_formatprg = 1
-let g:neoformat_only_msg_on_error = 1
-
-
-call plug#end()
 
 " }}}
 
@@ -453,9 +200,5 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 
-" color dracula
-" colorscheme one
-" colorscheme dracula
-colorscheme gruvbox-material
-
+colorscheme torte
 " }}}
