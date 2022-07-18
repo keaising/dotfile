@@ -134,6 +134,8 @@ return function(packer)
 			vim.cmd(
 				"autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
 			)
+			local util = require("util")
+			util.noremap("n", "<C-n>", ":NvimTreeToggle<CR>")
 		end,
 	})
 
