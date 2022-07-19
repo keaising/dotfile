@@ -50,7 +50,7 @@ return packer.startup(function(use)
     use 'famiu/bufdelete.nvim'
     use 'akinsho/bufferline.nvim'
     use 'nvim-lualine/lualine.nvim'
-	use 'nvim-telescope/telescope.nvim'
+    use 'nvim-telescope/telescope.nvim'
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -73,6 +73,11 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
+
+    -- colorscheme
+    use 'sainnhe/gruvbox-material'
+
+    use "nvim-treesitter/nvim-treesitter"
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
