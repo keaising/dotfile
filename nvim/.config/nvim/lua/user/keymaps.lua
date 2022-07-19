@@ -13,7 +13,6 @@ vim.g.maplocalleader = " "
 -- save & quit in window
 keymap("i", "<A-s>", "<ESC>:w<CR>", opts)
 keymap("n", "<A-s>", ":w<CR>", opts)
-keymap("n", "<A-w>", ":q<CR>", opts)
 keymap("n", "<A-q>", ":qa<CR>", opts)
 keymap("c", "sudow", "w !sudo tee % >/dev/null", opts)
 
@@ -87,3 +86,21 @@ keymap("n", "//", ':noh<CR>', opts)
 keymap("i", ";;", ":=", opts)
 
 keymap("n", "<leader>sv", ":PackerSync<CR>", opts)
+
+-- bufferline
+keymap("n", "<m-{>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<m-}>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<m-<>", ":BufferLineMovePrev<CR>", opts)
+keymap("n", "<m->>", ":BufferLineMoveNext<CR>", opts)
+keymap("n", "<leader>wh", ":BufferLineCloseLeft<CR>", opts)
+keymap("n", "<leader>wl", ":BufferLineCloseRight<CR>", opts)
+keymap("n", "<m-e>", ":BufferLinePick<CR>", opts)
+
+-- bufdelete
+keymap("n", "<A-w>", ":Bdelete<CR>", opts)
+
+-- telescope
+keymap("n", "<leader>ss", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ff", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>fh", ":Telescope help_tags<CR>", opts)
