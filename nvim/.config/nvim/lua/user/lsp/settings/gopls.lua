@@ -1,0 +1,6 @@
+return {
+    settings = {
+        gopls = {
+        }
+    },
+}
