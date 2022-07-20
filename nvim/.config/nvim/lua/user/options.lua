@@ -30,7 +30,11 @@ local options = {
     sidescrolloff  = 15, --水平滚动时，光标距离行首或行尾的位置（单位：字符）。该配置在不折行时比较有用
     relativenumber = true,
     number         = true,
-    nuw            = 6 -- 行号宽度
+    laststatus     = 2, --  总是显示状态栏
+    showtabline    = 2, --  总是显示标签栏
+    list           = true, --  设置显示制表符等隐藏字符
+    showcmd        = true, --  右下角显示命令
+    splitright     = true, --  水平切割窗口时，默认在右边显示新窗口
 }
 
 
@@ -40,11 +44,16 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
-vim.cmd [[set formatoptions+=B]] -- 合并两行中文时，不在中间加空格
-vim.cmd [[set ffs=unix,dos,mac]] -- 文件换行符，默认使用 unix 换行符
-vim.cmd [[set backupdir=~/.vim/tmp]] -- 备份文件地址，统一管理
-vim.cmd [[set backupext=.bak]] -- 备份文件扩展名
-vim.cmd [[set noswapfile]]
-vim.cmd [[set noundofile]]
+vim.cmd [[
+set whichwrap+=<,>,[,],h,l
+set iskeyword+=- 
+set signcolumn=yes  "  总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
+set colorcolumn=88  "  显示列宽
+set formatoptions+=B " 合并两行中文时，不在中间加空格
+set ffs=unix,dos,mac " 文件换行符，默认使用 unix 换行符
+set backupdir=~/.vim/tmp " 备份文件地址，统一管理
+set backupext=.bak " 备份文件扩展名
+set noswapfile
+set noundofile
+set t_Co=256        " 允许256色
+]]
