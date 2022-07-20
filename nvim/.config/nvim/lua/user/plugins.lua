@@ -77,7 +77,9 @@ return packer.startup(function(use)
     -- colorscheme
     use 'sainnhe/gruvbox-material'
 
-    use "nvim-treesitter/nvim-treesitter"
+    -- vim plugins
+    use 'voldikss/vim-floaterm'
+    use 'sbdchd/neoformat'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
