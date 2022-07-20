@@ -52,6 +52,9 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-telescope/telescope.nvim'
 
+	use 'ray-x/go.nvim'
+	use 'ray-x/guihua.lua'
+
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
