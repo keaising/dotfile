@@ -131,3 +131,7 @@ keymap('n', "<leader>ft", ":Neoformat<CR>", opts)
 keymap('x', 'ga', '<Plug>(EasyAlign)', opts)
 -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
+
+-- ALT_+/- 用于按分隔符扩大缩小 v 选区, terryma/vim-expand-region
+keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
+keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
