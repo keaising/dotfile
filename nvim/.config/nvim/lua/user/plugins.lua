@@ -52,9 +52,6 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-telescope/telescope.nvim'
 
-	use 'ray-x/go.nvim'
-	use 'ray-x/guihua.lua'
-
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
@@ -70,6 +67,17 @@ return packer.startup(function(use)
     -- LSP
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+
+	use 'ray-x/go.nvim'
+	use 'ray-x/guihua.lua'
+	use({
+		"glepnir/lspsaga.nvim",
+		branch = "main",
+		config = function()
+			local saga = require("lspsaga")
+			saga.init_lsp_saga()
+		end,
+	})
 
     -- Treesitter
     use {
