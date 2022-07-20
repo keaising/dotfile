@@ -45,6 +45,7 @@ for k, v in pairs(options) do
 end
 
 vim.cmd [[
+
 set whichwrap+=<,>,[,],h,l
 set iskeyword+=- 
 set signcolumn=yes  "  总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
@@ -56,14 +57,14 @@ set backupext=.bak " 备份文件扩展名
 set noswapfile
 set noundofile
 set t_Co=256        " 允许256色
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,space:· " 设置分隔符可视
+
+" 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
 	\	 exe "normal! g`\"" |
 	\ endif
-]]
 
-vim.cmd [[ 
 augroup filetype_vim
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
@@ -81,4 +82,5 @@ augroup filetype_golang
 	autocmd!
 	au FileType go     setlocal tabstop=8 shiftwidth=8
 augroup END
+
 ]]
