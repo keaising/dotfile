@@ -21,6 +21,16 @@ lsp_installer.on_server_ready(function(server)
 		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
 	end
 
+	if server.name == "bashls" then
+		local bashls_opts = require("user.lsp.settings.bashls")
+		opts = vim.tbl_deep_extend("force", bashls_opts , opts)
+	end
+
+	if server.name == "dockerls" then
+		local dockerls_opts = require("user.lsp.settings.dockerls")
+		opts = vim.tbl_deep_extend("force", dockerls_opts  , opts)
+	end
+
 	if server.name == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
