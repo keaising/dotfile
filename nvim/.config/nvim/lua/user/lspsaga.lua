@@ -4,16 +4,16 @@ saga.init_lsp_saga({
 	saga_winblend = 20,
 	max_preview_lines = 20,
 	finder_action_keys = {
-		open = "<CR>",
+		open = { "<CR>", "o" },
 		vsplit = "v",
 		split = "s",
 		tabe = "t",
-		quit = "<ESC>",
+		quit = { "<ESC>", "q" },
 		scroll_down = "<C-n>",
 		scroll_up = "<C-p>", -- quit can be a table
 	},
 	code_action_keys = {
-		quit = "<ESC>",
+		quit = { "<ESC>", "q"},
 		exec = "<CR>",
 	},
 	rename_action_quit = "<ESC>",

@@ -68,6 +68,8 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig" -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
+	use 'RRethy/vim-illuminate'
+
 	use 'ray-x/go.nvim'
 	use 'ray-x/guihua.lua'
 	use({
