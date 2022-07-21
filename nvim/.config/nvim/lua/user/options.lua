@@ -56,6 +56,7 @@ set backupdir=~/.vim/tmp " 备份文件地址，统一管理
 set backupext=.bak " 备份文件扩展名
 set noswapfile
 set noundofile
+set termguicolors
 set t_Co=256        " 允许256色
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,space:· " 设置分隔符可视
 
