@@ -51,6 +51,8 @@ return packer.startup(function(use)
     use 'akinsho/bufferline.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-telescope/telescope.nvim'
+	use 'folke/trouble.nvim'
+	use 'numToStr/Comment.nvim'
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -69,7 +71,9 @@ return packer.startup(function(use)
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 
 	use 'RRethy/vim-illuminate'
+	use 'j-hui/fidget.nvim'
 
+	-- go
 	use 'ray-x/go.nvim'
 	use 'ray-x/guihua.lua'
 	use({
@@ -83,6 +87,10 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
     use "windwp/nvim-autopairs"
+	use "windwp/nvim-ts-autotag"
+
+	-- git
+	use 'f-person/git-blame.nvim'
 
     -- colorscheme
     use 'sainnhe/gruvbox-material'
