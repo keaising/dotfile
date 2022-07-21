@@ -58,7 +58,7 @@ set noswapfile
 set noundofile
 set termguicolors
 set t_Co=256        " 允许256色
-set listchars=tab:\|\ ,trail:.,extends:>,precedes:<,space:· " 设置分隔符可视
+set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 
 " 恢复上次打开位置
 autocmd BufReadPost *

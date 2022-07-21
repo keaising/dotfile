@@ -43,11 +43,11 @@ nvim_tree.setup {
                 symlink = "",
                 git = {
                     unstaged = "",
-                    staged = "S",
+                    staged = "",
                     unmerged = "",
                     renamed = "➜",
                     deleted = "",
-                    untracked = "U",
+                    untracked = "",
                     ignored = "◌",
                 },
                 folder = {
@@ -62,7 +62,8 @@ nvim_tree.setup {
     }
 }
 
-vim.cmd(
-    "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
-)
+-- vim.cmd(
+--     "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
+-- )
+
 vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
