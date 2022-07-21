@@ -1,3 +1,35 @@
+local saga = require('lspsaga')
+
+saga.init_lsp_saga({
+	saga_winblend = 20,
+	max_preview_lines = 20,
+	finder_action_keys = {
+		open = "<CR>",
+		vsplit = "v",
+		split = "s",
+		tabe = "t",
+		quit = "<ESC>",
+		scroll_down = "<C-n>",
+		scroll_up = "<C-p>", -- quit can be a table
+	},
+	code_action_keys = {
+		quit = "<ESC>",
+		exec = "<CR>",
+	},
+	rename_action_quit = "<ESC>",
+	show_outline = {
+		win_position = 'down',
+		-- set the special filetype in there which in left like nvimtree neotree defx
+		left_with = '',
+		win_width = 60,
+		auto_enter = true,
+		auto_preview = true,
+		virt_text = '┃',
+		jump_key = 'o',
+		-- auto refresh when change buffer
+		auto_refresh = true,
+	}
+})
 
 -- reference
 vim.keymap.set("n", "gr", require("lspsaga.finder").lsp_finder, { silent = true,noremap = true })

@@ -4,7 +4,30 @@ if not status_ok then
 end
 
 configs.setup({
-    ensure_installed = "all", -- one of "all" or a list of languages
+    -- ensure_installed = "all", -- one of "all" or a list of languages
+	ensure_installed = {
+		"lua",
+		"go",
+		"bash",
+		"dockerfile",
+		"go",
+		"gomod",
+		"gowork",
+		"html",
+		"http",
+		"javascript",
+		"json",
+		"markdown",
+		"python",
+		"regex",
+		"rust",
+		"sql",
+		"tsx",
+		"typescript",
+		"vim",
+		"vue",
+		"yaml",
+	},
     ignore_install = { "" }, -- List of parsers to ignore installing
     highlight = {
         enable = true, -- false will disable the whole extension
