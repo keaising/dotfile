@@ -80,7 +80,7 @@ let g:vim_textobj_parameter_mapping = 'a'
 " vim-sandwich
 runtime macros/sandwich/keymap/surround.vim 
 
-let g:gitblame_message_template = '<author> • <date> • <summary>'
+let g:gitblame_message_template = '                   <author> • <date> • <summary>'
 let g:gitblame_date_format = '%r'
 
 ]]
