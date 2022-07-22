@@ -129,6 +129,8 @@ keymap('n', "<leader>ft", ":Neoformat<CR>", opts)
 --  | <Enter>**= | Right-left alternating around =    | :'<,'>EasyAlign!**= | = 先右->左对齐,然后交错对齐   |
 
 -- tutorial: https://xu3352.github.io/linux/2018/10/18/vim-table-format-in-html-or-markdown
+-- cheat sheet: https://devhints.io/vim-easyalign
+-- Align by regex>    :EasyAlign /[:;]+/
 -- Start interactive EasyAlign in visual mode (e.g. vipga)
 keymap('x', 'ga', '<Plug>(EasyAlign)', opts)
 -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
@@ -139,5 +141,5 @@ keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 
 -- Comment
-keymap('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", opts)
-keymap('x', 'gc',         '<Plug>(comment_toggle_linewise_visual)',                                                             opts)
+keymap('n', '<leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", opts)
+keymap('x', '<leader>cc', '<Plug>(comment_toggle_linewise_visual)',                                                             opts)
