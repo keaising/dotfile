@@ -47,7 +47,7 @@ vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { silent = true })
 vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true,noremap = true })
 
 -- rename
-vim.keymap.set("n", "<A-k>", "<cmd>Lspsaga rename<CR>", { silent = true,noremap = true })
+-- vim.keymap.set("n", "<A-k>", "<cmd>Lspsaga rename<CR>", { silent = true,noremap = true })
 
 -- preview definition
 vim.keymap.set("n", "gd", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
