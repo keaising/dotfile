@@ -47,12 +47,12 @@ return packer.startup(function(use)
 
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
-    use 'famiu/bufdelete.nvim'
-    use 'akinsho/bufferline.nvim'
-    use 'nvim-lualine/lualine.nvim'
+    use 'famiu/bufdelete.nvim'      -- delete buffer without close window
+    use 'akinsho/bufferline.nvim'   -- buffer line management
+    use 'nvim-lualine/lualine.nvim' -- tab line management
     use 'nvim-telescope/telescope.nvim'
-	use 'folke/trouble.nvim'
-	use 'numToStr/Comment.nvim'
+	use 'folke/trouble.nvim'        -- show all errors in project
+	use 'numToStr/Comment.nvim'     -- comment selected line
 
     -- cmp plugins
     use "hrsh7th/nvim-cmp"         -- The completion plugin
@@ -67,12 +67,13 @@ return packer.startup(function(use)
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- enable LSP
+    use "neovim/nvim-lspconfig"           -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-	use "smjonas/inc-rename.nvim"
+	use "smjonas/inc-rename.nvim" -- better rename
+	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show lsp diagnostic info in a unique line
 
-	use 'RRethy/vim-illuminate'
-	use 'j-hui/fidget.nvim'
+	use 'RRethy/vim-illuminate'           -- highlighting other uses of the word under the cursor
+	use 'j-hui/fidget.nvim'               -- show progress of loading LSP servers
 
 	-- go
 	use 'ray-x/go.nvim'
