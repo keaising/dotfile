@@ -91,7 +91,7 @@ return packer.startup(function(use)
 	use "windwp/nvim-ts-autotag"
 
 	-- git
-	use 'f-person/git-blame.nvim'
+	use 'lewis6991/gitsigns.nvim'
 
     -- colorscheme
     use 'sainnhe/gruvbox-material'
