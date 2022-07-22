@@ -133,6 +133,8 @@ keymap('n', "<leader>ft", ":Neoformat<CR>", opts)
 -- Align by regex>    :EasyAlign /[:;]+/
 -- Start interactive EasyAlign in visual mode (e.g. vipga)
 keymap('x', 'ga', '<Plug>(EasyAlign)', opts)
+-- Align by regex
+keymap('v', 'gs', ":EasyAlign ", opts)
 -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
 
@@ -142,7 +144,7 @@ keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 
 -- Comment
 keymap('n', '<leader>cc', '<Plug>(comment_toggle_current_linewise)', opts)
-keymap('x', '<leader>cc', '<Plug>(comment_toggle_linewise_visual)',                                                             opts)
+keymap('x', '<leader>cc', '<Plug>(comment_toggle_linewise_visual)',  opts)
 
 -- rename
 vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
