@@ -1,23 +1,19 @@
 -- For those plugins who just need a simple setup command
 
-local status_ok, fidget = pcall(require, "fidget")
-if not status_ok then
-  return
-end
-fidget.setup()
+local plugin_list = {
+	'fidget',
+	"Comment",
+	"inc_rename"
+}
 
-
-local ok_comment, comment = pcall(require, "Comment")
-if not ok_comment then
-  return
+for _, p in pairs(plugin_list) do
+	local status_ok, plugin = pcall(require, p)
+	if status_ok then
+		plugin.setup()
+	end
 end
-comment.setup()
 
-local ok_rename, rename = pcall(require, "inc_rename")
-if not ok_rename then
-  return
-end
-rename.setup()
+-- For those init in a strange way
 
 local ok_lines, lsp_lines = pcall(require, "lsp_lines")
 if not ok_lines then
