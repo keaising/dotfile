@@ -7,8 +7,8 @@ end
 fidget.setup()
 
 
-local status_ok, comment = pcall(require, "Comment")
-if not status_ok then
+local ok_comment, comment = pcall(require, "Comment")
+if not ok_comment then
   return
 end
 comment.setup()

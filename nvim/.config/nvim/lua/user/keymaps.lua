@@ -137,3 +137,7 @@ keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
 -- ALT_+/- 用于按分隔符扩大缩小 v 选区, terryma/vim-expand-region
 keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
+
+-- Comment
+keymap('n', '<Leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", opts)
+keymap('x', 'gc',         '<Plug>(comment_toggle_linewise_visual)',                                                             opts)
