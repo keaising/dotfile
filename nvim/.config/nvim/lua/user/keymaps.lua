@@ -141,5 +141,8 @@ keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 
 -- Comment
-keymap('n', '<leader>cc', "v:count == 0 ? '<Plug>(comment_toggle_current_linewise)' : '<Plug>(comment_toggle_linewise_count)'", opts)
+keymap('n', '<leader>cc', '<Plug>(comment_toggle_current_linewise)', opts)
 keymap('x', '<leader>cc', '<Plug>(comment_toggle_linewise_visual)',                                                             opts)
+
+-- rename
+vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })

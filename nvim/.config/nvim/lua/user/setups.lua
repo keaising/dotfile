@@ -12,3 +12,9 @@ if not ok_comment then
   return
 end
 comment.setup()
+
+local ok_rename, rename = pcall(require, "inc_rename")
+if not ok_rename then
+  return
+end
+rename.setup()
