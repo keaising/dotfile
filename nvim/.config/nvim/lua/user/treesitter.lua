@@ -1,10 +1,26 @@
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
-    return
+	return
 end
 
 configs.setup({
-    -- ensure_installed = "all", -- one of "all" or a list of languages
+	textobjects = {
+		select = {
+			enable = true,
+			-- Automatically jump forward to textobj, similar to targets.vim
+			lookahead = true,
+			keymaps = {
+				-- You can use the capture groups defined in textobjects.scm
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+				["ic"] = "@class.inner",
+				["ia"] = "@parameter.inner",
+				["aa"] = "@parameter.outer",
+			},
+		},
+	},
+	-- ensure_installed = "all", -- one of "all" or a list of languages
 	ensure_installed = {
 		"lua",
 		"go",
@@ -28,15 +44,15 @@ configs.setup({
 		"vue",
 		"yaml",
 	},
-    ignore_install = { "" }, -- List of parsers to ignore installing
-    highlight = {
-        enable = true, -- false will disable the whole extension
-        disable = { "css" }, -- list of language that will be disabled
-    },
-    autopairs = {
-        enable = true,
-    },
-    indent = { enable = true, disable = { "python", "css" } },
+	ignore_install = { "" }, -- List of parsers to ignore installing
+	highlight = {
+		enable = true, -- false will disable the whole extension
+		disable = { "css" }, -- list of language that will be disabled
+	},
+	autopairs = {
+		enable = true,
+	},
+	indent = { enable = true, disable = { "python", "css" } },
 	autotag = {
 		enable = true,
 	},
