@@ -86,6 +86,7 @@ return packer.startup(function(use)
         "nvim-treesitter/nvim-treesitter",
         run = ":TSUpdate",
     }
+	use 'nvim-treesitter/nvim-treesitter-textobjects'
     use "windwp/nvim-autopairs"
 	use "windwp/nvim-ts-autotag"
 
@@ -104,13 +105,6 @@ return packer.startup(function(use)
 	use 'machakann/vim-sandwich'
 	use 'terryma/vim-expand-region'
 	use 'ruanyl/vim-gh-line'
-
-	-- text object 
-	use 'kana/vim-textobj-user' -- 基础插件：提供让用户方便的自定义文本对象的接口
-	use 'kana/vim-textobj-syntax' -- 语法文本对象：iy/ay 基于语法的文本对象
-	use 'kana/vim-textobj-function' -- { 'for':['c', 'cpp', 'vim', 'java', 'javascript', 'go', 'python', 'typescript'] } " 函数文本对象：if/af 支持 c/c++/vim/java
-	use 'sgur/vim-textobj-parameter' -- 参数文本对象：i,/a, 包括参数或者列表元素
-	use 'jceb/vim-textobj-uri' -- 提供 uri/url 的文本对象，iu/au 表示
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
