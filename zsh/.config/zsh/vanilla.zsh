@@ -267,7 +267,12 @@ done
 }
 
 vi () {
-[[ -n "$TMUX" ]] && tmux rename-window "#{b:pane_current_path}"
+if [[ -n "$TMUX" ]]; then
+	window_name=$(tmux display-message -p '#W')
+	if [[ $window_name == 'zsh' ]]; then
+		tmux rename-window "#{b:pane_current_path}"
+	fi
+fi
 nvim "$@"
 }
 
