@@ -16,6 +16,11 @@ lsp_installer.on_server_ready(function(server)
 		opts = vim.tbl_deep_extend("force", gopls_opts, opts)
 	end
 
+	if server.name == "golangci_lint_ls" then
+		local golangci_lint_ls_opts = require("user.lsp.settings.golangci_lint_ls")
+		opts = vim.tbl_deep_extend("force", golangci_lint_ls_opts , opts)
+	end
+
 	if server.name == "jsonls" then
 		local jsonls_opts = require("user.lsp.settings.jsonls")
 		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
