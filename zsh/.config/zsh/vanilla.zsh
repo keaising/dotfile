@@ -123,6 +123,9 @@ export GEM_HOME="$HOME/code/gems"
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="$HOME/code"
 
+# python
+export PYENV_ROOT="$HOME/.pyenv"
+
 # jabba
 export JABBA_HOME="$HOME/code/jabba"
 [ -s "$JABBA_HOME/jabba.sh" ] && source "$JABBA_HOME/jabba.sh"
@@ -134,25 +137,24 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # for tmux in wezterm, kitty
-export TERM="screen-256color"
+export TERM="xterm-256color"
 
 # WSL (aka Bash for Windows) doesn't work well with BG_NICE
 [ -d "/mnt/c" ] && [[ "$(uname -a)" == *Microsoft* ]] && unsetopt BG_NICE
 
 # path
 _enabled_paths=(
+	"$PYENV_ROOT/bin"
+	"$HOME/.local/bin"    # tools
+	"$HOME/code/gems/bin" # gems
+	"$HOME/code/go/bin"   # go
+	"$N_PREFIX/bin"       # n
+	"$HOME/.cargo/bin"    # rust
+
 	"/usr/bin"
 	"/usr/local/bin"
 
-	"$HOME/.local/bin" # normal install destination
-	"$HOME/.cargo/bin" # cargo install destination
-
-	"$HOME/code/gems/bin" # gems
-
-	"$N_PREFIX/bin" #n
-
-	"/usr/local/opt/openjdk/bin"   # macos
-	"$HOME/Library/Python/3.9/bin" # ansible
+	"/usr/local/opt/openjdk/bin" # macos
 )
 
 for _enabled_path in $_enabled_paths[@]; do
@@ -265,7 +267,12 @@ done
 }
 
 vi () {
-[[ -n "$TMUX" ]] && tmux rename-window "#{b:pane_current_path}"
+if [[ -n "$TMUX" ]]; then
+	window_name=$(tmux display-message -p '#W')
+	if [[ $window_name == 'zsh' ]]; then
+		tmux rename-window "#{b:pane_current_path}"
+	fi
+fi
 nvim "$@"
 }
 
