@@ -70,7 +70,7 @@ return packer.startup(function(use)
     use "neovim/nvim-lspconfig"           -- enable LSP
     use "williamboman/nvim-lsp-installer" -- simple to use language server installer
 	use "smjonas/inc-rename.nvim" -- better rename
-	use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show lsp diagnostic info in a unique line
+	--use 'https://git.sr.ht/~whynothugo/lsp_lines.nvim' -- show lsp diagnostic info in a unique line
 
 	use 'RRethy/vim-illuminate'           -- highlighting other uses of the word under the cursor
 	use 'j-hui/fidget.nvim'               -- show progress of loading LSP servers

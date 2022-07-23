@@ -15,8 +15,8 @@ end
 
 -- For those init in a strange way
 
-local ok_lines, lsp_lines = pcall(require, "lsp_lines")
-if not ok_lines then
-  return
-end
-lsp_lines.register_lsp_virtual_lines()
+-- local ok_lines, lsp_lines = pcall(require, "lsp_lines")
+-- if not ok_lines then
+--   return
+-- end
+-- lsp_lines.register_lsp_virtual_lines()
