@@ -108,6 +108,7 @@ glone () {
 # }}}
 
 
+
 # config --- {{{
 # env
 export VISUAL=nvim
@@ -311,3 +312,32 @@ bindkey -s '\e;' 'll\n'
 
 # --- }}}
 
+
+
+# check tools exist --- {{{
+
+if ! type fzf > /dev/null; then
+	echo fzf not found!
+fi
+
+if ! type rg > /dev/null; then
+	echo rg not found!
+fi
+
+if ! type fd > /dev/null; then
+	echo fd not found!
+fi
+
+if ! type bat > /dev/null; then
+	echo bat not found!
+fi
+
+if ! type gitui > /dev/null; then
+	echo gitui not found!
+fi
+
+if ! type nvim > /dev/null; then
+	echo nvim not found!
+fi
+
+# --- }}}
