@@ -1,0 +1,46 @@
+#!/bin/zsh
+
+export GITHUB_LOCATION="$HOME/code/github.com"
+export LOCAL_BIN="$HOME/.local/bin/"
+
+cd $HOME/code
+# setpx
+go version
+# export GOPROXY=https://goproxy.io 
+# gopls
+local _gogettools=(
+	"golang.org/x/tools/gopls"
+	"github.com/uudashr/gopkgs/cmd/gopkgs"
+	"github.com/ramya-rao-a/go-outline"
+	"github.com/haya14busa/goplay/cmd/goplay"
+	"github.com/fatih/gomodifytags"
+	"github.com/josharian/impl"
+	"github.com/cweill/gotests/..."
+	"github.com/golangci/golangci-lint/cmd/golangci-lint"
+	"golang.org/x/tools/cmd/goimports"
+	"github.com/rinchsan/gosimports/cmd/gosimports"
+)
+
+echo $PWD
+echo -------------------- update go tools ---------------------------- 
+for _gogettool in $_gogettools; do
+	echo update go install tools: $_gogettool
+	GO111MODULE=on go install $_gogettool@latest
+done
+
+local -A _gotools=(
+	"go-delve/delve" "go-delve/delve/cmd/dlv"
+)
+
+echo -------------------- update go install tools -------------------- 
+for k v (${(kv)_gotools}) {
+	echo update go install tools: $k
+	local local_location=$GITHUB_LOCATION/$k
+	local repo_url=https://github.com/$k
+	if [ ! -d "$local_location" ]; then
+		git clone $repo_url $local_location
+	fi
+	cd $local_location
+	go install github.com/$v
+}
+
