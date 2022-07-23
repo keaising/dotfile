@@ -78,16 +78,10 @@ return packer.startup(function(use)
 	-- go
 	use 'ray-x/go.nvim'
 	use 'ray-x/guihua.lua'
-	use({
-		"glepnir/lspsaga.nvim",
-		branch = "main",
-	})
+	use { "glepnir/lspsaga.nvim", branch = "main" }
 
     -- Treesitter
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-    }
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
     use "windwp/nvim-autopairs"
 	use "windwp/nvim-ts-autotag"
@@ -97,6 +91,7 @@ return packer.startup(function(use)
 
     -- colorscheme
     use 'sainnhe/gruvbox-material'
+	use 'Mofiqul/dracula.nvim'
 
     -- vim plugins
     use 'voldikss/vim-floaterm'
