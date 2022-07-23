@@ -61,12 +61,6 @@ keymap("n", "gg",    "ggzz", opts)
 keymap("n", "<Tab>", "%",    opts)
 keymap("n", "<Tab>", "%",    opts)
 
--- move to line start/end
-keymap("n", "H", "^", opts)
-keymap("n", "L", "$", opts)
-keymap("v", "H", "^", opts)
-keymap("v", "L", "$", opts)
-
 -- " mark
 keymap("n", "'",  "`",  opts)
 -- " close all recursively

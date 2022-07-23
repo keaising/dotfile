@@ -60,6 +60,10 @@ set termguicolors
 set t_Co=256        " 允许256色
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 
+" I don't know how to implement this in vim.api
+noremap  H ^
+noremap  L $
+
 " 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
