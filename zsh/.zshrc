@@ -95,7 +95,9 @@ autoload -Uz _zinit
 # # fzf
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
 export FZF_COMPLETION_TRIGGER='ll'
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+_fzf_compgen_dir() {
+	fd --type d --hidden --follow . "$HOME/code"
+}
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # z.lua
@@ -103,9 +105,6 @@ export _ZL_MATCH_MODE=1
 export _ZL_CMD=z
 export _ZL_ADD_ONCE=1
 eval "$(lua $ZSH_CONF/z.lua  --init zsh)" #  once enhanced)"
-
-# check tools in the end
-source "$ZSH_CONF/tools.zsh"
 
 # --- }}
 

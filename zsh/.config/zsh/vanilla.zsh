@@ -192,6 +192,17 @@ zstyle ':completion:*' rehash true
 
 
 # function --- {{{
+
+cd () {
+	if [[ "$#" != 0 ]]; then
+		builtin cd "$@";
+		return
+	fi
+	local dir="$(printf '%s\n' $(fd --type d --hidden --follow . "$HOME/code" | fzf))"
+	[[ ${#dir} != 0 ]] || return 0
+	builtin cd "$dir" &> /dev/null
+}
+
 mc () {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
