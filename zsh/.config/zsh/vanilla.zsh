@@ -213,9 +213,9 @@ hostip () {
 }
 
 pxio () {
-	export https_proxy=http://10.10.43.3:1080
-	export http_proxy=http://10.10.43.3:1080
-	export all_proxy=socks5://10.10.43.3:1081
+	export https_proxy=http://10.10.43.1:1080
+	export http_proxy=http://10.10.43.1:1080
+	export all_proxy=socks5://10.10.43.1:1081
 	echo "set proxy to 10.10.43.3:1080"
 }
 
