@@ -27,6 +27,7 @@
 	dif = diff HEAD
 	diffc = diff --cached
 	up = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	pt = push origin --tag
 	to = !git branch | fzf | xargs git switch -q
 	d = !git branch | fzf | xargs git br -d
 	dd = !git branch | fzf | xargs git br -D
