@@ -44,7 +44,7 @@ alias jb='jabba'
 
 # proxy
 alias pl='https_proxy=http://127.0.0.1:1080 http_proxy=http://127.0.0.1:1080 all_proxy=socks5://127.0.0.1:1081 '
-alias pi='https_proxy=http://10.10.43.3:1080 http_proxy=http://10.10.43.3:1080 all_proxy=socks5://10.10.43.3:1080 '
+alias pi='https_proxy=http://10.10.43.1:1080 http_proxy=http://10.10.43.1:1080 all_proxy=socks5://10.10.43.1:1080 '
 
 # rust
 alias cb='cargo build'
@@ -87,6 +87,7 @@ alias dfp='datahub-field-parse'
 # golang config in macOS
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/code/go
+[[ $(uname -s) == 'Linux' ]] && export GOPROXY=https://goproxy.io,direct
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
@@ -216,7 +217,7 @@ pxio () {
 	export https_proxy=http://10.10.43.1:1080
 	export http_proxy=http://10.10.43.1:1080
 	export all_proxy=socks5://10.10.43.1:1081
-	echo "set proxy to 10.10.43.3:1080"
+	echo "set proxy to 10.10.43.1:1080"
 }
 
 px () {
