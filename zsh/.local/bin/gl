@@ -1,15 +1,17 @@
 #! /usr/bin/env lua
 
--- execute command in bash
-function exec(command)
-	local handle = io.popen(command)
-	local result = handle:read("*a")
-	handle:close()
-	return trim_space(result)
+local function trim_space(s)
+	return s:match"^%s*(.*)":match"(.-)%s*$"
 end
 
-function trim_space(s)
-	return s:match"^%s*(.*)":match"(.-)%s*$"
+-- execute command in bash
+local function exec(command)
+	local handle = io.popen(command)
+	if handle ~= nil then
+		local result = handle:read("*a")
+		handle:close()
+		return trim_space(result)
+	end
 end
 
 -- copy from https://github.com/skywind3000/z.lua/blob/master/z.lua#L137
@@ -40,8 +42,8 @@ function string:endswith(text)
 	return text == "" or self:sub(-#text) == text
 end
 
-function open(url) 
-	return function() 
+local function open(url)
+	return function()
 		exec('open '..'\''..url..'\'')
 	end
 end
@@ -80,7 +82,6 @@ local commit_id = exec('git rev-parse HEAD')
 local gitlab_merge = root_url..'/-/merge_requests/new?merge_request[source_branch]='..branch
 if branch == 'master' then
 	gitlab_merge = gitlab_merge..'&merge_request[target_branch]=stage'
-	
 end
 
 local tree = root_url..'/-/tree/'..branch
