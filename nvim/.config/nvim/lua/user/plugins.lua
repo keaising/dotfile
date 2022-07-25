@@ -102,6 +102,7 @@ return packer.startup(function(use)
 	use 'machakann/vim-sandwich'
 	use 'terryma/vim-expand-region'
 	use 'ruanyl/vim-gh-line'
+	use 'APZelos/blamer.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

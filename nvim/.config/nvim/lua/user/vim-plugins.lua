@@ -82,4 +82,13 @@ runtime macros/sandwich/keymap/surround.vim
 
 let g:UltiSnipsSnippetDirectories=[ "ultisnips" ]
 
+
+" APZelos/blamer.nvim
+let g:blamer_enabled = 1
+let g:blamer_delay = 300
+let g:blamer_prefix = '                                '
+let g:blamer_template = '<committer>, <committer-time> • <summary>'
+let g:blamer_date_format = '%y/%m/%d'
+let g:blamer_relative_time = 1
+
 ]]
