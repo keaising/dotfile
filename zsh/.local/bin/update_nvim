@@ -4,9 +4,9 @@
 set -e
 set -o xtrace
 
-sudo rm -rf ~/.local/bin/nvim
-sudo rm -f /usr/local/bin/nvim
-mkdir -p ~/.local/bin/nvim
+rm -rf ~/.local/bin/nvim
+rm -f /usr/local/bin/nvim
+mkdir -p ~/.local/bin
 
 if [[ $(uname -s) == 'Linux' ]]; then
 	wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
@@ -21,6 +21,6 @@ else
 	mv nvim-macos ~/.local/bin/nvim
 fi
 
-sudo ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
+ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
 nvim --version
 
