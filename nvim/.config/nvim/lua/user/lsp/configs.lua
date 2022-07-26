@@ -13,7 +13,7 @@ local servers = {
 	"dockerls",
 	"golangci_lint_ls",
 	"pyright",
-	"grammerly",
+	-- "grammerly",
 	"tsserver",
 	"vimls",
 }

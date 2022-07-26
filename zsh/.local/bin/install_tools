@@ -1,0 +1,48 @@
+#!/bin/zsh
+
+set -e
+
+local OS=$(uname -s)
+tbi () {
+	echo $1 'in' $OS 'is to be implemented'
+}
+nosupport () {
+	echo $1 'is not supported'
+}
+
+local macOS="Darwin"
+local linux="Linux"
+
+local _tools=(
+	'stylua'
+	'yapf'
+)
+
+stylua () {
+	case $OS in
+		$macOS)
+			brew install stylua
+			;;
+		$linux)
+			tbi $1
+			;;
+	esac
+}
+
+yapf () {
+	pip install --upgrade yapf
+}
+
+main () {
+	tool=$1
+	for _tool in $_tools; do
+		if [[ $_tool == $tool ]]; then
+			$_tools $tool
+			return
+		fi
+	done
+
+	nosupport $tool
+}
+
+main $@
