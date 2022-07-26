@@ -62,6 +62,12 @@ let g:neoformat_lua_stylua = {
 		\ }
 let g:neoformat_enabled_lua = ['stylua']
 
+let g:neoformat_python_yapf = {
+		\ 'exe': 'yapf',
+		\ 'stdin': 1, 
+		\ }
+let g:neoformat_enabled_python = ['yapf']
+
 let g:neoformat_try_formatprg = 1
 let g:neoformat_only_msg_on_error = 1
 
