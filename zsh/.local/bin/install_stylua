@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+set -e
+
+if [[ $(uname -s) == 'Linux' ]]; then
+	curl -s https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest | grep -wo "https.*linux.*zip" | wget -qi -
+	unzip stylua-linux.zip
+	rm stylua-linux.zip
+	chmod a+x ./stylua
+	mv stylua ~/.local/bin/
+else
+	brew install stylua
+fi
+
+stylua --version

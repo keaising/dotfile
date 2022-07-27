@@ -1,0 +1,17 @@
+#!/bin/zsh
+
+set -e
+
+if [[ $(uname -s) == 'Linux' ]]; then
+	curl -s https://api.github.com/repos/gokcehan/lf/releases/latest | grep -wo "https.*linux-amd64.*gz" | wget -qi -
+	tar xzvf lf-linux-amd64.tar.gz
+	rm lf-linux-amd64.tar.gz
+	mv lf ~/.local/bin/
+else
+	curl -s https://api.github.com/repos/gokcehan/lf/releases/latest | grep -wo "https.*darwin.*gz" | wget -qi -
+	tar xzvf lf-darwin-amd64.tar.gz
+	rm lf-darwin-amd64.tar.gz
+	mv lf ~/.local/bin/
+fi
+
+lf --version
