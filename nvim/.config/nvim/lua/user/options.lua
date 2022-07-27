@@ -59,6 +59,7 @@ set noundofile
 set termguicolors
 set t_Co=256        " 允许256色
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
+set mouse=
 
 " I don't know how to implement this in vim.api
 noremap  H ^
