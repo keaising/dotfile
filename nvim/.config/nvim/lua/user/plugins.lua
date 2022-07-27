@@ -40,11 +40,15 @@ packer.init {
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
+	-- helpers
 	use "wbthomason/packer.nvim" -- Have packer manage itself
 	use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
 	use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
 
+	-- my plugins here
+	use 'keaising/im-select.nvim'
+
+	-- UI
 	use 'kyazdani42/nvim-web-devicons'
 	use 'kyazdani42/nvim-tree.lua'
 	use 'famiu/bufdelete.nvim'      -- delete buffer without close window
@@ -80,7 +84,7 @@ return packer.startup(function(use)
 	use 'ray-x/guihua.lua'
 	use { "glepnir/lspsaga.nvim", branch = "main" }
 
-    -- Treesitter
+	-- Treesitter
 	use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 	use 'nvim-treesitter/nvim-treesitter-textobjects'
 	use "windwp/nvim-autopairs"
