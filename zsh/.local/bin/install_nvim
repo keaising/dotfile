@@ -2,7 +2,6 @@
 
 # setpx
 set -e
-set -o xtrace
 
 rm -rf ~/.local/bin/nvim
 rm -f /usr/local/bin/nvim

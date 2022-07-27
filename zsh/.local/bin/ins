@@ -14,30 +14,38 @@ local macOS="Darwin"
 local linux="Linux"
 
 local _tools=(
-	'stylua'
 	'yapf'
+
+	'fzf'
+	'gitui'
+	'gotools'
+	'lf'
+	'nvim'
+	'stylua'
+	'tpm'
 )
 
-stylua () {
-	case $OS in
-		$macOS)
-			brew install stylua
-			;;
-		$linux)
-			tbi $1
-			;;
-	esac
-}
-
-yapf () {
+install_yapf () {
 	pip install --upgrade yapf
 }
 
 main () {
 	tool=$1
+	
+	case $OS in
+		$macOS)
+			mkdir -p ~/Downloads/
+			cd ~/Downloads/
+			;;
+		$linux)
+			mkdir -p ~/downloads
+			cd ~/downloads
+			;;
+	esac
+	
 	for _tool in $_tools; do
 		if [[ $_tool == $tool ]]; then
-			$_tools $tool
+			install_$_tool $tool
 			return
 		fi
 	done
