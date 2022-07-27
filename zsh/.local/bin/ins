@@ -16,11 +16,14 @@ local linux="Linux"
 local _tools=(
 	'yapf'
 
+	'bat'
+	'fd'
 	'fzf'
 	'gitui'
 	'gotools'
 	'lf'
 	'nvim'
+	'rg'
 	'stylua'
 	'tpm'
 )
