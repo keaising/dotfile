@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+
+if [[ $(uname -s) == 'Linux' ]]; then
+	sudo apt-get install fd-find
+	ln -s $(which fdfind) ~/.local/bin/fd
+else
+	brew install fd
+fi
+
+fd --version

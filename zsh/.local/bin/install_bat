@@ -1,0 +1,12 @@
+#!/bin/zsh
+
+set -e
+
+if [[ $(uname -s) == 'Linux' ]]; then
+	sudo apt-get install bat
+	ln -s /usr/bin/batcat ~/.local/bin/bat
+else
+	brew install bat
+fi
+
+bat --version

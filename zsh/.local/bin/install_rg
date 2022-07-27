@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+set -e
+
+if [[ $(uname -s) == 'Linux' ]]; then
+	sudo apt-get install ripgrep
+else
+	brew install ripgrep
+fi
+
+rg --version
