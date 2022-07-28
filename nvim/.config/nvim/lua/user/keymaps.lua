@@ -13,7 +13,8 @@ vim.g.maplocalleader = " "
 -- save & quit in window
 keymap("i", "<A-s>", "<ESC>:w<CR>",              opts)
 keymap("n", "<A-s>", ":w<CR>",                   opts)
-keymap("n", "<A-q>", ":qa<CR>",                  opts)
+keymap("n", "<A-q>", ":q<CR>",                   opts)
+keymap("n", "<C-q>", ":qa<CR>",                  opts)
 keymap("c", "sudow", "w !sudo tee % >/dev/null", opts)
 
 -- resize window
