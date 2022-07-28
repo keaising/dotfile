@@ -108,6 +108,7 @@ return packer.startup(function(use)
 	use 'terryma/vim-expand-region'
 	use 'ruanyl/vim-gh-line'
 	use 'APZelos/blamer.nvim'
+	use 'simeji/winresizer'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
