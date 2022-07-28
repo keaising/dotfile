@@ -4,7 +4,8 @@ local plugin_list = {
 	fidget = {},
 	Comment = {},
 	inc_rename = {},
-	["im-select"] = { im_select_default_im_select = "com.apple.keylayout.ABC" },
+	im_select = { im_select_default_im_select = "com.apple.keylayout.ABC" },
+	lsp_signature = { bind = false },
 }
 
 for p, opt in pairs(plugin_list) do
