@@ -97,4 +97,6 @@ let g:blamer_template = '<committer>, <committer-time> • <summary>'
 let g:blamer_date_format = '%y/%m/%d'
 let g:blamer_relative_time = 1
 
+let g:winresizer_start_key = '<C-T>'
+
 ]]
