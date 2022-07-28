@@ -3,6 +3,7 @@
 local plugin_list = {
 	fidget = {},
 	Comment = {},
+	inc_rename = {},
 	["im-select"] = { im_select_default_im_select = "com.apple.keylayout.ABC" },
 }
 
