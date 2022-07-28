@@ -82,6 +82,7 @@ return packer.startup(function(use)
 	-- go
 	use 'ray-x/go.nvim'
 	use 'ray-x/guihua.lua'
+	use 'ray-x/lsp_signature.nvim'
 	use { "glepnir/lspsaga.nvim", branch = "main" }
 
 	-- Treesitter
