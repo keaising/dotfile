@@ -205,6 +205,14 @@ cd () {
 	builtin cd "$dir" &> /dev/null
 }
 
+rm () {
+	if [[ "$#" != 0 ]]; then
+		builtin rm "$@";
+		return
+	fi
+	fd --hidden --follow | fzf | xargs rm -rf
+}
+
 mc () {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
