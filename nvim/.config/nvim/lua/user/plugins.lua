@@ -53,7 +53,7 @@ return packer.startup(function(use)
 	-- use 'kyazdani42/nvim-tree.lua'
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "main", 
+		branch = "main",
 		requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", }
 	}
 	use 'famiu/bufdelete.nvim'      -- delete buffer without close window
@@ -101,6 +101,7 @@ return packer.startup(function(use)
 
 	-- colorscheme
 	use 'sainnhe/gruvbox-material'
+	use 'rebelot/kanagawa.nvim'
 	use 'Mofiqul/dracula.nvim'
 
 	-- vim plugins

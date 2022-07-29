@@ -103,7 +103,7 @@ neotree.setup({
 			["d"] = "delete",
 			["r"] = "rename",
 			["y"] = "copy_to_clipboard",
-			["x"] = "cut_to_clipboard",
+			-- ["x"] = "cut_to_clipboard",
 			["p"] = "paste_from_clipboard",
 			["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
 			-- ["q"] = "close_window",
@@ -161,7 +161,7 @@ neotree.setup({
 		show_unloaded = true,
 		window = {
 			mappings = {
-				["bd"] = "buffer_delete",
+				["x"] = "buffer_delete",
 				["<bs>"] = "navigate_up",
 				["."] = "set_root",
 			},
