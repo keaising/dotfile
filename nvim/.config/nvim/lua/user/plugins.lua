@@ -50,7 +50,12 @@ return packer.startup(function(use)
 
 	-- UI
 	use 'kyazdani42/nvim-web-devicons'
-	use 'kyazdani42/nvim-tree.lua'
+	-- use 'kyazdani42/nvim-tree.lua'
+	use {
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "main", 
+		requires = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", }
+	}
 	use 'famiu/bufdelete.nvim'      -- delete buffer without close window
 	use 'akinsho/bufferline.nvim'   -- buffer line management
 	use 'nvim-lualine/lualine.nvim' -- tab line management

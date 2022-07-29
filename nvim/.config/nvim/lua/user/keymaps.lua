@@ -40,6 +40,8 @@ keymap("n", "<ESC>]", "<C-i>", opts)
 -- move faster
 keymap("n", "<C-e>", "9<C-e>", opts)
 keymap("n", "<C-y>", "9<C-y>", opts)
+keymap("v", "<C-e>", "9<C-e>", opts)
+keymap("v", "<C-y>", "9<C-y>", opts)
 
 -- move in insert mode
 keymap("i", "<A-h>", "<left>",  opts)

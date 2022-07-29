@@ -326,7 +326,7 @@ bindkey '\e[1;3A' beginning-of-line
 bindkey '\e[1;3B' end-of-line
 
 # shortcuts
-bindkey -s '\ee' 'vi \n'
+bindkey -s '\ee' 'vi . \n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 
