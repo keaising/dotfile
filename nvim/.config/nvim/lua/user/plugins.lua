@@ -102,8 +102,8 @@ return packer.startup(function(use)
 
 	-- colorscheme
 	use 'sainnhe/gruvbox-material'
-	use 'rebelot/kanagawa.nvim'
-	use 'Mofiqul/dracula.nvim'
+	-- use 'rebelot/kanagawa.nvim'
+	-- use 'Mofiqul/dracula.nvim'
 
 	-- vim plugins
 	use 'voldikss/vim-floaterm'
