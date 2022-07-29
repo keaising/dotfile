@@ -47,6 +47,7 @@ return packer.startup(function(use)
 
 	-- my plugins here
 	use 'keaising/im-select.nvim'
+	-- use '~/code/github.com/keaising/im-select.nvim'
 
 	-- UI
 	use 'kyazdani42/nvim-web-devicons'
