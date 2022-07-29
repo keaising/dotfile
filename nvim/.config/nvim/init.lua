@@ -5,7 +5,7 @@ require "user.plugins"
 require "user.treesitter"
 require "user.cmp"
 require "user.lsp"
-require "user.nvim-tree"
+require "user.neotree"
 require "user.lspsaga"
 
 require "user.autopairs"

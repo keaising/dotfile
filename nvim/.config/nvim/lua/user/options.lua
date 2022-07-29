@@ -86,7 +86,13 @@ augroup END
 
 augroup filetype_golang
 	autocmd!
-	au FileType go     setlocal tabstop=8 shiftwidth=8
+	au FileType go setlocal tabstop=8 shiftwidth=8
+augroup END
+
+augroup filetype_lua
+	autocmd!
+	au FileType lua setlocal foldmarker={,}
+	au FileType lua setlocal foldmethod=marker
 augroup END
 
 ]]
