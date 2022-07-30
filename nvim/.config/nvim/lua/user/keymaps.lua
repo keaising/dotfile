@@ -85,7 +85,8 @@ keymap("n", "//", ':noh<CR>',     opts)
 -- " insert mode specials
 keymap("i", ";;", ":=", opts)
 
-keymap("n", "<leader>sv", ":PackerSync<CR>", opts)
+keymap("n", "<leader>sv", ":PackerSync<CR>",    opts)
+keymap("n", "<leader>sc", ":PackerCompile<CR>", opts)
 
 -- bufferline
 keymap("n", "<m-{>",      ":BufferLineCyclePrev<CR>",  opts)
