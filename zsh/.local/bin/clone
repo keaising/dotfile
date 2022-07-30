@@ -12,8 +12,11 @@ def main():
         clone(sys.argv[1])
 
 
-def clone(url: str):
+def clone(url: str) -> None:
     host, org, repo = split_url(url)
+    if host == "":
+        return None
+
     dir = get_dir()
     target = os.path.join(dir, host, org, repo)
 
@@ -26,24 +29,26 @@ def clone(url: str):
 
 
 def get_dir() -> str:
-    directory = fetch('git config clone.directory')
+    directory = fetch("git config clone.directory")
     if directory == "":
         print(
             "Please set clone directory by 'git config --global clone.directory YOUR.PATH'"
         )
-        return
+        return ""
 
     if directory.startswith("$HOME"):
-        directory = "~" + directory[len("$HOME"):]
+        directory = "~" + directory[len("$HOME") :]
     return os.path.expanduser(directory)
 
 
-def split_url(url: str):
-    reg_ex = '[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+)'
+def split_url(url: str) -> tuple[str, str, str]:
+    reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+)"
     if url.startswith("git"):
-        reg_ex = '[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+).git'
+        reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+).git"
     result = re.match(reg_ex, url)
-    return result.group('host_name'), result.group('org'), result.group('repo')
+    if result is None:
+        return "", "", ""
+    return (result.group("host_name"), result.group("org"), result.group("repo"))
 
 
 def fetch(command: str) -> str:
@@ -51,7 +56,7 @@ def fetch(command: str) -> str:
 
 
 def run(command: str) -> None:
-    return os.system(command)
+    os.system(command)
 
 
 main()

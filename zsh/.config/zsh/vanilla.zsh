@@ -1,6 +1,5 @@
 # A pure zsh config can be use in bare machine
 
-
 # alias --- {{{
 
 # ansible
@@ -25,7 +24,7 @@ alias jb='j -b'
 alias d='docker'
 alias dc='docker compose'
 alias dcup='docker compose up'
-da () {
+da() {
 	docker exec -it $1 /bin/bash
 }
 
@@ -77,11 +76,7 @@ alias y=yarn
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 alias dfp='datahub-field-parse'
 
-
-
 # }}}
-
-
 
 # golang --- {{{
 # golang config in macOS
@@ -101,14 +96,12 @@ alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 
-glone () {
+glone() {
 	clone $1 | tee /tmp/goclone
 	cd $(cat /tmp/goclone | head -n 1 | awk '{print $4}')
 }
 
 # }}}
-
-
 
 # config --- {{{
 # env
@@ -148,11 +141,12 @@ export TERM="xterm-256color"
 # path
 _enabled_paths=(
 	"$PYENV_ROOT/bin"
-	"$HOME/.local/bin"    # tools
-	"$HOME/code/gems/bin" # gems
-	"$HOME/code/go/bin"   # go
-	"$N_PREFIX/bin"       # n
-	"$HOME/.cargo/bin"    # rust
+	"$HOME/.local/bin"                  # tools
+	"$HOME/.local/share/nvim/mason/bin" # nvim lsp servers/linters
+	"$HOME/code/gems/bin"               # gems
+	"$HOME/code/go/bin"                 # go
+	"$N_PREFIX/bin"                     # n
+	"$HOME/.cargo/bin"                  # rust
 
 	"/usr/bin"
 	"/usr/local/bin"
@@ -162,12 +156,12 @@ _enabled_paths=(
 
 for _enabled_path in $_enabled_paths[@]; do
 	# only add to $PATH when path exist and path not in $PATH
-	[[ -d "${_enabled_path}" ]] && \
-	[[ ! :$PATH: == *":${_enabled_path}:"* ]] && \
-	PATH="$PATH:${_enabled_path}"
+	[[ -d "${_enabled_path}" ]] &&
+		[[ ! :$PATH: == *":${_enabled_path}:"* ]] &&
+		PATH="$PATH:${_enabled_path}"
 done
 
-# tab completion ignore case 
+# tab completion ignore case
 # https://superuser.com/questions/1092033/how-can-i-make-zsh-tab-completion-fix-capitalization-errors-for-directories-and
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
@@ -191,48 +185,46 @@ setopt interactivecomments
 zstyle ':completion:*' rehash true
 # }}}
 
-
-
 # function --- {{{
 
-cd () {
+cd() {
 	if [[ "$#" != 0 ]]; then
-		builtin cd "$@";
+		builtin cd "$@"
 		return
 	fi
 	local dir="$(printf '%s\n' $(fd --type d --hidden --follow . "$HOME/code" | fzf))"
 	[[ ${#dir} != 0 ]] || return 0
-	builtin cd "$dir" &> /dev/null
+	builtin cd "$dir" &>/dev/null
 }
 
-rmf () {
+rmf() {
 	fd --hidden --follow | fzf | xargs rm -rf
 }
 
-mc () {
+mc() {
 	mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-hostip () {
-	export HOST_IP="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1)" 
+hostip() {
+	export HOST_IP="$(ifconfig | grep "inet " | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1)"
 	echo $HOST_IP
 }
 
-pxio () {
+pxio() {
 	export https_proxy=http://10.10.43.1:1080
 	export http_proxy=http://10.10.43.1:1080
 	export all_proxy=socks5://10.10.43.1:1081
 	echo "set proxy to 10.10.43.1:1080"
 }
 
-px () {
+px() {
 	export https_proxy=http://127.0.0.1:1080
 	export http_proxy=http://127.0.0.1:1080
 	export all_proxy=socks5://127.0.0.1:1081
 	echo "set proxy to 127.0.0.1:1080"
 }
 
-nopx () {
+nopx() {
 	export https_proxy=
 	export http_proxy=
 	export all_proxy=
@@ -240,10 +232,10 @@ nopx () {
 }
 
 # auto set proxy
-setpx () {
-	ping -c 1 -q 10.10.43.3 1> /dev/null; ping1=$?
-	if [ $ping1 -eq 0 ]
-	then
+setpx() {
+	ping -c 1 -q 10.10.43.3 1>/dev/null
+	ping1=$?
+	if [ $ping1 -eq 0 ]; then
 		pxio
 	else
 		px
@@ -251,52 +243,49 @@ setpx () {
 }
 
 # new note
-note () {
+note() {
 	port=$1
 	case $port in
-	l|ls) # ls
-		docker container ls | grep jupyter
-		;;
-	k|ki|kill) # kill
-		docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
-		;;
-	*)   # new
-		[ -z "$port" ] && port=8888
-		name=$2
-		[ -z "$name" ] && name=$(basename $(dirname $PWD))_$(basename $PWD)
-		docker run \
-			-d --rm \
-			--name "$name" \
-			-p "$port":8888 \
-			-v "$PWD":/home/jovyan \
-			jupyter/scipy-notebook \
-			jupyter-lab --NotebookApp.token= --NotebookApp.password=
-		open "http://127.0.0.1:${port}/lab"
+		l | ls) # ls
+			docker container ls | grep jupyter
+			;;
+		k | ki | kill) # kill
+			docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
+			;;
+		*) # new
+			[ -z "$port" ] && port=8888
+			name=$2
+			[ -z "$name" ] && name=$(basename $(dirname $PWD))_$(basename $PWD)
+			docker run \
+				-d --rm \
+				--name "$name" \
+				-p "$port":8888 \
+				-v "$PWD":/home/jovyan \
+				jupyter/scipy-notebook \
+				jupyter-lab --NotebookApp.token= --NotebookApp.password=
+			open "http://127.0.0.1:${port}/lab"
+			;;
 	esac
 }
 
-
 # macos only
-dns () {
-for i in {1..$1}
-do
-        sudo killall -HUP mDNSResponder
-done
+dns() {
+	for i in {1..$1}; do
+		sudo killall -HUP mDNSResponder
+	done
 }
 
-vi () {
-if [[ -n "$TMUX" ]]; then
-	window_name=$(tmux display-message -p '#W')
-	if [[ $window_name == 'zsh' ]]; then
-		tmux rename-window "#{b:pane_current_path}"
+vi() {
+	if [[ -n "$TMUX" ]]; then
+		window_name=$(tmux display-message -p '#W')
+		if [[ $window_name == 'zsh' ]]; then
+			tmux rename-window "#{b:pane_current_path}"
+		fi
 	fi
-fi
-nvim "$@"
+	nvim "$@"
 }
 
 # --- }}}
-
-
 
 # keymap --- {{{
 
@@ -326,35 +315,24 @@ bindkey -s '\ee' 'vi . \n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
 
-
 # --- }}}
-
-
 
 # check tools exist --- {{{
 
-if ! type fzf > /dev/null; then
-	echo fzf not found!
-fi
+_tools_detect=(
+	"fzf"
+	"rg"
+	"fd"
+	"bat"
+	"gitui"
+	"nvim"
+)
 
-if ! type rg > /dev/null; then
-	echo rg not found!
-fi
-
-if ! type fd > /dev/null; then
-	echo fd not found!
-fi
-
-if ! type bat > /dev/null; then
-	echo bat not found!
-fi
-
-if ! type gitui > /dev/null; then
-	echo gitui not found!
-fi
-
-if ! type nvim > /dev/null; then
-	echo nvim not found!
-fi
+for _tool in $_tools_detect[@]; do
+	# only add to $PATH when path exist and path not in $PATH
+	if ! type "$_tool" >/dev/null; then
+		echo $_tool not found
+	fi
+done
 
 # --- }}}

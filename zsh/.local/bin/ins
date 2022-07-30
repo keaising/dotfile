@@ -3,10 +3,10 @@
 set -e
 
 local OS=$(uname -s)
-tbi () {
+tbi() {
 	echo $1 'in' $OS 'is to be implemented'
 }
-nosupport () {
+nosupport() {
 	echo $1 'is not supported'
 }
 
@@ -28,13 +28,13 @@ local _tools=(
 	'tpm'
 )
 
-install_yapf () {
+install_yapf() {
 	pip install --upgrade yapf
 }
 
-main () {
+main() {
 	tool=$1
-	
+
 	case $OS in
 		$macOS)
 			mkdir -p ~/Downloads/
@@ -45,7 +45,7 @@ main () {
 			cd ~/downloads
 			;;
 	esac
-	
+
 	for _tool in $_tools; do
 		if [[ $_tool == $tool ]]; then
 			install_$_tool $tool

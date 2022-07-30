@@ -8,15 +8,6 @@ vim.cmd [[
     let g:floaterm_height=0.95
 
 " format
-let g:neoformat_json_jq = {
-        \ 'exe': 'jq',
-        \ 'args': ['--indent 4'],
-        \ 'stdin': 1, 
-        \ 'env': ["DEBUG=1"], 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_json = ['jq']
 
 let g:neoformat_pg_sql_pg_format = {
         \ 'exe': 'pg_format',
@@ -55,18 +46,13 @@ let g:neoformat_markdown_prettier = {
         \ }
 let g:neoformat_enabled_markdown = ['prettier']
 
-let g:neoformat_lua_stylua = {
-		\ 'exe': 'stylua',
-		\ 'args': ['--search-parent-directories', '--stdin-filepath', '"%:p"', '--', '-'],
-		\ 'stdin': 1,
-		\ }
+let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
+let g:neoformat_enabled_python = ['black']
+let g:neoformat_enabled_sh = ['shfmt']
+let g:neoformat_enabled_zsh = ['shfmt']
 
-let g:neoformat_python_yapf = {
-		\ 'exe': 'yapf',
-		\ 'stdin': 1, 
-		\ }
-let g:neoformat_enabled_python = ['yapf']
+let g:shfmt_opt="-ci"
 
 let g:neoformat_try_formatprg = 1
 let g:neoformat_only_msg_on_error = 1
