@@ -205,11 +205,7 @@ cd () {
 	builtin cd "$dir" &> /dev/null
 }
 
-rm () {
-	if [[ "$#" != 0 ]]; then
-		builtin rm "$@";
-		return
-	fi
+rmf () {
 	fd --hidden --follow | fzf | xargs rm -rf
 }
 
