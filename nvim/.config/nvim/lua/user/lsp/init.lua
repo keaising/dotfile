@@ -3,8 +3,7 @@ if not lspconfig_ok then
 	return
 end
 
-
-local servers = {
+local lsp_servers = {
 	"jsonls",
 	"sumneko_lua",
 	"gopls",
@@ -17,22 +16,11 @@ local servers = {
 	"vimls",
 }
 
--- lsp installer
-local installer_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not installer_ok then
-	return
-end
-
-lsp_installer.setup({
-	ensure_installed = servers,
-})
-
-
--- setup lsp for lspconfig
+------  setup lsp for lspconfig ------
 local lspconfig = require("lspconfig")
 local lsphandler = require("user.lsp.handlers")
 
-for _, server in pairs(servers) do
+for _, server in pairs(lsp_servers) do
 	local opts = {
 		on_attach = lsphandler.on_attach,
 		capabilities = lsphandler.capabilities,
@@ -45,3 +33,29 @@ for _, server in pairs(servers) do
 end
 
 lsphandler.setup()
+
+------ lsp installer ------
+local mason_ok, mason = pcall(require, "mason")
+if not mason_ok then
+	return
+end
+mason.setup()
+
+local mason_config_ok, mason_config = pcall(require, "mason-lspconfig")
+if not mason_config_ok then
+	return
+end
+
+local all_binaries = {
+	"black",
+	"stylua",
+}
+
+for i = 1, #lsp_servers do
+	all_binaries[#all_binaries + 1] = lsp_servers[i]
+end
+
+mason_config.setup({
+	ensure_installed = { "black", "stylua" },
+	automatic_installation = true,
+})
