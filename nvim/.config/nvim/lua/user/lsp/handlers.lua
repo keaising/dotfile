@@ -1,6 +1,5 @@
 local M = {}
 
--- TODO: backfill this to template
 M.setup = function()
 	local signs = {
 		{ name = "DiagnosticSignError", text = "" },
@@ -13,7 +12,7 @@ M.setup = function()
 		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 
-	local config = {
+	vim.diagnostic.config({
 		-- set to 'false' to disable diagnostic info in virtual text
 		virtual_text = true,
 		-- show signs
@@ -26,25 +25,25 @@ M.setup = function()
 		float = {
 			focusable = false,
 			style = "minimal",
-			border = "rounded",
+			border = "none", -- none/single/double/rounded/solid/shadow
 			source = "always",
 			header = "",
 			prefix = "",
 		},
-	}
-
-	vim.diagnostic.config(config)
+	})
 
 	vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-		border = "rounded",
+		border = "none",
 		width = 60,
 	})
 
 	vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-		border = "rounded",
+		border = "none",
 		width = 60,
 	})
 end
+
+--- on_attach
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
@@ -58,13 +57,13 @@ end
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD",        "<cmd>lua vim.lsp.buf.declaration()<CR>",                         opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd",        "<cmd>lua vim.lsp.buf.definition()<CR>",                          opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-b>",     "<cmd>lua vim.lsp.buf.definition()<CR>zz",                        opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi",        "<cmd>lua vim.lsp.buf.implementation()<CR>",                      opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-j>",     "<cmd>lua vim.diagnostic.goto_next({ border = 'rounded' })<CR>",  opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>",                       opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-f>",     "<cmd>lua vim.lsp.buf.format{async=true}<CR>",                    opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-b>", "<cmd>lua vim.lsp.buf.definition()<CR>zz", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-j>", "<cmd>lua vim.diagnostic.goto_next({ border = 'none' })<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-f>", "<cmd>lua vim.lsp.buf.format{async=true}<CR>", opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<A-k>",      "<cmd>lua vim.lsp.buf.rename()<CR>",         opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "gr",         "<cmd>lua vim.lsp.buf.references()<CR>",     opts)
 	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>",    opts)
@@ -84,6 +83,8 @@ M.on_attach = function(client, bufnr)
 	lsp_highlight_document(client)
 end
 
+--- capabilities
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
@@ -94,4 +95,3 @@ end
 M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 
 return M
-
