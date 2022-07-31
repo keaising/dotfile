@@ -14,8 +14,6 @@ local macOS="Darwin"
 local linux="Linux"
 
 local _tools=(
-	'yapf'
-
 	'bat'
 	'fd'
 	'fzf'
@@ -27,10 +25,6 @@ local _tools=(
 	'stylua'
 	'tpm'
 )
-
-install_yapf() {
-	pip install --upgrade yapf
-}
 
 main() {
 	tool=$1
