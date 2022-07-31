@@ -13,13 +13,26 @@ window:
 
 font:
   normal:
-    # family: Consolas NF
+    # patch any font as nerd font:
+    # docker run --rm -i -t \
+    # --platform linux/amd64 \
+    # -v ~/Downloads/font/patchme:/in \
+    # -v ~/Downloads/font/patchout:/out \
+    # nerdfonts/patcher -c
+
     # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
     # family: JetBrains Mono NL
-    family: RecursiveCodeiCursiveCg Nerd Font
-    style: Regular
-  size: 14
+    # family: RecursiveCodeiCursiveCg Nerd Font
+    # family: Hasklug Nerd Font
+    # family: JetBrainsMono Nerd Font
+    # style: Regular
+    family: ConsolasNerdFontCM Nerd Font
+    style: Book
+  size: 16
+  offset:
+    x: 0
+    y: 3
 
 import:
   - ~/.config/alacritty/themes/omni.yaml
