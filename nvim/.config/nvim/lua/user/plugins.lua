@@ -116,6 +116,7 @@ return packer.startup(function(use)
 	use("terryma/vim-expand-region")
 	use("ruanyl/vim-gh-line")
 	use("APZelos/blamer.nvim")
+	-- use("tveskag/nvim-blame-line")
 	use("simeji/winresizer")
 
 	-- Automatically set up your configuration after cloning packer.nvim
