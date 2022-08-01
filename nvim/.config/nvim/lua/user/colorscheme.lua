@@ -1,5 +1,10 @@
 -- local colorscheme = "dracula"
 -- local colorscheme = "kanagawa"
+-- local colorscheme = "sonokai"
+-- vim.cmd [[ 
+--         let g:sonokai_style = 'shusia'
+--         let g:sonokai_better_performance = 1
+-- ]]
 local colorscheme = "gruvbox-material"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
