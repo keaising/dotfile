@@ -44,7 +44,7 @@ return packer.startup(function(use)
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-	use "kyazdani42/nvim-web-devicons"
+	use("kyazdani42/nvim-web-devicons")
 
 	-- my plugins here
 	use("keaising/im-select.nvim")
@@ -104,7 +104,7 @@ return packer.startup(function(use)
 	-- colorscheme
 	use("sainnhe/gruvbox-material")
 	-- use 'rebelot/kanagawa.nvim'
-	-- use 'Mofiqul/dracula.nvim'
+	use("sainnhe/sonokai")
 
 	-- vim plugins
 	use("voldikss/vim-floaterm")
