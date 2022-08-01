@@ -1,7 +1,7 @@
 local saga = require("lspsaga")
 
 saga.init_lsp_saga({
-	saga_winblend = 20,
+	saga_winblend = 0,
 	max_preview_lines = 20,
 	finder_action_keys = {
 		open = { "<CR>", "o" },

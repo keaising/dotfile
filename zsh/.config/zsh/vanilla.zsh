@@ -15,7 +15,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
-alias ll='ls -al'
+alias ll='exa -al --group-directories-first'
+alias ls=exa
 alias to='j'
 alias jf='j -I'
 alias jb='j -b'
@@ -324,6 +325,7 @@ _tools_detect=(
 	"rg"
 	"fd"
 	"bat"
+	"exa"
 	"gitui"
 	"nvim"
 )
