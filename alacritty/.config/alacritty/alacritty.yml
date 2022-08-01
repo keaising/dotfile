@@ -25,14 +25,16 @@ font:
     # family: JetBrains Mono NL
     # family: RecursiveCodeiCursiveCg Nerd Font
     # family: Hasklug Nerd Font
-    # family: JetBrainsMono Nerd Font
-    # style: Regular
-    family: ConsolasNerdFontCM Nerd Font
-    style: Book
-  size: 16
+    family: JetBrainsMono Nerd Font
+    style: Regular
+
+    # family: CodeNewRoman Nerd Font
+    # family: ConsolasNerdFontCM Nerd Font
+    # style: Book
+  size: 14
   offset:
-    x: 0
-    y: 3
+    x: 1
+    y: 2
 
 import:
   - ~/.config/alacritty/themes/omni.yaml
