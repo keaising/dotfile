@@ -31,7 +31,7 @@ font:
     # family: CodeNewRoman Nerd Font
     # family: ConsolasNerdFontCM Nerd Font
     # style: Book
-  size: 14
+  size: 16
   offset:
     x: 1
     y: 2
@@ -79,6 +79,7 @@ key_bindings:
   - { key: Q,              mods: Command,         action: ReceiveChar  }
   - { key: W,              mods: Command,         action: ReceiveChar  }
   - { key: N,              mods: Command,         action: ReceiveChar  }
+  - { key: N,              mods: Command|Shift,   action: SpawnNewInstance  }
   - { key: F,              mods: Command|Control, action: ReceiveChar  }
   - { key: F,              mods: Command,         mode:   ~Search,     action: ReceiveChar }
   - { key: B,              mods: Command,         mode:   ~Search,     action: ReceiveChar }
