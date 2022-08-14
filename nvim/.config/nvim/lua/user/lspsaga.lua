@@ -32,7 +32,7 @@ saga.init_lsp_saga({
 })
 
 -- reference
-vim.keymap.set("n", "gr", require("lspsaga.finder").lsp_finder, { silent = true, noremap = true })
+vim.keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
 
 -- code action
 vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
