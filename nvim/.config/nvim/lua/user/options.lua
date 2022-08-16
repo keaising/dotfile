@@ -21,9 +21,7 @@ local options = {
     matchtime      = 2, -- 显示括号匹配的时间
     display        = "lastline", -- 显示最后一行
     wildmenu       = true, -- 允许下方显示目录
-    foldenable     = true, -- 允许代码折叠
     fdm            = "indent", -- 代码折叠默认使用缩进
-    foldlevel      = 99, -- 默认打开所有缩进
     backup         = true, -- 允许备份
     writebackup    = true, -- 保存时备份
     scrolloff      = 5, --垂直滚动时，光标距离顶部/底部的位置（单位：行）
@@ -61,6 +59,11 @@ set t_Co=256        " 允许256色
 set listchars=tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 set mouse=
 
+set foldenable
+set foldlevel=99 " 默认打开所有缩进
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 " I don't know how to implement this in vim.api
 noremap  H ^
 noremap  L $
@@ -86,7 +89,7 @@ augroup END
 
 augroup filetype_golang
 	autocmd!
-	au FileType go setlocal tabstop=8 shiftwidth=8
+	au FileType go setlocal tabstop=4 shiftwidth=4
 augroup END
 
 augroup filetype_lua
