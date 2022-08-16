@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+-- local trouble = require("trouble.providers.telescope")
 
 telescope.setup({
 	defaults = {
@@ -27,12 +27,12 @@ telescope.setup({
 				-- ["<C-n>"] = actions.move_selection_previous,
 				-- ["<C-p>"] = actions.move_selection_next,
 				["<C-o>"] = actions.select_default,
-				["<C-t>"] = trouble.open_with_trouble,
+				-- ["<C-t>"] = trouble.open_with_trouble,
 				-- maybe bug, don't take effect:
 				-- ["<C-l>"] = actions.move_selection_next,
 			},
 			n = {
-				["<C-t>"] = trouble.open_with_trouble,
+				-- ["<C-t>"] = trouble.open_with_trouble,
 			},
 		},
 		-- layout_strategy = "cursor"
