@@ -86,4 +86,7 @@ let g:blamer_relative_time = 1
 
 let g:winresizer_start_key = '<C-T>'
 
+let g:NERDDefaultAlign = 'left'
+let g:NERDSpaceDelims = 1
+
 ]]
