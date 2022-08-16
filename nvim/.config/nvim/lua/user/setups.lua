@@ -48,6 +48,9 @@ local plugin_list = {
 			},
 		},
 	},
+	['treesitter-context'] = {
+		mode = 'topline',
+	},
 }
 
 for p, opt in pairs(plugin_list) do
