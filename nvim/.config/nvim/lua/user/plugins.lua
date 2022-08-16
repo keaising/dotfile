@@ -60,6 +60,13 @@ return packer.startup(function(use)
 	use("famiu/bufdelete.nvim") -- delete buffer without close window
 	use("nvim-lualine/lualine.nvim") -- tab line management
 	use("nvim-telescope/telescope.nvim") -- global search for files and symbols
+	use({
+		"phaazon/hop.nvim",
+		branch = "v2",
+		config = function()
+			require("hop").setup()
+		end,
+	})
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -87,7 +94,6 @@ return packer.startup(function(use)
 	use({ "glepnir/lspsaga.nvim", branch = "version_2" })
 	--use({ "keaising/lspsaga.nvim", branch = "version_2" })
 	--use("folke/trouble.nvim") -- show all errors in project
-	use("numToStr/Comment.nvim") -- comment selected line
 
 	-- go
 	use("ray-x/go.nvim")
@@ -117,8 +123,9 @@ return packer.startup(function(use)
 	use("terryma/vim-expand-region")
 	use("ruanyl/vim-gh-line")
 	use("APZelos/blamer.nvim")
-	-- use("tveskag/nvim-blame-line")
+	use("preservim/nerdcommenter")
 	use("simeji/winresizer")
+	use("tpope/vim-repeat")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

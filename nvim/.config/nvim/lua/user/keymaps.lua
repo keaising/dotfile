@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -140,9 +138,9 @@ keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
 keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 
--- Comment
-keymap('n', '<leader>cc', '<Plug>(comment_toggle_current_linewise)', opts)
-keymap('x', '<leader>cc', '<Plug>(comment_toggle_linewise_visual)',  opts)
-
 -- rename
 vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
+
+-- hop
+keymap('n', 's', ':HopChar2<CR>', opts)
+
