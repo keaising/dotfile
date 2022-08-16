@@ -40,6 +40,7 @@ vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { s
 
 -- show hover doc
 vim.keymap.set("n", "<A-h>", require("lspsaga.hover").render_hover_doc, { silent = true })
+vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 
 -- show signature help
 -- vim.keymap.set("n", "gs", "<Cmd>Lspsaga signature_help<CR>", { silent = true, noremap = true })
