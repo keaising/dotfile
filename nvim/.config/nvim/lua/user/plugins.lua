@@ -84,7 +84,8 @@ return packer.startup(function(use)
 	use("RRethy/vim-illuminate") -- highlighting other uses of the word under the cursor
 	use("smjonas/inc-rename.nvim") -- better rename
 	use("ray-x/lsp_signature.nvim")
-	use({ "glepnir/lspsaga.nvim", branch = "main" })
+	--use({ "glepnir/lspsaga.nvim", branch = "version_2" })
+	use({ "keaising/lspsaga.nvim", branch = "version_2" })
 	use("folke/trouble.nvim") -- show all errors in project
 	use("numToStr/Comment.nvim") -- comment selected line
 
