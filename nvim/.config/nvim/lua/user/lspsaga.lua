@@ -1,4 +1,7 @@
-local saga = require("lspsaga")
+local status_ok, saga = pcall(require, "lspsaga")
+if not status_ok then
+	return
+end
 
 saga.init_lsp_saga({
 	saga_winblend = 0,
@@ -39,7 +42,7 @@ vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = tru
 vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true, noremap = true })
 
 -- show hover doc
-vim.keymap.set("n", "<A-h>", require("lspsaga.hover").render_hover_doc, { silent = true })
+-- vim.keymap.set("n", "<A-h>", require("lspsaga.hover").render_hover_doc, { silent = true })
 vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 
 -- show signature help
