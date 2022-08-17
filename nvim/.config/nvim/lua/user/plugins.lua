@@ -60,13 +60,8 @@ return packer.startup(function(use)
 	use("famiu/bufdelete.nvim") -- delete buffer without close window
 	use("nvim-lualine/lualine.nvim") -- tab line management
 	use("nvim-telescope/telescope.nvim") -- global search for files and symbols
-	use({
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			require("hop").setup()
-		end,
-	})
+	use({ "phaazon/hop.nvim", branch = "v2" })
+	use("lukas-reineke/indent-blankline.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
