@@ -24,7 +24,12 @@ alias jb='j -b'
 # docker
 alias d='docker'
 alias dc='docker compose'
+alias dr='docker run --rm'
 alias dcup='docker compose up'
+alias dil='docker image ls'
+alias dcl='docker container ls -a'
+alias drm='docker rm'
+alias drmi='docker rmi'
 da() {
 	docker exec -it $1 /bin/bash
 }
