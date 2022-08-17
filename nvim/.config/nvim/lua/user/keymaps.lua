@@ -139,7 +139,7 @@ keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 
 -- rename
-vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
+-- vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
 
 -- hop
 keymap('n', 's', ':HopChar2<CR>', opts)
