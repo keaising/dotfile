@@ -88,7 +88,7 @@ alias dfp='datahub-field-parse'
 # golang config in macOS
 export GOROOT=/usr/local/go
 export GOPATH=$HOME/code/go
-[[ $(uname -s) == 'Linux' ]] && export GOPROXY=https://goproxy.io,direct
+export GOPROXY=https://goproxy.io,direct
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
