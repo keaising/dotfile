@@ -126,7 +126,7 @@ export N_PREFIX="$HOME/code"
 
 # python
 export PYENV_ROOT="$HOME/.pyenv"
-eval "$(pyenv init -)"
+[[ -d "$PYENV_ROOT" ]] && eval "$(pyenv init -)"
 
 # jabba
 export JABBA_HOME="$HOME/code/jabba"
