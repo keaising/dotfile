@@ -239,7 +239,7 @@ nopx() {
 
 # auto set proxy
 setpx() {
-	ping -c 1 -q 10.10.43.3 1>/dev/null
+	ping -c 1 -q 10.10.43.1 1>/dev/null
 	ping1=$?
 	if [ $ping1 -eq 0 ]; then
 		pxio
