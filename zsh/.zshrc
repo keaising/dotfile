@@ -1,10 +1,14 @@
 export ZSH_CONF="$HOME/.config/zsh"
 
 # import from secret project
-source "$ZSH_CONF/cc.zsh"
+_config_files=(
+	"$ZSH_CONF/cc.zsh"
+	"$ZSH_CONF/vanilla.zsh"
+)
 
-source "$ZSH_CONF/vanilla.zsh"
-
+for _config_file in $_config_files[@]; do
+	[[ -f "${_config_file}" ]] && source "${_config_file}"
+done
 
 # system specified --- {{{
 if [ "$(uname 2> /dev/null)" = "Linux" ]; then
