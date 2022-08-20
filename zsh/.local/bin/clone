@@ -15,6 +15,7 @@ def main():
 def clone(url: str) -> None:
     host, org, repo = split_url(url)
     if host == "":
+        print('no host')
         return None
 
     dir = get_dir()
@@ -42,9 +43,9 @@ def get_dir() -> str:
 
 
 def split_url(url: str) -> tuple[str, str, str]:
-    reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+)"
+    reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+)"
     if url.startswith("git"):
-        reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w.-]+)(:|/)(?P<org>\w[\w.-\/]+)/(?P<repo>\w[\w.-]+).git"
+        reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+).git"
     result = re.match(reg_ex, url)
     if result is None:
         return "", "", ""
