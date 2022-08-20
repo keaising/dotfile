@@ -2,8 +2,8 @@ export ZSH_CONF="$HOME/.config/zsh"
 
 # import from secret project
 _config_files=(
-	"$ZSH_CONF/cc.zsh"
 	"$ZSH_CONF/vanilla.zsh"
+	"$ZSH_CONF/cc.zsh"
 )
 
 for _config_file in $_config_files[@]; do
