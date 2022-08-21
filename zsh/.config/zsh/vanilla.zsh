@@ -124,9 +124,8 @@ export GEM_HOME="$HOME/code/gems"
 # Added by n-install (see http://git.io/n-install-repo).
 export N_PREFIX="$HOME/code"
 
-# python
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d "$PYENV_ROOT" ]] && eval "$(pyenv init -)"
 
 # jabba
 export JABBA_HOME="$HOME/code/jabba"
@@ -146,13 +145,13 @@ export TERM="xterm-256color"
 
 # path
 _enabled_paths=(
-	"$PYENV_ROOT/bin"
 	"$HOME/.local/bin"                  # tools
 	"$HOME/.local/share/nvim/mason/bin" # nvim lsp servers/linters
 	"$HOME/code/gems/bin"               # gems
 	"$HOME/code/go/bin"                 # go
 	"$N_PREFIX/bin"                     # n
 	"$HOME/.cargo/bin"                  # rust
+	"$PYENV_ROOT/bin"                   # python
 
 	"/usr/bin"
 	"/usr/local/bin"
@@ -166,6 +165,9 @@ for _enabled_path in $_enabled_paths[@]; do
 		[[ ! :$PATH: == *":${_enabled_path}:"* ]] &&
 		PATH="$PATH:${_enabled_path}"
 done
+
+# pyenv
+[[ -x "$(command -v pyenv)" ]] && eval "$(pyenv init -)"
 
 # tab completion ignore case
 # https://superuser.com/questions/1092033/how-can-i-make-zsh-tab-completion-fix-capitalization-errors-for-directories-and
