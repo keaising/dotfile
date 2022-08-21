@@ -23,7 +23,7 @@ def clone(url: str) -> None:
 
     git_url = f"git@{host}:{org}/{repo}.git"
     cmd = f"git clone {git_url} {target}"
-    print(cmd)
+    print(cmd, flush=True)
     if os.path.exists(target):
         return
     run(cmd)
