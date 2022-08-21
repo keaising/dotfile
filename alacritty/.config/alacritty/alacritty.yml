@@ -25,13 +25,13 @@ font:
     # family: JetBrains Mono NL
     # family: RecursiveCodeiCursiveCg Nerd Font
     # family: Hasklug Nerd Font
-    family: JetBrainsMono Nerd Font
-    style: Regular
+    # family: JetBrainsMono Nerd Font
+    # style: Regular
 
     # family: CodeNewRoman Nerd Font
-    # family: ConsolasNerdFontCM Nerd Font
-    # style: Book
-  size: 15
+    family: ConsolasNerdFontCM Nerd Font
+    style: Book
+  size: 16
   offset:
     x: 1
     y: 2
