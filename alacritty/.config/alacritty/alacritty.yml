@@ -22,19 +22,18 @@ font:
 
     # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
-    # family: JetBrains Mono NL
-    # family: RecursiveCodeiCursiveCg Nerd Font
+    family: RecursiveCodeiCursiveCg Nerd Font
     # family: Hasklug Nerd Font
     # family: JetBrainsMono Nerd Font
-    # style: Regular
+    style: Regular
 
     # family: CodeNewRoman Nerd Font
-    family: ConsolasNerdFontCM Nerd Font
-    style: Book
-  size: 16
+    # family: Consolas Nerd Font
+    # style: Book
+  size: 15
   offset:
     x: 1
-    y: 2
+    y: 1
 
 import:
   - ~/.config/alacritty/themes/omni.yaml
