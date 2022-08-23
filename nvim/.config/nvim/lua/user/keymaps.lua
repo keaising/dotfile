@@ -76,10 +76,6 @@ keymap("n", "zr", "zR", opts)
 -- " disable
 keymap("n", "<C-p>", "<nop>", opts)
 
--- " search selected content in visual mode: https://blog.twofei.com/610/
-keymap("v", "//", 'y/<c-r>"<cr>', opts)
-keymap("n", "//", ':noh<CR>',     opts)
-
 -- " insert mode specials
 keymap("i", ";;", ":=", opts)
 
@@ -137,9 +133,6 @@ keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
 -- ALT_+/- 用于按分隔符扩大缩小 v 选区, terryma/vim-expand-region
 keymap('v', 'v',     '<Plug>(expand_region_expand)', opts)
 keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
-
--- rename
--- vim.keymap.set("n", "<A-k>", function() return ":IncRename " .. vim.fn.expand("<cword>") end, { expr = true })
 
 -- hop
 keymap('n', 's', ':HopChar2<CR>', opts)
