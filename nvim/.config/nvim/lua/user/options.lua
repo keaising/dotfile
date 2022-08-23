@@ -68,6 +68,10 @@ set foldexpr=nvim_treesitter#foldexpr()
 noremap  H ^
 noremap  L $
 
+" search selected content in visual mode: https://blog.twofei.com/610/
+vnoremap // y/<c-r>"<cr>
+nnoremap // :noh<CR>
+
 " 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
