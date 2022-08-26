@@ -64,13 +64,8 @@ keymap("v", "<Tab>", "%",    opts)
 
 -- " mark
 keymap("n", "'",  "`",  opts)
--- " close all recursively
-keymap("n", "zm", "zM", opts)
 -- " open current recursively
 keymap("n", "zo", "zO", opts)
--- " open all recursively
-keymap("n", "zr", "zR", opts)
--- " close current: zc
 -- " open/close current: za
 
 -- " disable

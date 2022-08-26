@@ -33,8 +33,10 @@ local options = {
     list           = true, --  设置显示制表符等隐藏字符
     showcmd        = true, --  右下角显示命令
     splitright     = true, --  水平切割窗口时，默认在右边显示新窗口
+    foldlevel      = 99,
+    foldlevelstart = 99,
+    foldenable     = true,
 }
-
 
 vim.opt.shortmess:append "c"
 

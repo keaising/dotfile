@@ -62,6 +62,7 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim") -- global search for files and symbols
 	use({ "phaazon/hop.nvim", branch = "v2" })
 	use("lukas-reineke/indent-blankline.nvim")
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
