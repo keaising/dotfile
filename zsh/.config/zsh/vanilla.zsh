@@ -115,6 +115,8 @@ export VISUAL=nvim
 export EDITOR=vim
 export GIT_EDITOR="${EDITOR}"
 export LANG="en_US.UTF-8"
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 # if line ends without lf, show this mark rather than '%'
 export PROMPT_EOL_MARK='⏎'
 
