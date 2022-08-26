@@ -20,3 +20,4 @@ vim.api.nvim_set_keymap("n", "gat", ":GoAddTest<CR>", { noremap = true, silent =
 vim.api.nvim_set_keymap("n", "gj",  ":GoAddTag json<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gjb", ":GoAddTag json,bson<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "gmt", ":GoModTidy<CR>", { noremap = true, silent = false })
+vim.api.nvim_set_keymap("n", "<leader>lr", ":LspRestart<CR>", { noremap = true, silent = false })
