@@ -60,7 +60,7 @@ keymap("n", "#",     "#zz",  opts)
 keymap("n", "g*",    "g*zz", opts)
 keymap("n", "gg",    "ggzz", opts)
 keymap("n", "<Tab>", "%",    opts)
-keymap("n", "<Tab>", "%",    opts)
+keymap("v", "<Tab>", "%",    opts)
 
 -- " mark
 keymap("n", "'",  "`",  opts)
