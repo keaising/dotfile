@@ -140,7 +140,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # for tmux in wezterm, kitty
-export TERM="xterm-256color"
+export TERM="screen-256color"
 # GPG
 export GPG_TTY=$(tty)
 
