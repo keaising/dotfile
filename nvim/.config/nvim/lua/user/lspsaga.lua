@@ -38,8 +38,10 @@ saga.init_lsp_saga({
 vim.keymap.set("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
 
 -- code action
-vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true, noremap = true })
-vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true, noremap = true })
+-- vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
+-- vim.keymap.set("v", "<leader>ca", "<cmd><C-U>Lspsaga range_code_action<CR>", { silent = true })
+vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
+
 
 -- show hover doc
 -- vim.keymap.set("n", "<A-h>", require("lspsaga.hover").render_hover_doc, { silent = true })

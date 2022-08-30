@@ -132,3 +132,8 @@ keymap('v', '<C-v>', '<Plug>(expand_region_shrink)', opts)
 -- hop
 keymap('n', 's', ':HopChar2<CR>', opts)
 
+keymap('n', '<leader>cc', '<plug>NERDCommenterToggle', opts)
+keymap('v', '<leader>cc', '<plug>NERDCommenterToggle', opts)
+keymap('n', '<M-/>',      '<plug>NERDCommenterToggle', opts)
+keymap('v', '<M-/>',      '<plug>NERDCommenterToggle', opts)
+
