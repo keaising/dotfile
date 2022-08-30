@@ -89,5 +89,6 @@ let g:winresizer_start_key = '<C-T>'
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDAllowAnyVisualDelims = 0
+let g:NERDCreateDefaultMappings = 0
 
 ]]
