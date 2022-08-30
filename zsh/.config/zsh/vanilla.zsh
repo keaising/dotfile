@@ -97,7 +97,7 @@ alias fmt='goimports -w . && go mod tidy'
 alias fmtf='gofumpt -l -w . && go mod tidy'
 alias fmts='gosimports -w . && go mod tidy'
 alias gocc='fmt && goci --allow-parallel-runners'
-alias goss='fmtf && goci --allow-parallel-runners'
+alias goss='fmtf && fmts && goci --allow-parallel-runners'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
