@@ -50,18 +50,6 @@ keymap("i", "<A-b>", "<C-o>b",  opts)
 keymap("i", "<A-w>", "<C-o>w",  opts)
 keymap("i", "<A-e>", "<C-o>e",  opts)
 
--- Keep search pattern at the center of the screen.
-keymap("n", "n",     "nzz",  opts)
-keymap("n", "j",     "gj",   opts)
-keymap("n", "k",     "gk",   opts)
-keymap("n", "N",     "Nzz",  opts)
-keymap("n", "*",     "*zz",  opts)
-keymap("n", "#",     "#zz",  opts)
-keymap("n", "g*",    "g*zz", opts)
-keymap("n", "gg",    "ggzz", opts)
-keymap("n", "<Tab>", "%",    opts)
-keymap("v", "<Tab>", "%",    opts)
-
 -- " mark
 keymap("n", "'",  "`",  opts)
 -- " open current recursively
@@ -137,3 +125,17 @@ keymap('v', '<leader>cc', '<plug>NERDCommenterToggle', opts)
 keymap('n', '<M-/>',      '<plug>NERDCommenterToggle', opts)
 keymap('v', '<M-/>',      '<plug>NERDCommenterToggle', opts)
 
+
+vim.cmd [[ 
+
+nnoremap <silent> n     nzz
+nnoremap <silent> j     gj
+nnoremap <silent> k     gk
+nnoremap <silent> N     Nzz
+nnoremap <silent> *     *zz
+nnoremap <silent> #     #zz
+nnoremap <silent> g*    g*zz
+nnoremap <silent> <Tab> %
+vnoremap <silent> <Tab> %
+
+]]

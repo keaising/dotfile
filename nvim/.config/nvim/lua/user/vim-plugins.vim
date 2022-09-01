@@ -1,11 +1,9 @@
--- The good old days in VIM
-
-vim.cmd [[
+" The good old days in VIM
 
 " floaterm
-    let g:floaterm_keymap_toggle = '<m-m>'
-    let g:floaterm_width=0.85
-    let g:floaterm_height=0.95
+let g:floaterm_keymap_toggle = '<m-m>'
+let g:floaterm_width=0.85
+let g:floaterm_height=0.95
 
 " format
 
@@ -84,11 +82,13 @@ let g:blamer_template = '<committer>, <committer-time> • <summary>'
 let g:blamer_date_format = '%y/%m/%d'
 let g:blamer_relative_time = 1
 
-let g:winresizer_start_key = '<C-T>'
+"let g:winresizer_start_key = '<C-T>'
 
 let g:NERDDefaultAlign = 'left'
 let g:NERDSpaceDelims = 1
 let g:NERDAllowAnyVisualDelims = 0
 let g:NERDCreateDefaultMappings = 0
 
-]]
+" vim-repeat
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+

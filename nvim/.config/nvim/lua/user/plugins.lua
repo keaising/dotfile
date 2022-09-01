@@ -122,7 +122,7 @@ return packer.startup(function(use)
 	use("ruanyl/vim-gh-line")
 	use("APZelos/blamer.nvim")
 	use("preservim/nerdcommenter")
-	use("simeji/winresizer")
+	--use("simeji/winresizer")
 	use("tpope/vim-repeat")
 
 	-- Automatically set up your configuration after cloning packer.nvim
