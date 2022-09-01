@@ -72,6 +72,7 @@ keymap("n", "<m-<>",      ":BufferLineMovePrev<CR>",   opts)
 keymap("n", "<m->>",      ":BufferLineMoveNext<CR>",   opts)
 keymap("n", "<leader>wh", ":BufferLineCloseLeft<CR>",  opts)
 keymap("n", "<leader>wl", ":BufferLineCloseRight<CR>", opts)
+keymap("n", "<leader>wa", ":BufferLineCloseLeft<CR> | :BufferLineCloseRight<CR>", opts)
 keymap("n", "<m-e>",      ":BufferLinePick<CR>",       opts)
 
 -- bufdelete
