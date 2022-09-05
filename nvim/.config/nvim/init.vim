@@ -1,5 +1,5 @@
 lua require "user.keymaps"
-lua require "user.options"
+source ~/.config/nvim/lua/user/options.vim
 lua require "user.plugins"
 
 lua require "user.treesitter"
@@ -12,7 +12,7 @@ lua require "user.autopairs"
 lua require "user.colorscheme"
 lua require "user.go"
 lua require "user.telescope"
-lua require "user.trouble"
+" lua require "user.trouble"
 
 source ~/.config/nvim/lua/user/vim-plugins.vim
 
