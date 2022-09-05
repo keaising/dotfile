@@ -110,6 +110,7 @@ keymap('n', "<leader>ft", ":Neoformat<CR>", opts)
 -- Start interactive EasyAlign in visual mode (e.g. vipga)
 keymap('x', 'ga', '<Plug>(EasyAlign)', opts)
 -- Align by regex
+-- :'<,'>EasyAlign /regex/
 keymap('v', 'gs', ":EasyAlign ", opts)
 -- Start interactive EasyAlign for a motion/text object (e.g. gaip)
 keymap('n', 'ga', '<Plug>(EasyAlign)', opts)
@@ -126,17 +127,3 @@ keymap('v', '<leader>cc', '<plug>NERDCommenterToggle', opts)
 keymap('n', '<M-/>',      '<plug>NERDCommenterToggle', opts)
 keymap('v', '<M-/>',      '<plug>NERDCommenterToggle', opts)
 
-
-vim.cmd [[ 
-
-nnoremap <silent> n     nzz
-nnoremap <silent> j     gj
-nnoremap <silent> k     gk
-nnoremap <silent> N     Nzz
-nnoremap <silent> *     *zz
-nnoremap <silent> #     #zz
-nnoremap <silent> g*    g*zz
-nnoremap <silent> <Tab> %
-vnoremap <silent> <Tab> %
-
-]]
