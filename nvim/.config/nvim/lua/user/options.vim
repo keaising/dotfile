@@ -33,10 +33,9 @@ set splitright     "  水平切割窗口时，默认在右边显示新窗口
 set laststatus=2   "  总是显示状态栏
 set showtabline=2  "  总是显示标签栏
 set shortmess+=c   "  https://stackoverflow.com/a/25102964
-set iskeyword+=-   " regard `-` as a word
 
 set whichwrap+=<,>,[,],h,l
-set iskeyword+=- 
+set iskeyword-=-
 set signcolumn=yes  "  总是显示侧边栏（用于显示 mark/gitdiff/诊断信息）
 set colorcolumn=88  "  显示列宽
 set formatoptions+=B " 合并两行中文时，不在中间加空格
