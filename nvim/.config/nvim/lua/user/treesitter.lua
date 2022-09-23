@@ -22,8 +22,6 @@ configs.setup({
 	},
 	-- ensure_installed = "all", -- one of "all" or a list of languages
 	ensure_installed = {
-		"lua",
-		"go",
 		"bash",
 		"dockerfile",
 		"go",
@@ -33,11 +31,12 @@ configs.setup({
 		"http",
 		"javascript",
 		"json",
+		"lua",
 		"markdown",
 		"python",
 		"regex",
 		"rust",
-		"sql",
+		-- "sql",
 		"tsx",
 		"typescript",
 		"vim",
@@ -47,7 +46,7 @@ configs.setup({
 	ignore_install = { "" }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "css" }, -- list of language that will be disabled
+		disable = { "sql" }, -- list of language that will be disabled
 	},
 	autopairs = {
 		enable = true,
