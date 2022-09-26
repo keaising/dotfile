@@ -96,8 +96,13 @@ alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
 alias fmt='goimports -w . && go mod tidy'
 alias fmtf='gofumpt -l -w . && go mod tidy'
 alias fmts='gosimports -w . && go mod tidy'
+alias v='govulncheck ./... >/dev/null'
 alias gocc='fmt && goci --allow-parallel-runners'
-alias goss='fmtf && fmts && goci --allow-parallel-runners'
+alias goss='\
+	fmtf &&\
+	fmts &&\
+	goci --allow-parallel-runners &&\
+	v'
 alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
