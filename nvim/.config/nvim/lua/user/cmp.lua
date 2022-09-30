@@ -84,6 +84,7 @@ cmp.setup({
 		{ name = "nvim_lsp", group_index = 1 },
 		{ name = "path", group_index = 1 },
 		{ name = "emoji", group_index = 1 },
+		{ name = "rg", group_index = 1 },
 		{ name = "buffer", group_index = 2 },
 		{ name = "nvim_lua", group_index = 2 },
 	},
