@@ -24,7 +24,6 @@ configs.setup({
 	ensure_installed = {
 		"bash",
 		"dockerfile",
-		"go",
 		"gomod",
 		"gowork",
 		"html",
@@ -43,15 +42,15 @@ configs.setup({
 		"vue",
 		"yaml",
 	},
-	ignore_install = { "" }, -- List of parsers to ignore installing
+	ignore_install = { "go" }, -- List of parsers to ignore installing
 	highlight = {
 		enable = true, -- false will disable the whole extension
-		disable = { "sql" }, -- list of language that will be disabled
+		disable = { "sql", "go" }, -- list of language that will be disabled
 	},
 	autopairs = {
 		enable = true,
 	},
-	indent = { enable = true, disable = { "python", "css" } },
+	indent = { enable = true, disable = { "python", "css", "go" } },
 	autotag = {
 		enable = true,
 	},
