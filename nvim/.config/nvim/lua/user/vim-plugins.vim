@@ -92,3 +92,17 @@ let g:NERDCreateDefaultMappings = 0
 " vim-repeat
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
+
+" vim-go
+let g:go_auto_sameids = 0
+" let g:go_updatetime = 800
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_imports_mode = 'gopls'
+let g:go_gopls_gofumpt = v:true

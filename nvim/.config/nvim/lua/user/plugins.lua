@@ -94,8 +94,10 @@ return packer.startup(function(use)
 	-- use("folke/trouble.nvim") -- show all errors in project
 
 	-- go
-	use("ray-x/go.nvim")
-	use("ray-x/guihua.lua")
+	use("fatih/vim-go")
+	use("kana/vim-textobj-user")
+	use("kana/vim-textobj-function")
+	use("sgur/vim-textobj-parameter")
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

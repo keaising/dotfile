@@ -1,8 +1,8 @@
-lua require "user.keymaps"
+source ~/.config/nvim/lua/user/keymaps.vim
 source ~/.config/nvim/lua/user/options.vim
 lua require "user.plugins"
 
-lua require "user.treesitter"
+" lua require "user.treesitter"
 lua require "user.cmp"
 lua require "user.lsp"
 lua require "user.neotree"
