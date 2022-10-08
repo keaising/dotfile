@@ -9,9 +9,7 @@ local lsp_servers = {
 	"gopls",
 	"bashls",
 	"dockerls",
-	"golangci_lint_ls",
 	"pyright",
-	-- "grammerly",
 	"tsserver",
 	"vimls",
 }
