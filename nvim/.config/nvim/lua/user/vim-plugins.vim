@@ -106,3 +106,4 @@ let g:go_highlight_variable_declarations = 1
 let g:go_highlight_variable_assignments = 1
 let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
+let g:go_doc_keywordprg_enabled = 0

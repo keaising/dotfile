@@ -91,11 +91,6 @@ nnoremap <leader>sc :PlugUpdate<CR>
 nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
 
-" lsp
-nnoremap <leader>lr :LspRestart<CR>
-nnoremap gj         :GoAddTags json<CR>
-
-
 " buffer
 nnoremap <m-{>      :BufferLineCyclePrev<CR>
 nnoremap <m-}>      :BufferLineCycleNext<CR>
@@ -156,4 +151,12 @@ nnoremap <leader>cc <plug>NERDCommenterToggle
 vnoremap <leader>cc <plug>NERDCommenterToggle
 nnoremap <M-/>      <plug>NERDCommenterToggle
 vnoremap <M-/>      <plug>NERDCommenterToggle
+
+" lsp
+nnoremap <leader>lr :LspRestart<CR>
+
+" go
+nnoremap gj         :GoAddTags json<CR>
+nnoremap gmt        :GoModTidy<CR>
+nnoremap <leader>gt :GoAddTest<CR>
 
