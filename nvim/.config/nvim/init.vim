@@ -10,9 +10,7 @@ lua require "user.lspsaga"
 
 lua require "user.autopairs"
 lua require "user.colorscheme"
-lua require "user.go"
 lua require "user.telescope"
-" lua require "user.trouble"
 
 source ~/.config/nvim/lua/user/vim-plugins.vim
 
