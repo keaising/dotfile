@@ -91,6 +91,11 @@ nnoremap <leader>sc :PlugUpdate<CR>
 nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
 
+" lsp
+nnoremap <leader>lr :LspRestart<CR>
+nnoremap gj         :GoAddTags json<CR>
+
+
 " buffer
 nnoremap <m-{>      :BufferLineCyclePrev<CR>
 nnoremap <m-}>      :BufferLineCycleNext<CR>
