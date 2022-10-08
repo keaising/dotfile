@@ -62,7 +62,7 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim") -- global search for files and symbols
 	use({ "phaazon/hop.nvim", branch = "v2" })
 	use("lukas-reineke/indent-blankline.nvim")
-	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" })
+	use({ "kevinhwang91/nvim-ufo", requires = "kevinhwang91/promise-async" }) -- fold
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -88,7 +88,7 @@ return packer.startup(function(use)
 	use("j-hui/fidget.nvim") -- show progress of loading LSP servers
 	use("RRethy/vim-illuminate") -- highlighting other uses of the word under the cursor
 	-- use("smjonas/inc-rename.nvim") -- better rename, need nvim 0.8
-	use("ray-x/lsp_signature.nvim")
+	-- use("ray-x/lsp_signature.nvim")
 	use({ "glepnir/lspsaga.nvim", branch = "main" })
 	-- use({ "keaising/lspsaga.nvim", branch = "main" })
 	-- use("folke/trouble.nvim") -- show all errors in project
