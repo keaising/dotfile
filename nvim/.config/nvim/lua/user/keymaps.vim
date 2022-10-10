@@ -11,10 +11,10 @@ nnoremap <C-q> :q<CR>
 cnoremap sudow w !sudo tee % >/dev/null
 
 " resize window
-nnoremap <m-Left>  :vertical resize +5<CR>
-nnoremap <m-Right> :vertical resize -5<CR>
-nnoremap <m-Up>    :resize   +5<CR>
-nnoremap <m-Down>  :resize   -5<CR>
+nnoremap <silent> <m-Left>  :vertical resize +5<CR>
+nnoremap <silent> <m-Right> :vertical resize -5<CR>
+nnoremap <silent> <m-Up>    :resize   +5<CR>
+nnoremap <silent> <m-Down>  :resize   -5<CR>
 
 " switch window
 noremap  <C-h> <c-w>h
@@ -72,6 +72,8 @@ nmap zo zO
 nmap zr zR
 " close current: zc
 " open/close current: za
+" zg: add word to spell ignorance file
+nnoremap <silent> zs :silent !sort ~/.config/nvim/spell/en.utf-8.add > /tmp/en.utf-8.add && cat /tmp/en.utf-8.add > ~/.config/nvim/spell/en.utf-8.add<CR>
 
 " disable 
 nnoremap <C-p> <nop>
@@ -92,15 +94,15 @@ nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
 
 " buffer
-nnoremap <m-{>      :BufferLineCyclePrev<CR>
-nnoremap <m-}>      :BufferLineCycleNext<CR>
-nnoremap <m-<>      :BufferLineMovePrev<CR>
-nnoremap <m->>      :BufferLineMoveNext<CR>
-nnoremap <leader>wh :BufferLineCloseLeft<CR>
-nnoremap <leader>wl :BufferLineCloseRight<CR>
-nnoremap <leader>wa :BufferLineCloseLeft<CR>
-nnoremap <m-e>      :BufferLinePick<CR>
-nnoremap <A-w>      :Bdelete<CR>
+nnoremap <silent> <m-{>      :BufferLineCyclePrev<CR>
+nnoremap <silent> <m-}>      :BufferLineCycleNext<CR>
+nnoremap <silent> <m-<>      :BufferLineMovePrev<CR>
+nnoremap <silent> <m->>      :BufferLineMoveNext<CR>
+nnoremap <silent> <leader>wh :BufferLineCloseLeft<CR>
+nnoremap <silent> <leader>wl :BufferLineCloseRight<CR>
+nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR>
+nnoremap <silent> <m-e>      :BufferLinePick<CR>
+nnoremap <silent> <A-w>      :Bdelete<CR>
 
 " telescope
 nnoremap <leader>ss :Telescope find_files<CR>
