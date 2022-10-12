@@ -45,6 +45,7 @@ set noswapfile
 set noundofile
 set termguicolors
 set t_Co=256             " 允许256色
+set spo=camel
 set spell
 set spelllang=en_us,cjk
 
