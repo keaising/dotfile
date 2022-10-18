@@ -44,16 +44,13 @@ if not mason_config_ok then
 	return
 end
 
-local all_binaries = {
-	"black",
-	"stylua",
-}
+local all_binaries = {}
 
 for i = 1, #lsp_servers do
 	all_binaries[#all_binaries + 1] = lsp_servers[i]
 end
 
 mason_config.setup({
-	ensure_installed = { "black", "stylua" },
+	ensure_installed = all_binaries,
 	automatic_installation = true,
 })
