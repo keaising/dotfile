@@ -306,51 +306,40 @@ vi() {
 
 # keymap --- {{{
 
+bindkey -e
+
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '^x^e' edit-command-line
 bindkey '\ei' edit-command-line
 bindkey '^n' autosuggest-accept # auto suggestion
 
 # move cursor
-bindkey '\eH' backward-char
-bindkey '\eL' forward-char
-bindkey '\eJ' down-line-or-history
-bindkey '\eK' up-line-or-history
-bindkey '\eh' backward-word
-bindkey '\el' forward-word
-bindkey '\ej' beginning-of-line
-bindkey '\ek' end-of-line
+# bindkey '\eH' backward-char
+# bindkey '\eL' forward-char
+# bindkey '\eJ' down-line-or-history
+# bindkey '\eK' up-line-or-history
+# bindkey '\eh' backward-word
+# bindkey '\el' forward-word
+# bindkey '\ej' beginning-of-line
+# bindkey '\ek' end-of-line
 
-bindkey '\e[1;3D' backward-word
-bindkey '\e[1;3C' forward-word
-bindkey '\e[1;3A' beginning-of-line
-bindkey '\e[1;3B' end-of-line
+# C-A: beginning-of-line
+# C-E: end-of-line
+# C-B: backward-char
+# C-F: forward-char
+# A-B: backward-word
+# A-F: forward-word
+# C-W: delete word before
+# A-D: delete word after
+# A-D: delete word after
+# C-D: delete char after
+# C-U: clear the entire line
+# C-K: Clear the characters on the line after the current cursor position
+
 
 # shortcuts
 bindkey -s '\ee' 'vi . \n'
 bindkey -s '\eo' 'cd ..\n'
 bindkey -s '\e;' 'll\n'
-
-# --- }}}
-
-# check tools exist --- {{{
-
-_tools_detect=(
-	"fzf"
-	"rg"
-	"fd"
-	"bat"
-	"exa"
-	"gitui"
-	"nvim"
-)
-
-for _tool in $_tools_detect[@]; do
-	# only add to $PATH when path exist and path not in $PATH
-	if ! type "$_tool" >/dev/null; then
-		echo $_tool not found
-	fi
-done
 
 # --- }}}
