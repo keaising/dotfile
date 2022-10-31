@@ -1,5 +1,5 @@
 {
-    "title": "ALT <=> CMD in Alacritty",
+    "title": "ALT <=> CMD in io.alacritty",
     "rules": [
         {
             "description": "Swap option and command in Alacritty",
