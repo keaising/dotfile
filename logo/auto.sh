@@ -1,6 +1,8 @@
 #!/usr/bin/env bash 
 
 # usage: ./auto.sh image.png
+# need `brew install imagemagick` first
+# source: https://stackoverflow.com/a/41147126
 
 sizes=(16 32 64 128 256 512)
 largfile='icon_512x512@2x.png'
