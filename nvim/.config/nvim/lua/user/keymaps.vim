@@ -158,7 +158,7 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 nnoremap <leader>lr :LspRestart<CR>
 
 " go
-nnoremap gj         :GoAddTags json<CR>
+nnoremap gj         :GoAddTags json bson<CR>
 nnoremap gmt        :GoModTidy<CR>
-nnoremap <leader>gt :GoAddTest<CR>
+nnoremap <leader>gt :GoTests<CR>
 

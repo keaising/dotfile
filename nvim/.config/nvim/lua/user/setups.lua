@@ -63,6 +63,7 @@ local plugin_list = {
 		},
 	},
 	ufo = {},
+	gotests = {},
 }
 
 vim.g.indent_blankline_filetype = { "yml", "yaml", "json" }
