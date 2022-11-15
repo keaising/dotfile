@@ -22,8 +22,8 @@ font:
     # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
     # family: RecursiveCodeiCursiveCg Nerd Font
-    # family: Hasklug Nerd Font
-    family: JetBrainsMono Nerd Font
+    family: Hasklug Nerd Font
+    # family: JetBrainsMono Nerd Font
     style: Regular
 
     # family: CodeNewRoman Nerd Font

@@ -100,9 +100,9 @@ nnoremap <silent> <m-<>      :BufferLineMovePrev<CR>
 nnoremap <silent> <m->>      :BufferLineMoveNext<CR>
 nnoremap <silent> <leader>wh :BufferLineCloseLeft<CR>
 nnoremap <silent> <leader>wl :BufferLineCloseRight<CR>
-nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR>
+nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR> <Bar> :BufferLineCloseRight<CR>
 nnoremap <silent> <m-e>      :BufferLinePick<CR>
-nnoremap <silent> <A-w>      :Bdelete<CR>
+nnoremap <silent> <m-w>      :Bdelete<CR>
 
 " telescope
 nnoremap <leader>ss :Telescope find_files<CR>
