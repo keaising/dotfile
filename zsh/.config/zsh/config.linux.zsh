@@ -1,4 +1,4 @@
-alias to='jump'
+alias j='journal'
 alias s='sudo systemctl'
 alias i='sudo apt install'
 
