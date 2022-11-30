@@ -17,9 +17,6 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ll='exa -al --group-directories-first'
 alias ls=exa
-alias to='j'
-alias jf='j -I'
-alias jb='j -b'
 
 # docker
 alias d='docker'
