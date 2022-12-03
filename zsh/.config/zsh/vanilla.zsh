@@ -160,6 +160,7 @@ _enabled_paths=(
 	"$PYENV_ROOT/bin"                   # python
 
 	"/usr/bin"
+	"/usr/sbin"
 	"/usr/local/bin"
 
 	"/usr/local/opt/openjdk/bin" # macos
