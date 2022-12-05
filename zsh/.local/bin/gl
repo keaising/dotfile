@@ -1,111 +1,85 @@
-#! /usr/bin/env lua
+#!/usr/bin/env python3
 
-local function trim_space(s)
-	return s:match"^%s*(.*)":match"(.-)%s*$"
-end
+import sys
+import re
+import os
 
--- execute command in bash
-local function exec(command)
-	local handle = io.popen(command)
-	if handle ~= nil then
-		local result = handle:read("*a")
-		handle:close()
-		return trim_space(result)
-	end
-end
 
--- copy from https://github.com/skywind3000/z.lua/blob/master/z.lua#L137
-function string:split(sSeparator, nMax, bRegexp)
-	assert(sSeparator ~= '')
-	assert(nMax == nil or nMax >= 1)
-	local aRecord = {}
-	if self:len() > 0 then
-		local bPlain = not bRegexp
-		nMax = nMax or -1
-		local nField, nStart = 1, 1
-		local nFirst, nLast = self:find(sSeparator, nStart, bPlain)
-		while nFirst and nMax ~= 0 do
-			aRecord[nField] = self:sub(nStart, nFirst - 1)
-			nField = nField + 1
-			nStart = nLast + 1
-			nFirst, nLast = self:find(sSeparator, nStart, bPlain)
-			nMax = nMax - 1
-		end
-		aRecord[nField] = self:sub(nStart)
-	else
-		aRecord[1] = ''
-	end
-	return aRecord
-end
+def main():
+    arg = ''
+    if len(sys.argv) >= 2:
+        arg = sys.argv[1]
+    gitlab_open(arg)
 
-function string:endswith(text)
-	return text == "" or self:sub(-#text) == text
-end
+def gitlab_open(arg: str) -> None:
+    if fetch('git rev-parse --is-inside-work-tree 2>/dev/null') != 'true':
+        print('not in git repo')
+        sys.exit(0)
 
-local function open(url)
-	return function()
-		exec('open '..'\''..url..'\'')
-	end
-end
+    host, org, repo = split_url(fetch('git config --get remote.origin.url'))
+    if host == "":
+        print('no host')
+        return None
 
-local is_git = exec('git rev-parse --is-inside-work-tree 2>/dev/null')
-if is_git ~= 'true' then
-	print('not in git repo')
-	os.exit(0)
-end
+    url = f"https://{host}/{org}/{repo}"
+    cmd = f"open {url}"
+    branch = fetch('git rev-parse --abbrev-ref HEAD 2>/dev/null')
 
--- url: git@github.com:keaising/group/dotfile.git
-local url = exec('git config --get remote.origin.url')
+    # merge link
+    link_merge = f"{url}/-/merge_requests/new?merge_request%5Bsource_branch%5D={branch}"
+    if branch == "master":
+        link_merge = f"{link_merge}&merge_request%5Btarget_branch%5D=stage"
 
--- path: git, github.com:keaising/group/dotfile.git
-local path = url:split('@')
+    # tree link
+    link_tree = f"{url}/-/tree/{branch}"
 
--- domain_group: github.com, keaising/group/dotfile.git
-local domain_group = path[2]:split(':')
+    # commit id link
+    commit_id = fetch('git rev-parse HEAD')
+    link_commit_id = f"{url}/-/commit/{commit_id}"
 
--- domain: github.com
-local domain = domain_group[1]
--- group: keaising/group/dotfile.git
-local group = domain_group[2]
+    # pipeline link
+    link_pipeline = f"{url}/-/pipelines"
 
-if group:endswith('.git') then
-	group = group:gsub("%.git", "")
-end
+    if host == 'github.com':
+        link_tree = f"{url}/tree/{branch}"
+        link_commit_id = f"{url}/commit/{commit_id}"
+        link_pipeline = f"{url}/actions"
 
--- root_url: https://github.com/keaising/group/dotfile
-local root_url = 'https://'..domain..'/'..group
+    open_url = url
+    match arg:
+        case '-m': 
+            open_url = link_merge
+        case '-p':
+            open_url = link_pipeline
+        case '-b':
+            open_url = link_tree
+        case '-c':
+            open_url = link_commit_id
+        case _:
+            open_url = url
+    
+    # print and open
+    print(open_url, flush=True)
+    if sys.platform == 'darwin':
+        run(f"open {open_url}")
 
--- branch: dev
-local branch = exec('git rev-parse --abbrev-ref HEAD 2>/dev/null')
-local commit_id = exec('git rev-parse HEAD')
 
-local gitlab_merge = root_url..'/-/merge_requests/new?merge_request[source_branch]='..branch
-if branch == 'master' then
-	gitlab_merge = gitlab_merge..'&merge_request[target_branch]=stage'
-end
+def split_url(url: str) -> tuple[str, str, str]:
+    reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+)"
+    if url.startswith("git"):
+        reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+).git"
+    result = re.match(reg_ex, url)
+    if result is None:
+        return "", "", ""
+    return (result.group("host_name"), result.group("org"), result.group("repo"))
 
-local tree = root_url..'/-/tree/'..branch
-local current_commit = root_url..'/-/commit/'..commit_id
-local pipeline = root_url..'/-/pipelines'
 
-if domain == 'github.com' then
-	tree = root_url..'/tree/'..branch
-	current_commit = root_url..'/commit/'..commit_id
-	pipeline = root_url..'/actions'
-end
+def fetch(command: str) -> str:
+    return os.popen(command).read().strip()
 
-local action = {
-	['-m'] = open(gitlab_merge),
-	['-p'] = open(pipeline),
-	['-b'] = open(tree),
-	['-c'] = open(current_commit),
-	['']   = open(root_url) ,
-}
 
-local arg1 = arg[1]
-if arg1 == nil then
-	arg1 = ''
-end
+def run(command: str) -> None:
+    os.system(command)
 
-action[arg1]()
 
+main()
