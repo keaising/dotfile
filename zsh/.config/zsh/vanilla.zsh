@@ -162,6 +162,7 @@ _enabled_paths=(
 	"/usr/bin"
 	"/usr/sbin"
 	"/usr/local/bin"
+	"/usr/local/sbin"
 
 	"/usr/local/opt/openjdk/bin" # macos
 )
