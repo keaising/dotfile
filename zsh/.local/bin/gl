@@ -6,24 +6,24 @@ import os
 
 
 def main():
-    arg = ''
+    arg = ""
     if len(sys.argv) >= 2:
         arg = sys.argv[1]
     gitlab_open(arg)
 
+
 def gitlab_open(arg: str) -> None:
-    if fetch('git rev-parse --is-inside-work-tree 2>/dev/null') != 'true':
-        print('not in git repo')
+    if fetch("git rev-parse --is-inside-work-tree 2>/dev/null") != "true":
+        print("not in git repo")
         sys.exit(0)
 
-    host, org, repo = split_url(fetch('git config --get remote.origin.url'))
+    host, org, repo = split_url(fetch("git config --get remote.origin.url"))
     if host == "":
-        print('no host')
+        print("no host")
         return None
 
     url = f"https://{host}/{org}/{repo}"
-    cmd = f"open {url}"
-    branch = fetch('git rev-parse --abbrev-ref HEAD 2>/dev/null')
+    branch = fetch("git rev-parse --abbrev-ref HEAD 2>/dev/null")
 
     # merge link
     link_merge = f"{url}/-/merge_requests/new?merge_request%5Bsource_branch%5D={branch}"
@@ -34,34 +34,35 @@ def gitlab_open(arg: str) -> None:
     link_tree = f"{url}/-/tree/{branch}"
 
     # commit id link
-    commit_id = fetch('git rev-parse HEAD')
+    commit_id = fetch("git rev-parse HEAD")
     link_commit_id = f"{url}/-/commit/{commit_id}"
 
     # pipeline link
     link_pipeline = f"{url}/-/pipelines"
 
-    if host == 'github.com':
+    if host == "github.com":
         link_tree = f"{url}/tree/{branch}"
         link_commit_id = f"{url}/commit/{commit_id}"
         link_pipeline = f"{url}/actions"
 
     open_url = url
     match arg:
-        case '-m': 
+        case "-m":
             open_url = link_merge
-        case '-p':
+        case "-p":
             open_url = link_pipeline
-        case '-b':
+        case "-b":
             open_url = link_tree
-        case '-c':
+        case "-c":
             open_url = link_commit_id
         case _:
             open_url = url
-    
+
     # print and open
-    print(open_url, flush=True)
-    if sys.platform == 'darwin':
-        run(f"open {open_url}")
+    if sys.platform == "darwin":
+        run(f"open '{open_url}'")
+    else:
+        print(open_url, flush=True)
 
 
 def split_url(url: str) -> tuple[str, str, str]:
