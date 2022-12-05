@@ -26,9 +26,12 @@ def gitlab_open(arg: str) -> None:
     branch = fetch("git rev-parse --abbrev-ref HEAD 2>/dev/null")
 
     # merge link
-    link_merge = f"{url}/-/merge_requests/new?merge_request%5Bsource_branch%5D={branch}"
+    link_merge = f"{url}/-/merge_requests/new?merge_request[source_branch]={branch}"
     if branch == "master":
-        link_merge = f"{link_merge}&merge_request%5Btarget_branch%5D=stage"
+        link_merge = f"{link_merge}&merge_request[target_branch]=stage"
+
+    for k, v in {"[": "%5B", "]": "%5D"}.items():
+        link_merge = link_merge.replace(k, v)
 
     # tree link
     link_tree = f"{url}/-/tree/{branch}"
