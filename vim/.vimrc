@@ -30,10 +30,6 @@ set fdm=indent                    " 代码折叠默认使用缩进
 set foldlevel=99                  " 默认打开所有缩进
 set backup                        " 允许备份
 set writebackup                   " 保存时备份
-set backupdir=~/.vim/tmp          " 备份文件地址，统一管理
-set backupext=.bak                " 备份文件扩展名
-set noswapfile                    " 禁用交换文件
-set noundofile                    " 禁用 undo文件
 
 syntax enable
 syntax on

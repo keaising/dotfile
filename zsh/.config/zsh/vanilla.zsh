@@ -158,6 +158,7 @@ _enabled_paths=(
 	"$N_PREFIX/bin"                     # n
 	"$HOME/.cargo/bin"                  # rust
 	"$PYENV_ROOT/bin"                   # python
+	"/usr/local/cuda/bin"
 
 	"/usr/bin"
 	"/usr/sbin"
