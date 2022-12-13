@@ -65,13 +65,14 @@ noremap  L $
 nnoremap ' `
 
 " close all recursively
-nmap zm zM
+nnoremap zm zM
 " open current recursively
-nmap zo zO
+nnoremap za zO
+" toggle current level
+nnoremap zo za
 " open all recursively
-nmap zr zR
+nnoremap zr zR
 " close current: zc
-" open/close current: za
 " zg: add word to spell ignorance file
 nnoremap <silent> zs :silent !sort ~/.config/nvim/spell/en.utf-8.add > /tmp/en.utf-8.add && cat /tmp/en.utf-8.add > ~/.config/nvim/spell/en.utf-8.add<CR>
 
