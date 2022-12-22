@@ -44,6 +44,14 @@ let g:neoformat_markdown_prettier = {
         \ }
 let g:neoformat_enabled_markdown = ['prettier']
 
+let g:neoformat_yaml_prettier = {
+            \ 'exe': 'prettier',
+            \ 'args': ['--stdin-filepath', '"%:p"', '--parser', 'yaml'],
+            \ 'stdin': 1,
+            \ 'try_node_exe': 1,
+            \ }
+let g:neoformat_enabled_yaml = ['prettier']
+
 let g:neoformat_enabled_json = ['jq']
 let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_python = ['black']
