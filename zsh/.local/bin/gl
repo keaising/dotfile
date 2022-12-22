@@ -64,7 +64,8 @@ def gitlab_open(arg: str) -> None:
     # print and open
     if sys.platform == "darwin":
         run(f"open '{open_url}'")
-    else:
+    elif sys.platform == "linux":
+        run(f"echo '{open_url}' | xclip -selection c -i")
         print(open_url, flush=True)
 
 
