@@ -3,6 +3,7 @@
 import sys
 import re
 import os
+import base64
 from platform import uname
 
 
@@ -64,14 +65,15 @@ def gitlab_open(arg: str) -> None:
             open_url = url
 
     # print and open
+    # echo -e "\e]52;c;$(base64 <<< content)\a"
     match current_platform():
         case "darwin":
             run(f"open '{open_url}'")
-        case "linux":
-            run(f"echo '{open_url}' | xclip -selection clipboard -i")
-            print(open_url, flush=True)
-        case "wsl":
-            run(f"echo '{open_url}' | clip.exe")
+        case "linux" | "wsl":
+            # linux: run(f"echo '{open_url}' | xclip -selection clipboard -i")
+            # wsl:   run(f"echo '{open_url}' | clip.exe")
+            content = base64.b64encode(open_url.encode("ascii")).decode("ascii")
+            run(rf'echo -n "\e]52;c;{content}\a"')
             print(open_url, flush=True)
 
 
@@ -92,15 +94,17 @@ def fetch(command: str) -> str:
 def run(command: str) -> None:
     os.system(command)
 
+
 def current_platform() -> str:
     match sys.platform:
         case "darwin":
             return "darwin"
         case "linux":
             # WSL: 5.15.79.1-microsoft-standard-WSL2
-            if 'microsoft-standard' in uname().release:
+            if "microsoft-standard" in uname().release:
                 return "wsl"
             return "linux"
     return "unsupported"
+
 
 main()
