@@ -115,3 +115,14 @@ let g:go_highlight_variable_assignments = 1
 let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
 let g:go_doc_keywordprg_enabled = 0
+
+
+" osc52 yank
+autocmd TextYankPost *
+  \  if ( v:event.operator is 'y' || v:event.operator is 'c' || v:event.operator is 'd' )
+  \      && v:event.regname is '' |
+  \    execute 'OSCYankReg "' |
+  \  endif
+" autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
+let g:oscyank_max_length = 100000000
+let g:oscyank_silent = v:true
