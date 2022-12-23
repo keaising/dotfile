@@ -62,7 +62,6 @@ alias pip='pip3'
 alias y='yarn'
 
 # tmux
-alias tmux='tmux'
 alias t='tmux'
 alias ta='tmux attach-session -t'
 alias tn='tmux new -s'
