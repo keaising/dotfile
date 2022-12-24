@@ -82,7 +82,7 @@ alias dfp='datahub-field-parse'
 
 # golang --- {{{
 # golang config in macOS
-export GOROOT=/usr/local/go
+# export GOROOT=/usr/local/go
 export GOPATH=$HOME/code/go
 export GOPROXY=https://goproxy.cn,direct
 export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
@@ -161,6 +161,7 @@ _enabled_paths=(
 
 	"/usr/bin"
 	"/usr/sbin"
+	"/usr/local"                        # for go on macOS
 	"/usr/local/bin"
 	"/usr/local/sbin"
 
