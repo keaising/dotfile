@@ -72,7 +72,7 @@ def gitlab_open(arg: str) -> None:
         case "linux" | "wsl":
             # linux: run(f"echo '{open_url}' | xclip -selection clipboard -i")
             # wsl:   run(f"echo '{open_url}' | clip.exe")
-            run(rf'printf "\033]52;c;$(printf "%s" "{open_url}" | base64)\a"')
+            run(rf'printf "\033]52;c;$(echo {open_url} | base64)\a"')
             print(open_url, flush=True)
 
 
