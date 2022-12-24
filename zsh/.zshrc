@@ -30,7 +30,7 @@ fi
 export STARSHIP_CONFIG=$HOME/.config/zsh/config.toml
 if [ ! -f "`which starship`" ]; then
 	echo "Installing starship ..."
-	setpx
+	# setpx
 	sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 fi
 eval "$(starship init zsh)"
@@ -46,7 +46,7 @@ if [ ! -f "$ZINIT_PATH/zinit.zsh" ]; then
 	echo "Installing zinit ..."
 	[ ! -d "$ZINIT_PATH" ] && mkdir -p "$ZINIT" 2> /dev/null
 	if [ -x "$(which git)" ]; then
-		setpx
+		# setpx
 		git clone https://github.com/zdharma-continuum/zinit.git $ZINIT_PATH
 	else
 		echo "ERROR: please install git before installation !!"
