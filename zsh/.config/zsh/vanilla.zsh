@@ -150,14 +150,13 @@ export GPG_TTY=$(tty)
 
 # path
 _enabled_paths=(
-	"$HOME/.local/bin"                  # tools
+	"$HOME/.local/bin"                  # my own tools
 	"$HOME/.local/share/nvim/mason/bin" # nvim lsp servers/linters
 	"$HOME/code/gems/bin"               # gems
 	"$HOME/code/go/bin"                 # go
 	"$N_PREFIX/bin"                     # n
 	"$HOME/.cargo/bin"                  # rust
 	"$PYENV_ROOT/bin"                   # python
-	"/usr/local/cuda/bin"
 
 	"/usr/bin"
 	"/usr/sbin"
@@ -165,7 +164,10 @@ _enabled_paths=(
 	"/usr/local/bin"
 	"/usr/local/sbin"
 
-	"/usr/local/opt/openjdk/bin" # macos
+	"/usr/local/opt/openjdk/bin"        # macOS JDK
+
+	"/usr/local/cuda/bin"               # CUDA: Ubuntu/Debian
+	"/opt/cuda/bin"                     # CUDA: Arch
 )
 
 for _enabled_path in $_enabled_paths[@]; do
