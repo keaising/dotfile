@@ -227,11 +227,11 @@ hostip() {
 	echo $HOST_IP
 }
 
-pxio() {
-	export https_proxy=http://10.10.43.1:1080
-	export http_proxy=http://10.10.43.1:1080
-	export all_proxy=socks5://10.10.43.1:1081
-	echo "set proxy to 10.10.43.1:1080"
+px() {
+	export https_proxy=http://10.10.43.6:1080
+	export http_proxy=http://10.10.43.6:1080
+	export all_proxy=socks5://10.10.43.6:1081
+	echo "set proxy to 10.10.43.6:1080"
 }
 
 pxgt() {
@@ -241,7 +241,7 @@ pxgt() {
 	echo "set proxy to 10.10.43.3:1080"
 }
 
-pxlocal() {
+pxlo() {
 	export https_proxy=http://127.0.0.1:1080
 	export http_proxy=http://127.0.0.1:1080
 	export all_proxy=socks5://127.0.0.1:1081
@@ -257,12 +257,12 @@ nopx() {
 
 # auto set proxy
 setpx() {
-	ping -c 1 -q 10.10.43.1 1>/dev/null
+	ping -c 1 -q 10.10.43.3 1>/dev/null
 	ping1=$?
 	if [ $ping1 -eq 0 ]; then
-		pxio
+		pxgt
 	else
-		px
+		pxlo
 	fi
 }
 
