@@ -43,8 +43,11 @@ def get_dir() -> str:
 
 
 def split_url(url: str) -> tuple[str, str, str]:
+    # https://github.com/keaising/dotfile
     reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+)"
-    if url.startswith("git"):
+    if url.endswith("git"):
+        # https://github.com/keaising/dotfile.git
+        # git@github.com:keaising/dotfile.git
         reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+).git"
     result = re.match(reg_ex, url)
     if result is None:
