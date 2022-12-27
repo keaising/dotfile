@@ -64,6 +64,7 @@ local plugin_list = {
 	},
 	ufo = {},
 	gotests = {},
+	['smart-splits'] = {},
 }
 
 vim.g.indent_blankline_filetype = { "yml", "yaml", "json" }
@@ -84,6 +85,13 @@ for p, opt in pairs(plugin_list) do
 	if p == "ufo" then
 		vim.keymap.set("n", "zr", require("ufo").openAllFolds)
 		vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
+	end
+
+	if p == 'smart-splits' then
+		vim.keymap.set('n', '<m-Left>',  require('smart-splits').resize_left)
+		vim.keymap.set('n', '<m-Down>',  require('smart-splits').resize_down)
+		vim.keymap.set('n', '<m-Up>',    require('smart-splits').resize_up)
+		vim.keymap.set('n', '<m-Right>', require('smart-splits').resize_right)
 	end
 
 	::continue::

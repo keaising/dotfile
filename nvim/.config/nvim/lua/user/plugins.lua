@@ -132,6 +132,7 @@ return packer.startup(function(use)
 
 	-- platform / system
 	use("ojroques/vim-oscyank") -- osc 53 yank
+	use("mrjones2014/smart-splits.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
