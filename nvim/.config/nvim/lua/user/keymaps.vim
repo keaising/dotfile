@@ -11,10 +11,10 @@ nnoremap <C-q> :q<CR>
 cnoremap sudow w !sudo tee % >/dev/null
 
 " resize window
-nnoremap <silent> <m-Left>  :vertical resize +5<CR>
-nnoremap <silent> <m-Right> :vertical resize -5<CR>
-nnoremap <silent> <m-Up>    :resize   +5<CR>
-nnoremap <silent> <m-Down>  :resize   -5<CR>
+" nnoremap <silent> <m-Left>  :vertical resize +5<CR>
+" nnoremap <silent> <m-Right> :vertical resize -5<CR>
+" nnoremap <silent> <m-Up>    :resize   +5<CR>
+" nnoremap <silent> <m-Down>  :resize   -5<CR>
 
 " switch window
 noremap  <C-h> <c-w>h
@@ -24,7 +24,7 @@ noremap  <C-k> <c-w>k
 
 " split window
 noremap <C-\> :vsplit<CR>
-noremap <C--> :split<CR>
+noremap <C-s> :split<CR>
 
 " switch location
 noremap <m-[>  <C-o>
