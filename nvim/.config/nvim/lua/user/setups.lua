@@ -4,8 +4,8 @@ local plugin_list = {
 	fidget = {},
 	inc_rename = {},
 	im_select = {
-		default_im_select = "com.apple.keylayout.ABC",
-		disable_auto_restore = 0,
+		-- default_im_select = "com.apple.keylayout.ABC",
+		-- disable_auto_restore = 0,
 	},
 	lsp_signature = {
 		bind = true,
