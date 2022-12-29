@@ -58,8 +58,7 @@ alias e='exercism'
 # script
 alias python='python3'
 alias pip='pip3'
-# alias z='zerotier-cli'
-alias y='yarn'
+alias sa='source ./venv/bin/activate'
 
 # tmux
 alias t='tmux'
