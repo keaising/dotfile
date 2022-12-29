@@ -6,6 +6,7 @@ export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
 
 alias i='brew install'
 alias ic='brew cask install'
+alias dnsm='sudo brew services restart dnsmasq'
 
 
 # gcloud
