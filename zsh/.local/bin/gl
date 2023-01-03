@@ -71,8 +71,9 @@ def gitlab_open(arg: str) -> None:
         case "linux" | "wsl":
             # linux: run(f"echo '{open_url}' | xclip -selection clipboard -i")
             # wsl:   run(f"echo '{open_url}' | clip.exe")
-            run(rf'printf "\033]52;c;$(echo {open_url} | base64)\a"')
-            print(open_url, flush=True)
+            #  run(rf'''printf "\033]52;c;$(echo '{open_url}' | base64)\a"''')
+            #  print(open_url, flush=True)
+            run(f"wslview '{open_url}'")
 
 
 def split_url(url: str) -> tuple[str, str, str]:
