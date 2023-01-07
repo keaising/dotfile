@@ -5,7 +5,7 @@ local plugin_list = {
 	inc_rename = {},
 	im_select = {
 		-- default_im_select = "com.apple.keylayout.ABC",
-		-- disable_auto_restore = 0,
+		disable_auto_restore = 1,
 	},
 	lsp_signature = {
 		bind = true,
