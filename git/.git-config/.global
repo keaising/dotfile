@@ -32,6 +32,8 @@
 	d = !git branch | fzf | xargs git br -d
 	dd = !git branch | fzf | xargs git br -D
 	dr = !git branch -r | fzf | xargs | sed -e 's/^origin\\///' | xargs -I {} git push origin :{}
+	; https://words.filippo.io/git-fixup-amending-an-older-commit/
+	fixup = "!f() { TARGET=$(git rev-parse "$1"); git commit --fixup=$TARGET ${@:2} && GIT_EDITOR=true git rebase -i --autostash --autosquash $TARGET^; }; f"
 [core]
 	excludesfile = ~/.git-config/global.gitignore
 	hooksPath = ~/.git-config/hooks/
