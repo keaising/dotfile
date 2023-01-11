@@ -9,7 +9,7 @@ window:
     x: 3
     y: 3
   decorations: full
-  opacity: 0.9
+  # opacity: 0.9
 
 font:
   normal:
