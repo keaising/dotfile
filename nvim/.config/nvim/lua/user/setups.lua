@@ -5,7 +5,7 @@ local plugin_list = {
 	inc_rename = {},
 	im_select = {
 		-- default_im_select = "com.apple.keylayout.ABC",
-		disable_auto_restore = 1,
+		-- disable_auto_restore = 1,
 	},
 	lsp_signature = {
 		bind = true,
@@ -64,7 +64,7 @@ local plugin_list = {
 	},
 	ufo = {},
 	gotests = {},
-	['smart-splits'] = {},
+	["smart-splits"] = {},
 }
 
 vim.g.indent_blankline_filetype = { "yml", "yaml", "json" }
@@ -87,12 +87,15 @@ for p, opt in pairs(plugin_list) do
 		vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
 	end
 
-	if p == 'smart-splits' then
-		vim.keymap.set('n', '<m-Left>',  require('smart-splits').resize_left)
-		vim.keymap.set('n', '<m-Down>',  require('smart-splits').resize_down)
-		vim.keymap.set('n', '<m-Up>',    require('smart-splits').resize_up)
-		vim.keymap.set('n', '<m-Right>', require('smart-splits').resize_right)
+	if p == "smart-splits" then
+		vim.keymap.set("n", "<m-Left>", require("smart-splits").resize_left)
+		vim.keymap.set("n", "<m-Down>", require("smart-splits").resize_down)
+		vim.keymap.set("n", "<m-Up>", require("smart-splits").resize_up)
+		vim.keymap.set("n", "<m-Right>", require("smart-splits").resize_right)
 	end
 
 	::continue::
 end
+
+--lspsaga
+vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
