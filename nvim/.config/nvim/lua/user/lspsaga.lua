@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-saga.init_lsp_saga({
+saga.setup({
 	saga_winblend = 0,
 	max_preview_lines = 20,
 	finder_action_keys = {
