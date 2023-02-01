@@ -6,6 +6,7 @@ local plugin_list = {
 	im_select = {
 		-- default_im_select = "com.apple.keylayout.ABC",
 		disable_auto_restore = 1,
+		-- default_command = '/usr/local/bin/im-select'
 	},
 	lsp_signature = {
 		bind = true,
