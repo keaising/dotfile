@@ -147,9 +147,9 @@ export GPG_TTY=$(tty)
 # path
 _enabled_paths=(
 	"$HOME/.local/bin"                  # my own tools
+	"$HOME/code/go/bin"                 # go
 	"$HOME/.local/share/nvim/mason/bin" # nvim lsp servers/linters
 	"$HOME/code/gems/bin"               # gems
-	"$HOME/code/go/bin"                 # go
 	"$N_PREFIX/bin"                     # n
 	"$HOME/.cargo/bin"                  # rust
 	"$PYENV_ROOT/bin"                   # python
@@ -225,7 +225,7 @@ hostip() {
 	echo $HOST_IP
 }
 
-px() {
+setpx() {
 	export https_proxy=http://10.10.43.6:1080
 	export http_proxy=http://10.10.43.6:1080
 	export all_proxy=socks5://10.10.43.6:1081
@@ -239,7 +239,7 @@ pxgt() {
 	echo "set proxy to 10.10.43.3:1080"
 }
 
-pxlo() {
+px() {
 	export https_proxy=http://127.0.0.1:1080
 	export http_proxy=http://127.0.0.1:1080
 	export all_proxy=socks5://127.0.0.1:1081
@@ -254,7 +254,7 @@ nopx() {
 }
 
 # auto set proxy
-setpx() {
+auto_px() {
 	ping -c 1 -q 10.10.43.3 1>/dev/null
 	ping1=$?
 	if [ $ping1 -eq 0 ]; then
