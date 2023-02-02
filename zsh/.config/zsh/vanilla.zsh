@@ -60,6 +60,10 @@ alias python='python3'
 alias pip='pip3'
 alias sa='source ./venv/bin/activate'
 
+# ocr, source: https://www.kawabangga.com/posts/4876
+# brew install tesseract pngpaste
+alias pocr='pngpaste - | tesseract stdin stdout'
+
 # tmux
 alias t='tmux'
 alias ta='tmux attach-session -t'
