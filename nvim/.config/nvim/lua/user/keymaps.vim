@@ -95,10 +95,10 @@ nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
 
 " buffer
-nnoremap <silent> <m-{>      :BufferLineCyclePrev<CR>
-nnoremap <silent> <m-}>      :BufferLineCycleNext<CR>
-nnoremap <silent> <m-<>      :BufferLineMovePrev<CR>
-nnoremap <silent> <m->>      :BufferLineMoveNext<CR>
+nnoremap <silent> <m-h>      :BufferLineCyclePrev<CR>
+nnoremap <silent> <m-l>      :BufferLineCycleNext<CR>
+nnoremap <silent> <m-H>      :BufferLineMovePrev<CR>
+nnoremap <silent> <m-L>      :BufferLineMoveNext<CR>
 nnoremap <silent> <leader>wh :BufferLineCloseLeft<CR>
 nnoremap <silent> <leader>wl :BufferLineCloseRight<CR>
 nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR> <Bar> :BufferLineCloseRight<CR>
