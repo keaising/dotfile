@@ -150,6 +150,17 @@ vnoremap <C-v> <Plug>(expand_region_shrink)
 " hop
 nnoremap s :HopChar2<CR>
 
+" vim-move
+let g:move_map_keys = 0
+nnoremap <silent> <C-A-h> <Plug>MoveCharLeft
+nnoremap <silent> <C-A-l> <Plug>MoveCharRight
+nnoremap <silent> <C-A-j> <Plug>MoveLineDown
+nnoremap <silent> <C-A-k> <Plug>MoveLineUp
+vnoremap <silent> <C-A-h> <Plug>MoveBlockLeft
+vnoremap <silent> <C-A-l> <Plug>MoveBlockRight
+vnoremap <silent> <C-A-j> <Plug>MoveBlockDown
+vnoremap <silent> <C-A-k> <Plug>MoveBlockUp
+
 nnoremap <leader>cc <plug>NERDCommenterToggle
 vnoremap <leader>cc <plug>NERDCommenterToggle
 nnoremap <M-/>      <plug>NERDCommenterToggle

@@ -116,10 +116,6 @@ let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
 let g:go_doc_keywordprg_enabled = 0
 
-" vim-move
-let g:move_key_modifier = 'C'
-let g:move_key_modifier_visualmode = 'C'
-
 " osc52 yank
 autocmd TextYankPost *
   \  if ( v:event.operator is 'y' || v:event.operator is 'c' || v:event.operator is 'd' )
