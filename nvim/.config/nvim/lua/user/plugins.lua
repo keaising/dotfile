@@ -128,6 +128,7 @@ return packer.startup(function(use)
 	use("preservim/nerdcommenter")
 	--use("simeji/winresizer")
 	use("tpope/vim-repeat")
+	use("matze/vim-move")
 
 	-- platform / system
 	use("ojroques/vim-oscyank") -- osc 53 yank
