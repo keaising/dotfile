@@ -160,14 +160,14 @@ _enabled_paths=(
 
 	"/usr/bin"
 	"/usr/sbin"
-	"/usr/local"                        # for go on macOS
+	"/usr/local" # for go on macOS
 	"/usr/local/bin"
 	"/usr/local/sbin"
 
-	"/usr/local/opt/openjdk/bin"        # macOS JDK
+	"/usr/local/opt/openjdk/bin" # macOS JDK
 
-	"/usr/local/cuda/bin"               # CUDA: Ubuntu/Debian
-	"/opt/cuda/bin"                     # CUDA: Arch
+	"/usr/local/cuda/bin" # CUDA: Ubuntu/Debian
+	"/opt/cuda/bin"       # CUDA: Arch
 )
 
 for _enabled_path in $_enabled_paths[@]; do
@@ -294,6 +294,28 @@ note() {
 	esac
 }
 
+extract() {
+	if [ -f $1 ]; then
+		case $1 in
+			*.tar.bz2) tar xjf $1 ;;
+			*.tar.gz) tar xzf $1 ;;
+			*.tar.xz) tar xf $1 ;;
+			*.bz2) bunzip2 $1 ;;
+			*.rar) unrar e $1 ;;
+			*.gz) gunzip $1 ;;
+			*.tar) tar xf $1 ;;
+			*.tbz2) tar xjf $1 ;;
+			*.tgz) tar xzf $1 ;;
+			*.zip) unzip $1 ;;
+			*.Z) uncompress $1 ;;
+			*.7z) 7z x $1 ;;
+			*) echo "'$1' cannot be extracted via extract()" ;;
+		esac
+	else
+		echo "'$1' is not a valid file"
+	fi
+}
+
 # macos only
 dns() {
 	for i in {1..$1}; do
@@ -344,7 +366,6 @@ bindkey '^n' autosuggest-accept # auto suggestion
 # C-D: delete char after
 # C-U: clear the entire line
 # C-K: Clear the characters on the line after the current cursor position
-
 
 # shortcuts
 bindkey -s '\ee' 'vi . \n'
