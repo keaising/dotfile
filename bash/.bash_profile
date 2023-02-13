@@ -10,7 +10,7 @@ _enabled_paths=(
 
 for _enabled_path in ${_enabled_paths[@]}; do
 	# only add to $PATH when path exist and path not in $PATH
-	[[ -d "${_enabled_path}" ]] &&
+	# [[ -d "${_enabled_path}" ]] &&
 		[[ ! :$PATH: == *":${_enabled_path}:"* ]] &&
 		PATH="$PATH:${_enabled_path}"
 done
@@ -24,10 +24,11 @@ alias .....='cd ../../../..'
 alias i='sudo apt install'
 alias ll='ls -al'
 alias s='sudo systemctl'
-alias j='sudo journal'
+alias j='sudo journalctl'
 alias d='docker'
 alias dc='docker compose'
 alias ts='sudo tailscale'
+alias vi=vim
 
 # settings
 export VISUAL=vim
@@ -62,3 +63,39 @@ extract() {
 		echo "'$1' is not a valid file"
 	fi
 }
+
+set_timezone() {
+	sudo timedatectl set-timezone Asia/Shanghai
+}
+
+add_no_login_user() {
+	sudo groupadd $1
+	sudo useradd --system \
+	    --gid $1 \
+	    --create-home \
+	    --home-dir /var/lib/$1 \
+	    --shell /usr/sbin/nologin \
+	    $1
+}
+
+add_user() {
+	sudo groupadd $1
+	sudo useradd \
+		--gid $1
+		$1
+
+	usermod -aG sudo $1
+}
+
+install_docker() {
+	curl -fsSL https://get.docker.com -o get-docker.sh
+
+	sudo sh get-docker.sh
+
+	sudo groupadd docker
+	sudo usermod -aG docker $USER
+
+	newgrp docker
+	docker info
+}
+
