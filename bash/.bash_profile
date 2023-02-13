@@ -10,7 +10,6 @@ _enabled_paths=(
 
 for _enabled_path in ${_enabled_paths[@]}; do
 	# only add to $PATH when path exist and path not in $PATH
-	# [[ -d "${_enabled_path}" ]] &&
 		[[ ! :$PATH: == *":${_enabled_path}:"* ]] &&
 		PATH="$PATH:${_enabled_path}"
 done
@@ -99,3 +98,6 @@ install_docker() {
 	docker info
 }
 
+install_tailscale() {
+	curl -fsSL https://tailscale.com/install.sh | sh
+}
