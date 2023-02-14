@@ -229,7 +229,7 @@ hostip() {
 	echo $HOST_IP
 }
 
-setpx() {
+pxpx() {
 	export https_proxy=http://10.10.43.6:1080
 	export http_proxy=http://10.10.43.6:1080
 	export all_proxy=socks5://10.10.43.6:1081
