@@ -36,6 +36,15 @@ export EDITOR=vim
 export GOPROXY=https://goproxy.cn
 export GOPATH=$HOME/code/go
 
+# prompt
+PS1_PROMPT() {
+  local e=$?
+  (( e )) && printf "\033[0;31m $e> \033[0m\n" || printf "$ "
+  return $e
+}
+PS1='\[\e[0m\]\u@\h:\w\[\e[0m\]'
+PS1="$PS1"'$(PS1_PROMPT)'
+
 # functions
 mc() {
 	mkdir -p -- "$1" && cd -P -- "$1"
