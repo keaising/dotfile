@@ -5,7 +5,6 @@ end
 
 local lsp_servers = {
 	"jsonls",
-	"sumneko_lua",
 	"gopls",
 	"bashls",
 	"dockerls",
