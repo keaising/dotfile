@@ -11,6 +11,7 @@ local lsp_servers = {
 	"pyright",
 	"tsserver",
 	"vimls",
+	"lua_ls",
 }
 
 ------  setup lsp for lspconfig ------
