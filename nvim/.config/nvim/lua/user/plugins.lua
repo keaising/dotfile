@@ -114,6 +114,7 @@ return packer.startup(function(use)
 	use("sainnhe/gruvbox-material")
 	-- use 'rebelot/kanagawa.nvim'
 	use("sainnhe/sonokai")
+	use("arzg/vim-colors-xcode")
 
 	-- vim plugins
 	use("voldikss/vim-floaterm")
