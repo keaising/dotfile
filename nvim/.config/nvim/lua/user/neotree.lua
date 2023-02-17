@@ -77,10 +77,7 @@ neotree.setup({
 			nowait = true,
 		},
 		mappings = {
-			["<space>"] = {
-				"toggle_node",
-				nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-			},
+			["<space>"] = "none",
 			["o"] = "open",
 			["<cr>"] = "open",
 			["S"] = "open_split",
