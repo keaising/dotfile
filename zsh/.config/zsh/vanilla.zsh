@@ -46,7 +46,7 @@ alias jb='jabba'
 
 # proxy
 alias pl='https_proxy=http://127.0.0.1:1080 http_proxy=http://127.0.0.1:1080 all_proxy=socks5://127.0.0.1:1081 '
-alias pi='https_proxy=http://10.10.43.3:1080 http_proxy=http://10.10.43.3:1080 all_proxy=socks5://10.10.43.3:1080 '
+alias pi='https_proxy=http://10.10.43.6:1080 http_proxy=http://10.10.43.6:1080 all_proxy=http://10.10.43.6:1080 '
 
 # rust
 alias cb='cargo build'
@@ -229,25 +229,27 @@ hostip() {
 	echo $HOST_IP
 }
 
-pxpx() {
-	export https_proxy=http://10.10.43.6:1080
-	export http_proxy=http://10.10.43.6:1080
-	export all_proxy=socks5://10.10.43.6:1081
-	echo "set proxy to 10.10.43.6:1080"
+setpx() {
+	export https_proxy=http://$1
+	export http_proxy=http://$1
+	export all_proxy=socks5://$1
+	echo "set proxy to $1"
 }
 
-pxgt() {
-	export https_proxy=http://10.10.43.3:1080
-	export http_proxy=http://10.10.43.3:1080
-	export all_proxy=socks5://10.10.43.3:1081
-	echo "set proxy to 10.10.43.3:1080"
+px1() {
+	setpx 10.10.43.1:1080
 }
 
-px() {
-	export https_proxy=http://127.0.0.1:1080
-	export http_proxy=http://127.0.0.1:1080
-	export all_proxy=socks5://127.0.0.1:1081
-	echo "set proxy to 127.0.0.1:1080"
+px3() {
+	setpx 10.10.43.3:1080
+}
+
+px6() {
+	setpx 10.10.43.6:1080
+}
+
+px127() {
+	setpx 127.0.0.1:1080
 }
 
 nopx() {
@@ -255,17 +257,6 @@ nopx() {
 	export http_proxy=
 	export all_proxy=
 	echo "set proxy to nil"
-}
-
-# auto set proxy
-auto_px() {
-	ping -c 1 -q 10.10.43.3 1>/dev/null
-	ping1=$?
-	if [ $ping1 -eq 0 ]; then
-		pxgt
-	else
-		pxlo
-	fi
 }
 
 # new note
