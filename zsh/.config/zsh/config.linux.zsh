@@ -7,4 +7,4 @@ elif hash pacman 2>/dev/null; then
 	alias i='sudo pacman -S'
 fi
 
-alias ts='tailscale'
+alias ts='sudo tailscale'
