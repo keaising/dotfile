@@ -1,4 +1,4 @@
-alias j='journal'
+alias j='sudo journalctl'
 alias s='sudo systemctl'
 alias i='sudo apt install'
 if hash apt 2>/dev/null; then
