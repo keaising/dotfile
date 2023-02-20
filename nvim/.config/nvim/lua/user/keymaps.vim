@@ -161,6 +161,12 @@ vnoremap <silent> <C-A-l> <Plug>MoveBlockRight
 vnoremap <silent> <C-A-j> <Plug>MoveBlockDown
 vnoremap <silent> <C-A-k> <Plug>MoveBlockUp
 
+" vim maximizer
+let g:maximizer_set_default_mapping = 0
+nnoremap <silent><C-z> :MaximizerToggle<CR>
+vnoremap <silent><C-z> :MaximizerToggle<CR>gv
+inoremap <silent><C-z> <C-o>:MaximizerToggle<CR>
+
 nnoremap <leader>cc <plug>NERDCommenterToggle
 vnoremap <leader>cc <plug>NERDCommenterToggle
 nnoremap <M-/>      <plug>NERDCommenterToggle
