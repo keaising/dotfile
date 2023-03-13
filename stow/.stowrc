@@ -1,10 +1,6 @@
 # target folder
 --target=~
 
-# ignore platfrom-related software
---ignore=.*platform.*
---ignore=.*rime.*
-
 # verbose
 -v
 
