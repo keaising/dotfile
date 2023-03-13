@@ -120,7 +120,7 @@ let g:go_doc_keywordprg_enabled = 0
 autocmd TextYankPost *
   \  if ( v:event.operator is 'y' || v:event.operator is 'c' || v:event.operator is 'd' )
   \      && v:event.regname is '' |
-  \    execute 'OSCYankReg "' |
+  \    execute 'OSCYankRegister "' |
   \  endif
 " autocmd TextYankPost * if v:event.operator is 'y' && v:event.regname is '+' | execute 'OSCYankReg +' | endif
 let g:oscyank_max_length = 100000000
