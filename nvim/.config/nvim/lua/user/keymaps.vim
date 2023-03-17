@@ -66,8 +66,8 @@ nnoremap ' `
 
 " close all recursively
 nnoremap zm zM
-" open current recursively
-nnoremap za zO
+" toggle current block, all level
+nnoremap za zA
 " toggle current level
 nnoremap zo za
 " open all recursively
