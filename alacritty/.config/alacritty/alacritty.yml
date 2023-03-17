@@ -10,6 +10,7 @@ window:
     y: 3
   decorations: full
   # opacity: 0.9
+  option_as_alt: "Both"
 
 font:
   normal:
@@ -176,4 +177,4 @@ key_bindings:
   - { key: Backslash, mods: Alt|Shift, chars: "\x1b|"  } # Alt + |
   - { key: Slash,     mods: Alt,       chars: "\x1b/"  } # Alt + /
 
-alt_send_esc: true
+# alt_send_esc: true
