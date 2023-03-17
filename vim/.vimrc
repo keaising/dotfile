@@ -25,8 +25,6 @@ set ffs=unix,dos,mac              " 文件换行符，默认使用 unix 换行�
 set foldenable                    " 允许代码折叠
 set fdm=indent                    " 代码折叠默认使用缩进
 set foldlevel=99                  " 默认打开所有缩进
-set backup                        " 允许备份
-set writebackup                   " 保存时备份
 
 syntax enable
 syntax on
