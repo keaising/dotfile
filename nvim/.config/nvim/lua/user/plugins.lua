@@ -136,6 +136,11 @@ return packer.startup(function(use)
 	use("ojroques/vim-oscyank") -- osc 53 yank
 	use("mrjones2014/smart-splits.nvim")
 
+	use({
+		"neoclide/coc.nvim",
+		branch = "release",
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
