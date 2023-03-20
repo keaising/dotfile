@@ -19,25 +19,10 @@ font:
     # family: Hasklug Nerd Font
     # family: JetBrainsMono Nerd Font
   normal:
-    family: RecMonoCasual Nerd Font
-    style: Regular
-  bold:
-    family: RecMonoCasual Nerd Font
-    style: Bold
-  italic:
-    family: RecMonoCasual Nerd Font
-    style: Italic
-  bold_italic:
-    family: RecMonoCasual Nerd Font
-    style: Bold Italic
-
-    # family: CodeNewRoman Nerd Font
-    # family: Consolas Nerd Font
-    # style: Book
-  size: 11
+    family: RecMonoTaiga Nerd Font
+    style: Medium
+  size: 12
   offset:
-    # x: 2
-    # y: 6
     x: 1
     y: 1
 
