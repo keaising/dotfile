@@ -13,19 +13,28 @@ window:
   option_as_alt: "Both"
 
 font:
-  normal:
     # family: Iosevka Term SS01 
     # family: Source Code Pro for Powerline
-    family: RecursiveCodeiCursiveCg Nerd Font
-    # family: RecMonoCasual Nerd Font
+    # family: RecursiveCodeiCursiveCg Nerd Font
     # family: Hasklug Nerd Font
     # family: JetBrainsMono Nerd Font
+  normal:
+    family: RecMonoCasual Nerd Font
     style: Regular
+  bold:
+    family: RecMonoCasual Nerd Font
+    style: Bold
+  italic:
+    family: RecMonoCasual Nerd Font
+    style: Italic
+  bold_italic:
+    family: RecMonoCasual Nerd Font
+    style: Bold Italic
 
     # family: CodeNewRoman Nerd Font
     # family: Consolas Nerd Font
     # style: Book
-  size: 12
+  size: 14
   offset:
     # x: 2
     # y: 6
