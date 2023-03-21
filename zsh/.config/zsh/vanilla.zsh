@@ -92,8 +92,7 @@ alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
 alias fmt='goimports -w . && go mod tidy'
 alias fmtf='gofumpt -l -w . && go mod tidy'
 alias fmts='gosimports -w . && go mod tidy'
-alias v='govulncheck ./... >/dev/null'
-alias gocc='fmt && goci --allow-parallel-runners'
+alias gocc='fmt && v && goci --allow-parallel-runners'
 alias goss='\
 	fmtf &&\
 	fmts &&\
@@ -106,6 +105,14 @@ alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some 
 glone() {
 	clone $1 | tee /tmp/goclone
 	cd $(cat /tmp/goclone | head -n 1 | awk '{print $4}')
+}
+
+v() {
+	govulncheck ./... > /tmp/govulncheck 2>&1
+	err_code=$?
+	[[ $err_code -ne 0 ]] && cat /tmp/govulncheck
+	echo -n "" > /tmp/govulncheck
+	exit $err_code
 }
 
 # }}}
