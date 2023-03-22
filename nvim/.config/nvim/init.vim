@@ -6,6 +6,7 @@ lua require "user.plugins"
 lua require "user.cmp"
 lua require "user.lsp"
 lua require "user.neotree"
+lua require "user.null-ls"
 lua require "user.lspsaga"
 
 lua require "user.autopairs"
