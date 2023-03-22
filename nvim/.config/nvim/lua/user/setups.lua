@@ -1,7 +1,13 @@
 -- For those plugins who just need a simple setup command
 
 local plugin_list = {
-	fidget = {},
+	fidget = {
+		sources = {
+			["null-ls"] = {
+				ignore = true
+			},
+		},
+	},
 	inc_rename = {},
 	im_select = {
 		-- default_im_select = "com.apple.keylayout.ABC",
@@ -10,7 +16,7 @@ local plugin_list = {
 	},
 	lsp_signature = {
 		bind = true,
-		hanler_opts = {
+		handler_opts = {
 			border = "none",
 		},
 	},
