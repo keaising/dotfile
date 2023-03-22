@@ -136,10 +136,12 @@ return packer.startup(function(use)
 	use("ojroques/vim-oscyank") -- osc 53 yank
 	use("mrjones2014/smart-splits.nvim")
 
-	use({
-		"neoclide/coc.nvim",
-		branch = "release",
-	})
+	-- use({
+	--     "neoclide/coc.nvim",
+	--     branch = "release",
+	-- })
+
+	use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
