@@ -112,7 +112,6 @@ v() {
 	err_code=$?
 	[[ $err_code -ne 0 ]] && cat /tmp/govulncheck
 	echo -n "" > /tmp/govulncheck
-	exit $err_code
 }
 
 # }}}

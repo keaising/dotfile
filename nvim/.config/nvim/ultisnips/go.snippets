@@ -26,20 +26,24 @@
 
 snippet iferr "With Single Field"
 if err != nil {
-	${1:log}
+	${1}
 }${0}
 endsnippet
 
-snippet cc "With Fields" i
+snippet cc "context.TODO" i
+context.TODO(),
+endsnippet
+
+snippet ccc "ctx context.Context" i
 ctx context.Context
 endsnippet
 
 snippet logr "With Fields" i
-logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
+logrus.WithFields(logrus.Fields{"${1}": ${2}}).Errorln("${3}", err)${0}
 endsnippet
 
 snippet logrr "With Fields" i
-logrus.WithFields(logrus.Fields{"${1}": ${2}}).Errorln("${3}", err)${0}
+logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
 
 snippet logf "logrus Fields" i
