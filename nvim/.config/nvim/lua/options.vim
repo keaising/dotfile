@@ -103,3 +103,4 @@ augroup filetype_lua
 	au FileType lua setlocal foldmethod=marker
 augroup END
 
+colorscheme gruvbox-material

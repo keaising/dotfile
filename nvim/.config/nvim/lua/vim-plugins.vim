@@ -126,6 +126,3 @@ autocmd TextYankPost *
 let g:oscyank_max_length = 100000000
 let g:oscyank_silent = v:true
 
-
-" coc-spell-checker
-nmap <leader>a <Plug>(coc-codeaction-selected)
