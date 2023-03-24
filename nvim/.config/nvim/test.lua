@@ -38,7 +38,11 @@ local M = {
     { "<C-b>", "<cmd>Neotree buffers<CR>", mode = "n", silent = true },
   },
   config = function()
-    require("neo-tree").setup()
+    require("neo-tree").setup({
+      filesystem = {
+        hijack_netrw_behavior = "open_default"
+      }
+    })
   end
 }
 local plugins = {
