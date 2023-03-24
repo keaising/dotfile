@@ -1,8 +1,10 @@
 {
-  "language": "en",
+  "flagWords": [],
   "version": "0.2",
+  "language": "en",
   "words": [
     "BAID",
+    "Bazinga",
     "Bname",
     "Buser",
     "CDNURL",
@@ -45,6 +47,7 @@
     "Yunpan",
     "Yunpian",
     "agollo",
+    "apiretail",
     "bson",
     "callme",
     "cicd",
@@ -64,9 +67,12 @@
     "dockerbox",
     "douyin",
     "dtask",
+    "entitys",
+    "errgroup",
     "eshop",
     "etracer",
     "excelize",
+    "ffce",
     "gjson",
     "goclone",
     "gocron",
@@ -74,6 +80,7 @@
     "gorm",
     "gotwilio",
     "headimgurl",
+    "httpaudit",
     "indexs",
     "invs",
     "jasonlvhit",
@@ -107,7 +114,10 @@
     "qrcodes",
     "reqs",
     "resty",
+    "samber",
+    "sema",
     "sirupsen",
+    "sjson",
     "spreadsheetml",
     "stretchr",
     "strs",
@@ -120,6 +130,7 @@
     "unionid",
     "upserter",
     "userid",
+    "vulcand",
     "wechat",
     "wecom",
     "wesociety",
@@ -128,6 +139,5 @@
     "xrand",
     "yorozuya",
     "zoneinfo"
-  ],
-  "flagWords": []
+  ]
 }
