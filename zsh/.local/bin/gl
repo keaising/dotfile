@@ -69,7 +69,7 @@ def gitlab_open(arg: str) -> None:
     match current_platform():
         case "darwin":
             run(f"open '{open_url}'")
-        case  "wsl":
+        case "wsl":
             # linux: run(f"echo '{open_url}' | xclip -selection clipboard -i")
             # wsl:   run(f"echo '{open_url}' | clip.exe")
             #  run(rf'''printf "\033]52;c;$(echo '{open_url}' | base64)\a"''')

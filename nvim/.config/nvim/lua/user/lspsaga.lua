@@ -34,8 +34,4 @@ saga.setup({
 	},
 })
 
-vim.keymap.set("n", "gr",    "<cmd>Lspsaga lsp_finder<CR>",         { silent = true, noremap = true })
-vim.keymap.set("n", "<A-n>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
 
-vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
-vim.keymap.set("n", "K",          "<cmd>lua vim.lsp.buf.hover()<CR>",       { silent = true })
