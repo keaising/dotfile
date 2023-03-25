@@ -109,11 +109,9 @@ nnoremap <leader>ss :Telescope find_files<CR>
 nnoremap <leader>ff :Telescope live_grep<CR>
 nnoremap <leader>fb :Telescope buffers<CR>
 nnoremap <leader>fh :Telescope help_tags<CR>
-nnoremap <leader>ft :Telescope<CR>
 
 " format
-nnoremap <leader>ft :Neoformat<CR>
-nnoremap <leader>ft :Neoformat<CR>
+nnoremap <leader>fm :Neoformat<CR>
 
 
 " easy align

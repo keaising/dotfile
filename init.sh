@@ -9,13 +9,12 @@ cat << EOF > $pre_commit
 
 cspell_file='./nvim/.config/nvim/cspell.json'
 
-[[ ! -f \$cspell_file ]] && exit 0
+[[ ! -f $cspell_file ]] && exit 0
 
-if hash jq 2>/dev/null; then
-	cat \$cspell_file | jq '.words |= sort' | tee \$cspell_file > /dev/null
-fi
+[[ ! hash jq 2>/dev/null ]] && exit 0
 
-git add -A
+cat $cspell_file | jq '.words |= sort' | tee $cspell_file > /dev/null
+git add ./nvim/.config/nvim/cspell.json
 
 exit 0
 EOF
