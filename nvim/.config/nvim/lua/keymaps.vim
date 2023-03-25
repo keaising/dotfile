@@ -88,8 +88,7 @@ inoremap ;; :=
 " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
 " resource configuration
-nnoremap <leader>sv :PackerSync<CR>
-nnoremap <leader>sc :PlugUpdate<CR>
+nnoremap <leader>sv :Lazy<CR>
 
 nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=

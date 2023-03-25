@@ -2,6 +2,7 @@ return {
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
+		lazy = false,
 		priority = 1000,
 		dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
 		keys = {

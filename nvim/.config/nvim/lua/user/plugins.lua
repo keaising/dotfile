@@ -16,15 +16,6 @@ packer.init({
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- my plugins here
-	use({ "keaising/im-select.nvim" })
-	-- use '~/code/github.com/keaising/im-select.nvim'
-
-	-- UI
-
-
-
-
 	-- snippets
 	use("SirVer/ultisnips") -- snippet engine
 	use("quangnguyen30192/cmp-nvim-ultisnips") -- a bunch of snippets to use
@@ -43,10 +34,6 @@ return packer.startup(function(use)
 	-- use("folke/trouble.nvim") -- show all errors in project
 
 	-- go
-	use({ "fatih/vim-go", ft = "go" })
-	-- https://github.com/buoto/gotests-vim/pull/10
-	use({ "jakereps/gotests-vim", branch = "patch-1" })
 
-	use({ "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } })
 
 end)
