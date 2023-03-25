@@ -103,14 +103,14 @@ return {
 					native_menu = false,
 				},
 			})
-		end
+		end,
 	},
 	{
 		"windwp/nvim-autopairs",
 		config = function()
-			local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 			local cmp = require("cmp")
-			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done { map_char = { tex = "" } })
+			cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 
 			require("nvim-autopairs").setup({
 				check_ts = true,
@@ -130,8 +130,8 @@ return {
 					check_comma = true,
 					highlight = "PmenuSel",
 					highlight_grey = "LineNr",
-				}
+				},
 			})
-		end
-	}
+		end,
+	},
 }

@@ -10,8 +10,7 @@ return {
 	"sbdchd/neoformat",
 	"junegunn/vim-easy-align",
 	"kshenoy/vim-signature", -- 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
-	"tpope/vim-abolish", -- crs/crm/crc
-	"machakann/vim-sandwich",
+	"tpope/vim-abolish",  -- crs/crm/crc
 	"terryma/vim-expand-region",
 	"ruanyl/vim-gh-line",
 	"APZelos/blamer.nvim",
