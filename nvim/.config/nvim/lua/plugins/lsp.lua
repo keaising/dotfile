@@ -149,6 +149,9 @@ return {
 					-- auto refresh when change buffer
 					auto_refresh = true,
 				},
+				symbol_in_winbar = {
+					enable = false,
+				}
 			})
 		end,
 	},
