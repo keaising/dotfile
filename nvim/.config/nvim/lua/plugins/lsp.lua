@@ -3,21 +3,14 @@ return {
 		"neovim/nvim-lspconfig",
 		priority = 100,
 		config = function()
-			local lspconfig = require('lspconfig')
-			-- lspconfig.pyright.setup {}
-			-- lspconfig.tsserver.setup {}
-			-- lspconfig.rust_analyzer.setup {
-			--     -- Server-specific settings. See `:help lspconfig-setup`
-			--     settings = {
-			--         ['rust-analyzer'] = {},
-			--     },
-			-- }
+			-- 1. set lsp
+			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({
 				settings = {
 					Lua = {
 						runtime = {
 							version = "LuaJIT",
-							path = vim.split(package.path, ';')
+							path = vim.split(package.path, ";"),
 						},
 						diagnostics = {
 							globals = { "vim" },
@@ -31,45 +24,78 @@ return {
 					},
 				},
 			})
-			lspconfig.gopls.setup {
+			lspconfig.gopls.setup({
 				settings = {
 					gopls = {
 						env = {
 							GOFLAGS = "-tags=stage",
 						},
 					},
-				}
-			}
-			lspconfig.bashls.setup {
-				filetypes = { "sh", "zsh" }
-			}
-			lspconfig.jsonls.setup {}
-			lspconfig.lua_ls.setup {}
-			lspconfig.pyright.setup {}
-			lspconfig.terraformls.setup {}
+				},
+			})
+			lspconfig.bashls.setup({
+				filetypes = { "sh", "zsh" },
+			})
+			lspconfig.jsonls.setup({})
+			lspconfig.lua_ls.setup({})
+			lspconfig.pyright.setup({})
+			lspconfig.terraformls.setup({})
 
-			-- format on saving
-			vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+			-- 2. format on saving
+			vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
 
-			vim.api.nvim_create_autocmd('LspAttach', {
-				group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+			-- 3. change signs
+			local signs = {
+				{ name = "DiagnosticSignError", text = "" },
+				{ name = "DiagnosticSignWarn",  text = "" },
+				{ name = "DiagnosticSignHint",  text = "" },
+				{ name = "DiagnosticSignInfo",  text = "" },
+			}
+
+			for _, sign in ipairs(signs) do
+				vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+			end
+
+			vim.diagnostic.config({
+				-- set to 'false' to disable diagnostic info in virtual text
+				virtual_text = true,
+				-- show signs
+				signs = {
+					active = signs,
+				},
+				update_in_insert = true,
+				underline = true,
+				severity_sort = true,
+				float = {
+					focusable = false,
+					style = "minimal",
+					border = "none", -- none/single/double/rounded/solid/shadow
+					source = "always",
+					header = "",
+					prefix = "",
+				},
+			})
+
+			-- 4. add autocmd
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
 					-- Enable completion triggered by <c-x><c-o>
-					vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+					vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 					-- Buffer local mappings.
 					-- See `:help vim.lsp.*` for documentation on any of the below functions
 					local opts = { buffer = ev.buf }
-					vim.keymap.set('n', '<m-b>', vim.lsp.buf.definition, opts)
-					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-					vim.keymap.set('n', '<m-k>', vim.lsp.buf.rename, opts)
-					vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-					vim.keymap.set('n', '<space>ft', function()
-						vim.lsp.buf.format { async = true }
+					vim.keymap.set("n", "<m-b>", vim.lsp.buf.definition, opts)
+					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+					vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, opts)
+					vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+					vim.keymap.set("n", "<space>ft", function()
+						vim.lsp.buf.format({ async = true })
 					end, opts)
 				end,
 			})
-		end
+		end,
 	},
 	{
 		"glepnir/lspsaga.nvim",
@@ -77,7 +103,7 @@ return {
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser
-			{ "nvim-treesitter/nvim-treesitter" }
+			{ "nvim-treesitter/nvim-treesitter" },
 		},
 		config = function()
 			local keymap = vim.keymap.set
@@ -127,10 +153,28 @@ return {
 		end,
 	},
 	{
+		"ray-x/lsp_signature.nvim",
+		config = function()
+			require("lsp_signature").setup({})
+		end,
+	},
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({
+				sources = {
+					["null-ls"] = {
+						ignore = true,
+					},
+				},
+			})
+		end,
+	},
+	{
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup({})
-		end
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
@@ -139,7 +183,7 @@ return {
 			"williamboman/mason.nvim",
 		},
 		config = function()
-			require("mason-lspconfig").setup {
+			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"bashls",
 					"dockerls",
@@ -150,16 +194,16 @@ return {
 					"vimls",
 					"yamlls",
 				},
-			}
-			require('mason-tool-installer').setup({
+			})
+			require("mason-tool-installer").setup({
 				ensure_installed = {
 					"black",
 					"cspell",
 					"jq",
 					"shfmt",
 					"stylua",
-				}
+				},
 			})
-		end
-	}
+		end,
+	},
 }

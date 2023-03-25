@@ -99,6 +99,7 @@
     "localtime",
     "logid",
     "logrus",
+    "lspconfig",
     "mipha",
     "misaki",
     "mitchellh",

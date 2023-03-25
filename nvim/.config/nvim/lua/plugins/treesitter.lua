@@ -8,7 +8,7 @@ return {
 		"windwp/nvim-ts-autotag",
 	},
 	config = function()
-		require("treesitter-context").setup({ mode = "topline", })
+		require("treesitter-context").setup({ mode = "topline" })
 		require("nvim-treesitter.configs").setup({
 			textobjects = {
 				select = {
@@ -50,7 +50,7 @@ return {
 			},
 			ignore_install = { "go" }, -- List of parsers to ignore installing
 			highlight = {
-				enable = true,  -- false will disable the whole extension
+				enable = true, -- false will disable the whole extension
 				disable = { "sql", "go" }, -- list of language that will be disabled
 			},
 			autopairs = {
@@ -61,5 +61,5 @@ return {
 				enable = true,
 			},
 		})
-	end
+	end,
 }
