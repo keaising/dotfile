@@ -75,11 +75,7 @@ let g:gh_use_canonical = 0
 " text object
 let g:vim_textobj_parameter_mapping = 'a'
 
-" vim-sandwich
-runtime macros/sandwich/keymap/surround.vim 
-
 let g:UltiSnipsSnippetDirectories=[ "ultisnips" ]
-
 
 " APZelos/blamer.nvim
 let g:blamer_enabled = 1
@@ -126,6 +122,3 @@ autocmd TextYankPost *
 let g:oscyank_max_length = 100000000
 let g:oscyank_silent = v:true
 
-
-" coc-spell-checker
-nmap <leader>a <Plug>(coc-codeaction-selected)

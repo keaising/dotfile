@@ -88,8 +88,7 @@ inoremap ;; :=
 " nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
 " resource configuration
-nnoremap <leader>sv :PackerSync<CR>
-nnoremap <leader>sc :PlugUpdate<CR>
+nnoremap <leader>sv :Lazy<CR>
 
 nnoremap <leader>sf :set filetype=
 nnoremap <leader>st :set syntax=
@@ -110,11 +109,9 @@ nnoremap <leader>ss :Telescope find_files<CR>
 nnoremap <leader>ff :Telescope live_grep<CR>
 nnoremap <leader>fb :Telescope buffers<CR>
 nnoremap <leader>fh :Telescope help_tags<CR>
-nnoremap <leader>ft :Telescope<CR>
 
 " format
-nnoremap <leader>ft :Neoformat<CR>
-nnoremap <leader>ft :Neoformat<CR>
+nnoremap <leader>fm :Neoformat<CR>
 
 
 " easy align
