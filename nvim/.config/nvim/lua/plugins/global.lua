@@ -2,6 +2,7 @@ return {
     "nvim-lua/popup.nvim",
     "nvim-lua/plenary.nvim",
     "nvim-tree/nvim-web-devicons",
+	"RRethy/vim-illuminate",
     {
         "keaising/im-select.nvim",
         config = function()

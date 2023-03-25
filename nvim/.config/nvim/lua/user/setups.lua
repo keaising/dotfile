@@ -14,8 +14,6 @@ local plugin_list = {
 			border = "none",
 		},
 	},
-	gotests = {},
-	["smart-splits"] = {},
 }
 
 vim.g.indent_blankline_filetype = { "yml", "yaml", "json" }
