@@ -14,7 +14,8 @@ local cspell_files = {
 
 return {
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		-- "jose-elias-alvarez/null-ls.nvim",
+		"keaising/null-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
 			local null_ls = require("null-ls")
@@ -36,6 +37,10 @@ return {
 								end
 								return ""
 							end,
+							postprocess = function()
+								os.execute(
+									"cat ~/.config/nvim/cspell.json | jq -S '.words |= sort' | tee ~/.config/nvim/cspell.json > /dev/null")
+							end
 						},
 					}),
 				},
