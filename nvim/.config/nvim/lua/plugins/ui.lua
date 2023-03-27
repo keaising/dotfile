@@ -95,5 +95,16 @@ return {
 			{ "<m-Up>",    function() require("smart-splits").resize_up() end,    mode = "n", silent = true },
 			{ "<m-Right>", function() require("smart-splits").resize_right() end, mode = "n", silent = true },
 		}
+	},
+	{
+		"projekt0n/circles.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("circles").setup({
+				icons = { empty = "", "", filled = "", lsp_prefix = "" },
+			})
+		end
 	}
 }
