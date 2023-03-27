@@ -15,7 +15,7 @@ return {
 					null_ls.builtins.code_actions.cspell.with({
 						config = {
 							find_json = function(_)
-								return "/home/taiga/.config/nvim/cspell.json"
+								return "~/.config/nvim/cspell.json"
 							end,
 						},
 					}),
