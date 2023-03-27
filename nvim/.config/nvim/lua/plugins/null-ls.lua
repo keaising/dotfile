@@ -1,3 +1,17 @@
+local function file_exists(filename)
+	local f = io.open(filename, "r")
+	if f == nil then
+		return false
+	end
+	io.close(f)
+	return true
+end
+
+local cspell_files = {
+	"/home/taiga/.config/nvim/cspell.json",
+	"/Users/taiga/.config/nvim/cspell.json",
+}
+
 return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -15,7 +29,12 @@ return {
 					null_ls.builtins.code_actions.cspell.with({
 						config = {
 							find_json = function(_)
-								return "~/.config/nvim/cspell.json"
+								for _, v in ipairs(cspell_files) do
+									if file_exists(v) then
+										return v
+									end
+								end
+								return ""
 							end,
 						},
 					}),
