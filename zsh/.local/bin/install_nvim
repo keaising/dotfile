@@ -4,7 +4,7 @@
 set -e
 
 rm -rf ~/.local/bin/nvim
-rm -f /usr/local/bin/nvim
+sudo rm -f /usr/local/bin/nvim
 mkdir -p ~/.local/bin
 
 if [[ $(uname -s) == 'Linux' ]]; then
@@ -20,6 +20,6 @@ else
 	mv nvim-macos ~/.local/bin/nvim
 fi
 
-ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
+sudo ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
 nvim --version
 
