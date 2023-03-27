@@ -32,10 +32,10 @@ return {
 					lualine_c = {
 						{
 							"filename",
-							path = 1,                -- show relative path
+							path = 1, -- show relative path
 							symbols = {
-								modified = "[+]",    -- Text to show when the file is modified.
-								readonly = "[-]",    -- Text to show when the file is non-modifiable or readonly.
+								modified = "[+]", -- Text to show when the file is modified.
+								readonly = "[-]", -- Text to show when the file is non-modifiable or readonly.
 								unnamed = "[Empty]", -- Text to sho for unnamed buffers.
 							},
 						},

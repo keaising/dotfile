@@ -99,7 +99,10 @@ return {
 	},
 	{
 		"glepnir/lspsaga.nvim",
-		-- event = "BufRead",
+		event = "BufRead",
+		-- Author always breaks things, so update when necessary
+		commit = "db6cdf51bf5ae45e4aa65760e597cf0d587c66ee",
+		pin = true,
 		dependencies = {
 			{ "nvim-tree/nvim-web-devicons" },
 			--Please make sure you install markdown and markdown_inline parser

@@ -30,6 +30,7 @@ return {
 			ensure_installed = {
 				"bash",
 				"dockerfile",
+				"go",
 				"gomod",
 				"gowork",
 				"html",
@@ -48,7 +49,7 @@ return {
 				"vue",
 				"yaml",
 			},
-			ignore_install = { "go" }, -- List of parsers to ignore installing
+			ignore_install = {}, -- List of parsers to ignore installing
 			highlight = {
 				enable = true, -- false will disable the whole extension
 				disable = { "sql", "go" }, -- list of language that will be disabled
