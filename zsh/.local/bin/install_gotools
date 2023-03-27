@@ -36,6 +36,7 @@ local _gogettools=(
 	"github.com/golangci/golangci-lint/cmd/golangci-lint"
 	"github.com/rinchsan/gosimports/cmd/gosimports"
 	"golang.org/x/vuln/cmd/govulncheck"
+	"github.com/segmentio/golines"
 )
 
 echo $PWD

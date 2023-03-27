@@ -173,6 +173,7 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 nnoremap <leader>lr :LspRestart<CR>
 
 " go
-nnoremap <leader>gj :GoAddTags json
-nnoremap <leader>gt :GoTests<CR>
+nnoremap <silent><leader>gj :GoAddTags json
+nnoremap <silent><leader>gt :GoTests<CR>
+nnoremap <silent><leader>gl :!golines -w %:p<CR>
 
