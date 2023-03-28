@@ -37,7 +37,6 @@ return {
         filetypes = { "sh", "zsh" },
       })
       lspconfig.jsonls.setup({})
-      lspconfig.lua_ls.setup({})
       lspconfig.pyright.setup({})
       lspconfig.terraformls.setup({})
 
