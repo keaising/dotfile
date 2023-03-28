@@ -18,10 +18,10 @@ vim.cmd("source ~/.config/nvim/lua/vim-plugins.vim")
 vim.cmd("source ~/.config/nvim/lua/keymaps.vim")
 
 require("lazy").setup("plugins", {
-  change_detection = {
-    enabled = true,
-    notify = false,
-  },
+    change_detection = {
+        enabled = true,
+        notify = false,
+    },
 })
 
 vim.cmd("source ~/.config/nvim/lua/options.vim")
