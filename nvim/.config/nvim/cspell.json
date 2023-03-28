@@ -5,6 +5,7 @@
   "words": [
     "BAID",
     "Bazinga",
+    "Blankline",
     "Bname",
     "Buser",
     "CDNURL",
@@ -108,6 +109,7 @@
     "keymap",
     "kuaidi",
     "labstack",
+    "listchars",
     "localtime",
     "logid",
     "logrus",
