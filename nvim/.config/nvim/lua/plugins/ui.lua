@@ -70,24 +70,11 @@ return {
     "kevinhwang91/nvim-ufo",
     lazy = false,
     dependencies = "kevinhwang91/promise-async",
-    keys = {
-      {
-        "zr",
-        function()
-          require("ufo").openAllFolds()
-        end,
-        mode = "n",
-        silent = true,
-      },
-      {
-        "zm",
-        function()
-          require("ufo").closeAllFolds()
-        end,
-        mode = "n",
-        silent = true,
-      },
-    },
+    config = function()
+      vim.keymap.set("n", "zr", require("ufo").openAllFolds)
+      vim.keymap.set("n", "zm", require("ufo").closeAllFolds)
+      require("ufo").setup({})
+    end,
   },
   {
     "mrjones2014/smart-splits.nvim",
