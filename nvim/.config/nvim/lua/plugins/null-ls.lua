@@ -4,7 +4,6 @@ return {
         "keaising/null-ls.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            ---@diagnostic disable-next-line: unused-local, unused-function
             local lsp_filter = function(client)
                 return client.name ~= "lua_ls"
             end
@@ -34,7 +33,7 @@ return {
                             end,
                         },
                     }),
-                    -- null_ls.builtins.formatting.jq,
+                    null_ls.builtins.formatting.jq,
                     null_ls.builtins.formatting.stylua.with({
                         extra_args = { "--indent-type", "Spaces", "--indent-width", "4" },
                     }),
@@ -42,7 +41,7 @@ return {
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
                     }),
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "json", "yaml" },
+                        filetypes = { "yaml" },
                     }),
                     null_ls.builtins.formatting.shfmt.with({
                         filetypes = { "sh", "zsh" },
