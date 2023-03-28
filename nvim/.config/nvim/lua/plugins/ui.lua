@@ -81,6 +81,7 @@ return {
 	},
 	{
 		"kevinhwang91/nvim-ufo",
+		lazy = false,
 		dependencies = "kevinhwang91/promise-async",
 		keys = {
 			{ "zr", function() require("ufo").openAllFolds() end,  mode = "n", silent = true },
