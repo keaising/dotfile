@@ -122,6 +122,7 @@
     "mitchellh",
     "mongodb",
     "mongoh",
+    "nnoremap",
     "noauth",
     "nsqh",
     "nsqlookupd",

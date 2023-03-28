@@ -108,10 +108,10 @@ glone() {
 }
 
 v() {
-	govulncheck ./... > /tmp/govulncheck 2>&1
+	govulncheck ./... >/tmp/govulncheck 2>&1
 	err_code=$?
 	[[ $err_code -ne 0 ]] && cat /tmp/govulncheck
-	echo -n "" > /tmp/govulncheck
+	echo -n "" >/tmp/govulncheck
 }
 
 # }}}
@@ -269,44 +269,44 @@ nopx() {
 note() {
 	port=$1
 	case $port in
-		l | ls) # ls
-			docker container ls | grep jupyter
-			;;
-		k | ki | kill) # kill
-			docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
-			;;
-		*) # new
-			[ -z "$port" ] && port=8888
-			name=$2
-			[ -z "$name" ] && name=$(basename $(dirname $PWD))_$(basename $PWD)
-			docker run \
-				-d --rm \
-				--name "$name" \
-				-p "$port":8888 \
-				-v "$PWD":/home/jovyan \
-				jupyter/scipy-notebook \
-				jupyter-lab --NotebookApp.token= --NotebookApp.password=
-			open "http://127.0.0.1:${port}/lab"
-			;;
+	l | ls) # ls
+		docker container ls | grep jupyter
+		;;
+	k | ki | kill) # kill
+		docker container ls | grep $2 | awk '{ print $1 }' | xargs docker container kill
+		;;
+	*) # new
+		[ -z "$port" ] && port=8888
+		name=$2
+		[ -z "$name" ] && name=$(basename $(dirname $PWD))_$(basename $PWD)
+		docker run \
+			-d --rm \
+			--name "$name" \
+			-p "$port":8888 \
+			-v "$PWD":/home/jovyan \
+			jupyter/scipy-notebook \
+			jupyter-lab --NotebookApp.token= --NotebookApp.password=
+		open "http://127.0.0.1:${port}/lab"
+		;;
 	esac
 }
 
 extract() {
 	if [ -f $1 ]; then
 		case $1 in
-			*.tar.bz2) tar xjf $1 ;;
-			*.tar.gz) tar xzf $1 ;;
-			*.tar.xz) tar xf $1 ;;
-			*.bz2) bunzip2 $1 ;;
-			*.rar) unrar e $1 ;;
-			*.gz) gunzip $1 ;;
-			*.tar) tar xf $1 ;;
-			*.tbz2) tar xjf $1 ;;
-			*.tgz) tar xzf $1 ;;
-			*.zip) unzip $1 ;;
-			*.Z) uncompress $1 ;;
-			*.7z) 7z x $1 ;;
-			*) echo "'$1' cannot be extracted via extract()" ;;
+		*.tar.bz2) tar xjf $1 ;;
+		*.tar.gz) tar xzf $1 ;;
+		*.tar.xz) tar xf $1 ;;
+		*.bz2) bunzip2 $1 ;;
+		*.rar) unrar e $1 ;;
+		*.gz) gunzip $1 ;;
+		*.tar) tar xf $1 ;;
+		*.tbz2) tar xjf $1 ;;
+		*.tgz) tar xzf $1 ;;
+		*.zip) unzip $1 ;;
+		*.Z) uncompress $1 ;;
+		*.7z) 7z x $1 ;;
+		*) echo "'$1' cannot be extracted via extract()" ;;
 		esac
 	else
 		echo "'$1' is not a valid file"

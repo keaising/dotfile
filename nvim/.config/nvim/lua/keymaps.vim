@@ -110,10 +110,6 @@ nnoremap <leader>ff :Telescope live_grep<CR>
 nnoremap <leader>fb :Telescope buffers<CR>
 nnoremap <leader>fh :Telescope help_tags<CR>
 
-" format
-nnoremap <leader>fm :Neoformat<CR>
-
-
 " easy align
 " | Keystrokes | Description                        | 等价的命令          | 描述                          |
 " | ---------- | -----------                        | ------              | --                            |

@@ -40,9 +40,6 @@ return {
       lspconfig.pyright.setup({})
       lspconfig.terraformls.setup({})
 
-      -- 2. format on saving
-      vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format()]])
-
       -- 3. change signs
       --
       -- local signs = {
