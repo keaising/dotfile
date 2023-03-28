@@ -17,32 +17,32 @@ let g:neoformat_pg_sql_pg_format = {
         \ }
 let g:neoformat_enabled_pg_sql = ['pg_format']
 
-let g:neoformat_javascript_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_javascript = ['prettier']
+" let g:neoformat_javascript_prettier = {
+"         \ 'exe': 'prettier',
+"         \ 'args': ['--stdin-filepath', '"%:p"'],
+"         \ 'stdin': 1, 
+"         \ 'valid_exit_codes': [0, 23],
+"         \ 'no_append': 1,
+"         \ }
+" let g:neoformat_enabled_javascript = ['prettier']
 
-let g:neoformat_typescript_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_typescript = ['prettier']
+" let g:neoformat_typescript_prettier = {
+"         \ 'exe': 'prettier',
+"         \ 'args': ['--stdin-filepath', '"%:p"'],
+"         \ 'stdin': 1, 
+"         \ 'valid_exit_codes': [0, 23],
+"         \ 'no_append': 1,
+"         \ }
+" let g:neoformat_enabled_typescript = ['prettier']
 
-let g:neoformat_markdown_prettier = {
-        \ 'exe': 'prettier',
-        \ 'args': ['--stdin-filepath', '"%:p"'],
-        \ 'stdin': 1, 
-        \ 'valid_exit_codes': [0, 23],
-        \ 'no_append': 1,
-        \ }
-let g:neoformat_enabled_markdown = ['prettier']
+" let g:neoformat_markdown_prettier = {
+"         \ 'exe': 'prettier',
+"         \ 'args': ['--stdin-filepath', '"%:p"'],
+"         \ 'stdin': 1, 
+"         \ 'valid_exit_codes': [0, 23],
+"         \ 'no_append': 1,
+"         \ }
+" let g:neoformat_enabled_markdown = ['prettier']
 
 let g:neoformat_yaml_prettier = {
             \ 'exe': 'prettier',
@@ -52,8 +52,8 @@ let g:neoformat_yaml_prettier = {
             \ }
 let g:neoformat_enabled_yaml = ['prettier']
 
-let g:neoformat_enabled_json = ['jq']
-let g:neoformat_enabled_lua = ['stylua']
+" let g:neoformat_enabled_json = ['jq']
+" let g:neoformat_enabled_lua = ['stylua']
 let g:neoformat_enabled_python = ['black']
 let g:neoformat_enabled_sh = ['shfmt']
 let g:neoformat_enabled_zsh = ['shfmt']
