@@ -77,6 +77,7 @@ alias now='date +%s'
 alias sz="source $HOME/.zshrc"
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 alias dfp='datahub-field-parse'
+alias vvv='nvim --headless "+Lazy! sync" +qa'
 
 # }}}
 
