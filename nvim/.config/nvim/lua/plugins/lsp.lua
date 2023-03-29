@@ -5,7 +5,12 @@ return {
         config = function()
             -- 1. set lsp
             local lspconfig = require("lspconfig")
-            -- lspconfig.lua_ls.setup({})
+            lspconfig.lua_ls.setup({
+                on_attach = function(client)
+                    client.server_capabilities.document_formatting = false
+                    client.server_capabilities.document_range_formatting = false
+                end,
+            })
             lspconfig.gopls.setup({
                 settings = {
                     gopls = {
