@@ -89,6 +89,7 @@
     "goclone",
     "gocron",
     "golibs",
+    "gopart",
     "gopkg",
     "gopls",
     "gorm",
