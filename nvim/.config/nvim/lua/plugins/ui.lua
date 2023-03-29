@@ -2,6 +2,7 @@ return {
     "famiu/bufdelete.nvim",
     {
         "akinsho/bufferline.nvim",
+        event = "VeryLazy",
         config = function()
             require("bufferline").setup({
                 options = {
@@ -15,6 +16,7 @@ return {
     },
     {
         "nvim-lualine/lualine.nvim",
+        event = "VeryLazy",
         config = function()
             require("lualine").setup({
                 options = {
@@ -46,6 +48,7 @@ return {
     },
     {
         "phaazon/hop.nvim",
+        event = "VeryLazy",
         branch = "v2",
         config = function()
             require("hop").setup()
@@ -96,6 +99,7 @@ return {
     },
     {
         "mrjones2014/smart-splits.nvim",
+        event = "VeryLazy",
         keys = {
             {
                 "<m-Left>",

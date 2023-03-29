@@ -1,6 +1,7 @@
 return {
     {
         "folke/trouble.nvim", -- show all errors in project
+        event = "VeryLazy",
         config = function()
             vim.api.nvim_set_keymap("n", "<leader>xx", ":TroubleToggle<cr>", { silent = true, noremap = true })
             vim.api.nvim_set_keymap(

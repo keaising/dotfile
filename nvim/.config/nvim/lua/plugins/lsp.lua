@@ -5,7 +5,7 @@ return {
         config = function()
             -- 1. set lsp
             local lspconfig = require("lspconfig")
-            lspconfig.lua_ls.setup({})
+            -- lspconfig.lua_ls.setup({})
             lspconfig.gopls.setup({
                 settings = {
                     gopls = {
@@ -161,19 +161,21 @@ return {
             })
         end,
     },
+    -- {
+    --     "williamboman/mason.nvim",
+    --     event = "VeryLazy",
+    --     config = function()
+    --     end,
+    -- },
     {
         "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup({})
-        end,
-    },
-    {
-        "williamboman/mason-lspconfig.nvim",
+        event = "VeryLazy",
         dependencies = {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
-            "williamboman/mason.nvim",
+            "williamboman/mason-lspconfig.nvim",
         },
         config = function()
+            require("mason").setup({})
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "bashls",
