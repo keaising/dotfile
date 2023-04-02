@@ -2,6 +2,7 @@ return {
     {
         -- "jose-elias-alvarez/null-ls.nvim",
         "keaising/null-ls.nvim",
+        branch = "add_hook_for_cspell",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
             local lsp_filter = function(client)
@@ -26,7 +27,7 @@ return {
                             find_json = function(_)
                                 return vim.fn.expand("~/.config/nvim/cspell.json")
                             end,
-                            postprocess = function()
+                            on_success = function(_)
                                 os.execute(
                                     "cat ~/.config/nvim/cspell.json | jq -S '.words |= sort' | tee ~/.config/nvim/cspell.json > /dev/null"
                                 )
