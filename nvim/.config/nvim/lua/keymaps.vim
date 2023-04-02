@@ -1,5 +1,5 @@
 " Leader key
-map      <Space>         <Leader>
+map <Space>         <Leader>
 
 " save & quit in window
 inoremap <m-s> <ESC>:w<CR>
@@ -9,12 +9,6 @@ nnoremap <m-q> :qa<CR>
 nnoremap <C-q> :q<CR>
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
-
-" resize window
-" nnoremap <silent> <m-Left>  :vertical resize +5<CR>
-" nnoremap <silent> <m-Right> :vertical resize -5<CR>
-" nnoremap <silent> <m-Up>    :resize   +5<CR>
-" nnoremap <silent> <m-Down>  :resize   -5<CR>
 
 " switch window
 noremap  <C-h> <c-w>h
@@ -64,17 +58,8 @@ noremap  L $
 " mark
 nnoremap ' `
 
-" close all recursively
-nnoremap zm zM
 " toggle current block, all level
-nnoremap za zA
-" toggle current level
-nnoremap zo za
-" open all recursively
-nnoremap zr zR
-" close current: zc
-" zg: add word to spell ignorance file
-nnoremap <silent> zs :silent !sort ~/.config/nvim/spell/en.utf-8.add > /tmp/en.utf-8.add && cat /tmp/en.utf-8.add > ~/.config/nvim/spell/en.utf-8.add<CR>
+nnoremap zo zA
 
 " disable 
 nnoremap <C-p> <nop>
@@ -85,7 +70,6 @@ nnoremap // :noh<CR>
 
 " insert mode specials
 inoremap ;; :=
-" nnoremap <leader>p :let @+ = expand("%:p")<cr>
 
 " resource configuration
 nnoremap <leader>sv :Lazy<CR>
