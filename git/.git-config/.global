@@ -44,8 +44,6 @@
 	rebase = true
 [remote "origin"]
 	prune = true
-[diff]
-	external = difft
 
 ; [interactive]
 ;     diffFilter = delta --color-only
