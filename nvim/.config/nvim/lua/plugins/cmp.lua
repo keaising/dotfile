@@ -69,10 +69,10 @@ return {
                     -- Accept currently selected item. If none selected, `select` first item.
                     -- Set `select` to `false` to only confirm explicitly selected items.
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
-                    -- ["<Tab>"] = cmp.mapping(function(fallback)
-                    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-                    -- end, { "i", "s" }),
+                    -- ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                    ["<Tab>"] = cmp.mapping(function(fallback)
+                        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    end, { "i", "s" }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         cmp_ultisnips_mappings.jump_backwards(fallback)
                     end, { "i", "s" }),

@@ -52,7 +52,7 @@ return {
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
                 enable = true, -- false will disable the whole extension
-                disable = { "sql", "go" }, -- list of language that will be disabled
+                disable = { "sql" }, -- list of language that will be disabled
             },
             autopairs = {
                 enable = true,
