@@ -1,3 +1,4 @@
+-- cSpell:disable
 --   פּ ﯟ   some other good icons
 local kind_icons = {
     Text = "",
@@ -31,16 +32,17 @@ local kind_icons = {
 return {
     {
         "hrsh7th/nvim-cmp", -- The completion plugin
+        priority = 101,
         dependencies = {
             "hrsh7th/cmp-buffer", -- buffer completions
             "hrsh7th/cmp-path", -- path completions
             "hrsh7th/cmp-cmdline", -- cmdline completions
-            "saadparwaiz1/cmp_luasnip", -- snippet completions
             "hrsh7th/cmp-nvim-lsp",
             "hrsh7th/cmp-emoji",
             "lukas-reineke/cmp-rg", -- rg source
-            "SirVer/ultisnips",
             "quangnguyen30192/cmp-nvim-ultisnips",
+            "saadparwaiz1/cmp_luasnip", -- snippet completions
+            "SirVer/ultisnips",
         },
         config = function()
             local cmp = require("cmp")
@@ -67,26 +69,13 @@ return {
                     -- Accept currently selected item. If none selected, `select` first item.
                     -- Set `select` to `false` to only confirm explicitly selected items.
                     ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                    ["<Tab>"] = cmp.mapping(function(fallback)
-                        cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-                    end, { "i", "s" }),
+                    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                    -- ["<Tab>"] = cmp.mapping(function(fallback)
+                    --     cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
+                    -- end, { "i", "s" }),
                     ["<S-Tab>"] = cmp.mapping(function(fallback)
                         cmp_ultisnips_mappings.jump_backwards(fallback)
                     end, { "i", "s" }),
-                },
-                formatting = {
-                    fields = { "kind", "abbr", "menu" },
-                    format = function(entry, vim_item)
-                        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-                        vim_item.menu = ({
-                            ultisnips = "[Snippet]",
-                            nvim_lsp = "[LSP]",
-                            buffer = "[Buffer]",
-                            path = "[Path]",
-                            nvim_lua = "[NVIM_LUA]",
-                        })[entry.source.name]
-                        return vim_item
-                    end,
                 },
                 sources = {
                     { name = "ultisnips", group_index = 1 },

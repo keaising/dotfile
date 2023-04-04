@@ -5,26 +5,41 @@ return {
         config = function()
             -- 1. set lsp
             local lspconfig = require("lspconfig")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
             lspconfig.lua_ls.setup({
                 on_attach = function(client)
                     client.server_capabilities.document_formatting = false
                     client.server_capabilities.document_range_formatting = false
                 end,
+                capabilities = capabilities,
+                settings = {
+                    Lua = {
+                        format = {
+                            enable = false,
+                        },
+                    },
+                },
             })
             lspconfig.gopls.setup({
+                capabilities = capabilities,
+                filetypes = { "go", "gomod" },
                 settings = {
                     gopls = {
                         env = {
                             GOFLAGS = "-tags=stage",
                         },
+                        usePlaceholders = true,
                     },
                 },
             })
             lspconfig.bashls.setup({
+                capabilities = capabilities,
                 filetypes = { "sh", "zsh" },
             })
             lspconfig.jsonls.setup({})
-            lspconfig.pyright.setup({})
+            lspconfig.pyright.setup({
+                capabilities = capabilities,
+            })
             lspconfig.terraformls.setup({})
 
             -- 3. change signs
@@ -71,6 +86,7 @@ return {
                     filter = function(client)
                         return client.name ~= "lua_ls"
                     end,
+                    async = true,
                 })
             end
             vim.cmd([[ autocmd BufWritePre * lua LspFormatter() ]])
@@ -176,12 +192,6 @@ return {
             })
         end,
     },
-    -- {
-    --     "williamboman/mason.nvim",
-    --     event = "VeryLazy",
-    --     config = function()
-    --     end,
-    -- },
     {
         "williamboman/mason.nvim",
         event = "VeryLazy",
