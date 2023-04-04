@@ -66,6 +66,16 @@ return {
                 },
             })
 
+            function LspFormatter()
+                vim.lsp.buf.format({
+                    filter = function(client)
+                        return client.name ~= "lua_ls"
+                    end,
+                })
+            end
+            vim.cmd([[ autocmd BufWritePre * lua LspFormatter() ]])
+            vim.cmd([[ nnoremap <leader>fm :lua LspFormatter()<CR> ]])
+
             -- 4. add autocmd
             vim.api.nvim_create_autocmd("LspAttach", {
                 group = vim.api.nvim_create_augroup("UserLspConfig", {}),

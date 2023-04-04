@@ -1,3 +1,4 @@
+" cSpell:disable
 " The good old days in VIM
 
 " floaterm

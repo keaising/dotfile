@@ -1,3 +1,4 @@
+" cSpell:disable
 " Leader key
 map <Space>         <Leader>
 
@@ -17,8 +18,8 @@ noremap  <C-j> <c-w>j
 noremap  <C-k> <c-w>k
 
 " split window
-noremap <C-\> :vsplit<CR>
-noremap <C-s> :split<CR>
+noremap <leader>vs :vsplit<CR>
+noremap <leader>hs :split<CR>
 
 " switch location
 noremap <m-[>  <C-o>
@@ -72,10 +73,10 @@ nnoremap // :noh<CR>
 inoremap ;; :=
 
 " resource configuration
-nnoremap <leader>sv :Lazy<CR>
+nnoremap <leader>la :Lazy<CR>
 
-nnoremap <leader>sf :set filetype=
-nnoremap <leader>st :set syntax=
+" nnoremap <leader>sf :set filetype=
+" nnoremap <leader>st :set syntax=
 
 " buffer
 nnoremap <silent> <m-h>      :BufferLineCyclePrev<CR>
@@ -89,10 +90,10 @@ nnoremap <silent> <m-e>      :BufferLinePick<CR>
 nnoremap <silent> <m-w>      :Bdelete<CR>
 
 " telescope
-nnoremap <leader>ss :Telescope find_files<CR>
+nnoremap <leader>s  :Telescope find_files<CR>
+nnoremap <C-s>      :Telescope find_files<CR>
 nnoremap <leader>ff :Telescope live_grep<CR>
-nnoremap <leader>fb :Telescope buffers<CR>
-nnoremap <leader>fh :Telescope help_tags<CR>
+nnoremap <C-f>      :Telescope live_grep<CR>
 
 " easy align
 " | Keystrokes | Description                        | 等价的命令          | 描述                          |

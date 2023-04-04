@@ -1,3 +1,4 @@
+" cSpell:disable
 set autoindent
 set tabstop=4            " 按下 Tab 键时，Vim 显示的空格数
 set shiftwidth=4
@@ -46,8 +47,6 @@ set noundofile
 set termguicolors
 set t_Co=256             " 允许256色
 set spo=camel
-" set spell
-" set spelllang=en_us,cjk
 
 " set listchars=lead:⋅,tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 set clipboard=unnamed,unnamedplus                   " y/d/c copy to/from system clipboard

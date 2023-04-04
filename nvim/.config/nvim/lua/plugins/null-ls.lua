@@ -5,15 +5,7 @@ return {
         branch = "add_hook_for_cspell",
         dependencies = { "nvim-lua/plenary.nvim" },
         config = function()
-            local lsp_filter = function(client)
-                return client.name ~= "lua_ls"
-            end
-
-            -- 2. format on saving
-            vim.cmd([[autocmd BufWritePre * lua vim.lsp.buf.format{ filter = lsp_filter }]])
-
             local null_ls = require("null-ls")
-            vim.cmd([[ nnoremap <silent> <Leader>fm :lua vim.lsp.buf.format { filter = lsp_filter }<CR> ]])
             null_ls.setup({
                 sources = {
                     null_ls.builtins.diagnostics.cspell.with({

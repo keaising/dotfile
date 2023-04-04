@@ -160,8 +160,6 @@ inoremap ;; :=
 vnoremap //         y/<c-r>"<cr>
 nnoremap <leader>// :noh<CR>
 
-nnoremap <leader>sv :source $MYVIMRC<CR>
-
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
 
