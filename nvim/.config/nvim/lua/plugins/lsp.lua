@@ -6,18 +6,13 @@ return {
             "jose-elias-alvarez/null-ls.nvim",
         },
         config = function()
-            vim.diagnostic.config({
-                float = {
-                    border = "rounded",
-                },
-            })
             local handlers = {
                 ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
                 ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
             }
 
             local on_attach = function(client, bufnr)
-                -- Mappings.
+                -- mappings.
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
                 vim.keymap.set("n", "<m-b>", vim.lsp.buf.definition, bufopts)
                 vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
@@ -151,6 +146,17 @@ return {
                 handlers = handlers,
                 on_attach = on_attach,
             })
+
+            local signs = {
+                { name = "DiagnosticSignError", text = "" },
+                { name = "DiagnosticSignWarn", text = "" },
+                { name = "DiagnosticSignHint", text = "" },
+                { name = "DiagnosticSignInfo", text = "" },
+            }
+
+            for _, sign in ipairs(signs) do
+                vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+            end
         end,
     },
     {
