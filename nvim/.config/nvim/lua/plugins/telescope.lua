@@ -11,12 +11,25 @@ return {
             -- lsp
             { "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>" },
             { "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>" },
-            { "gd", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>" },
+            { "<leader>ls", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>" },
+            -- common
+            { "<leader>ld", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>" },
             { "gj", "<cmd>lua require'telescope.builtin'.jumplist{}<CR>" },
-            { "gt", "<cmd>lua require'telescope.builtin'.treesitter{}<CR>" },
+            { "<leader>lt", "<cmd>lua require'telescope.builtin'.treesitter{}<CR>" },
         },
         config = function()
             local actions = require("telescope.actions")
+            local normal_layout = {
+                horizontal = {
+                    preview_width = 0.6,
+                },
+            }
+            local wide_layout = {
+                width = 0.95,
+                horizontal = {
+                    preview_width = 0.5,
+                },
+            }
             require("telescope").setup({
                 defaults = {
                     vimgrep_arguments = {
@@ -38,11 +51,7 @@ return {
                             ["<C-o>"] = actions.select_default,
                         },
                     },
-                    layout_config = {
-                        horizontal = {
-                            preview_width = 0.6,
-                        },
-                    },
+                    layout_config = normal_layout,
                 },
                 pickers = {
                     find_files = {
@@ -60,20 +69,13 @@ return {
                         },
                     },
                     lsp_references = {
-                        layout_config = {
-                            width = 0.95,
-                            horizontal = {
-                                preview_width = 0.5,
-                            },
-                        },
+                        layout_config = wide_layout,
                     },
                     jumplist = {
-                        layout_config = {
-                            width = 0.95,
-                            horizontal = {
-                                preview_width = 0.5,
-                            },
-                        },
+                        layout_config = wide_layout,
+                    },
+                    diagnostics = {
+                        layout_config = wide_layout,
                     },
                 },
                 extensions = {
