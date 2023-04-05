@@ -19,7 +19,6 @@ return {
             local on_attach = function(client, bufnr)
                 -- Mappings.
                 local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                -- { "<leader>ls", "<cmd>lua require'telescope.builtin'.lsp_document_symbols{}<CR>" },
                 vim.keymap.set("n", "<m-b>", vim.lsp.buf.definition, bufopts)
                 vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
                 vim.keymap.set("n", "gi", function()
