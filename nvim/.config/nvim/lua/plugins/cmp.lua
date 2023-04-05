@@ -1,5 +1,6 @@
 -- cSpell:disable
 --   פּ ﯟ   some other good icons
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
     Text = "",
     Method = "m",
@@ -27,32 +28,38 @@ local kind_icons = {
     Operator = "",
     TypeParameter = "",
 }
--- find more here: https://www.nerdfonts.com/cheat-sheet
-
 return {
     {
-        "hrsh7th/nvim-cmp", -- The completion plugin
-        priority = 101,
+        "hrsh7th/nvim-cmp",
         dependencies = {
-            "hrsh7th/cmp-buffer", -- buffer completions
-            "hrsh7th/cmp-path", -- path completions
-            "hrsh7th/cmp-cmdline", -- cmdline completions
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-emoji",
-            "lukas-reineke/cmp-rg", -- rg source
+            "hrsh7th/cmp-nvim-lsp-signature-help",
             "quangnguyen30192/cmp-nvim-ultisnips",
-            "saadparwaiz1/cmp_luasnip", -- snippet completions
             "SirVer/ultisnips",
         },
         config = function()
+            vim.cmd("set completeopt=menu,menuone,noselect")
+
+            -- Set up nvim-cmp.
             local cmp = require("cmp")
             local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+
             cmp.setup({
+                preselect = cmp.PreselectMode.None,
                 snippet = {
                     expand = function(args)
                         vim.fn["UltiSnips#Anon"](args.body)
                     end,
                 },
+                -- window = {
+                --     border = "rounded",
+                --     completion = cmp.config.window.bordered(),
+                --     documentation = cmp.config.window.bordered(),
+                -- },
                 mapping = {
                     ["<C-k>"] = cmp.mapping.select_prev_item(),
                     ["<C-p>"] = cmp.mapping.select_prev_item(),
@@ -77,20 +84,53 @@ return {
                         cmp_ultisnips_mappings.jump_backwards(fallback)
                     end, { "i", "s" }),
                 },
-                sources = {
-                    { name = "ultisnips", group_index = 1 },
+                sources = cmp.config.sources({
                     { name = "nvim_lsp", group_index = 1 },
+                    { name = "ultisnips", group_index = 1 },
                     { name = "path", group_index = 1 },
                     { name = "emoji", group_index = 1 },
-                    { name = "rg", group_index = 2 },
                     { name = "buffer", group_index = 2 },
-                    { name = "nvim_lua", group_index = 2 },
+                    { name = "rg", group_index = 2 },
+                }),
+                formatting = {
+                    fields = { "kind", "abbr", "menu" },
+                    format = function(entry, vim_item)
+                        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+                        vim_item.menu = ({
+                            nvim_lsp = "[lsp]",
+                            ultisnips = "[snippet]",
+                            path = "[path]",
+                            emoji = "[emoji]",
+                            buffer = "[buffer]",
+                            rg = "[rg]",
+                        })[entry.source.name]
+                        return vim_item
+                    end,
                 },
-                preselect = cmp.PreselectMode.None,
-                experimental = {
-                    ghost_text = false,
-                    native_menu = false,
+            })
+
+            -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline({ "/", "?" }, {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    {
+                        name = "buffer",
+                        option = {
+                            get_bufnrs = function()
+                                return vim.api.nvim_list_bufs()
+                            end,
+                        },
+                    },
                 },
+            })
+
+            -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = cmp.config.sources({
+                    { name = "cmdline" },
+                    { name = "path" },
+                }),
             })
         end,
     },
