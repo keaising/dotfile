@@ -42,15 +42,23 @@ inoremap <m-w> <C-o>w
 inoremap <m-e> <C-o>e
 
 " Keep search pattern at the center of the screen.
-nnoremap <silent> n     nzz
+nnoremap <silent> n     nzzzv
 nnoremap <silent> j     gj
 nnoremap <silent> k     gk
-nnoremap <silent> N     Nzz
+nnoremap <silent> N     Nzzzv
 nnoremap <silent> *     *zz
 nnoremap <silent> #     #zz
 nnoremap <silent> g*    g*zz
 nnoremap <silent> <Tab> %
 vnoremap <silent> <Tab> %
+
+" come from https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+nnoremap <silent> J         mzJ`z
+vnoremap <silent> J         :m '>+1<CR>gv=gv
+vnoremap <silent> K         :m '<-2<CR>gv=gv
+xnoremap <silent> <leader>p "_dP
+
+nnoremap <leader>x :silent !chmod +x %<CR>
 
 " move to line start/end
 noremap  H ^
