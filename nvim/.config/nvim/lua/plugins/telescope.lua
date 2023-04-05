@@ -2,6 +2,7 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         event = "VeryLazy",
+        dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
         keys = {
             { "<leader>s", "<cmd>Telescope find_files<CR>" },
             { "<C-s>", "<cmd>Telescope find_files<CR>" },
@@ -75,7 +76,13 @@ return {
                         },
                     },
                 },
+                extensions = {
+                    ["ui-select"] = {
+                        require("telescope.themes").get_dropdown({}),
+                    },
+                },
             })
+            require("telescope").load_extension("ui-select")
         end,
     },
 }
