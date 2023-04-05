@@ -89,12 +89,6 @@ nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR> <Bar> :BufferLineCloseRigh
 nnoremap <silent> <m-e>      :BufferLinePick<CR>
 nnoremap <silent> <m-w>      :Bdelete<CR>
 
-" telescope
-nnoremap <leader>s  :Telescope find_files<CR>
-nnoremap <C-s>      :Telescope find_files<CR>
-nnoremap <leader>ff :Telescope live_grep<CR>
-nnoremap <C-f>      :Telescope live_grep<CR>
-
 " easy align
 " | Keystrokes | Description                        | 等价的命令          | 描述                          |
 " | ---------- | -----------                        | ------              | --                            |

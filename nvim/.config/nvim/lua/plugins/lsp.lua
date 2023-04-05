@@ -99,78 +99,17 @@ return {
                     -- Enable completion triggered by <c-x><c-o>
                     vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-                    -- Buffer local mappings.
-                    -- See `:help vim.lsp.*` for documentation on any of the below functions
                     local opts = { buffer = ev.buf }
+                    -- other function in Telescope
                     vim.keymap.set("n", "<m-b>", vim.lsp.buf.definition, opts)
-                    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
                     vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, opts)
-                    vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-                    vim.keymap.set("n", "<space>ft", function()
-                        vim.lsp.buf.format({ async = true })
+                    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+                    vim.keymap.set("n", "<m-j>", function()
+                        vim.diagnostic.goto_next({
+                            severity = vim.diagnostic.severity.ERROR,
+                        })
                     end, opts)
                 end,
-            })
-        end,
-    },
-    {
-        "glepnir/lspsaga.nvim",
-        event = "BufRead",
-        -- Author always breaks things, so update when necessary
-        commit = "db6cdf51bf5ae45e4aa65760e597cf0d587c66ee",
-        pin = true,
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons" },
-            --Please make sure you install markdown and markdown_inline parser
-            { "nvim-treesitter/nvim-treesitter" },
-        },
-        config = function()
-            local keymap = vim.keymap.set
-            keymap("n", "gr", "<cmd>Lspsaga lsp_finder<CR>", { silent = true, noremap = true })
-            keymap("n", "<A-d>", "<cmd>Lspsaga preview_definition<CR>", { silent = true })
-
-            keymap("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", { silent = true })
-            keymap("n", "K", "<cmd>Lspsaga show_line_diagnostics<CR>", { silent = true })
-
-            -- keymap("n", "<m-k>", function()
-            --     require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
-            -- end)
-            keymap("n", "<m-j>", function()
-                require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
-            end)
-
-            require("lspsaga").setup({
-                saga_winblend = 0,
-                max_preview_lines = 20,
-                finder_action_keys = {
-                    open = { "<CR>", "o" },
-                    vsplit = "v",
-                    split = "s",
-                    tabe = "t",
-                    quit = { "<ESC>", "q" },
-                    scroll_down = "<C-n>",
-                    scroll_up = "<C-p>", -- quit can be a table
-                },
-                code_action_keys = {
-                    quit = { "<ESC>", "q" },
-                    exec = "<CR>",
-                },
-                rename_action_quit = "<ESC>",
-                show_outline = {
-                    win_position = "down",
-                    -- set the special filetype in there which in left like nvimtree neotree defx
-                    left_with = "",
-                    win_width = 60,
-                    auto_enter = true,
-                    auto_preview = true,
-                    virt_text = "┃",
-                    jump_key = "o",
-                    -- auto refresh when change buffer
-                    auto_refresh = true,
-                },
-                symbol_in_winbar = {
-                    enable = false,
-                },
             })
         end,
     },

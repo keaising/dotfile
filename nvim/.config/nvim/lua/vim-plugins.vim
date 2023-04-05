@@ -45,6 +45,7 @@ let g:go_fmt_autosave = 0
 let g:go_doc_keywordprg_enabled = 0
 let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
+let g:go_def_mapping_enabled = 0
 
 " osc52 yank
 autocmd TextYankPost *

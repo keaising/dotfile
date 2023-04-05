@@ -3,6 +3,7 @@ set autoindent
 set tabstop=4            " 按下 Tab 键时，Vim 显示的空格数
 set shiftwidth=4
 set softtabstop=0        " 关闭softtabstop 永远不要将空格和tab混合输入
+set expandtab!           " tab is tab, whitespace is whitespace
 set cursorline
 set hidden
 set autowrite
@@ -78,28 +79,16 @@ autocmd BufReadPost *
 	\	 exe "normal! g`\"" |
 	\ endif
 
-augroup filetype_vim
-    autocmd!
-    autocmd FileType vim setlocal foldmethod=marker
-    autocmd FileType vim :iabbrev <buffer> --- -----{{{
-augroup END
-" }}} 
-
-augroup filetype_terminal
-    autocmd!
-    autocmd FileType zsh  setlocal foldmethod=marker
-    autocmd FileType tmux setlocal foldmethod=marker
-augroup END
-
-augroup filetype_golang
+augroup filetypes
 	autocmd!
-	au FileType go setlocal tabstop=4 shiftwidth=4
-augroup END
+	autocmd FileType zsh  setlocal foldmethod=marker
+	autocmd FileType tmux setlocal foldmethod=marker
 
-augroup filetype_lua
-	autocmd!
-	au FileType lua setlocal foldmarker={,}
-	au FileType lua setlocal foldmethod=marker
+	autocmd FileType go   setlocal tabstop=4 shiftwidth=4
+
+	autocmd FileType lua  setlocal foldmarker={,}
+	autocmd FileType lua  setlocal foldmethod=marker
+	autocmd FileType lua  setlocal expandtab
 augroup END
 
 colorscheme gruvbox-material

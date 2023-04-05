@@ -2,6 +2,18 @@ return {
     {
         "nvim-telescope/telescope.nvim",
         event = "VeryLazy",
+        keys = {
+            { "<leader>s", "<cmd>Telescope find_files<CR>" },
+            { "<C-s>", "<cmd>Telescope find_files<CR>" },
+            { "<leader>ff", "<cmd>Telescope live_grep<CR>" },
+            { "<C-f>", "<cmd>Telescope live_grep<CR>" },
+            -- lsp
+            { "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>" },
+            { "gi", "<cmd>lua require'telescope.builtin'.lsp_implementations{}<CR>" },
+            { "gd", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>" },
+            { "gj", "<cmd>lua require'telescope.builtin'.jumplist{}<CR>" },
+            { "gt", "<cmd>lua require'telescope.builtin'.treesitter{}<CR>" },
+        },
         config = function()
             local actions = require("telescope.actions")
             require("telescope").setup({
@@ -22,26 +34,17 @@ return {
                         i = {
                             ["<esc>"] = actions.close,
                             ["<CR>"] = actions.select_default,
-                            -- ["<C-n>"] = actions.move_selection_previous,
-                            -- ["<C-p>"] = actions.move_selection_next,
                             ["<C-o>"] = actions.select_default,
-                            -- ["<C-t>"] = trouble.open_with_trouble,
-                            -- maybe bug, don't take effect:
-                            -- ["<C-l>"] = actions.move_selection_next,
-                        },
-                        n = {
-                            -- ["<C-t>"] = trouble.open_with_trouble,
                         },
                     },
-                    -- layout_strategy = "cursor"
-                    -- sorting_strategy = 'ascending',
+                    layout_config = {
+                        horizontal = {
+                            preview_width = 0.6,
+                        },
+                    },
                 },
                 pickers = {
                     find_files = {
-                        -- hidden = true,
-                        -- short_path = true,
-                        -- find_command = {'fd', '--hidden', "--type", "f", "--strip-cwd-prefix", '--exec-batch ls -l'}
-                        -- `sort` is not supported by fd, so replace fd with rg
                         find_command = {
                             "rg",
                             "--sort=path",
@@ -53,6 +56,22 @@ return {
                             "--column",
                             "--hidden",
                             "--smart-case",
+                        },
+                    },
+                    lsp_references = {
+                        layout_config = {
+                            width = 0.95,
+                            horizontal = {
+                                preview_width = 0.5,
+                            },
+                        },
+                    },
+                    jumplist = {
+                        layout_config = {
+                            width = 0.95,
+                            horizontal = {
+                                preview_width = 0.5,
+                            },
                         },
                     },
                 },
