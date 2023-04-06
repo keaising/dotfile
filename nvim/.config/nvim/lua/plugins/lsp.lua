@@ -1,55 +1,52 @@
 -- cSpell:disable
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+}
+
+local function on_attach(client, bufnr)
+    -- mappings.
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
+    vim.keymap.set("n", "<m-b>", function()
+        require("telescope.builtin").lsp_definitions()
+    end, bufopts)
+    vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "gi", function()
+        require("telescope.builtin").lsp_implementations({})
+    end, bufopts)
+    vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "gr", function()
+        require("telescope.builtin").lsp_references()
+    end, bufopts)
+    vim.keymap.set("n", "<leader>ls", function()
+        require("telescope.builtin").lsp_document_symbols()
+    end, bufopts)
+
+    -- format
+    local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+    if client.server_capabilities.documentFormattingProvider then
+        vim.keymap.set("n", "<leader>fm", function()
+            vim.lsp.buf.format({ async = true })
+        end, bufopts)
+        vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            group = group,
+            callback = function()
+                vim.lsp.buf.format({ bufnr = bufnr, async = false })
+            end,
+            desc = "[lsp] format on save",
+        })
+    end
+end
+
 return {
     {
         "neovim/nvim-lspconfig",
-        dependencies = {
-            "jose-elias-alvarez/null-ls.nvim",
-        },
         config = function()
-            local handlers = {
-                ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-                ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-            }
-
-            local on_attach = function(client, bufnr)
-                -- mappings.
-                local bufopts = { noremap = true, silent = true, buffer = bufnr }
-                vim.keymap.set("n", "<m-b>", vim.lsp.buf.definition, bufopts)
-                vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
-                vim.keymap.set("n", "gi", function()
-                    require("telescope.builtin").lsp_implementations({})
-                end, bufopts)
-                vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
-                vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-                vim.keymap.set("n", "gr", function()
-                    require("telescope.builtin").lsp_references()
-                end, bufopts)
-                vim.keymap.set("n", "<leader>ls", function()
-                    require("telescope.builtin").lsp_document_symbols()
-                end, bufopts)
-
-                -- format
-                local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-                if client.server_capabilities.documentFormattingProvider then
-                    vim.keymap.set("n", "<leader>fm", function()
-                        vim.lsp.buf.format({ async = true })
-                    end, bufopts)
-                    vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-                    vim.api.nvim_create_autocmd("BufWritePre", {
-                        buffer = bufnr,
-                        group = group,
-                        callback = function()
-                            vim.lsp.buf.format({ bufnr = bufnr, async = false })
-                        end,
-                        desc = "[lsp] format on save",
-                    })
-                end
-            end
-
-            -- Set up lspconfig.
             local lspconfig = require("lspconfig")
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
             lspconfig.gopls.setup({
                 handlers = handlers,
                 capabilities = capabilities,
@@ -63,15 +60,6 @@ return {
                             GOFLAGS = "-tags=stage",
                         },
                         usePlaceholders = true,
-                        hints = {
-                            assignVariableTypes = true,
-                            compositeLiteralFields = true,
-                            compositeLiteralTypes = true,
-                            constantValues = true,
-                            functionTypeParameters = true,
-                            parameterNames = true,
-                            rangeVariableTypes = true,
-                        },
                     },
                 },
             })
@@ -82,31 +70,22 @@ return {
                 on_attach = on_attach,
                 filetypes = { "sh", "zsh" },
             })
-            lspconfig.lua_ls.setup({
-                handlers = handlers,
-                capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    client.server_capabilities.documentFormattingProvider = false
-                    on_attach(client, bufnr)
-                end,
-                settings = {
-                    Lua = {
-                        hint = {
-                            enable = true,
-                            setType = true,
-                            arrayIndex = "Disable",
-                        },
-                        codelens = {
-                            enable = true,
-                        },
-                        completion = {
-                            postfix = ".",
-                            showWord = "Disable",
-                            workspaceWord = false,
-                        },
-                    },
-                },
-            })
+
+            local signs = {
+                { name = "DiagnosticSignError", text = "" },
+                { name = "DiagnosticSignWarn", text = "" },
+                { name = "DiagnosticSignHint", text = "" },
+                { name = "DiagnosticSignInfo", text = "" },
+            }
+
+            for _, sign in ipairs(signs) do
+                vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+            end
+        end,
+    },
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
@@ -146,17 +125,44 @@ return {
                 handlers = handlers,
                 on_attach = on_attach,
             })
-
-            local signs = {
-                { name = "DiagnosticSignError", text = "" },
-                { name = "DiagnosticSignWarn", text = "" },
-                { name = "DiagnosticSignHint", text = "" },
-                { name = "DiagnosticSignInfo", text = "" },
-            }
-
-            for _, sign in ipairs(signs) do
-                vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-            end
+        end,
+    },
+    {
+        "folke/neodev.nvim",
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        config = function()
+            require("neodev").setup({})
+            local lspconfig = require("lspconfig")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            lspconfig.lua_ls.setup({
+                handlers = handlers,
+                capabilities = capabilities,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    on_attach(client, bufnr)
+                end,
+                settings = {
+                    Lua = {
+                        hint = {
+                            enable = true,
+                            setType = true,
+                            arrayIndex = "Disable",
+                        },
+                        codelens = {
+                            enable = true,
+                        },
+                        completion = {
+                            postfix = ".",
+                            showWord = "Disable",
+                            workspaceWord = false,
+                            callSnippet = "Replace",
+                        },
+                    },
+                },
+            })
         end,
     },
     {
@@ -184,6 +190,7 @@ return {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
+        build = ":MasonToolsIntall",
         config = function()
             require("mason").setup({})
             require("mason-lspconfig").setup({
