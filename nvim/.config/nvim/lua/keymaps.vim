@@ -157,6 +157,6 @@ nnoremap <leader>lr :LspRestart<CR>
 
 " go
 nnoremap <leader>gj :GoAddTags json
-nnoremap <leader>gt :GoTests<CR>
-nnoremap <leader>gl :!golines -w %:p<CR>
+" nnoremap <leader>gt :GoTests<CR>
+nnoremap <silent> <leader>gl :silent !golines -w %:p<CR>
 
