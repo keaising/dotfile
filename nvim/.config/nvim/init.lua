@@ -25,3 +25,5 @@ require("lazy").setup("plugins", {
 })
 
 vim.cmd("source ~/.config/nvim/lua/options.vim")
+
+require("startup")
