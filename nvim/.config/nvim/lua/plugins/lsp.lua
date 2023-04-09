@@ -210,6 +210,7 @@ return {
                     "black",
                     "cspell",
                     "jq",
+                    "prettier",
                     "shfmt",
                     "stylua",
                 },
