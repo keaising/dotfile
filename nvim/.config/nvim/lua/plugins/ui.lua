@@ -146,4 +146,10 @@ return {
             })
         end,
     },
+    {
+        "utilyre/sentiment.nvim",
+        event = "VeryLazy",
+        version = "*",
+        opts = {},
+    },
 }
