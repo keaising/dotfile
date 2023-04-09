@@ -91,6 +91,8 @@ augroup filetypes
 	autocmd FileType lua  setlocal expandtab
 augroup END
 
+" let g:sonokai_style = 'shusia'
+" colorscheme sonokai
 colorscheme gruvbox-material
 
 highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine
