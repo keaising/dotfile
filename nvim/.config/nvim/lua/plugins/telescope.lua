@@ -12,6 +12,7 @@ return {
             -- common
             { "<leader>ld", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>" },
             { "gj", "<cmd>lua require'telescope.builtin'.jumplist{}<CR>" },
+            { "gb", "<cmd>lua require'telescope.builtin'.git_bcommits{}<CR>" },
             { "<leader>lt", "<cmd>lua require'telescope.builtin'.treesitter{}<CR>" },
         },
         config = function()
@@ -76,6 +77,11 @@ return {
                         sorting_strategy = "ascending",
                     },
                     diagnostics = {
+                        layout_config = wide_layout,
+                        initial_mode = "normal",
+                        sorting_strategy = "ascending",
+                    },
+                    git_bcommits = {
                         layout_config = wide_layout,
                         initial_mode = "normal",
                         sorting_strategy = "ascending",
