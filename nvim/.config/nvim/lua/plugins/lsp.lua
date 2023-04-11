@@ -187,10 +187,10 @@ return {
         end,
     },
     {
-        "williamboman/mason.nvim",
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
         event = "VeryLazy",
         dependencies = {
-            "WhoIsSethDaniel/mason-tool-installer.nvim",
+            "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
         build = ":MasonToolsIntall",
