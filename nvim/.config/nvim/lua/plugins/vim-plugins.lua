@@ -22,5 +22,8 @@ return {
     "tpope/vim-repeat",
     "matze/vim-move",
     "szw/vim-maximizer",
-    "ojroques/vim-oscyank",
+    {
+        "ojroques/vim-oscyank",
+        tag = "v1.0.0",
+    },
 }
