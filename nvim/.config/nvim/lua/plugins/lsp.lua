@@ -88,6 +88,8 @@ return {
     },
     {
         "jose-elias-alvarez/null-ls.nvim",
+        -- dir = "~/code/github.com/keaising/null-ls.nvim",
+        -- dev = true,
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
@@ -103,9 +105,13 @@ return {
                             find_json = function(_)
                                 return vim.fn.expand("~/.config/nvim/cspell.json")
                             end,
-                            on_success = function(_)
+                            on_success = function(cspell_config_file)
                                 os.execute(
-                                    "cat ~/.config/nvim/cspell.json | jq -S '.words |= sort' | tee ~/.config/nvim/cspell.json > /dev/null"
+                                    string.format(
+                                        "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                                        cspell_config_file,
+                                        cspell_config_file
+                                    )
                                 )
                             end,
                         },
@@ -118,12 +124,13 @@ return {
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
                     }),
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "yaml" },
+                        filetypes = { "yaml", "md", "markdown" },
                     }),
                     null_ls.builtins.formatting.shfmt.with({
                         filetypes = { "sh", "zsh" },
                     }),
                     null_ls.builtins.formatting.black,
+                    null_ls.builtins.diagnostics.selene,
                 },
                 handlers = handlers,
                 on_attach = on_attach,
@@ -162,6 +169,9 @@ return {
                             showWord = "Disable",
                             workspaceWord = false,
                             callSnippet = "Replace",
+                        },
+                        workspace = {
+                            checkThirdParty = false,
                         },
                     },
                 },
