@@ -17,6 +17,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ll='exa -al --group-directories-first'
 alias ls=exa
+alias vi=nvim
 
 # docker
 alias d='docker'
@@ -247,7 +248,11 @@ px1() {
 }
 
 px3() {
-	setpx 10.10.43.3:1080
+	px3_proxy=socks5://10.10.43.3:1080
+	export https_proxy=$px3_proxy
+	export http_proxy=$px3_proxy
+	export all_proxy=$px3_proxy
+	echo "set proxy to $px3_proxy"
 }
 
 px6() {
@@ -320,16 +325,6 @@ dns() {
 	done
 }
 
-vi() {
-	if [[ -n "$TMUX" ]]; then
-		window_name=$(tmux display-message -p '#W')
-		if [[ $window_name == 'zsh' ]]; then
-			tmux rename-window "#{b:pane_current_path}"
-		fi
-	fi
-	nvim "$@"
-}
-
 # --- }}}
 
 # keymap --- {{{
@@ -340,16 +335,6 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '\ei' edit-command-line
 bindkey '^n' autosuggest-accept # auto suggestion
-
-# move cursor
-# bindkey '\eH' backward-char
-# bindkey '\eL' forward-char
-# bindkey '\eJ' down-line-or-history
-# bindkey '\eK' up-line-or-history
-# bindkey '\eh' backward-word
-# bindkey '\el' forward-word
-# bindkey '\ej' beginning-of-line
-# bindkey '\ek' end-of-line
 
 # C-A: beginning-of-line
 # C-E: end-of-line
@@ -365,8 +350,6 @@ bindkey '^n' autosuggest-accept # auto suggestion
 # C-K: Clear the characters on the line after the current cursor position
 
 # shortcuts
-bindkey -s '\ee' 'vi . \n'
-bindkey -s '\eo' 'cd ..\n'
-bindkey -s '\e;' 'll\n'
+bindkey -s '\ee' 'nvim \n'
 
 # --- }}}

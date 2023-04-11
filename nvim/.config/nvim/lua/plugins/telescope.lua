@@ -68,22 +68,22 @@ return {
                     },
                     lsp_references = {
                         layout_config = wide_layout,
-                        initial_mode = "normal",
+                        -- initial_mode = "normal",
                         sorting_strategy = "ascending",
                     },
                     jumplist = {
                         layout_config = wide_layout,
-                        initial_mode = "normal",
+                        -- initial_mode = "normal",
                         sorting_strategy = "ascending",
                     },
                     diagnostics = {
                         layout_config = wide_layout,
-                        initial_mode = "normal",
+                        -- initial_mode = "normal",
                         sorting_strategy = "ascending",
                     },
                     git_bcommits = {
                         layout_config = wide_layout,
-                        initial_mode = "normal",
+                        -- initial_mode = "normal",
                         sorting_strategy = "ascending",
                     },
                 },
