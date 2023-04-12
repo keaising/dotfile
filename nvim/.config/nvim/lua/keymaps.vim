@@ -61,8 +61,12 @@ xnoremap <silent> <leader>p "_dP
 nnoremap <leader>x :silent !chmod +x %<CR>
 
 " move to line start/end
-noremap  H ^
-noremap  L $
+noremap H ^
+noremap L $
+
+" plus/minus
+noremap = <C-a>
+noremap - <C-x>
 
 " mark
 nnoremap ' `

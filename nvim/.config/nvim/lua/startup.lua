@@ -6,6 +6,10 @@ local files = {
     "README.md", -- normal
 }
 
+local ignore = {
+    "COMMIT_EDITMSG",
+}
+
 local open_tree = false
 
 for _, file in pairs(files) do

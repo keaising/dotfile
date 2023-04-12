@@ -119,9 +119,9 @@ v() {
 
 # config --- {{{
 # env
-export VISUAL=nvim
-export EDITOR=vim
-export GIT_EDITOR="${EDITOR}"
+export VISUAL="nvim --clean"
+export EDITOR="nvim --clean"
+export GIT_EDITOR="nvim --clean"
 export LANG="en_US.UTF-8"
 export LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
