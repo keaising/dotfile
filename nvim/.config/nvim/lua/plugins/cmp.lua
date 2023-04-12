@@ -38,6 +38,7 @@ return {
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-emoji",
             "hrsh7th/cmp-nvim-lsp-signature-help",
+            "lukas-reineke/cmp-rg",
             "quangnguyen30192/cmp-nvim-ultisnips",
             "SirVer/ultisnips",
         },
@@ -89,8 +90,8 @@ return {
                     { name = "ultisnips", group_index = 1 },
                     { name = "path", group_index = 1 },
                     { name = "emoji", group_index = 1 },
-                    { name = "buffer", group_index = 2 },
                     { name = "rg", group_index = 2 },
+                    { name = "buffer", group_index = 2 },
                 }),
                 formatting = {
                     fields = { "kind", "abbr", "menu" },

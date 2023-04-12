@@ -25,6 +25,9 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<leader>ls", function()
         require("telescope.builtin").lsp_document_symbols()
     end, bufopts)
+    vim.keymap.set("n", "<m-j>", function()
+        vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, bufopts)
 
     -- format
     local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
@@ -99,7 +102,7 @@ return {
                     null_ls.builtins.diagnostics.cspell.with({
                         extra_args = { "--config", "~/.config/nvim/cspell.json" },
                         diagnostics_postprocess = function(diagnostic)
-                            diagnostic.severity = vim.diagnostic.severity["INFO"] -- ERROR, WARN, INFO, HINT
+                            diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
                         end,
                     }),
                     null_ls.builtins.code_actions.cspell.with({
