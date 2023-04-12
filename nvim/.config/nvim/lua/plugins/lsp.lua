@@ -87,9 +87,11 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "keaising/null-ls.nvim",
+        -- "jose-elias-alvarez/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
         -- dev = true,
+        branch = "add_hook_for_cspell",
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
@@ -130,7 +132,14 @@ return {
                         filetypes = { "sh", "zsh" },
                     }),
                     null_ls.builtins.formatting.black,
-                    null_ls.builtins.diagnostics.selene,
+                    null_ls.builtins.diagnostics.selene.with({
+                        cwd = function(_)
+                            -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
+                            return vim.fs.dirname(
+                                vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
+                            ) or vim.fn.expand("~/.config/selene/") -- fallback value
+                        end,
+                    }),
                 },
                 handlers = handlers,
                 on_attach = on_attach,

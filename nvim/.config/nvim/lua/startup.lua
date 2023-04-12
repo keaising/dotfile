@@ -1,8 +1,9 @@
 -- if in go project, open main.go and toggle NeoTree as default
 
 local files = {
-    "main.go",
-    "README.md",
+    "main.go", -- go
+    "init.lua", -- lua
+    "README.md", -- normal
 }
 
 local open_tree = false
