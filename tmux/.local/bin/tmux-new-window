@@ -1,19 +1,39 @@
 #!/usr/bin/env bash
 
-selected="$(printf '%s\n' "$(
-	fd --type d \
-		--hidden \
-		--exclude "bin" \
-		--exclude "go" \
-		--exclude "include" \
-		--exclude "lib" \
-		--exclude "n" \
-		--exclude "share" \
-		--follow \
-		. \
-		"$HOME/code" |
-		fzf
-)")"
+preset=(
+	"$(pwd)"
+	"$HOME/.config"
+	"$HOME/.local"
+	"$HOME/download"
+	"$HOME/downloads"
+	"$HOME/Download"
+	"$HOME/Downloads"
+)
+
+search=$(fd --type d \
+	--max-depth 3 \
+	--hidden \
+	--exclude "bin" \
+	--exclude "go" \
+	--exclude "include" \
+	--exclude "lib" \
+	--exclude "n" \
+	--exclude "share" \
+	--follow \
+	. \
+	"$HOME/code")
+
+lines=$(
+	for p in "${preset[@]}"; do
+		# only use it when path exist
+		[[ -d "${p}" ]] && printf '%s\n' "$p"
+	done
+	# append fd results in the end
+	printf '%s' "$search"
+)
+
+selected="$(printf '%s\n' "$(echo "${lines}" | fzf)")"
+
 [[ ${#selected} != 0 ]] || exit 0
 
 selected_name=$(basename "$selected" | tr . _)
