@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
-preset=(
+prefix=(
 	"$(pwd)"
+)
+
+suffix=(
 	"$HOME/.config"
 	"$HOME/.local"
 	"$HOME/download"
@@ -24,12 +27,20 @@ search=$(fd --type d \
 	"$HOME/code")
 
 lines=$(
-	for p in "${preset[@]}"; do
+	#1
+	for p in "${prefix[@]}"; do
 		# only use it when path exist
 		[[ -d "${p}" ]] && printf '%s\n' "$p"
 	done
-	# append fd results in the end
+
+	#2 append fd results
 	printf '%s' "$search"
+
+	#3
+	for p in "${suffix[@]}"; do
+		# only use it when path exist
+		[[ -d "${p}" ]] && printf '%s\n' "$p"
+	done
 )
 
 selected="$(printf '%s\n' "$(echo "${lines}" | fzf)")"

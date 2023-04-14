@@ -93,7 +93,8 @@ augroup END
 
 " let g:sonokai_style = 'shusia'
 " colorscheme sonokai
-colorscheme gruvbox-material
+" colorscheme gruvbox-material
+colorscheme gruvbox
 
 highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine
 highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine

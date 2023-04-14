@@ -70,6 +70,7 @@ return {
                 },
             })
 
+            lspconfig.pyright.setup({})
             lspconfig.bashls.setup({
                 handlers = handlers,
                 capabilities = capabilities,
