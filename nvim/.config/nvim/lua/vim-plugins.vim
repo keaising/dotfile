@@ -47,6 +47,13 @@ let g:go_imports_mode = 'gopls'
 let g:go_gopls_gofumpt = v:true
 let g:go_def_mapping_enabled = 0
 let g:go_snippet_engine = ""
+" highlight
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_operators = 1
 
 " osc52 yank
 autocmd TextYankPost *
