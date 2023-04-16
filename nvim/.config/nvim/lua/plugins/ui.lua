@@ -21,7 +21,8 @@ return {
         config = function()
             require("lualine").setup({
                 options = {
-                    theme = "jellybeans",
+                    -- theme = "jellybeans",
+                    theme = "gruvbox",
                     component_separators = {
                         left = " ",
                         right = " ",
