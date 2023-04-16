@@ -57,22 +57,6 @@ set foldlevel=99                                    " 默认打开所有缩进
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
 
-noremap  H        ^
-noremap  L        $
-nnoremap <silent> n     nzz
-nnoremap <silent> j     gj
-nnoremap <silent> k     gk
-nnoremap <silent> N     Nzz
-nnoremap <silent> *     *zz
-nnoremap <silent> #     #zz
-nnoremap <silent> g*    g*zz
-nnoremap <silent> <Tab> %
-vnoremap <silent> <Tab> %
-
-" search selected content in visual mode: https://blog.twofei.com/610/
-vnoremap // y/<c-r>"<cr>
-nnoremap // :noh<CR>
-
 " 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
