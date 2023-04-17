@@ -237,6 +237,7 @@ return {
                     "cspell",
                     "jq",
                     "prettier",
+                    "selene",
                     "shfmt",
                     "stylua",
                 },

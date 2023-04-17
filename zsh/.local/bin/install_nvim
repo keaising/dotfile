@@ -8,7 +8,8 @@ sudo rm -f /usr/local/bin/nvim
 mkdir -p ~/.local/bin
 
 if [[ $(uname -s) == 'Linux' ]]; then
-	wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+	# wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
+	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 	tar -zxf nvim-linux64.tar.gz
 	rm nvim-linux64.tar.gz
 	mv nvim-linux64 ~/.local/bin/nvim
@@ -22,4 +23,3 @@ fi
 
 sudo ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
 nvim --version
-

@@ -132,7 +132,7 @@ export PROMPT_EOL_MARK='⏎'
 export GEM_HOME="$HOME/code/gems"
 
 # Added by n-install (see http://git.io/n-install-repo).
-export N_PREFIX="$HOME/code"
+export N_PREFIX="$HOME/code/n"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
