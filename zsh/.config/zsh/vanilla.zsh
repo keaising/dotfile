@@ -79,6 +79,8 @@ alias sz="source $HOME/.zshrc"
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
 alias dfp='datahub-field-parse'
 alias vvv='nvim --headless "+Lazy! sync" +qa'
+# ping tailscale with name
+alias tsping='ts ping $(ts status | awk "{printf \"%-20s %-20s\n\", \$1, \$2}" | fzf | awk "{print \$1}")'
 
 # }}}
 

@@ -1,1 +1,1 @@
-alias ts='tailscale'
+alias ts='sudo tailscale'
