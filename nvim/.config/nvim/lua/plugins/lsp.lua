@@ -65,7 +65,8 @@ return {
                         env = {
                             GOFLAGS = "-tags=stage",
                         },
-                        usePlaceholders = true,
+                        usePlaceholders = false, -- no placeholder fillfulment
+                        vulncheck = "Imports",
                     },
                 },
             })
