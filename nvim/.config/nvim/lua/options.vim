@@ -80,7 +80,8 @@ augroup END
 " colorscheme gruvbox-material
 let g:gruvbox_contrast_dark = 'soft'
 " set bg=light
-colorscheme gruvbox
+" colorscheme gruvbox
+colorscheme gruvbox-material
 
 highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine
 highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine

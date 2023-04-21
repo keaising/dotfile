@@ -218,7 +218,7 @@ cd() {
 		builtin cd "$@"
 		return
 	fi
-	local dir="$(printf '%s\n' $(fd --type d --hidden --follow . "$HOME/code" | fzf))"
+	local dir="$(printf '%s\n' $(fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf))"
 	[[ ${#dir} != 0 ]] || return 0
 	builtin cd "$dir" &>/dev/null
 }
