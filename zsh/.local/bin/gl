@@ -78,7 +78,7 @@ def gitlab_open(arg: str) -> None:
             run(f"wslview '{open_url}'")
         case "linux":
             if shutil.which("xdg-open"):
-                run(f"xdg-open '{open_url}'")
+                run(f"xdg-open '{open_url}' &> /dev/null 2>&1")
             else:
                 print(open_url, flush=True)
 
