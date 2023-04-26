@@ -92,11 +92,11 @@ return {
         end,
     },
     {
-        "keaising/null-ls.nvim",
-        -- "jose-elias-alvarez/null-ls.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+        -- "keaising/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
         -- dev = true,
-        branch = "add_hook_for_cspell",
+        -- branch = "add_hook_for_cspell",
         config = function()
             local null_ls = require("null-ls")
             null_ls.setup({
