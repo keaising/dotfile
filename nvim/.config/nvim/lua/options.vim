@@ -78,7 +78,7 @@ augroup END
 " let g:sonokai_style = 'shusia'
 " colorscheme sonokai
 " colorscheme gruvbox-material
-let g:gruvbox_contrast_dark = 'soft'
+" let g:gruvbox_contrast_dark = 'soft'
 " set bg=light
 " colorscheme gruvbox
 colorscheme gruvbox-material
