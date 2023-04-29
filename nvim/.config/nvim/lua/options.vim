@@ -45,8 +45,6 @@ set backupext=.bak       " 备份文件扩展名
 set mouse=
 set noswapfile
 set noundofile
-set termguicolors
-set t_Co=256             " 允许256色
 set spo=camel
 
 " set listchars=lead:⋅,tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
@@ -82,6 +80,11 @@ augroup END
 " set bg=light
 " colorscheme gruvbox
 colorscheme gruvbox-material
+
+set termguicolors
+set t_Co=256             " 允许256色
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine
 highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine
