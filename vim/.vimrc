@@ -37,6 +37,7 @@ set t_Co=256        " 允许256色
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
+set paste
 
 
 syntax enable
@@ -48,6 +49,7 @@ map <Space> <Leader>
 inoremap <ESC>s <ESC>:w<CR>
 nnoremap <ESC>s :w<CR>
 nnoremap <ESC>q :qa<CR>
+nnoremap <C-q>  <C-w>q
 nnoremap <ESC>w :q<CR>
 
 " resize window
