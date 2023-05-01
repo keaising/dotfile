@@ -77,8 +77,6 @@ alias tx='tmuxp'
 alias now='date +%s'
 alias sz="source $HOME/.zshrc"
 # alias rg='rg --column --line-number --hidden --sort path --no-heading --color=always --smart-case -- '
-# ping tailscale with name
-alias tsping='tailscale ping $(tailscale status | awk "{printf \"%-20s %-20s %10s\n\", \$1, \$2, \$5}" | fzf | awk "{print \$1}")'
 
 # }}}
 
@@ -113,6 +111,18 @@ v() {
 	err_code=$?
 	[[ $err_code -ne 0 ]] && cat /tmp/govulncheck
 	echo -n "" >/tmp/govulncheck
+}
+
+# ping tailscale with name
+tsping() {
+	tailscale ping $(
+		tailscale status |
+			grep -v '^$' |
+			grep -v '^#' |
+			awk "{printf \"%-20s %-20s %10s\n\", \$1, \$2, \$5}" |
+			fzf |
+			awk "{print \$1}"
+	)
 }
 
 # }}}
