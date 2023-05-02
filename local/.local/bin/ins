@@ -1,53 +1,85 @@
-#!/bin/zsh
+#!/usr/bin/env fish
 
-set -e
+function ins_nvim
+    rm -rf ~/.local/bin/nvim
+    sudo rm -f /usr/local/bin/nvim
+    mkdir -p ~/.local/bin
 
-local OS=$(uname -s)
-tbi() {
-	echo $1 'in' $OS 'is to be implemented'
-}
-nosupport() {
-	echo $1 'is not supported'
-}
+    set -l WORKDIR "$(mktemp -d)"
+    cd $WORKDIR
 
-local macOS="Darwin"
-local linux="Linux"
+    set -l VERSION nightly
+    [ $argv[1] ] && set -l VERSION $argv[1]
 
-local _tools=(
-	'bat'
-	'fd'
-	'fzf'
-	'gitui'
-	'gotools'
-	'lf'
-	'nvim'
-	'rg'
-	'stylua'
-	'tpm'
-)
+    if [ (uname) = Linux ]
+        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz
+        tar -zxf nvim-linux64.tar.gz
+        rm nvim-linux64.tar.gz
+        mv nvim-linux64 ~/.local/bin/nvim
+    else
+        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-macos.tar.gz
+        tar -zxf nvim-macos.tar.gz
+        rm nvim-macos.tar.gz
+        mv nvim-macos ~/.local/bin/nvim
+        fi
+    end
 
-main() {
-	tool=$1
+    rm -r $WORKDIR
 
-	case $OS in
-		$macOS)
-			mkdir -p ~/Downloads/
-			cd ~/Downloads/
-			;;
-		$linux)
-			mkdir -p ~/downloads
-			cd ~/downloads
-			;;
-	esac
+    sudo ln -s ~/.local/bin/nvim/bin/nvim /usr/local/bin/nvim
+    nvim --version
+end
 
-	for _tool in $_tools; do
-		if [[ $_tool == $tool ]]; then
-			install_$_tool $tool
-			return
-		fi
-	done
+function ins_gotools
+    set -l GOPROXY https://goproxy.cn
+    set -l GO111MODULE on
 
-	nosupport $tool
-}
+    go version
 
-main $@
+    set -l REPOS \
+        golang.org/x/tools/gopls \
+        golang.org/x/tools/cmd/gorename \
+        golang.org/x/tools/cmd/goimports \
+        github.com/uudashr/gopkgs/cmd/gopkgs \
+        mvdan.cc/gofumpt \
+        github.com/segmentio/golines \
+        github.com/ramya-rao-a/go-outline \
+        github.com/haya14busa/goplay/cmd/goplay \
+        github.com/fatih/gomodifytags \
+        github.com/mgechev/revive \
+        golang.org/x/tools/cmd/guru \
+        github.com/davidrjenni/reftools/cmd/fillstruct \
+        github.com/rogpeppe/godef \
+        github.com/fatih/motion \
+        github.com/kisielk/errcheck \
+        github.com/klauspost/asmfmt/cmd/asmfmt \
+        honnef.co/go/tools/cmd/staticcheck \
+        honnef.co/go/tools/cmd/keyify \
+        github.com/jstemmer/gotags \
+        github.com/koron/iferr \
+        github.com/josharian/impl \
+        github.com/cweill/gotests/... \
+        github.com/golangci/golangci-lint/cmd/golangci-lint \
+        github.com/rinchsan/gosimports/cmd/gosimports \
+        golang.org/x/vuln/cmd/govulncheck \
+        github.com/segmentio/golines
+
+    echo $PWD
+    for repo in $REPOS
+        set -l run "go install $repo@latest"
+        echo $run
+        eval $run
+    end
+
+end
+
+function main
+    switch $argv[1]
+        case nvim
+            ins_nvim $argv[2..-1]
+        case go gotools
+            ins_gotools
+    end
+end
+
+main $argv
