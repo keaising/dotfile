@@ -307,5 +307,25 @@ function fish_user_key_bindings
 end
 
 
+# os
+switch (uname)
+    case "Linux"
+        alias j='sudo journalctl'
+        alias s='sudo systemctl'
+        alias ts='sudo tailscale'
+        command -v pacman >/dev/null && alias i='sudo pacman -S'
+        command -v apt >/dev/null && alias i='sudo apt install'
+alias ts='sudo tailscale'
+    case "Darwin"
+        set -x HOMEBREW_NO_AUTO_UPDATE 1
+        set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
+        alias i='brew install'
+        alias ic='brew cask install'
+        alias dnsm='sudo brew services restart dnsmasq'
+        alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+end
+
+
 # key bindings
 bind \ee "nvim; commandline -f repaint"

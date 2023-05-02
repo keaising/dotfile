@@ -29,5 +29,5 @@ return {
             require("inc_rename").setup()
         end,
     },
-    "khaveesh/vim-fish-syntax",
+    -- "khaveesh/vim-fish-syntax",
 }
