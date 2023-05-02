@@ -44,8 +44,6 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 alias tx='tmuxp'
 
-alias now='date +%s'
-
 # go
 set -gx GOPATH $HOME/code/go
 set -gx GOPROXY https://goproxy.cn,direct
@@ -96,14 +94,14 @@ set -x GPG_TTY (tty)
 # set -x TERM "screen-256color"
 
 set -l _paths \
-    "$HOME/.local/bin" \
-    "$HOME/code/go/bin" \
-    "$HOME/.local/share/nvim/mason/bin" \
-    "$HOME/code/gems/bin" \
-    "$GOPATH/bin" \
-    "$N_PREFIX/bin" \
-    "$HOME/.cargo/bin" \
-    "$PYENV_ROOT/bin" \
+    $HOME/.local/bin \
+    $HOME/code/go/bin \
+    $HOME/.local/share/nvim/mason/bin \
+    $HOME/code/gems/bin \
+    $GOPATH/bin \
+    $N_PREFIX/bin \
+    $HOME/.cargo/bin \
+    $PYENV_ROOT/bin \
     /usr/bin \
     /usr/sbin \
     # for go on macOS
@@ -148,16 +146,14 @@ function cd
 end
 
 function glone
-    if test (count $argv) -ne 1
-        return
-    end
+    [ (count $argv) -ne 1 ] && return
     clone $argv[1] | tee /tmp/goclone
     cd (cat /tmp/goclone | head -n 1 | awk '{print $4}')
 end
 
 function v
     govulncheck ./... >/tmp/govulncheck 2>&1
-    test $status -ne 0; and cat /tmp/govulncheck
+    [ $status -ne 0 ] && cat /tmp/govulncheck
     echo -n "" >/tmp/govulncheck
 end
 
@@ -171,6 +167,17 @@ function tsping
             fzf |
             awk "{print \$1}"
     )
+end
+
+function now
+    if test (count $argv) -gt 0
+        for arg in $argv
+            date --iso-8601=seconds -d "@$arg"
+        end
+    else
+        date --rfc-3339=seconds
+        date +%s
+    end
 end
 
 function rmf
