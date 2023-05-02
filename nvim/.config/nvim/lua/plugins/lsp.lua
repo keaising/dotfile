@@ -101,6 +101,7 @@ return {
             local null_ls = require("null-ls")
             null_ls.setup({
                 sources = {
+                    null_ls.builtins.diagnostics.fish,
                     null_ls.builtins.diagnostics.cspell.with({
                         extra_args = { "--config", "~/.config/nvim/cspell.json" },
                         diagnostics_postprocess = function(diagnostic)
@@ -145,6 +146,7 @@ return {
                             ) or vim.fn.expand("~/.config/selene/") -- fallback value
                         end,
                     }),
+                    null_ls.builtins.formatting.fish_indent,
                 },
                 handlers = handlers,
                 on_attach = on_attach,

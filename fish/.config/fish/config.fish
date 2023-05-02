@@ -309,14 +309,14 @@ end
 
 # os
 switch (uname)
-    case "Linux"
+    case Linux
         alias j='sudo journalctl'
         alias s='sudo systemctl'
         alias ts='sudo tailscale'
         command -v pacman >/dev/null && alias i='sudo pacman -S'
         command -v apt >/dev/null && alias i='sudo apt install'
-alias ts='sudo tailscale'
-    case "Darwin"
+        alias ts='sudo tailscale'
+    case Darwin
         set -x HOMEBREW_NO_AUTO_UPDATE 1
         set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
         alias i='brew install'
