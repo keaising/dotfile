@@ -39,6 +39,10 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set termguicolors
 set paste
 
+" different cursor shape in normal/insert mode
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
+
 
 syntax enable
 syntax on
@@ -85,5 +89,7 @@ nnoremap <leader>// :noh<CR>
 
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
+
+nnoremap <leader>rn :set nu! <bar> set rnu! <bar> set signcolumn=no<CR>
 
 colorscheme slate
