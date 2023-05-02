@@ -5,7 +5,6 @@ return {
     },
     "kana/vim-textobj-function",
     "sgur/vim-textobj-parameter",
-    -- vim plugins
     "voldikss/vim-floaterm",
     "sbdchd/neoformat",
     {
@@ -16,7 +15,6 @@ return {
     "tpope/vim-abolish", -- crs/crm/crc
     "terryma/vim-expand-region",
     "ruanyl/vim-gh-line",
-    "APZelos/blamer.nvim",
     "preservim/nerdcommenter",
     --use("simeji/winresizer")
     "tpope/vim-repeat",
