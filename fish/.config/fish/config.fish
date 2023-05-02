@@ -15,6 +15,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ll='exa -al --group-directories-first'
 alias vi=nvim
+alias which=type
 
 # docker
 alias d='docker'
@@ -34,10 +35,6 @@ alias glp='gl -p'
 alias glm='gl -m'
 alias glb='gl -b'
 alias glc='gl -c'
-
-# ocr, source: https://www.kawabangga.com/posts/4876
-# brew install tesseract pngpaste
-alias pocr='pngpaste - | tesseract stdin stdout'
 
 # tmux
 alias t='tmux'
@@ -324,7 +321,15 @@ switch (uname)
         alias dnsm='sudo brew services restart dnsmasq'
         alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
         alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+
+        # ocr, source: https://www.kawabangga.com/posts/4876
+        # brew install tesseract pngpaste
+        alias pocr='pngpaste - | tesseract stdin stdout'
 end
+
+
+# confidential
+[ -e $HOME/.config/fish/cc.fish ] && source $HOME/.config/fish/cc.fish
 
 
 # key bindings
