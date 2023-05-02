@@ -3,7 +3,7 @@ set fish_greeting
 set -Ux EDITOR nvim
 set -x GPG_TTY (tty)
 
-fish_add_path  ~/.local/bin
+fish_add_path ~/.local/bin
 
 # ansible
 alias an='ansible'
@@ -98,7 +98,9 @@ set -x PYENV_ROOT "$HOME/.pyenv"
 
 # jabba
 set -x JABBA_HOME "$HOME/code/jabba"
-if test -s "$JABBA_HOME/jabba.sh"; source "$JABBA_HOME/jabba.sh"; end
+if test -s "$JABBA_HOME/jabba.sh"
+    source "$JABBA_HOME/jabba.sh"
+end
 
 # rust
 set -x RUST_BACKTRACE 1
@@ -114,26 +116,26 @@ set -x GPG_TTY (tty)
 
 
 set -l _paths \
-  "$HOME/.local/bin" \
-  "$HOME/code/go/bin" \
-  "$HOME/.local/share/nvim/mason/bin" \
-  "$HOME/code/gems/bin" \
-  "$GOPATH/bin" \
-  "$N_PREFIX/bin" \
-  "$HOME/.cargo/bin" \
-  "$PYENV_ROOT/bin" \
-  "/usr/bin" \
-  "/usr/sbin" \
-  # for go on macOS
-  "/usr/local" \
-  "/usr/local/bin" \
-  "/usr/local/sbin" \
-  # macOS JDK
-  "/usr/local/opt/openjdk/bin" \
-  # CUDA: Ubuntu/Debian
-  "/usr/local/cuda/bin" \
-  # CUDA: Arch
-  "/opt/cuda/bin"
+    "$HOME/.local/bin" \
+    "$HOME/code/go/bin" \
+    "$HOME/.local/share/nvim/mason/bin" \
+    "$HOME/code/gems/bin" \
+    "$GOPATH/bin" \
+    "$N_PREFIX/bin" \
+    "$HOME/.cargo/bin" \
+    "$PYENV_ROOT/bin" \
+    /usr/bin \
+    /usr/sbin \
+    # for go on macOS
+    /usr/local \
+    /usr/local/bin \
+    /usr/local/sbin \
+    # macOS JDK
+    /usr/local/opt/openjdk/bin \
+    # CUDA: Ubuntu/Debian
+    /usr/local/cuda/bin \
+    # CUDA: Arch
+    /opt/cuda/bin
 
 for path in $_paths
     # only add to $PATH when path exist and path not in $PATH
@@ -167,35 +169,35 @@ end
 
 
 function cd
-	if test (count $argv) -gt 0
-		builtin cd $argv
-		return
-	end
+    if test (count $argv) -gt 0
+        builtin cd $argv
+        return
+    end
 
-	set dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
-	[ "$dir" ] || return 0
-	builtin cd $dir >/dev/null
+    set dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
+    [ "$dir" ] || return 0
+    builtin cd $dir >/dev/null
 end
 
 # functions
 function glone
-        if test (count $argv) -ne 1
-                return
-        end
-        clone $argv[1] | tee /tmp/goclone
-        cd (cat /tmp/goclone | head -n 1 | awk '{print $4}')
+    if test (count $argv) -ne 1
+        return
+    end
+    clone $argv[1] | tee /tmp/goclone
+    cd (cat /tmp/goclone | head -n 1 | awk '{print $4}')
 end
 
 
 function v
-	govulncheck ./... >/tmp/govulncheck 2>&1
+    govulncheck ./... >/tmp/govulncheck 2>&1
     test $status -ne 0; and cat /tmp/govulncheck
-	echo -n "" >/tmp/govulncheck
+    echo -n "" >/tmp/govulncheck
 end
 
 # ping tailscale with name
 function tsping
-	tailscale ping $(
+    tailscale ping $(
 		tailscale status |
 			grep -v '^$' |
 			grep -v '^#' |
@@ -207,39 +209,39 @@ end
 
 
 function rmf
-	fd --hidden --follow | fzf | xargs rm -rf
+    fd --hidden --follow | fzf | xargs rm -rf
 end
 
 function mc
-	mkdir -p -- $argv[1] && cd -P -- $argv[1]
+    mkdir -p -- $argv[1] && cd -P -- $argv[1]
 end
 
 function setpx
-	set -gx https_proxy http://$argv[1]
-	set -gx http_proxy http://$argv[1]
-	set -gx all_proxy socks5://$argv[1]
-	echo "set proxy to $argv[1]"
+    set -gx https_proxy http://$argv[1]
+    set -gx http_proxy http://$argv[1]
+    set -gx all_proxy socks5://$argv[1]
+    echo "set proxy to $argv[1]"
 end
 
 function px1
-	setpx 127.0.0.1:1080
+    setpx 127.0.0.1:1080
 end
 
 
 function px3
-    set px3_proxy (socks5://10.10.43.3:1080)
-    set -x HTTPS_PROXY $px3_proxy
-    set -x HTTP_PROXY $px3_proxy 
-    set -x ALL_PROXY $px3_proxy
+    set px3_proxy "socks5://10.10.43.3:1080"
+    set -x https_proxy $px3_proxy
+    set -x http_proxy $px3_proxy
+    set -x all_proxy $px3_proxy
     echo "set proxy to $px3_proxy"
 end
 
 function px6
-    set_proxy 10.10.43.6 1080 
+    setpx "10.10.43.6:1080"
 end
 
 function px127
-    set_proxy 127.0.0.1 1080
+    setpx "127.0.0.1:1080"
 end
 
 function nopx
@@ -250,7 +252,7 @@ function nopx
 end
 
 
-function note 
+function note
     switch $argv[1]
         case l ls # ls
             docker container ls | grep jupyter
@@ -272,28 +274,40 @@ function note
                 -v $PWD:/home/jovyan jupyter/scipy-notebook \
                 jupyter-lab \
                 --NotebookApp.token= \
-                --NotebookApp.password=     
-            open "http://127.0.0.1:$port/lab" 
+                --NotebookApp.password=
+            open "http://127.0.0.1:$port/lab"
     end
 end
 
 function extract
-    if test -f $argv[1] 
+    if test -f $argv[1]
         switch $argv[1]
-        case *.tar.bz2; tar xjf $argv[1]
-        case *.tar.gz; tar xzf $argv[1] 
-        case *.tar.xz; tar xf $argv[1]
-        case *.bz2; bunzip2 $argv[1]
-        case *.rar; unrar e $argv[1]
-        case *.gz; gunzip $argv[1]
-        case *.tar; tar xf $argv[1]
-        case *.tbz2; tar xjf $argv[1]
-        case *.tgz; tar xzf $argv[1]
-        case *.zip; unzip $argv[1]
-        case *.Z; uncompress $argv[1]
-        case *.7z; 7z x $argv[1]
-        case *
-            echo "'$argv[1]' cannot be extracted via extract()"
+            case *.tar.bz2
+                tar xjf $argv[1]
+            case *.tar.gz
+                tar xzf $argv[1]
+            case *.tar.xz
+                tar xf $argv[1]
+            case *.bz2
+                bunzip2 $argv[1]
+            case *.rar
+                unrar e $argv[1]
+            case *.gz
+                gunzip $argv[1]
+            case *.tar
+                tar xf $argv[1]
+            case *.tbz2
+                tar xjf $argv[1]
+            case *.tgz
+                tar xzf $argv[1]
+            case *.zip
+                unzip $argv[1]
+            case *.Z
+                uncompress $argv[1]
+            case *.7z
+                7z x $argv[1]
+            case *
+                echo "'$argv[1]' cannot be extracted via extract()"
         end
     else
         echo "'$argv[1]' is not a valid file"
@@ -303,10 +317,27 @@ end
 
 
 
+set -x STARSHIP_CONFIG $HOME/.config/fish/starship.toml
+if [ -e $STARSHIP_CONFIG ]
+    if not command -v starship >/dev/null
+        echo "Installing starship ..."
+        # setpx
+        sh -c "$(curl -fsSL https://starship.rs/install.sh)"
+    end
+    starship init fish | source
+end
+
+set -x ZLUA_FILE $HOME/.config/fish/z.lua
+if [ -e $ZLUA_FILE ]
+    set _ZL_MATCH_MODE 1
+    set _ZL_CMD z
+    set _ZL_ADD_ONCE 1
+    source (lua $ZLUA_FILE --init fish | psub)
+end
+
 bind \ee "nvim; commandline -f repaint"
 
 set -x FZF_DEFAULT_OPTS '--height 60% --layout=reverse --border'
 function fish_user_key_bindings
-        fzf_key_bindings
+    fzf_key_bindings
 end
-
