@@ -1,9 +1,5 @@
 set fish_prompt_pwd_dir_length 0
 set fish_greeting
-set -Ux EDITOR nvim
-set -x GPG_TTY (tty)
-
-fish_add_path ~/.local/bin
 
 # ansible
 alias an='ansible'
@@ -18,7 +14,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ll='exa -al --group-directories-first'
-alias ls=exa
 alias vi=nvim
 
 # docker
@@ -40,11 +35,6 @@ alias glm='gl -m'
 alias glb='gl -b'
 alias glc='gl -c'
 
-# script
-alias python='python3'
-alias pip='pip3'
-alias sa='source ./venv/bin/activate'
-
 # ocr, source: https://www.kawabangga.com/posts/4876
 # brew install tesseract pngpaste
 alias pocr='pngpaste - | tesseract stdin stdout'
@@ -57,13 +47,11 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 alias tx='tmuxp'
 
-# misc
 alias now='date +%s'
 
-
-export GOPATH=$HOME/code/go
-export GOPROXY=https://goproxy.cn,direct
-
+# go
+set -gx GOPATH $HOME/code/go
+set -gx GOPROXY https://goproxy.cn,direct
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
 alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
 alias fmt='goimports -w . && go mod tidy'
@@ -78,15 +66,6 @@ alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 
-
-# env
-set -x VISUAL "nvim --clean"
-set -x EDITOR "nvim --clean"
-set -x GIT_EDITOR "nvim --clean"
-set -x LANG "en_US.UTF-8"
-set -x LC_CTYPE "en_US.UTF-8"
-set -x LC_ALL "en_US.UTF-8"
-
 # gem
 set -x GEM_HOME "$HOME/code/gems"
 
@@ -95,6 +74,7 @@ set -x N_PREFIX "$HOME/code/n"
 
 # pyenv
 set -x PYENV_ROOT "$HOME/.pyenv"
+command -v pyenv >/dev/null && eval (pyenv init - | source)
 
 # jabba
 set -x JABBA_HOME "$HOME/code/jabba"
@@ -105,15 +85,18 @@ end
 # rust
 set -x RUST_BACKTRACE 1
 
+# misc
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_CACHE_HOME "$HOME/.cache"
-
+set -x VISUAL "nvim --clean"
+set -x EDITOR "nvim --clean"
+set -x GIT_EDITOR "nvim --clean"
+set -x LANG "en_US.UTF-8"
+set -x LC_CTYPE "en_US.UTF-8"
+set -x LC_ALL "en_US.UTF-8"
+set -x GPG_TTY (tty)
 # for tmux in wezterm, kitty
 # set -x TERM "screen-256color"
-# GPG
-set -x GPG_TTY (tty)
-
-
 
 set -l _paths \
     "$HOME/.local/bin" \
@@ -145,15 +128,6 @@ for path in $_paths
 end
 
 
-
-
-
-
-
-
-command -v pyenv >/dev/null && eval (pyenv init - | source)
-
-
 function hostip
     # Honors belong to ChatGPT
     # 1. 过滤出数字开头的行和 inet 开头的行
@@ -164,9 +138,6 @@ function hostip
         | awk '{ORS = (NR%2 == 0 ? "\n" : ""); if (NR%2 == 1) {printf "%-20s", $0} else {printf "%s\n", $0}}' \
         | awk '{if ($1 ~ /^lo:/) next; sub(/:$/, "", $1); printf "%-15s %s\n", $1, $2}'
 end
-
-
-
 
 function cd
     if test (count $argv) -gt 0
@@ -179,7 +150,6 @@ function cd
     builtin cd $dir >/dev/null
 end
 
-# functions
 function glone
     if test (count $argv) -ne 1
         return
@@ -187,7 +157,6 @@ function glone
     clone $argv[1] | tee /tmp/goclone
     cd (cat /tmp/goclone | head -n 1 | awk '{print $4}')
 end
-
 
 function v
     govulncheck ./... >/tmp/govulncheck 2>&1
@@ -198,15 +167,14 @@ end
 # ping tailscale with name
 function tsping
     tailscale ping $(
-		tailscale status |
-			grep -v '^$' |
-			grep -v '^#' |
-			awk "{printf \"%-20s %-20s %10s\n\", \$1, \$2, \$5}" |
-			fzf |
-			awk "{print \$1}"
-	)
+        tailscale status |
+            grep -v '^$' |
+            grep -v '^#' |
+            awk "{printf \"%-20s %-20s %10s\n\", \$1, \$2, \$5}" |
+            fzf |
+            awk "{print \$1}"
+    )
 end
-
 
 function rmf
     fd --hidden --follow | fzf | xargs rm -rf
@@ -226,7 +194,6 @@ end
 function px1
     setpx 127.0.0.1:1080
 end
-
 
 function px3
     set px3_proxy "socks5://10.10.43.3:1080"
@@ -250,7 +217,6 @@ function nopx
     set -e ALL_PROXY
     echo "set proxy to nil"
 end
-
 
 function note
     switch $argv[1]
@@ -315,18 +281,17 @@ function extract
 end
 
 
-
-
+# starship
 set -x STARSHIP_CONFIG $HOME/.config/fish/starship.toml
 if [ -e $STARSHIP_CONFIG ]
     if not command -v starship >/dev/null
         echo "Installing starship ..."
-        # setpx
         sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     end
     starship init fish | source
 end
 
+# z.lua
 set -x ZLUA_FILE $HOME/.config/fish/z.lua
 if [ -e $ZLUA_FILE ]
     set _ZL_MATCH_MODE 1
@@ -335,9 +300,12 @@ if [ -e $ZLUA_FILE ]
     source (lua $ZLUA_FILE --init fish | psub)
 end
 
-bind \ee "nvim; commandline -f repaint"
-
+# fzf
 set -x FZF_DEFAULT_OPTS '--height 60% --layout=reverse --border'
 function fish_user_key_bindings
     fzf_key_bindings
 end
+
+
+# key bindings
+bind \ee "nvim; commandline -f repaint"
