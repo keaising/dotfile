@@ -83,9 +83,9 @@ set -x RUST_BACKTRACE 1
 # misc
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_CACHE_HOME "$HOME/.cache"
-set -x VISUAL "nvim --clean"
-set -x EDITOR "nvim --clean"
-set -x GIT_EDITOR "nvim --clean"
+set -x VISUAL nvim
+set -x EDITOR nvim
+set -x GIT_EDITOR nvim
 set -x LANG "en_US.UTF-8"
 set -x LC_CTYPE "en_US.UTF-8"
 set -x LC_ALL "en_US.UTF-8"
@@ -346,3 +346,4 @@ end
 
 # key bindings
 bind \ee "nvim; commandline -f repaint"
+bind \ei edit_command_buffer
