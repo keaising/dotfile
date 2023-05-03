@@ -135,6 +135,11 @@ function hostip
 end
 
 function cd
+    if test $argv[1] = - && set -q OLDPWD && not test -z $OLDPWD
+        builtin cd $OLDPWD >/dev/null
+        return
+    end
+
     if test (count $argv) -gt 0
         builtin cd $argv
         return
