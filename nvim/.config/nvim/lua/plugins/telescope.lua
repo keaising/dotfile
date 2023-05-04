@@ -47,6 +47,8 @@ return {
                             ["<esc>"] = actions.close,
                             ["<CR>"] = actions.select_default,
                             ["<C-o>"] = actions.select_default,
+                            ["<C-y>"] = actions.preview_scrolling_up,
+                            ["<C-e>"] = actions.preview_scrolling_down,
                         },
                     },
                     layout_config = normal_layout,

@@ -71,6 +71,7 @@ return {
                 },
             })
 
+            -- pyright depends on nodejs
             lspconfig.pyright.setup({})
             lspconfig.bashls.setup({
                 handlers = handlers,

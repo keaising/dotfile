@@ -199,11 +199,12 @@ function px1
 end
 
 function px3
-    set px3_proxy "socks5://10.10.43.3:1080"
-    set -x https_proxy $px3_proxy
-    set -x http_proxy $px3_proxy
-    set -x all_proxy $px3_proxy
-    echo "set proxy to $px3_proxy"
+    # set px3_proxy "socks5://10.10.43.3:1080"
+    # set -x https_proxy $px3_proxy
+    # set -x http_proxy $px3_proxy
+    # set -x all_proxy $px3_proxy
+    # echo "set proxy to $px3_proxy"
+    setpx "10.10.43.3:1080"
 end
 
 function px6
@@ -219,6 +220,26 @@ function nopx
     set -e HTTP_PROXY
     set -e ALL_PROXY
     echo "set proxy to nil"
+end
+
+function open
+    # macOS
+    if test (uname) = Darwin
+        open $argv
+        return
+    end
+
+    # WSL
+    if uname -r | grep -iq wsl
+        wslview $argv
+        return
+    end
+
+    # Arch Linux
+    if uname -r | grep -iq arch
+        xdg-open $argv &>/dev/null 2>&1
+        return
+    end
 end
 
 function note
