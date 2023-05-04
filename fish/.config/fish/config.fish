@@ -71,12 +71,6 @@ set -x N_PREFIX "$HOME/code/n"
 set -x PYENV_ROOT "$HOME/.pyenv"
 command -v pyenv >/dev/null && eval (pyenv init - | source)
 
-# jabba
-set -x JABBA_HOME "$HOME/code/jabba"
-if test -s "$JABBA_HOME/jabba.sh"
-    source "$JABBA_HOME/jabba.sh"
-end
-
 # rust
 set -x RUST_BACKTRACE 1
 

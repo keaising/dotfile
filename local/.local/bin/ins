@@ -21,7 +21,6 @@ function ins_nvim
         tar -zxf nvim-macos.tar.gz
         rm nvim-macos.tar.gz
         mv nvim-macos ~/.local/bin/nvim
-        fi
     end
 
     rm -r $WORKDIR
