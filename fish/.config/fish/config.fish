@@ -225,7 +225,7 @@ end
 function open
     # macOS
     if test (uname) = Darwin
-        open $argv
+        /usr/bin/open $argv
         return
     end
 
