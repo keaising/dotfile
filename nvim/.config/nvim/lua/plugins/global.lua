@@ -9,8 +9,7 @@ return {
         dev = false,
         config = function()
             require("im_select").setup({
-                disable_auto_restore = true,
-                set_default_im_on_focus_gained = true,
+                set_previous_events = {},
             })
         end,
     },
