@@ -10,6 +10,7 @@ return {
         config = function()
             require("im_select").setup({
                 set_previous_events = {},
+                keep_quiet_on_no_binary = true,
             })
         end,
     },
