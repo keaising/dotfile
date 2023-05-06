@@ -5,11 +5,12 @@ return {
     "RRethy/vim-illuminate",
     {
         "keaising/im-select.nvim",
+        dir = "~/code/github.com/keaising/im-select.nvim",
+        dev = false,
         config = function()
             require("im_select").setup({
-                -- default_im_select = "com.apple.keylayout.ABC",
-                disable_auto_restore = 1,
-                -- default_command = '/usr/local/bin/im-select'
+                disable_auto_restore = true,
+                set_default_im_on_focus_gained = true,
             })
         end,
     },
