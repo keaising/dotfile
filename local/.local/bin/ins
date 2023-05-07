@@ -61,7 +61,8 @@ function ins_gotools
         github.com/golangci/golangci-lint/cmd/golangci-lint \
         github.com/rinchsan/gosimports/cmd/gosimports \
         golang.org/x/vuln/cmd/govulncheck \
-        github.com/segmentio/golines
+        github.com/segmentio/golines \
+        github.com/ryancurrah/gomodguard/cmd/gomodguard
 
     echo $PWD
     for repo in $REPOS
