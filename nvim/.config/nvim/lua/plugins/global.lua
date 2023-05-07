@@ -5,8 +5,8 @@ return {
     "RRethy/vim-illuminate",
     {
         "keaising/im-select.nvim",
-        dir = "~/code/github.com/keaising/im-select.nvim",
-        dev = false,
+        -- dir = "~/code/github.com/keaising/im-select.nvim",
+        -- dev = true,
         config = function()
             require("im_select").setup({
                 set_previous_events = {},
@@ -19,9 +19,7 @@ return {
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
         config = function()
-            require("nvim-surround").setup({
-                -- Configuration here, or leave empty to use defaults
-            })
+            require("nvim-surround").setup({})
         end,
     },
     {
