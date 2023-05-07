@@ -128,20 +128,19 @@ function hostip
         | awk '{if ($1 ~ /^lo:/) next; sub(/:$/, "", $1); printf "%-15s %s\n", $1, $2}'
 end
 
-function cd
-    if test $argv[1] = - && set -q OLDPWD && not test -z $OLDPWD
-        builtin cd $OLDPWD >/dev/null
-        return
-    end
-
-    if test (count $argv) -gt 0
-        builtin cd $argv
-        return
-    end
-
+function to
     set dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
     [ "$dir" ] || return 0
-    builtin cd $dir >/dev/null
+    cd $dir >/dev/null
+    # if test ($argv[1] = -)
+    #     if set -q OLDPWD && not test -z $OLDPWD
+    #         builtin cd $OLDPWD >/dev/null
+    #     end
+    #     return
+    # end
+
+    # builtin cd $argv
+    # return
 end
 
 function glone
