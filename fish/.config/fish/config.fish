@@ -128,19 +128,65 @@ function hostip
         | awk '{if ($1 ~ /^lo:/) next; sub(/:$/, "", $1); printf "%-15s %s\n", $1, $2}'
 end
 
-function to
-    set dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
-    [ "$dir" ] || return 0
-    cd $dir >/dev/null
-    # if test ($argv[1] = -)
-    #     if set -q OLDPWD && not test -z $OLDPWD
-    #         builtin cd $OLDPWD >/dev/null
-    #     end
-    #     return
-    # end
+# from /usr/share/fish/functions/cd.fish, add fzf for search
+function cd --description "Change directory"
+    set -l MAX_DIR_HIST 25
 
-    # builtin cd $argv
-    # return
+    if test (count $argv) -gt (test "$argv[1]" = "--" && echo 2 || echo 1)
+        printf "%s\n" (_ "Too many args for cd command") >&2
+        return 1
+    end
+
+    # Skip history in subshells.
+    if status --is-command-substitution
+        builtin cd $argv
+        return $status
+    end
+
+    # Avoid set completions.
+    set -l previous $PWD
+
+    if test "$argv" = -
+        if test "$__fish_cd_direction" = next
+            nextd
+        else
+            prevd
+        end
+        return $status
+    end
+
+    if test (count $argv) -eq 0
+        set -l dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
+        [ -d $dir ] && builtin cd $dir >/dev/null
+    else
+        builtin cd $argv
+    end
+
+    set -l cd_status $status
+
+    if test $cd_status -eq 0 -a "$PWD" != "$previous"
+        set -q dirprev
+        or set -l dirprev
+        set -q dirprev[$MAX_DIR_HIST]
+        and set -e dirprev[1]
+
+        # If dirprev, dirnext, __fish_cd_direction
+        # are set as universal variables, honor their scope.
+
+        set -U -q dirprev
+        and set -U -a dirprev $previous
+        or set -g -a dirprev $previous
+
+        set -U -q dirnext
+        and set -U -e dirnext
+        or set -e dirnext
+
+        set -U -q __fish_cd_direction
+        and set -U __fish_cd_direction prev
+        or set -g __fish_cd_direction prev
+    end
+
+    return $cd_status
 end
 
 function glone
