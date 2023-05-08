@@ -132,11 +132,6 @@ end
 function cd --description "Change directory"
     set -l MAX_DIR_HIST 25
 
-    if test (count $argv) -gt (test "$argv[1]" = "--" && echo 2 || echo 1)
-        printf "%s\n" (_ "Too many args for cd command") >&2
-        return 1
-    end
-
     # Skip history in subshells.
     if status --is-command-substitution
         builtin cd $argv
@@ -156,10 +151,16 @@ function cd --description "Change directory"
     end
 
     if test (count $argv) -eq 0
+        # search
         set -l dir (fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
         [ -d $dir ] && builtin cd $dir >/dev/null
     else
-        builtin cd $argv
+        # path exist
+        builtin cd $argv 2>/dev/null
+        # path not exist, z.lua
+        if [ $status -ne 0 ] && type -q z
+            z $argv
+        end
     end
 
     set -l cd_status $status
