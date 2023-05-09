@@ -371,9 +371,11 @@ if [ -e $ZLUA_FILE ]
 end
 
 # fzf
-set -x FZF_DEFAULT_OPTS '--height 60% --layout=reverse --border'
-function fish_user_key_bindings
-    fzf_key_bindings
+if type -q fzf
+    set -x FZF_DEFAULT_OPTS '--height 60% --layout=reverse --border'
+    function fish_user_key_bindings
+        fzf_key_bindings
+    end
 end
 
 
@@ -383,8 +385,8 @@ switch (uname)
         alias j='sudo journalctl'
         alias s='sudo systemctl'
         alias ts='sudo tailscale'
-        command -v pacman >/dev/null && alias i='sudo pacman -S'
-        command -v apt >/dev/null && alias i='sudo apt install'
+        type -q pacman && alias i='sudo pacman -S'
+        type -q apt && alias i='sudo apt install'
         alias ts='sudo tailscale'
     case Darwin
         set -x HOMEBREW_NO_AUTO_UPDATE 1
