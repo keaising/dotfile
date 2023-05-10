@@ -354,7 +354,7 @@ end
 # starship
 set -x STARSHIP_CONFIG $HOME/.config/fish/starship.toml
 if [ -e $STARSHIP_CONFIG ]
-    if not command -v starship >/dev/null
+    if not type -q starship
         echo "Installing starship ..."
         sh -c "$(curl -fsSL https://starship.rs/install.sh)"
     end
