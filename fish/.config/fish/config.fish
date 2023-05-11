@@ -39,7 +39,7 @@ alias glc='gl -c'
 # tmux
 alias t='tmux'
 alias ta='tmux attach-session -t'
-alias tn='tmux new -s'
+alias tn='tmux new-session -s'
 alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 alias tx='tmuxp'
@@ -299,11 +299,12 @@ function note
             end
         case '*' # new
             set port 8888
-            [ -n $argv[1] ] && set port $argv[1]
+            test -n "$argv[1]" && set port $argv[1]
 
             set name (basename (dirname $PWD))_(basename $PWD)
-            [ -n $argv[2] ] && set name $argv[2]
+            test -n "$argv[2]" && set name $argv[2]
 
+            echo container: $name http://127.0.0.1:$port/lab
             docker run -d \
                 --rm --name $name \
                 -p $port:8888 \
