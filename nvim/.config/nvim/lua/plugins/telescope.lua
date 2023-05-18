@@ -69,7 +69,7 @@ return {
                         },
                     },
                     lsp_references = {
-                        layout_config = wide_layout,
+                        layout_config = normal_layout,
                         -- initial_mode = "normal",
                         sorting_strategy = "ascending",
                     },

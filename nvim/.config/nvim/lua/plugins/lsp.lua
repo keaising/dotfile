@@ -20,7 +20,20 @@ local function on_attach(client, bufnr)
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", function()
-        require("telescope.builtin").lsp_references()
+        local utils = require("telescope.utils")
+        require("telescope.builtin").lsp_references({
+            include_current_line = true,
+            entry_maker = function(entry)
+                return {
+                    value = entry.filename,
+                    display = utils.transform_path({}, entry.filename) .. " " .. entry.lnum,
+                    filename = entry.filename,
+                    ordinal = utils.transform_path({}, entry.filename),
+                    lnum = entry.lnum,
+                    col = entry.col,
+                }
+            end,
+        })
     end, bufopts)
     vim.keymap.set("n", "<leader>ls", function()
         require("telescope.builtin").lsp_document_symbols()
