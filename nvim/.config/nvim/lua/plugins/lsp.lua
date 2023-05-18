@@ -127,7 +127,9 @@ return {
                     }),
                     null_ls.builtins.formatting.jq,
                     null_ls.builtins.formatting.stylua.with({
-                        extra_args = { "--indent-type", "Spaces", "--indent-width", "4" },
+                        condition = function(utils)
+                            return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
+                        end,
                     }),
                     null_ls.builtins.formatting.pg_format.with({
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
