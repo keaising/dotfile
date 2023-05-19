@@ -43,17 +43,25 @@ local function on_attach(client, bufnr)
     end, bufopts)
 
     -- format
+    local function lsp_formatting(buf)
+        vim.lsp.buf.format({
+            filter = function(clt)
+                return clt.name == "null-ls"
+            end,
+            bufnr = buf,
+        })
+    end
     local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
     if client.server_capabilities.documentFormattingProvider then
         vim.keymap.set("n", "<leader>fm", function()
-            vim.lsp.buf.format({ async = true })
+            lsp_formatting(bufnr)
         end, bufopts)
         vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             group = group,
             callback = function()
-                vim.lsp.buf.format({ bufnr = bufnr, async = false })
+                lsp_formatting(bufnr)
             end,
             desc = "[lsp] format on save",
         })
@@ -106,6 +114,27 @@ return {
         end,
     },
     {
+        "jose-elias-alvarez/typescript.nvim",
+        enabled = true,
+        config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            require("typescript").setup({
+                disable_commands = true, -- prevent the plugin from creating Vim commands
+                debug = false, -- enable debug logging for commands
+                go_to_source_definition = {
+                    fallback = true, -- fall back to standard LSP definition on failure
+                },
+                server = { -- pass options to lspconfig's setup method
+                    handlers = handlers,
+                    capabilities = capabilities,
+                    on_attach = function(client, bufnr)
+                        on_attach(client, bufnr)
+                    end,
+                },
+            })
+        end,
+    },
+    {
         "jose-elias-alvarez/null-ls.nvim",
         -- "keaising/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
@@ -148,7 +177,7 @@ return {
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
                     }),
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "yaml", "md", "markdown" },
+                        filetypes = { "yaml", "md", "markdown", "javascript" },
                     }),
                     null_ls.builtins.formatting.shfmt.with({
                         filetypes = { "sh", "zsh" },
