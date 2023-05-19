@@ -1,21 +1,60 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
+        -- dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
+        -- dev = true,
         event = "VeryLazy",
         dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
-        keys = {
-            { "<leader>s", "<cmd>Telescope find_files<CR>" },
-            { "<C-s>", "<cmd>Telescope find_files<CR>" },
-            { "<leader>ff", "<cmd>Telescope live_grep<CR>" },
-            { "<C-f>", "<cmd>Telescope live_grep<CR>" },
-            -- lsp
-            -- common
-            { "<leader>ld", "<cmd>lua require'telescope.builtin'.diagnostics{}<CR>" },
-            { "gj", "<cmd>lua require'telescope.builtin'.jumplist{}<CR>" },
-            { "gb", "<cmd>lua require'telescope.builtin'.git_bcommits{}<CR>" },
-            { "<leader>lt", "<cmd>lua require'telescope.builtin'.treesitter{}<CR>" },
-        },
         config = function()
+            -- mappings
+            local bufopts = { noremap = true, silent = true, buffer = true }
+            local utils = require("telescope.utils")
+            local builtin = require("telescope.builtin")
+            vim.keymap.set("n", "<leader>s", function()
+                builtin.find_files()
+            end, bufopts)
+            vim.keymap.set("n", "<C-s>", function()
+                builtin.find_files()
+            end, bufopts)
+            vim.keymap.set("n", "<leader>ff", function()
+                builtin.live_grep()
+            end, bufopts)
+            vim.keymap.set("n", "<C-f>", function()
+                builtin.live_grep()
+            end, bufopts)
+            vim.keymap.set("n", "<leader>ld", function()
+                builtin.diagnostics({
+                    entry_maker = function(entry)
+                        return {
+                            value = entry.filename,
+                            display = string.format(
+                                "%4d:%-3d  %s   %s",
+                                entry.lnum,
+                                entry.col,
+                                utils.transform_path({}, entry.filename),
+                                entry.text
+                            ),
+                            filename = entry.filename,
+                            ordinal = utils.transform_path({}, entry.filename),
+                            lnum = entry.lnum,
+                            col = entry.col,
+                            type = entry.type,
+                            text = entry.text,
+                        }
+                    end,
+                })
+            end, bufopts)
+            vim.keymap.set("n", "gj", function()
+                builtin.jumplist({ show_line = false })
+            end, bufopts)
+            vim.keymap.set("n", "gb", function()
+                builtin.git_bcommits({})
+            end, bufopts)
+            -- vim.keymap.set("n", "lt", function()
+            --     builtin.treesitter({})
+            -- end, bufopts)
+
+            -- settings
             local actions = require("telescope.actions")
             local normal_layout = {
                 horizontal = {
