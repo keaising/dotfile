@@ -26,7 +26,12 @@ local function on_attach(client, bufnr)
             entry_maker = function(entry)
                 return {
                     value = entry.filename,
-                    display = utils.transform_path({}, entry.filename) .. " " .. entry.lnum,
+                    display = string.format(
+                        "%4d:%-3d  %s",
+                        entry.lnum,
+                        entry.col,
+                        utils.transform_path({}, entry.filename)
+                    ),
                     filename = entry.filename,
                     ordinal = utils.transform_path({}, entry.filename),
                     lnum = entry.lnum,
