@@ -6,7 +6,7 @@ map <Space>         <Leader>
 inoremap <m-s> <ESC>:w<CR>
 nnoremap <m-s> :w<CR>
 nnoremap <m-w> :q<cr>
-nnoremap <m-q> :wqa<CR>
+nnoremap <m-q> :qa<CR>
 nnoremap <C-q> :q<CR>
 " save file with sudo
 cnoremap sudow w !sudo tee % >/dev/null
