@@ -1,13 +1,13 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        -- dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
-        -- dev = true,
+        dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
+        dev = true,
         event = "VeryLazy",
         dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
         config = function()
             -- mappings
-            local bufopts = { noremap = true, silent = true, buffer = true }
+            local bufopts = { noremap = true, silent = true }
             local utils = require("telescope.utils")
             local builtin = require("telescope.builtin")
             vim.keymap.set("n", "<leader>s", function()
@@ -23,25 +23,45 @@ return {
                 builtin.live_grep()
             end, bufopts)
             vim.keymap.set("n", "<leader>ld", function()
+                local entry_display = require("telescope.pickers.entry_display")
+                local displayer = entry_display.create({
+                    separator = " ",
+                    items = {
+                        { width = 4 },
+                        { width = nil },
+                        { width = nil },
+                        { width = nil },
+                    },
+                })
+                local function make_entry(entry)
+                    return {
+                        value = entry.filename,
+                        display = function(item)
+                            local colors = {
+                                ["ERROR"] = "Red",
+                                ["WARN"] = "Purple",
+                                ["INFO"] = "Yellow",
+                                ["HINT"] = "Blue",
+                            }
+                            return displayer({
+                                { string.format("%4d", item.lnum), "Aqua" },
+                                { utils.transform_path({}, item.filename), "" },
+                                {
+                                    string.format("%s> %s", string.lower(string.sub(item.type, 1, 1)), item.text),
+                                    colors[entry.type],
+                                },
+                            })
+                        end,
+                        filename = entry.filename,
+                        ordinal = utils.transform_path({}, entry.filename) .. entry.type,
+                        lnum = entry.lnum,
+                        col = entry.col,
+                        type = entry.type,
+                        text = entry.text,
+                    }
+                end
                 builtin.diagnostics({
-                    entry_maker = function(entry)
-                        return {
-                            value = entry.filename,
-                            display = string.format(
-                                "%4d:%-3d  %s   %s",
-                                entry.lnum,
-                                entry.col,
-                                utils.transform_path({}, entry.filename),
-                                entry.text
-                            ),
-                            filename = entry.filename,
-                            ordinal = utils.transform_path({}, entry.filename),
-                            lnum = entry.lnum,
-                            col = entry.col,
-                            type = entry.type,
-                            text = entry.text,
-                        }
-                    end,
+                    entry_maker = make_entry,
                 })
             end, bufopts)
             vim.keymap.set("n", "gj", function()
@@ -50,9 +70,6 @@ return {
             vim.keymap.set("n", "gb", function()
                 builtin.git_bcommits({})
             end, bufopts)
-            -- vim.keymap.set("n", "lt", function()
-            --     builtin.treesitter({})
-            -- end, bufopts)
 
             -- settings
             local actions = require("telescope.actions")
