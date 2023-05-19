@@ -49,4 +49,4 @@ selected="$(printf '%s\n' "$(echo "${lines}" | fzf)")"
 
 selected_name=$(basename "$selected" | tr . _)
 
-tmux new-window -c "$selected" -n "$selected_name"
+tmux new-window -c "$selected" -n "$selected_name" -b
