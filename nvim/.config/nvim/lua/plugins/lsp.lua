@@ -46,7 +46,13 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return clt.name == "null-ls"
+                local allow = { "null-ls", "gopls" }
+                for _, v in ipairs(allow) do
+                    if clt.name == v then
+                        return true
+                    end
+                end
+                return false
             end,
             bufnr = buf,
         })
@@ -114,27 +120,6 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/typescript.nvim",
-        enabled = true,
-        config = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("typescript").setup({
-                disable_commands = true, -- prevent the plugin from creating Vim commands
-                debug = false, -- enable debug logging for commands
-                go_to_source_definition = {
-                    fallback = true, -- fall back to standard LSP definition on failure
-                },
-                server = { -- pass options to lspconfig's setup method
-                    handlers = handlers,
-                    capabilities = capabilities,
-                    on_attach = function(client, bufnr)
-                        on_attach(client, bufnr)
-                    end,
-                },
-            })
-        end,
-    },
-    {
         "jose-elias-alvarez/null-ls.nvim",
         -- "keaising/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
@@ -199,6 +184,7 @@ return {
         end,
     },
     {
+        -- lua
         "folke/neodev.nvim",
         dependencies = {
             "neovim/nvim-lspconfig",
@@ -240,6 +226,28 @@ return {
         end,
     },
     {
+        -- typescript/javascript
+        "jose-elias-alvarez/typescript.nvim",
+        enabled = true,
+        config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            require("typescript").setup({
+                disable_commands = true, -- prevent the plugin from creating Vim commands
+                debug = false, -- enable debug logging for commands
+                go_to_source_definition = {
+                    fallback = true, -- fall back to standard LSP definition on failure
+                },
+                server = { -- pass options to lspconfig's setup method
+                    handlers = handlers,
+                    capabilities = capabilities,
+                    on_attach = function(client, bufnr)
+                        on_attach(client, bufnr)
+                    end,
+                },
+            })
+        end,
+    },
+    {
         "ray-x/lsp_signature.nvim",
         config = function()
             require("lsp_signature").setup({})
@@ -275,6 +283,7 @@ return {
                     "lua_ls",
                     "pyright",
                     "terraformls",
+                    "tsserver",
                     "vimls",
                     "yamlls",
                 },
