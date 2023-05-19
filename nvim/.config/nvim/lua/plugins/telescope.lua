@@ -68,7 +68,12 @@ return {
                 builtin.jumplist({ show_line = false })
             end, bufopts)
             vim.keymap.set("n", "gb", function()
-                builtin.git_bcommits({})
+                local previewers = require("telescope.previewers")
+                builtin.git_bcommits({
+                    previewer = {
+                        previewers.git_commit_diff_as_was.new({}),
+                    },
+                })
             end, bufopts)
 
             -- settings
@@ -81,7 +86,7 @@ return {
             local wide_layout = {
                 width = 0.95,
                 horizontal = {
-                    preview_width = 0.5,
+                    preview_width = 0.6,
                 },
             }
             require("telescope").setup({

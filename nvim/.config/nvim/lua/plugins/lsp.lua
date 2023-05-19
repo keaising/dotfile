@@ -6,13 +6,40 @@ local handlers = {
 
 local function on_attach(client, bufnr)
     -- mappings.
+    local utils = require("telescope.utils")
+    local entry_display = require("telescope.pickers.entry_display")
+    local displayer = entry_display.create({
+        separator = " ",
+        items = {
+            { width = 4 },
+            { width = nil },
+        },
+    })
+    local function make_entry(entry)
+        return {
+            value = entry.filename,
+            filename = entry.filename,
+            ordinal = utils.transform_path({}, entry.filename),
+            lnum = entry.lnum,
+            col = entry.col,
+            display = function(item)
+                return displayer({
+                    { item.lnum, "Aqua" },
+                    { utils.transform_path({}, item.filename), "" },
+                })
+            end,
+        }
+    end
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "<m-b>", function()
         require("telescope.builtin").lsp_definitions()
     end, bufopts)
     vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "gi", function()
-        require("telescope.builtin").lsp_implementations({})
+        require("telescope.builtin").lsp_implementations({
+            show_line = false,
+            entry_maker = make_entry,
+        })
     end, bufopts)
     -- vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<m-k>", function()
@@ -20,30 +47,6 @@ local function on_attach(client, bufnr)
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "gr", function()
-        local utils = require("telescope.utils")
-        local entry_display = require("telescope.pickers.entry_display")
-        local displayer = entry_display.create({
-            separator = " ",
-            items = {
-                { width = 4 },
-                { width = nil },
-            },
-        })
-        local function make_entry(entry)
-            return {
-                value = entry.filename,
-                filename = entry.filename,
-                ordinal = utils.transform_path({}, entry.filename),
-                lnum = entry.lnum,
-                col = entry.col,
-                display = function(item)
-                    return displayer({
-                        { item.lnum, "Aqua" },
-                        { utils.transform_path({}, item.filename), "" },
-                    })
-                end,
-            }
-        end
         require("telescope.builtin").lsp_references({
             include_current_line = false,
             entry_maker = make_entry,
