@@ -67,11 +67,22 @@ return {
             vim.keymap.set("n", "gj", function()
                 builtin.jumplist({ show_line = false })
             end, bufopts)
+
             vim.keymap.set("n", "gb", function()
                 local previewers = require("telescope.previewers")
+                local opts = { current_file = vim.fn.expand("%") }
                 builtin.git_bcommits({
+                    git_command = {
+                        "git",
+                        "log",
+                        "--date=format:%y/%m/%d %H:%M",
+                        "--pretty=format:%C(auto) %h %ad %s",
+                    },
                     previewer = {
-                        previewers.git_commit_diff_as_was.new({}),
+                        previewers.git_commit_diff_as_was.new(opts),
+                        previewers.git_commit_diff_to_parent.new(opts),
+                        previewers.git_commit_diff_to_head.new(opts),
+                        previewers.git_commit_message.new(opts),
                     },
                 })
             end, bufopts)
@@ -110,6 +121,8 @@ return {
                             ["<C-o>"] = actions.select_default,
                             ["<C-y>"] = actions.preview_scrolling_up,
                             ["<C-e>"] = actions.preview_scrolling_down,
+                            ["<C-s>"] = actions.cycle_previewers_next,
+                            ["<C-a>"] = actions.cycle_previewers_prev,
                         },
                     },
                     layout_config = normal_layout,
