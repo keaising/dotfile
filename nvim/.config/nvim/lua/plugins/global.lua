@@ -28,4 +28,8 @@ return {
             require("inc_rename").setup()
         end,
     },
+    {
+        "Mr-LLLLL/vim-interestingwords",
+        branch = "fix-next-item",
+    },
 }

@@ -271,6 +271,12 @@ return {
         end,
     },
     {
+        "VidocqH/lsp-lens.nvim",
+        config = function()
+            require("lsp-lens").setup({})
+        end,
+    },
+    {
         "j-hui/fidget.nvim",
         config = function()
             require("fidget").setup({

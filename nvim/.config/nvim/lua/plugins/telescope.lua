@@ -75,14 +75,17 @@ return {
                     git_command = {
                         "git",
                         "log",
-                        "--date=format:%y/%m/%d %H:%M",
+                        -- "--pretty=oneline",
+                        -- "--abbrev-commit",
+                        "--date=format:%y/%m/%d",
                         "--pretty=format:%C(auto) %h %ad %s",
+                        "--follow",
                     },
                     previewer = {
-                        previewers.git_commit_diff_as_was.new(opts),
                         previewers.git_commit_diff_to_parent.new(opts),
-                        previewers.git_commit_diff_to_head.new(opts),
                         previewers.git_commit_message.new(opts),
+                        previewers.git_commit_diff_as_was.new(opts),
+                        previewers.git_commit_diff_to_head.new(opts),
                     },
                 })
             end, bufopts)
