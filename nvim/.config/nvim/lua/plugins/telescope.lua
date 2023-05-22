@@ -1,8 +1,8 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
-        dev = true,
+        -- dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
+        -- dev = true,
         event = "VeryLazy",
         dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
         config = function()
