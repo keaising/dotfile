@@ -4,7 +4,11 @@ return {
         -- dir = "/home/taiga/code/github.com/nvim-telescope/telescope.nvim",
         -- dev = true,
         event = "VeryLazy",
-        dependencies = { "nvim-telescope/telescope-ui-select.nvim" },
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope-ui-select.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
         config = function()
             -- mappings
             local bufopts = { noremap = true, silent = true }
