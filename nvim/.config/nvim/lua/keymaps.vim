@@ -131,9 +131,6 @@ nnoremap ga <Plug>(EasyAlign)
 vnoremap v     <Plug>(expand_region_expand)
 vnoremap <C-v> <Plug>(expand_region_shrink)
 
-" hop
-nnoremap s :HopChar2<CR>
-
 " vim-move
 let g:move_map_keys = 0
 nnoremap <silent> <C-A-h> <Plug>MoveCharLeft

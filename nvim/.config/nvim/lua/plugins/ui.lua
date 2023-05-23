@@ -50,10 +50,40 @@ return {
     },
     {
         "phaazon/hop.nvim",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         branch = "v2",
         config = function()
             require("hop").setup()
+            local hop = require("hop")
+            vim.keymap.set("n", "s", function()
+                hop.hint_char2()
+            end, nil)
+            vim.keymap.set({ "n", "o" }, "t", function()
+                hop.hint_char1({
+                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+                    current_line_only = true,
+                    hint_offset = -1,
+                })
+            end, nil)
+            vim.keymap.set({ "n", "o" }, "T", function()
+                hop.hint_char1({
+                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+                    current_line_only = true,
+                    hint_offset = -1,
+                })
+            end, nil)
+            vim.keymap.set({ "n", "o" }, "f", function()
+                hop.hint_char1({
+                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+                    current_line_only = true,
+                })
+            end, nil)
+            vim.keymap.set({ "n", "o" }, "F", function()
+                hop.hint_char1({
+                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+                    current_line_only = true,
+                })
+            end, nil)
         end,
     },
     {
