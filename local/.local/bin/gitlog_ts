@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# script for telescope.builtin.bcommits
+
+git log --date="format:%y/%m/%d" --pretty="format:%C(auto) %h %ad %s" --follow $1 >/tmp/gitlog && cat /tmp/gitlog

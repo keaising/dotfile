@@ -63,13 +63,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                local allow = { "null-ls", "gopls" }
-                for _, v in ipairs(allow) do
-                    if clt.name == v then
-                        return true
-                    end
-                end
-                return false
+                return vim.tbl_contains({ "null-ls", "gopls" }, clt.name)
             end,
             bufnr = buf,
         })

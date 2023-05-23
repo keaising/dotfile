@@ -76,15 +76,7 @@ return {
                 local previewers = require("telescope.previewers")
                 local opts = { current_file = vim.fn.expand("%") }
                 builtin.git_bcommits({
-                    git_command = {
-                        "git",
-                        "log",
-                        -- "--pretty=oneline",
-                        -- "--abbrev-commit",
-                        "--date=format:%y/%m/%d",
-                        "--pretty=format:%C(auto) %h %ad %s",
-                        "--follow",
-                    },
+                    git_command = { "gitlog_ts" },
                     previewer = {
                         previewers.git_commit_diff_to_parent.new(opts),
                         previewers.git_commit_message.new(opts),
