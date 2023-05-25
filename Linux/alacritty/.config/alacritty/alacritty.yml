@@ -4,13 +4,12 @@ env:
 window:
   dimensions:
     columns: 180
-    lines: 70
+    lines: 55
   padding:
-    x: 3
-    y: 3
+    x: 1
+    y: 1
   decorations: full
   # opacity: 0.9
-  option_as_alt: "Both"
 
 font:
   # family: Iosevka Term SS01
