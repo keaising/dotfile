@@ -37,6 +37,13 @@ return {
                         { width = nil },
                     },
                 })
+                local function trim_folder_prefix(s)
+                    local prefix = vim.fn.expand("~/code/")
+                    if vim.startswith(s, prefix) then
+                        return string.sub(s, #prefix + 1)
+                    end
+                    return s
+                end
                 local function make_entry(entry)
                     return {
                         value = entry.filename,
@@ -48,8 +55,8 @@ return {
                                 ["HINT"] = "Blue",
                             }
                             return displayer({
-                                { string.format("%4d", item.lnum), "Aqua" },
-                                { utils.transform_path({}, item.filename), "" },
+                                { string.format("%4d", item.lnum), colors[entry.type] },
+                                { trim_folder_prefix(utils.transform_path({}, item.filename)), "" },
                                 {
                                     string.format("%s> %s", string.lower(string.sub(item.type, 1, 1)), item.text),
                                     colors[entry.type],
