@@ -73,15 +73,12 @@ return {
                 })
             end, nil)
             vim.keymap.set({ "n", "o" }, "f", function()
-                hop.hint_char1({
-                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-                    current_line_only = true,
-                })
+                hop.hint_char1({})
             end, nil)
             vim.keymap.set({ "n", "o" }, "F", function()
                 hop.hint_char1({
                     direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-                    current_line_only = true,
+                    current_line_only = false,
                 })
             end, nil)
         end,
