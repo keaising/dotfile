@@ -70,7 +70,7 @@ local function on_attach(client, bufnr)
     end
     local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
     if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set("n", "<leader>fm", function()
+        vim.keymap.set("n", "<leader>gm", function()
             lsp_formatting(bufnr)
         end, bufopts)
         vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })

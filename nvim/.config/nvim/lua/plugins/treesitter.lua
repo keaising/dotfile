@@ -31,7 +31,8 @@ return {
                     -- Automatically jump forward to textobj, similar to targets.vim
                     lookahead = false,
                     keymaps = {
-                        ["iv"] = "@key_value",
+                        ["iv"] = "@kv_single",
+                        ["av"] = "@kv_whole",
                     },
                 },
             },

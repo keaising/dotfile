@@ -20,7 +20,7 @@ return {
             vim.keymap.set("n", "<C-s>", function()
                 builtin.find_files()
             end, bufopts)
-            vim.keymap.set("n", "<leader>ff", function()
+            vim.keymap.set("n", "<leader>f", function()
                 builtin.live_grep()
             end, bufopts)
             vim.keymap.set("n", "<C-f>", function()
