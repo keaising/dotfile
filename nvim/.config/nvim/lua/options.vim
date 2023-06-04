@@ -46,6 +46,8 @@ set mouse=
 set noswapfile
 set noundofile
 set spo=camel
+set splitbelow
+set splitright
 
 " set listchars=lead:⋅,tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
 set clipboard^=unnamed,unnamedplus                  " y/d/c copy to/from system clipboard

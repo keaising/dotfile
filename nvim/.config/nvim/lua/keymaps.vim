@@ -161,3 +161,5 @@ nnoremap <leader>gj :GoAddTags json
 " nnoremap <leader>gt :GoTests<CR>
 nnoremap <silent> <leader>gl :silent !golines -w %:p<CR>
 
+" https://www.reddit.com/r/neovim/comments/13y3thq/whats_a_very_simple_config_change_that_you_cant/
+inoremap <C-BS> <ESC>cvb
