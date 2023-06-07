@@ -53,10 +53,16 @@ nnoremap <silent> <Tab> %
 vnoremap <silent> <Tab> %
 
 " come from https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
-nnoremap <silent> J         mzJ`z
-vnoremap <silent> J         :m '>+1<CR>gv=gv
-vnoremap <silent> K         :m '<-2<CR>gv=gv
-xnoremap <silent> <leader>p "_dP
+nnoremap <silent> J mzJ`z
+vnoremap <silent> J :m '>+1<CR>gv=gv
+vnoremap <silent> K :m '<-2<CR>gv=gv
+
+" don't follow vim default behavior
+xnoremap p "_dP
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
 
 nnoremap <leader>x :silent !chmod +x %<CR>
 
