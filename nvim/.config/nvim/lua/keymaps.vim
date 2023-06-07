@@ -84,8 +84,8 @@ nnoremap zo zA
 nnoremap <C-p> <nop>
 
 " search selected content in visual mode: https://blog.twofei.com/610/
-vnoremap // y/<c-r>"<cr>
-nnoremap // :noh<CR>
+" vnoremap // y/<c-r>"<cr>
+" nnoremap // :noh<CR>
 
 " insert mode specials
 inoremap ;; :=

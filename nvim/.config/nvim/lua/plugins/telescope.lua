@@ -23,7 +23,7 @@ return {
             vim.keymap.set("n", "<leader>f", function()
                 builtin.live_grep()
             end, bufopts)
-            vim.keymap.set("n", "<C-f>", function()
+            vim.keymap.set("n", "/", function()
                 builtin.live_grep({ search_dirs = { "%:p" } })
             end, bufopts)
             vim.keymap.set("n", "<CR>", function()
