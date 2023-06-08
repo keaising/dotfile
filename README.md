@@ -9,4 +9,3 @@ stow -vt ~ stow
 # 3. other components can just:
 stow {alacritty|vim|tmux|zsh}
 ```
-

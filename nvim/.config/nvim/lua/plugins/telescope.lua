@@ -24,7 +24,11 @@ return {
                 builtin.live_grep()
             end, bufopts)
             vim.keymap.set("n", "/", function()
-                builtin.live_grep({ search_dirs = { "%:p" } })
+                -- builtin.live_grep({ search_dirs = { "%:p" } })
+                builtin.current_buffer_fuzzy_find({
+                    sorting_strategy = "ascending",
+                    sorter = require("telescope.sorters").get_substr_matcher({}),
+                })
             end, bufopts)
             vim.keymap.set("n", "<CR>", function()
                 builtin.resume()
