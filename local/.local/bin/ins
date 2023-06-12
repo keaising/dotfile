@@ -30,10 +30,12 @@ function ins_nvim
 end
 
 function ins_gotools
-    set -l GOPROXY https://goproxy.cn
-    set -l GO111MODULE on
+    set -lx GOPROXY "https://goproxy.cn"
+    set -lx GO111MODULE on
 
     go version
+    echo $PWD
+    # go env
 
     set -l REPOS \
         golang.org/x/tools/gopls \
@@ -64,7 +66,6 @@ function ins_gotools
         github.com/segmentio/golines \
         github.com/ryancurrah/gomodguard/cmd/gomodguard
 
-    echo $PWD
     for repo in $REPOS
         set -l run "go install $repo@latest"
         echo $run

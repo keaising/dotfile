@@ -14,7 +14,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias ll='exa -al --group-directories-first'
-alias vi=nvim
+alias vi=vim
+if type -q nvim
+    alias vi=nvim
+end
 alias which=type
 
 # docker
@@ -62,28 +65,28 @@ alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 
 # gem
-set -x GEM_HOME "$HOME/code/gems"
+set -Ux GEM_HOME "$HOME/code/gems"
 
 # Added by n-install (see http://git.io/n-install-repo).
-set -x N_PREFIX "$HOME/code/n"
+set -Ux N_PREFIX "$HOME/code/n"
 
 # pyenv
-set -x PYENV_ROOT "$HOME/.pyenv"
+set -Ux PYENV_ROOT "$HOME/.pyenv"
 command -v pyenv >/dev/null && eval (pyenv init - | source)
 
 # rust
-set -x RUST_BACKTRACE 1
+set -Ux RUST_BACKTRACE 1
 
 # misc
-set -x XDG_CONFIG_HOME "$HOME/.config"
-set -x XDG_CACHE_HOME "$HOME/.cache"
-set -x VISUAL nvim
-set -x EDITOR nvim
-set -x GIT_EDITOR nvim
-set -x LANG "en_US.UTF-8"
-set -x LC_CTYPE "en_US.UTF-8"
-set -x LC_ALL "en_US.UTF-8"
-set -x GPG_TTY (tty)
+set -Ux XDG_CONFIG_HOME "$HOME/.config"
+set -Ux XDG_CACHE_HOME "$HOME/.cache"
+set -Ux VISUAL vi
+set -Ux EDITOR vi
+set -Ux GIT_EDITOR vi
+set -Ux LANG "en_US.UTF-8"
+set -Ux LC_CTYPE "en_US.UTF-8"
+set -Ux LC_ALL "en_US.UTF-8"
+set -Ux GPG_TTY (tty)
 # for tmux in wezterm, kitty
 # set -x TERM "screen-256color"
 
@@ -113,7 +116,7 @@ for path in $_paths
     # only add to $PATH when path exist and path not in $PATH
     test -d "$path" &&
         not contains $PATH "$path" &&
-        set -x PATH $PATH "$path"
+        set -Ux PATH $PATH "$path"
 end
 
 
@@ -245,12 +248,11 @@ function px1
 end
 
 function px3
-    # set px3_proxy "socks5://10.10.43.3:1080"
-    # set -x https_proxy $px3_proxy
-    # set -x http_proxy $px3_proxy
-    # set -x all_proxy $px3_proxy
-    # echo "set proxy to $px3_proxy"
-    setpx "10.10.43.3:1080"
+    set px3_proxy "socks5://10.10.43.3:1080"
+    set -gx https_proxy $px3_proxy
+    set -gx http_proxy $px3_proxy
+    set -gx all_proxy $px3_proxy
+    echo "set proxy to $px3_proxy"
 end
 
 function px5
@@ -377,9 +379,9 @@ end
 # z.lua
 set -x ZLUA_FILE $HOME/.config/fish/z.lua
 if [ -e $ZLUA_FILE ]
-    set _ZL_MATCH_MODE 1
-    set _ZL_CMD z
-    set _ZL_ADD_ONCE 1
+    set -gx _ZL_MATCH_MODE 1
+    set -gx _ZL_CMD z
+    set -gx _ZL_ADD_ONCE 1
     source (lua $ZLUA_FILE --init fish | psub)
 end
 
@@ -402,8 +404,8 @@ switch (uname)
         type -q apt && alias i='sudo apt install'
         alias ts='sudo tailscale'
     case Darwin
-        set -x HOMEBREW_NO_AUTO_UPDATE 1
-        set -x HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
+        set -gx HOMEBREW_NO_AUTO_UPDATE 1
+        set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
         alias i='brew install'
         alias ic='brew cask install'
         alias dnsm='sudo brew services restart dnsmasq'
