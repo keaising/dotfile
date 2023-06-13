@@ -116,7 +116,7 @@ for path in $_paths
     # only add to $PATH when path exist and path not in $PATH
     test -d "$path" &&
         not contains $PATH "$path" &&
-        set -Ux PATH $PATH "$path"
+        set -x PATH $PATH "$path"
 end
 
 
