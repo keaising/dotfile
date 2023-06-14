@@ -85,14 +85,14 @@ return {
                         cmp_ultisnips_mappings.jump_backwards(fallback)
                     end, { "i", "s" }),
                 },
-                sources = cmp.config.sources({
+                sources = {
                     { name = "nvim_lsp", group_index = 1 },
                     { name = "ultisnips", group_index = 1 },
                     { name = "path", group_index = 1 },
                     { name = "emoji", group_index = 1 },
                     { name = "rg", group_index = 2 },
                     { name = "buffer", group_index = 2 },
-                }),
+                },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
