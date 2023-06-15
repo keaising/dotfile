@@ -272,6 +272,7 @@ return {
     },
     {
         "j-hui/fidget.nvim",
+        tag = "legacy",
         config = function()
             require("fidget").setup({
                 sources = {
@@ -283,10 +284,10 @@ return {
         end,
     },
     {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "williamboman/mason.nvim",
         event = "VeryLazy",
         dependencies = {
-            "williamboman/mason.nvim",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
         build = ":MasonToolsIntall",

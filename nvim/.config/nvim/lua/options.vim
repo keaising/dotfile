@@ -83,6 +83,7 @@ augroup END
 " let g:gruvbox_contrast_dark = 'soft'
 " set bg=light
 " colorscheme gruvbox
+let g:gruvbox_material_current_word = "underline"
 colorscheme gruvbox-material
 
 set termguicolors
