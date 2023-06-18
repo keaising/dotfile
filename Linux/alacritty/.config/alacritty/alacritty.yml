@@ -9,6 +9,8 @@ window:
     x: 1
     y: 1
   decorations: full
+  title: Alacritty
+  dynamic_title: false
   # opacity: 0.9
 
 font:

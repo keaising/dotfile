@@ -272,7 +272,7 @@ return {
     },
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
+        branch = "legacy",
         config = function()
             require("fidget").setup({
                 sources = {
