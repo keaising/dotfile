@@ -24,10 +24,9 @@ return {
                 builtin.live_grep()
             end, bufopts)
             vim.keymap.set("n", "<C-f>", function()
-                builtin.grep_string({
+                builtin.live_grep({
                     search_dirs = { "%:p" },
                     sorting_strategy = "ascending",
-                    use_regex = true,
                 })
             end, bufopts)
             vim.keymap.set("n", "<CR>", function()

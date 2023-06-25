@@ -45,6 +45,9 @@ let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
+" msg
+let g:go_echo_command_info = 0
+
 
 " osc52 yank
 autocmd TextYankPost *
