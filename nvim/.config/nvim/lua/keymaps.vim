@@ -99,7 +99,7 @@ nnoremap <silent> <m-H>      :BufferLineMovePrev<CR>
 nnoremap <silent> <m-L>      :BufferLineMoveNext<CR>
 nnoremap <silent> <leader>wh :BufferLineCloseLeft<CR>
 nnoremap <silent> <leader>wl :BufferLineCloseRight<CR>
-nnoremap <silent> <leader>wa :BufferLineCloseLeft<CR> <Bar> :BufferLineCloseRight<CR>
+nnoremap <silent> <leader>wa :BufferLineCloseOthers<CR>
 nnoremap <silent> <m-e>      :BufferLinePick<CR>
 nnoremap <silent> <m-w>      :Bdelete<CR>
 
