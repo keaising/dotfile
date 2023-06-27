@@ -24,3 +24,10 @@ if open_file ~= "" then
     vim.cmd("NeoTreeShow")
     vim.cmd("bp")
 end
+
+-- fix https://github.com/neovim/neovim/issues/21856
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+    callback = function()
+        vim.fn.jobstart("", { detach = true })
+    end,
+})
