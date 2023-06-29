@@ -33,7 +33,7 @@ return {
         "hrsh7th/nvim-cmp",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
-            -- "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
             "hrsh7th/cmp-cmdline",
             "hrsh7th/cmp-emoji",
@@ -91,7 +91,7 @@ return {
                     { name = "path", group_index = 1 },
                     { name = "emoji", group_index = 1 },
                     { name = "rg", group_index = 2 },
-                    -- { name = "buffer", group_index = 2 },
+                    { name = "buffer", group_index = 3 },
                 },
                 formatting = {
                     fields = { "kind", "abbr", "menu" },
@@ -102,7 +102,7 @@ return {
                             ultisnips = "[snippet]",
                             path = "[path]",
                             emoji = "[emoji]",
-                            -- buffer = "[buffer]",
+                            buffer = "[buffer]",
                             rg = "[rg]",
                         })[entry.source.name]
                         return vim_item

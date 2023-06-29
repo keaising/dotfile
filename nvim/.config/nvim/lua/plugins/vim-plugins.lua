@@ -28,6 +28,14 @@ return {
         "fatih/vim-go",
         ft = "go",
         event = "VeryLazy",
+        config = function()
+            vim.api.nvim_create_user_command("Gg", function()
+                vim.cmd([[ GoRemoveTags bson es2m ]])
+                vim.cmd([[ GoAddTags gorm ]])
+                vim.cmd([[ s/gorm:"\(.*\)"/gorm:"column:\1;type:text"/g ]])
+                vim.cmd([[ noh ]])
+            end, { bang = true, desc = "Gorm commands for struct" })
+        end,
     },
     -- https://github.com/buoto/gotests-vim/pull/10
     {
