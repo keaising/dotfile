@@ -1,8 +1,5 @@
 return {
-    {
-        "famiu/bufdelete.nvim",
-        commit = "3d348162a16015836cd316ac9f3c9e700e15fad5",
-    },
+    "famiu/bufdelete.nvim",
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
