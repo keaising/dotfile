@@ -165,3 +165,32 @@ nnoremap <silent> <leader>gl :silent !golines -w %:p<CR>
 
 " https://www.reddit.com/r/neovim/comments/13y3thq/whats_a_very_simple_config_change_that_you_cant/
 inoremap <C-BS> <ESC>cvb
+
+
+nnoremap <leader>gg :call ReplaceSelectedText()<CR>
+vnoremap <leader>gg :call ReplaceSelectedText()<CR>
+
+function! ReplaceSelectedText()
+  " 检查是否有选中文本
+  if mode() ==# 'v'
+    " 获取选中的起始和结束行号
+    let start_line = line("'<")
+    let end_line = line("'>")
+  else
+    " 如果没有选中文本，使用当前光标行号
+    let start_line = line('.')
+    let end_line = line('.')
+  endif
+
+  " 遍历选中或当前行的每一行
+  for line_number in range(start_line, end_line)
+    " 获取当前行的内容
+    let line_content = getline(line_number)
+
+    " 进行替换操作
+    let replaced_content = substitute(line_content, 'gorm:"\(.*\)"', 'gorm:"column:\1;type:text"', 'g')
+
+    " 将替换后的内容写回当前行
+    call setline(line_number, replaced_content)
+  endfor
+endfunction
