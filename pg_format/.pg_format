@@ -1,0 +1,9 @@
+# Change the case of the reserved keyword. Default is unchanged: 0.
+# Values: 0=>unchanged, 1=>lowercase, 2=>uppercase, 3=>capitalize.
+function-case=2
+
+# Use tabs instead of space characters, when used spaces is set to 1 whatever is its value.
+tabs=1
+
+# Wrap queries at a certain length.
+wrap-limit=88
