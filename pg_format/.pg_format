@@ -3,7 +3,7 @@
 function-case=2
 
 # Use tabs instead of space characters, when used spaces is set to 1 whatever is its value.
-tabs=1
+tabs=0
 
 # Wrap queries at a certain length.
 wrap-limit=88
