@@ -405,6 +405,10 @@ switch (uname)
         type -q pacman && alias i='sudo pacman -S'
         type -q apt && alias i='sudo apt install'
         alias ts='sudo tailscale'
+
+        # macOS guest in qemu
+        alias macos='cd $HOME/code/github.com/keaising/quickemu && quickemu --vm macos-big-sur.conf'
+
     case Darwin
         set -gx HOMEBREW_NO_AUTO_UPDATE 1
         set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
