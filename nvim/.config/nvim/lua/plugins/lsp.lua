@@ -291,26 +291,8 @@ return {
         end,
     },
     {
-        "WhoIsSethDaniel/mason-tool-installer.nvim",
-        event = "VeryLazy",
-        build = ":MasonToolsIntall",
-        config = function()
-            require("mason-tool-installer").setup({
-                ensure_installed = {
-                    "black",
-                    "cspell",
-                    "jq",
-                    "prettier",
-                    "selene",
-                    "shfmt",
-                    "stylua",
-                },
-            })
-        end,
-    },
-    {
-
         "williamboman/mason-lspconfig.nvim",
+        dependencies = "williamboman/mason.nvim",
         event = "VeryLazy",
         config = function()
             require("mason-lspconfig").setup({
@@ -324,6 +306,25 @@ return {
                     "tsserver",
                     "vimls",
                     "yamlls",
+                },
+            })
+        end,
+    },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = "williamboman/mason.nvim",
+        event = "VeryLazy",
+        build = ":MasonToolsIntall",
+        config = function()
+            require("mason-tool-installer").setup({
+                ensure_installed = {
+                    "black",
+                    "cspell",
+                    "jq",
+                    "prettier",
+                    "selene",
+                    "shfmt",
+                    "stylua",
                 },
             })
         end,

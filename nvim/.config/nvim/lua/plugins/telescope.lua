@@ -81,11 +81,11 @@ return {
                     entry_maker = make_entry,
                 })
             end, bufopts)
-            vim.keymap.set("n", "gj", function()
+            vim.keymap.set("n", "<leader>lj", function()
                 builtin.jumplist({ show_line = false })
             end, bufopts)
 
-            vim.keymap.set("n", "gb", function()
+            vim.keymap.set("n", "<leader>lg", function()
                 local previewers = require("telescope.previewers")
                 local opts = { current_file = vim.fn.expand("%") }
                 builtin.git_bcommits({
