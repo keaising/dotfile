@@ -46,6 +46,8 @@ local function on_attach(client, bufnr)
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<F1>", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "K", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "gr", function()
         require("telescope.builtin").lsp_references({
             include_current_line = false,

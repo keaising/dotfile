@@ -41,6 +41,7 @@ return {
                             ["<c-n>"] = "next_git_modified",
                         },
                     },
+                    follow_current_file = true,
                 },
             })
         end,

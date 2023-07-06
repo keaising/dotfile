@@ -5,6 +5,7 @@ return {
     },
     "kana/vim-textobj-function",
     "sgur/vim-textobj-parameter",
+    "fvictorio/vim-textobj-backticks",
     "voldikss/vim-floaterm",
     "sbdchd/neoformat",
     {
@@ -36,4 +37,5 @@ return {
         branch = "patch-1",
         event = "VeryLazy",
     },
+    "svban/YankAssassin.vim",
 }

@@ -81,7 +81,7 @@ nnoremap <C-p> <nop>
 
 " search selected content in visual mode: https://blog.twofei.com/610/
 vnoremap // y/<c-r>"<cr>
-nnoremap // :noh<CR>
+nnoremap <leader>/ :noh<CR>
 
 " insert mode specials
 inoremap ;; :=
@@ -158,10 +158,5 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 " lsp
 nnoremap <leader>lr :LspRestart<CR>
 
-" go
-nnoremap <leader>gj :GoAddTags json
-" nnoremap <leader>gt :GoTests<CR>
-nnoremap <silent> <leader>gl :silent !golines -w %:p<CR>
-
-" https://www.reddit.com/r/neovim/comments/13y3thq/whats_a_very_simple_config_change_that_you_cant/
-inoremap <C-BS> <ESC>cvb
+" svban/YankAssassin.vim
+xnoremap i` <Plug>(textobj-backticks-backticks-ii)
