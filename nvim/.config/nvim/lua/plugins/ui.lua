@@ -7,6 +7,9 @@ return {
             require("bufferline").setup({
                 options = {
                     numbers = "ordinal",
+                    indicator = {
+                        style = "underline",
+                    },
                     show_buffer_close_icons = false,
                     show_close_icon = false,
                     show_tab_indicators = false,
