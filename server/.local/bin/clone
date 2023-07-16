@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+
+import sys
+import re
+import os
+
+
+def main():
+    if len(sys.argv) == 1:
+        sys.exit(0)
+    elif len(sys.argv) == 2:
+        clone(sys.argv[1])
+
+
+def clone(url: str) -> None:
+    host, org, repo = split_url(url)
+    if host == "":
+        print('no host')
+        return None
+
+    dir = get_dir()
+    target = os.path.join(dir, host, org, repo)
+
+    git_url = f"git@{host}:{org}/{repo}.git"
+    cmd = f"git clone {git_url} {target}"
+    print(cmd, flush=True)
+    if os.path.exists(target):
+        return
+    run(cmd)
+
+
+def get_dir() -> str:
+    return os.path.expanduser("~/code")
+
+
+def split_url(url: str) -> tuple[str, str, str]:
+    # https://github.com/keaising/dotfile
+    reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+)"
+    if url.endswith("git"):
+        # https://github.com/keaising/dotfile.git
+        # git@github.com:keaising/dotfile.git
+        reg_ex = r"[a-zA-Z]+(@|://)(?P<host_name>\w[\w\.\-]+)(:|/)(?P<org>\w[\w\.\-\/]+)/(?P<repo>\w[\w\.\-]+).git"
+    result = re.match(reg_ex, url)
+    if result is None:
+        return "", "", ""
+    return (result.group("host_name"), result.group("org"), result.group("repo"))
+
+
+def fetch(command: str) -> str:
+    return os.popen(command).read().strip()
+
+
+def run(command: str) -> None:
+    os.system(command)
+
+
+main()
