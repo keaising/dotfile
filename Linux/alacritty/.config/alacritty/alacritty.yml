@@ -20,8 +20,9 @@ font:
   # family: Hasklug Nerd Font
   # family: JetBrainsMono Nerd Font
   normal:
-    family: RecMonoTaiga Nerd Font
-    style: Medium
+    # family: RecMonoTaiga Nerd Font
+    family: Rec Mono Wang
+    style: Regular
     # family: RecursiveCodeiCursiveCg Nerd Font
     # style: Regular
   size: 12

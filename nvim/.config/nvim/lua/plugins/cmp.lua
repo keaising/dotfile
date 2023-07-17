@@ -2,9 +2,9 @@
 --   פּ ﯟ   some other good icons
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 local kind_icons = {
-    Text = "",
+    Text = "󰚞",
     Method = "m",
-    Function = "",
+    Function = "",
     Constructor = "",
     Field = "",
     Variable = "",
@@ -18,15 +18,15 @@ local kind_icons = {
     Keyword = "",
     Snippet = "",
     Color = "",
-    File = "",
+    File = "󰸩",
     Reference = "",
-    Folder = "",
+    Folder = "󰸩",
     EnumMember = "",
-    Constant = "",
+    Constant = "",
     Struct = "",
     Event = "",
     Operator = "",
-    TypeParameter = "",
+    TypeParameter = "󱔝",
 }
 return {
     {
