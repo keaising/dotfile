@@ -1,4 +1,4 @@
-snippet ife "With Single Field"
+snippet if "With Single Field"
 if err != nil {
 	${1}
 }${0}
@@ -20,8 +20,8 @@ snippet logrr "With Fields" i
 logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
 
-snippet logf "logrus Fields" i
-logrus.Fields{"${1}": ${1}}${0}
+snippet logf "logrus Fields"
+logrus.Fields{"${1}": ${2}}${0}
 endsnippet
 
 snippet nowdate "now date" 

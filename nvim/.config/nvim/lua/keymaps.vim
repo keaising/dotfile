@@ -58,7 +58,7 @@ vnoremap <silent> J :m '>+1<CR>gv=gv
 vnoremap <silent> K :m '<-2<CR>gv=gv
 
 " don't follow vim default behavior
-xnoremap p "_dP
+xnoremap p "_dp
 
 nnoremap <leader>x :silent !chmod +x %<CR>
 
