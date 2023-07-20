@@ -105,6 +105,7 @@ set -l _paths \
     /usr/local \
     /usr/local/bin \
     /usr/local/sbin \
+    /opt/homebrew/bin \
     # macOS JDK
     /usr/local/opt/openjdk/bin \
     # CUDA: Ubuntu/Debian
