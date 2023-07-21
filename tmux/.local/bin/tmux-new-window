@@ -7,9 +7,6 @@ prefix=(
 suffix=(
 	"$HOME/.config"
 	"$HOME/.local"
-	"$HOME/download"
-	"$HOME/downloads"
-	"$HOME/Download"
 	"$HOME/Downloads"
 )
 
