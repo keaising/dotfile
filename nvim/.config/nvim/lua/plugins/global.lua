@@ -9,7 +9,8 @@ return {
         -- dev = true,
         config = function()
             require("im_select").setup({
-                set_previous_events = {},
+                set_previous_events = { "InsertEnter" },
+                set_default_events = { "VimEnter", "InsertLeave", "CmdlineLeave" },
                 keep_quiet_on_no_binary = true,
             })
         end,
