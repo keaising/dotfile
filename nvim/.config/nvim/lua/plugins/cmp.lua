@@ -57,7 +57,6 @@ return {
                     end,
                 },
                 -- window = {
-                --     border = "rounded",
                 --     completion = cmp.config.window.bordered(),
                 --     documentation = cmp.config.window.bordered(),
                 -- },
@@ -93,21 +92,21 @@ return {
                     { name = "rg", group_index = 2 },
                     { name = "buffer", group_index = 3 },
                 },
-                formatting = {
-                    fields = { "kind", "abbr", "menu" },
-                    format = function(entry, vim_item)
-                        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-                        vim_item.menu = ({
-                            nvim_lsp = "[lsp]",
-                            ultisnips = "[snippet]",
-                            path = "[path]",
-                            emoji = "[emoji]",
-                            buffer = "[buffer]",
-                            rg = "[rg]",
-                        })[entry.source.name]
-                        return vim_item
-                    end,
-                },
+                -- formatting = {
+                --     fields = { "kind", "abbr", "menu" },
+                --     format = function(entry, vim_item)
+                --         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+                --         -- vim_item.menu = ({
+                --         --     nvim_lsp = "[lsp]",
+                --         --     ultisnips = "[snippet]",
+                --         --     path = "[path]",
+                --         --     emoji = "[emoji]",
+                --         --     buffer = "[buffer]",
+                --         --     rg = "[rg]",
+                --         -- })[entry.source.name]
+                --         return vim_item
+                --     end,
+                -- },
             })
 
             -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
