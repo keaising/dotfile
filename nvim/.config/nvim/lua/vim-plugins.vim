@@ -66,3 +66,8 @@ let g:SignatureMap = {
   \ 'GotoPrevSpotAlpha'  :  "",
   \ }
 
+" for coc
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction

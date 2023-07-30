@@ -10,10 +10,6 @@ return {
         -- delays and poor user experience
         vim.opt.updatetime = 300
 
-        -- Always show the signcolumn, otherwise it would shift the text each time
-        -- diagnostics appeared/became resolved
-        vim.opt.signcolumn = "yes"
-
         local keyset = vim.keymap.set
         -- Autocomplete
         function _G.check_back_space()
@@ -28,10 +24,6 @@ return {
         -- NOTE: Use command ':verbose imap <tab>' to make sure Tab is not mapped by
         -- other plugins before putting this into your config
         local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
-        local check_back_space = function()
-            local col = vim.fn.col(".") - 1
-            return col == 0 or string.match(vim.fn.getline(".")[col], "%s")
-        end
         keyset(
             "i",
             "<TAB>",
