@@ -20,8 +20,8 @@ snippet logrr "With Fields" i
 logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
 
-snippet logf "logrus Fields"
-logrus.Fields{"${1}": ${2}}${0}
+snippet logf "logrus Fields" i
+logrus.Fields{"$1": $1}$0
 endsnippet
 
 snippet nowdate "now date" 
@@ -40,8 +40,41 @@ snippet yyyy "now date"
 "2006-01-02" ${0}
 endsnippet
 
-snippet lomap ""
-func(item ${1}, _ int) ${2} {
-	return item.${3}
+snippet lo ""
+lo.${1:Map}(${2:slice}, ${3:func})
+endsnippet
+
+snippet funi ""
+func(${1:item} ${2:model}, _ int) ${3:return} {
+	return $1$4
 }
+endsnippet
+
+snippet fun ""
+func(${1:item} ${2:model}) ${3:return} {
+	return $1$4
+}
+endsnippet
+
+snippet fil ""
+lo.Filter(${1:slice}, func($2 ${3:model}) ${4:return} {
+	return $2.${5:result}
+})
+endsnippet
+
+snippet map ""
+lo.Map(${1:slice}, func(${2:item} ${3:model}, _ int) ${4:return} {
+	return $2.${5:result}
+})
+endsnippet
+
+snippet del ""
+"deleted":    true,
+"deleted_by": c.DashboardUserEmail(),
+"deleted_at": time.Now().Unix(),
+endsnippet
+
+snippet upd ""
+"updated_by": c.DashboardUserEmail(),
+"updated_at": time.Now().Unix(),
 endsnippet
