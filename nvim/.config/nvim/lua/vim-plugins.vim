@@ -59,3 +59,10 @@ autocmd TextYankPost *
 let g:oscyank_max_length = 100000000
 let g:oscyank_silent = v:true
 
+
+" kshenoy/vim-signature
+let g:SignatureMap = {
+  \ 'GotoNextSpotAlpha'  :  "",
+  \ 'GotoPrevSpotAlpha'  :  "",
+  \ }
+

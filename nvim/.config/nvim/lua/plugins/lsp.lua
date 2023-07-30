@@ -45,8 +45,8 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<m-k>", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-    vim.keymap.set("n", "<F1>", vim.lsp.buf.hover, bufopts)
+    -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "`", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "K", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "gr", function()
         require("telescope.builtin").lsp_references({
@@ -92,10 +92,10 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
             lspconfig.gopls.setup({
                 handlers = handlers,
-                capabilities = capabilities,
+                -- capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
                 end,
@@ -115,7 +115,7 @@ return {
             lspconfig.pyright.setup({})
             lspconfig.bashls.setup({
                 handlers = handlers,
-                capabilities = capabilities,
+                -- capabilities = capabilities,
                 on_attach = on_attach,
                 filetypes = { "sh", "zsh" },
             })
@@ -201,15 +201,15 @@ return {
         "folke/neodev.nvim",
         dependencies = {
             "neovim/nvim-lspconfig",
-            "hrsh7th/cmp-nvim-lsp",
+            -- "hrsh7th/cmp-nvim-lsp",
         },
         config = function()
             require("neodev").setup({})
             local lspconfig = require("lspconfig")
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
             lspconfig.lua_ls.setup({
                 handlers = handlers,
-                capabilities = capabilities,
+                -- capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     client.server_capabilities.documentFormattingProvider = false
                     on_attach(client, bufnr)
@@ -243,7 +243,7 @@ return {
         "jose-elias-alvarez/typescript.nvim",
         enabled = true,
         config = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
             require("typescript").setup({
                 disable_commands = true, -- prevent the plugin from creating Vim commands
                 debug = false, -- enable debug logging for commands
@@ -252,7 +252,7 @@ return {
                 },
                 server = { -- pass options to lspconfig's setup method
                     handlers = handlers,
-                    capabilities = capabilities,
+                    -- capabilities = capabilities,
                     on_attach = function(client, bufnr)
                         on_attach(client, bufnr)
                     end,
@@ -260,12 +260,12 @@ return {
             })
         end,
     },
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function()
-            require("lsp_signature").setup({})
-        end,
-    },
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function()
+    --         require("lsp_signature").setup({})
+    --     end,
+    -- },
     {
         "VidocqH/lsp-lens.nvim",
         config = function()

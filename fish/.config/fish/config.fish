@@ -99,21 +99,20 @@ set -l _paths \
     $N_PREFIX/bin \
     $HOME/.cargo/bin \
     $PYENV_ROOT/bin \
+    $HOME/.dotnet/tools \
     /usr/bin \
     /usr/sbin \
     # for go on macOS
+    /opt/homebrew/bin \
     /usr/local \
     /usr/local/bin \
     /usr/local/sbin \
-    /opt/homebrew/bin \
     # macOS JDK
     /usr/local/opt/openjdk/bin \
     # CUDA: Ubuntu/Debian
     /usr/local/cuda/bin \
     # CUDA: Arch
-    /opt/cuda/bin \
-    # dotnet
-    $HOME/.dotnet/tools
+    /opt/cuda/bin
 
 for path in $_paths
     # only add to $PATH when path exist and path not in $PATH

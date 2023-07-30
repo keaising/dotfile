@@ -28,7 +28,7 @@ local kind_icons = {
     Operator = "",
     TypeParameter = "󱔝",
 }
-return {
+local config = {
     {
         "hrsh7th/nvim-cmp",
         dependencies = {
@@ -164,3 +164,5 @@ return {
         end,
     },
 }
+
+return {}
