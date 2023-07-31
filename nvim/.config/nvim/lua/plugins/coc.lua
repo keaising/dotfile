@@ -57,14 +57,14 @@ return {
 
         -- Apply codeAction to the selected region
         -- Example: `<leader>aap` for current paragraph
-        local opts = { silent = true, nowait = true }
-        keyset("x", "<leader>c", "<Plug>(coc-codeaction-selected)", opts)
-        keyset("n", "<leader>c", "<Plug>(coc-codeaction-selected)", opts)
+        local opts2 = { silent = true, nowait = true }
+        keyset("x", "<leader>c", "<Plug>(coc-codeaction-selected)", opts2)
+        keyset("n", "<leader>c", "<Plug>(coc-codeaction-selected)", opts2)
 
         -- Remap keys for apply code actions at the cursor position.
-        keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts)
+        keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts2)
         -- Remap keys for apply source code actions for current file.
-        keyset("n", "<leader>cl", "<Plug>(coc-codeaction-line)", opts)
+        keyset("n", "<leader>cl", "<Plug>(coc-codeaction-line)", opts2)
 
         -- Add `:Format` command to format current buffer
         vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})

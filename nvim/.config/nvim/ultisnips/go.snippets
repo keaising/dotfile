@@ -21,7 +21,7 @@ logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
 endsnippet
 
 snippet logf "logrus Fields" i
-logrus.Fields{"$1": $1}$0
+logrus.Fields{"c": c, "$1": $1, $0}
 endsnippet
 
 snippet nowdate "now date" 
