@@ -2,7 +2,7 @@
     "title": "ALT <=> CMD in io.alacritty",
     "rules": [
         {
-            "description": "Swap option and command in Alacritty",
+            "description": "Swap option and command in io.Alacritty",
             "manipulators": [
                 {
                     "type": "basic",

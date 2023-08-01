@@ -2,7 +2,7 @@
     "title": "ALT <=> CMD in org.alacritty",
     "rules": [
         {
-            "description": "Swap option and command in Alacritty",
+            "description": "Swap option and command in org.Alacritty",
             "manipulators": [
                 {
                     "type": "basic",

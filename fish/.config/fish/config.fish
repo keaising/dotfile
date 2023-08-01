@@ -102,11 +102,11 @@ set -l _paths \
     $HOME/.dotnet/tools \
     /usr/bin \
     /usr/sbin \
-    # for go on macOS
-    /opt/homebrew/bin \
     /usr/local \
     /usr/local/bin \
     /usr/local/sbin \
+    /opt/homebrew/bin \
+    /opt/homebrew/sbin \
     # macOS JDK
     /usr/local/opt/openjdk/bin \
     # CUDA: Ubuntu/Debian
@@ -401,7 +401,6 @@ switch (uname)
     case Linux
         alias j='sudo journalctl'
         alias s='sudo systemctl'
-        alias ts='sudo tailscale'
         type -q pacman && alias i='sudo pacman -S'
         type -q apt && alias i='sudo apt install'
         alias ts='sudo tailscale'
@@ -413,10 +412,10 @@ switch (uname)
         set -gx HOMEBREW_NO_AUTO_UPDATE 1
         set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
         alias i='brew install'
-        alias ic='brew cask install'
+        alias ic='brew install --cask'
         alias dnsm='sudo brew services restart dnsmasq'
-        alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-        alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        # alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        # alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
         # ocr, source: https://www.kawabangga.com/posts/4876
         # brew install tesseract pngpaste
