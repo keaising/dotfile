@@ -5,8 +5,8 @@ return {
     "RRethy/vim-illuminate",
     {
         "keaising/im-select.nvim",
-        dir = "~/code/github.com/keaising/im-select.nvim",
-        dev = true,
+        -- dir = "~/code/github.com/keaising/im-select.nvim",
+        -- dev = true,
         config = function()
             require("im_select").setup({
                 set_previous_events = {},
