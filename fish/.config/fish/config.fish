@@ -100,11 +100,6 @@ set -l _paths \
     $HOME/.cargo/bin \
     $PYENV_ROOT/bin \
     $HOME/.dotnet/tools \
-    /usr/bin \
-    /usr/sbin \
-    /usr/local \
-    /usr/local/bin \
-    /usr/local/sbin \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     # macOS JDK
@@ -112,13 +107,18 @@ set -l _paths \
     # CUDA: Ubuntu/Debian
     /usr/local/cuda/bin \
     # CUDA: Arch
-    /opt/cuda/bin
+    /opt/cuda/bin \
+    /usr/bin \
+    /usr/sbin \
+    /usr/local \
+    /usr/local/bin \
+    /usr/local/sbin
 
-for path in $_paths
+# prepend path to $PATH in reversed order
+for path in $_paths[-1..1]
     # only add to $PATH when path exist and path not in $PATH
     test -d "$path" &&
-        not contains $PATH "$path" &&
-        set -x PATH $PATH "$path"
+        fish_add_path --move --path --prepend "$path"
 end
 
 
