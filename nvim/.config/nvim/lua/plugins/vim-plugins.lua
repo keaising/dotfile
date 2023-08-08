@@ -17,7 +17,6 @@ return {
     "terryma/vim-expand-region",
     "ruanyl/vim-gh-line",
     "preservim/nerdcommenter",
-    --use("simeji/winresizer")
     "tpope/vim-repeat",
     "matze/vim-move",
     "szw/vim-maximizer",

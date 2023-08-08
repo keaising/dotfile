@@ -25,9 +25,6 @@ noremap <leader>hs :split<CR>
 " switch location
 noremap <m-[>  <C-o>
 noremap <m-]>  <C-i>
-" for ssh to clinkz
-noremap <ESC>[ <C-o>
-noremap <ESC>] <C-i>
 
 " faster movement
 nnoremap <C-e> 9<C-e>

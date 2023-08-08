@@ -56,14 +56,20 @@ func(${1:item} ${2:model}) ${3:return} {
 }
 endsnippet
 
-snippet fil ""
+snippet lofilter ""
 lo.Filter(${1:slice}, func($2 ${3:model}) ${4:return} {
 	return $2.${5:result}
 })
 endsnippet
 
-snippet map ""
+snippet lomap ""
 lo.Map(${1:slice}, func(${2:item} ${3:model}, _ int) ${4:return} {
+	return $2.${5:result}
+})
+endsnippet
+
+snippet lofind ""
+lo.Find(${1:slice}, func(${2:item} ${3:model}) ${4:return} {
 	return $2.${5:result}
 })
 endsnippet
