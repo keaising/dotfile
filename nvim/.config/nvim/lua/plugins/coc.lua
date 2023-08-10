@@ -2,6 +2,12 @@ return {
     "neoclide/coc.nvim",
     branch = "release",
     config = function()
+        vim.g.coc_global_extensions = {
+            "coc-go",
+            "coc-json",
+            "coc-spell-checker",
+            "coc-snippets",
+        }
         -- Some servers have issues with backup files, see #649
         vim.opt.backup = false
         vim.opt.writebackup = false
