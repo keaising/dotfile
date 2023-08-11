@@ -6,7 +6,6 @@ map <Space>         <Leader>
 inoremap <m-s> <ESC>:wa<CR>
 nnoremap <m-s> :wa<CR>
 nnoremap <C-s> :w<CR>
-nnoremap <m-w> :q<cr>
 nnoremap <m-q> :qa<CR>
 nnoremap <C-q> :q<CR>
 " save file with sudo
@@ -67,6 +66,10 @@ noremap L $
 " plus/minus
 noremap = <C-a>
 noremap - <C-x>
+
+" run macro q/w
+nnoremap <A-2> @q
+nnoremap <A-3> @w
 
 " mark
 nnoremap ' `

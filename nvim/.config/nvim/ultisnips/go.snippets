@@ -44,14 +44,14 @@ snippet lo ""
 lo.${1:Map}(${2:slice}, ${3:func})
 endsnippet
 
-snippet funi ""
-func(${1:item} ${2:model}, _ int) ${3:return} {
-	return $1$4
+snippet predi ""
+func(${1:item} ${2:model}, _ int) bool {
+	return $1$0
 }
 endsnippet
 
-snippet fun ""
-func(${1:item} ${2:model}) ${3:return} {
+snippet iter ""
+func(${1:item} ${2:model}, _ int) ${3:return} {
 	return $1$4
 }
 endsnippet
