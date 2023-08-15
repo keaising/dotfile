@@ -8,6 +8,7 @@ local files = {
     "main.go", -- go
     "init.lua", -- lua
     "README.md", -- normal
+    "readme.md", -- normal
 }
 
 local open_file = ""

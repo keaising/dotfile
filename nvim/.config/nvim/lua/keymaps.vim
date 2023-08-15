@@ -159,5 +159,4 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 " lsp
 nnoremap <leader>lr :LspStop<CR>:LspStart<CR>:LspRestart<CR>
 
-" svban/YankAssassin.vim
 xnoremap i` <Plug>(textobj-backticks-backticks-ii)
