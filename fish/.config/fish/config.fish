@@ -91,7 +91,6 @@ set -Ux GPG_TTY (tty)
 # set -x TERM "screen-256color"
 
 set -l _paths \
-    $HOME/.local/bin \
     $HOME/code/go/bin \
     $HOME/.local/share/nvim/mason/bin \
     $HOME/code/gems/bin \
@@ -100,19 +99,20 @@ set -l _paths \
     $HOME/.cargo/bin \
     $PYENV_ROOT/bin \
     $HOME/.dotnet/tools \
-    /opt/homebrew/bin \
-    /opt/homebrew/sbin \
     # macOS JDK
     /usr/local/opt/openjdk/bin \
     # CUDA: Ubuntu/Debian
     /usr/local/cuda/bin \
     # CUDA: Arch
     /opt/cuda/bin \
-    /usr/bin \
-    /usr/sbin \
-    /usr/local \
+    $HOME/.local/bin \
+    /opt/homebrew/bin \
+    /opt/homebrew/sbin \
     /usr/local/bin \
-    /usr/local/sbin
+    /usr/local/sbin \
+    /usr/local \
+    /usr/bin \
+    /usr/sbin
 
 # prepend path to $PATH in reversed order
 for path in $_paths[-1..1]
