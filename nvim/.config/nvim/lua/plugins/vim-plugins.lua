@@ -3,8 +3,6 @@ return {
         "kana/vim-textobj-user",
         priority = 100,
     },
-    "kana/vim-textobj-function",
-    "sgur/vim-textobj-parameter",
     "fvictorio/vim-textobj-backticks",
     "voldikss/vim-floaterm",
     "sbdchd/neoformat",

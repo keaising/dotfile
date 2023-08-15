@@ -29,10 +29,14 @@ return {
                 select = {
                     enable = true,
                     -- Automatically jump forward to textobj, similar to targets.vim
-                    lookahead = false,
+                    lookahead = true,
                     keymaps = {
-                        ["ik"] = "@kv_single",
-                        ["ak"] = "@kv_whole",
+                        ["af"] = "@function.outer",
+                        ["if"] = "@function.inner",
+                        ["ia"] = "@parameter.inner",
+                        ["aa"] = "@parameter.outer",
+                        ["ic"] = "@call_expression",
+                        ["ie"] = "@expression_list",
                     },
                 },
             },
