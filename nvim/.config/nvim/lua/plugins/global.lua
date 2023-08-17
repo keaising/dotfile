@@ -16,6 +16,14 @@ return {
         end,
     },
     {
+        "keaising/textobj-backtick.nvim",
+        -- dir = "~/code/github.com/keaising/textobj-backtick.nvim",
+        -- dev = true,
+        config = function()
+            require("textobj-backtick").setup({})
+        end,
+    },
+    {
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",

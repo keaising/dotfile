@@ -159,4 +159,4 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 " lsp
 nnoremap <leader>lr :LspStop<CR>:LspStart<CR>:LspRestart<CR>
 
-xnoremap i` <Plug>(textobj-backticks-backticks-ii)
+" xnoremap i` <Plug>(textobj-backticks-backticks-ii)

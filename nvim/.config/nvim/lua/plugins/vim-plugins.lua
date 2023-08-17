@@ -1,9 +1,9 @@
 return {
-    {
-        "kana/vim-textobj-user",
-        priority = 100,
-    },
-    "fvictorio/vim-textobj-backticks",
+    -- {
+    --     "kana/vim-textobj-user",
+    --     priority = 100,
+    -- },
+    -- "fvictorio/vim-textobj-backticks",
     "voldikss/vim-floaterm",
     "sbdchd/neoformat",
     {
