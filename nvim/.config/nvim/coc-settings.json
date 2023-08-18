@@ -1,4 +1,9 @@
 {
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua": {
+    "workspace.checkThirdParty": false,
+    "hint.enable": false,
+  },
   "git.addGBlameToVirtualText": true,
   "coc.source.emoji.filetypes": null,
   "coc.source.word.priority": -1,
@@ -42,6 +47,7 @@
     "Msgid",
     "Msgtype",
     "NSQD",
+    "Neovim",
     "Openids",
     "PCDBA",
     "POIID",
@@ -75,6 +81,7 @@
     "autocmd",
     "autoplay",
     "backoff",
+    "backticks",
     "bashls",
     "bson",
     "bucs",
@@ -167,6 +174,7 @@
     "mongodb",
     "mongoh",
     "mrand",
+    "multilines",
     "nggintegration",
     "nnoremap",
     "noauth",

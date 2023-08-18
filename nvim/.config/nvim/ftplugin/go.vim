@@ -12,4 +12,4 @@ function! GormModify() range
   silent! execute a:firstline . "," . a:lastline . 's/gorm:"\(.\{-}\)"/gorm:"column:\1;type:text"/g'
 endfunction
 
-nnoremap <silent> <leader>vv v<Plug>(textobj-backtick-it) :!pg_format<CR>
+nnoremap <silent> <leader>vv v<Plug>(textobj-backtick-i) :!pg_format<CR>

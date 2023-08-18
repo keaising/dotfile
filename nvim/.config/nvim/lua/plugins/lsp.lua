@@ -72,7 +72,7 @@ local function on_attach(client, bufnr)
     end
     local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
     if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set("n", "<leader>gm", function()
+        vim.keymap.set("n", "<leader>gn", function()
             lsp_formatting(bufnr)
         end, bufopts)
         vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
@@ -120,6 +120,25 @@ return {
                 filetypes = { "sh", "zsh" },
             })
 
+            lspconfig.lua_ls.setup({
+                handlers = handlers,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = false
+                    on_attach(client, bufnr)
+                end,
+                settings = {
+                    Lua = {
+                        workspace = {
+                            library = {
+                                vim.fn.expand("$VIMRUNTIME"),
+                                vim.fn.expand("$VIMRUNTIME/lua"),
+                                vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+                            },
+                        },
+                    },
+                },
+            })
+
             local signs = {
                 { name = "DiagnosticSignError", text = "" },
                 { name = "DiagnosticSignWarn", text = "" },
@@ -143,98 +162,58 @@ return {
             null_ls.setup({
                 sources = {
                     null_ls.builtins.diagnostics.fish,
-                    null_ls.builtins.diagnostics.cspell.with({
-                        extra_args = { "--config", "~/.config/nvim/cspell.json" },
-                        diagnostics_postprocess = function(diagnostic)
-                            diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
-                        end,
-                    }),
-                    null_ls.builtins.code_actions.cspell.with({
-                        config = {
-                            find_json = function(_)
-                                return vim.fn.expand("~/.config/nvim/cspell.json")
-                            end,
-                            on_success = function(cspell_config_file)
-                                os.execute(
-                                    string.format(
-                                        "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                                        cspell_config_file,
-                                        cspell_config_file
-                                    )
-                                )
-                            end,
-                        },
-                    }),
-                    null_ls.builtins.formatting.jq,
+                    null_ls.builtins.formatting.fish_indent,
+                    -- null_ls.builtins.diagnostics.cspell.with({
+                    --     extra_args = { "--config", "~/.config/nvim/cspell.json" },
+                    --     diagnostics_postprocess = function(diagnostic)
+                    --         diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+                    --     end,
+                    -- }),
+                    -- null_ls.builtins.code_actions.cspell.with({
+                    --     config = {
+                    --         find_json = function(_)
+                    --             return vim.fn.expand("~/.config/nvim/cspell.json")
+                    --         end,
+                    --         on_success = function(cspell_config_file)
+                    --             os.execute(
+                    --                 string.format(
+                    --                     "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                    --                     cspell_config_file,
+                    --                     cspell_config_file
+                    --                 )
+                    --             )
+                    --         end,
+                    --     },
+                    -- }),
+                    -- null_ls.builtins.formatting.jq.with({
+                    --     filetypes = { "json" },
+                    -- }),
                     null_ls.builtins.formatting.stylua.with({
                         condition = function(utils)
                             return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                         end,
                     }),
-                    null_ls.builtins.formatting.pg_format.with({
-                        extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
-                    }),
+                    -- null_ls.builtins.formatting.pg_format.with({
+                    --     extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
+                    -- }),
                     null_ls.builtins.formatting.prettier.with({
                         filetypes = { "yaml", "md", "markdown", "javascript" },
                     }),
-                    null_ls.builtins.formatting.shfmt.with({
-                        filetypes = { "sh", "zsh" },
-                    }),
+                    -- null_ls.builtins.formatting.shfmt.with({
+                    --     filetypes = { "sh", "zsh" },
+                    -- }),
                     null_ls.builtins.formatting.black,
-                    null_ls.builtins.diagnostics.selene.with({
-                        cwd = function(_)
-                            -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
-                            return vim.fs.dirname(
-                                vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
-                            ) or vim.fn.expand("~/.config/selene/") -- fallback value
-                        end,
-                    }),
-                    null_ls.builtins.formatting.fish_indent,
+                    -- null_ls.builtins.diagnostics.selene.with({
+                    --     cwd = function(_)
+                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
+                    --         return vim.fs.dirname(
+                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
+                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
+                    --     end,
+                    -- }),
                 },
                 handlers = handlers,
                 on_attach = on_attach,
-            })
-        end,
-    },
-    {
-        -- lua
-        "folke/neodev.nvim",
-        dependencies = {
-            "neovim/nvim-lspconfig",
-            -- "hrsh7th/cmp-nvim-lsp",
-        },
-        config = function()
-            require("neodev").setup({})
-            local lspconfig = require("lspconfig")
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            lspconfig.lua_ls.setup({
-                handlers = handlers,
-                -- capabilities = capabilities,
-                on_attach = function(client, bufnr)
-                    client.server_capabilities.documentFormattingProvider = false
-                    on_attach(client, bufnr)
-                end,
-                settings = {
-                    Lua = {
-                        hint = {
-                            enable = true,
-                            setType = true,
-                            arrayIndex = "Disable",
-                        },
-                        codelens = {
-                            enable = true,
-                        },
-                        completion = {
-                            postfix = ".",
-                            showWord = "Disable",
-                            workspaceWord = false,
-                            callSnippet = "Replace",
-                        },
-                        workspace = {
-                            checkThirdParty = false,
-                        },
-                    },
-                },
             })
         end,
     },

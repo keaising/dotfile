@@ -7,6 +7,7 @@ return {
             "coc-json",
             "coc-spell-checker",
             "coc-snippets",
+            "coc-sumneko-lua",
         }
         -- Some servers have issues with backup files, see #649
         vim.opt.backup = false
@@ -74,5 +75,6 @@ return {
 
         -- Add `:Format` command to format current buffer
         vim.api.nvim_create_user_command("Format", "call CocAction('format')", {})
+        keyset("n", "<leader>gm", ":Format<CR>", opts2)
     end,
 }
