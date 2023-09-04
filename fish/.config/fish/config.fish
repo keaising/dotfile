@@ -91,6 +91,7 @@ set -Ux GPG_TTY (tty)
 # set -x TERM "screen-256color"
 
 set -l _paths \
+    /usr/local/go/bin \
     $HOME/code/go/bin \
     $HOME/.local/share/nvim/mason/bin \
     $HOME/code/gems/bin \

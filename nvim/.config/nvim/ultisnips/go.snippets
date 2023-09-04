@@ -17,11 +17,11 @@ logrus.WithFields(f).Errorln("${1}", err)${0}
 endsnippet
 
 snippet logrr "With Fields" i
-logrus.WithField("${1}", ${2}).Errorln("${3}", err)${0}
+logrus.WithFields(f).Errorln("${1}", err)${0}
 endsnippet
 
 snippet logf "logrus Fields" i
-logrus.Fields{"c": c, "$1": $1, $0}
+f := logrus.Fields{"$1": $2}
 endsnippet
 
 snippet nowdate "now date" 
@@ -40,37 +40,33 @@ snippet yyyy "now date"
 "2006-01-02" ${0}
 endsnippet
 
-snippet lo ""
-lo.${1:Map}(${2:slice}, ${3:func})
-endsnippet
-
 snippet predi ""
-func(${1:item} ${2:model}, _ int) bool {
-	return $1$0
+func(${1:item} ${2:model}) bool {
+	return ${3:true}
 }
 endsnippet
 
 snippet iter ""
-func(${1:item} ${2:model}, _ int) ${3:return} {
-	return $1$4
+func(${1:item} ${2:T}, _ int) ${3:R} {
+	return ${4:ret}
 }
 endsnippet
 
-snippet lofilter ""
-lo.Filter(${1:slice}, func($2 ${3:model}) ${4:return} {
-	return $2.${5:result}
+snippet lofil ""
+lo.Filter(${1:slice}, func($2 ${3:T}, _ int) bool {
+	return ${4:true}
 })
 endsnippet
 
 snippet lomap ""
-lo.Map(${1:slice}, func(${2:item} ${3:model}, _ int) ${4:return} {
-	return $2.${5:result}
+lo.Map(${1:slice}, func(${2:item} ${3:T}, _ int) ${4:R} {
+	return ${4:ret}
 })
 endsnippet
 
 snippet lofind ""
-lo.Find(${1:slice}, func(${2:item} ${3:model}) ${4:return} {
-	return $2.${5:result}
+lo.Find(${1:slice}, func(${2:item} ${3:model}) bool {
+	return ${4:true}
 })
 endsnippet
 
