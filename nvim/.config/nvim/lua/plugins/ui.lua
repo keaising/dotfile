@@ -52,43 +52,6 @@ return {
         end,
     },
     {
-        "folke/flash.nvim",
-        event = "VeryLazy",
-        opts = {
-            search = {
-                multi_window = false,
-            },
-            jump = {
-                nohlsearch = true,
-                -- autojump = true,
-            },
-            label = {
-                uppercase = false,
-                after = false,
-                before = true,
-                current = false,
-            },
-        },
-        keys = {
-            {
-                "s",
-                mode = { "n", "o", "x" },
-                function()
-                    require("flash").jump()
-                end,
-                desc = "Flash",
-            },
-            {
-                "r",
-                mode = "o",
-                function()
-                    require("flash").remote()
-                end,
-                desc = "Remote Flash",
-            },
-        },
-    },
-    {
         "lukas-reineke/indent-blankline.nvim",
         lazy = false,
         config = function()

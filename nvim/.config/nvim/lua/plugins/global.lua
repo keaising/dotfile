@@ -67,4 +67,62 @@ return {
             })
         end,
     },
+    {
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {
+            search = {
+                multi_window = false,
+            },
+            jump = {
+                nohlsearch = true,
+                -- autojump = true,
+            },
+            label = {
+                uppercase = false,
+                after = false,
+                before = true,
+                current = false,
+            },
+        },
+        keys = {
+            {
+                "s",
+                mode = { "n", "o", "x" },
+                function()
+                    require("flash").jump()
+                end,
+                desc = "Flash",
+            },
+            {
+                "r",
+                mode = "o",
+                function()
+                    require("flash").remote()
+                end,
+                desc = "Remote Flash",
+            },
+        },
+    },
+    {
+        "gelguy/wilder.nvim",
+        config = function()
+            local wilder = require("wilder")
+            wilder.setup({
+                modes = { ":" },
+                next_key = "<C-n>",
+                previous_key = "<C-p>",
+            })
+            wilder.set_option("pipeline", {
+                wilder.branch(wilder.cmdline_pipeline(), wilder.search_pipeline()),
+            })
+            wilder.set_option(
+                "renderer",
+                wilder.popupmenu_renderer({
+                    -- highlighter applies highlighting to the candidates
+                    highlighter = wilder.basic_highlighter(),
+                })
+            )
+        end,
+    },
 }
