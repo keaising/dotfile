@@ -52,39 +52,41 @@ return {
         end,
     },
     {
-        "phaazon/hop.nvim",
-        -- event = "VeryLazy",
-        branch = "v2",
-        config = function()
-            require("hop").setup()
-            local hop = require("hop")
-            vim.keymap.set("n", "s", function()
-                hop.hint_char2()
-            end, nil)
-            vim.keymap.set({ "n" }, "t", function()
-                hop.hint_char1({
-                    direction = require("hop.hint").HintDirection.AFTER_CURSOR,
-                    current_line_only = true,
-                    hint_offset = -1,
-                })
-            end, nil)
-            vim.keymap.set({ "n" }, "T", function()
-                hop.hint_char1({
-                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-                    current_line_only = true,
-                    hint_offset = -1,
-                })
-            end, nil)
-            vim.keymap.set({ "n" }, "f", function()
-                hop.hint_char1({})
-            end, nil)
-            vim.keymap.set({ "n" }, "F", function()
-                hop.hint_char1({
-                    direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
-                    current_line_only = false,
-                })
-            end, nil)
-        end,
+        "folke/flash.nvim",
+        event = "VeryLazy",
+        opts = {
+            search = {
+                multi_window = false,
+            },
+            jump = {
+                nohlsearch = true,
+                -- autojump = true,
+            },
+            label = {
+                uppercase = false,
+                after = false,
+                before = true,
+                current = false,
+            },
+        },
+        keys = {
+            {
+                "s",
+                mode = { "n", "o", "x" },
+                function()
+                    require("flash").jump()
+                end,
+                desc = "Flash",
+            },
+            {
+                "r",
+                mode = "o",
+                function()
+                    require("flash").remote()
+                end,
+                desc = "Remote Flash",
+            },
+        },
     },
     {
         "lukas-reineke/indent-blankline.nvim",
