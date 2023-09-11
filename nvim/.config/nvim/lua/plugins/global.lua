@@ -76,13 +76,18 @@ return {
             },
             jump = {
                 nohlsearch = true,
-                -- autojump = true,
+                autojump = true,
             },
             label = {
                 uppercase = false,
                 after = false,
                 before = true,
-                current = false,
+                current = true,
+            },
+            modes = {
+                char = {
+                    enabled = false, -- disable f/T/t/T
+                },
             },
         },
         keys = {
