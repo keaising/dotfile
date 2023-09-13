@@ -45,6 +45,7 @@ return {
                 "go",
                 "gomod",
                 "query",
+                "comment", -- highlight for "TOOD", "FIXME"
             },
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
