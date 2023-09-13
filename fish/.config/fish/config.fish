@@ -415,8 +415,8 @@ switch (uname)
         alias i='brew install'
         alias ic='brew install --cask'
         alias dnsm='sudo brew services restart dnsmasq'
-        # alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-        # alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
         # ocr, source: https://www.kawabangga.com/posts/4876
         # brew install tesseract pngpaste
