@@ -200,6 +200,7 @@
     "pyright",
     "qrcode",
     "qrcodes",
+    "qrscene",
     "ratelimit",
     "reqs",
     "reservationcenter",
