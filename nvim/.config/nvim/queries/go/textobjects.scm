@@ -1,5 +1,13 @@
 ; extends
 
+(literal_element) @parameter.inner
+
+(keyed_element) @parameter.inner
+
+(literal_element) @parameter.outer
+
+(keyed_element) @parameter.outer
+
 (return_statement
   (expression_list
     "," @_start .
@@ -13,10 +21,6 @@
     . ","? @_end
    (#make-range! "parameter.outer" @parameter.inner @_end))
 )
-
-(literal_element) @parameter.inner
-
-(keyed_element) @parameter.outer
 
 (if_statement 
   condition: (_)  @parameter.inner)

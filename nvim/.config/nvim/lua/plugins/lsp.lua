@@ -239,16 +239,14 @@ return {
             })
         end,
     },
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function()
-    --         require("lsp_signature").setup({})
-    --     end,
-    -- },
     {
         "VidocqH/lsp-lens.nvim",
         config = function()
-            require("lsp-lens").setup({})
+            require("lsp-lens").setup({
+                sections = {
+                    definition = function() end,
+                },
+            })
         end,
     },
     {
