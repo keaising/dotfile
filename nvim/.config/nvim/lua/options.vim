@@ -48,15 +48,14 @@ set noundofile
 set spo=camel
 set splitbelow
 set splitright
-
-" set listchars=lead:⋅,tab:\|\ ,trail:.,extends:>,precedes:< " 设置分隔符可视
+set listchars=lead:⋅,tab:\|\ ,trail:. " 设置分隔符可视
 set clipboard^=unnamed,unnamedplus                  " y/d/c copy to/from system clipboard
 set foldenable
 set foldlevelstart=99
 set foldlevel=99                                    " 默认打开所有缩进
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-
+                 
 " 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
