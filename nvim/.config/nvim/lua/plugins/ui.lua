@@ -89,7 +89,7 @@ return {
                     enabled = false,
                 },
                 exclude = {
-                    filetypes = { "go", "gomod", "gosum" },
+                    filetypes = { "go", "gomod", "gosum", "md", "markdown" },
                     buftypes = { "terminal" },
                 },
             })

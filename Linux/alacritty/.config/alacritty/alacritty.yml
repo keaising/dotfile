@@ -30,7 +30,7 @@ font:
   size: 10
   offset:
     x: 1
-    y: 4
+    y: 1
 
 import:
   - ~/.config/alacritty/themes/omni.yaml
