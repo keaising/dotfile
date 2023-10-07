@@ -4,7 +4,7 @@ env:
 window:
   dimensions:
     columns: 180
-    lines: 55
+    lines: 40
   padding:
     x: 1
     y: 1
@@ -20,12 +20,14 @@ font:
   # family: Hasklug Nerd Font
   # family: JetBrainsMono Nerd Font
   normal:
-    # family: RecMonoTaiga Nerd Font
-    family: Rec Mono Wang
+    family: RecursiveCodeiCursiveCgNerdFont Nerd Font
     style: Regular
+    # family: RecMonoTaiga Nerd Font
+    # family: Rec Mono Wang
+    # style: Regular
     # family: RecursiveCodeiCursiveCg Nerd Font
     # style: Regular
-  size: 12
+  size: 10
   offset:
     x: 1
     y: 4
