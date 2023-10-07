@@ -42,8 +42,8 @@ return {
             },
             -- ensure_installed = "all", -- one of "all" or a list of languages
             ensure_installed = {
-                "go",
-                "gomod",
+                -- "go",
+                -- "gomod",
                 "query",
                 "comment", -- highlight for "TOOD", "FIXME"
             },
