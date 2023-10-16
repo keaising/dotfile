@@ -5,7 +5,7 @@ if #vim.v.argv > 2 then
 end
 
 local files = {
-    "main.go", -- go
+    -- "main.go", -- go
     "init.lua", -- lua
     "README.md", -- normal
     "readme.md", -- normal
