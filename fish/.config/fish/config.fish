@@ -74,6 +74,8 @@ set -Ux N_PREFIX "$HOME/code/n"
 set -Ux PYENV_ROOT "$HOME/.pyenv"
 command -v pyenv >/dev/null && eval (pyenv init - | source)
 
+alias yay='yay --noconfirm'
+
 # rust
 set -Ux RUST_BACKTRACE 1
 
