@@ -3,7 +3,7 @@ set autoindent
 set tabstop=4            " 按下 Tab 键时，Vim 显示的空格数
 set shiftwidth=4
 set softtabstop=0        " 关闭softtabstop 永远不要将空格和tab混合输入
-set expandtab!           " tab is tab, whitespace is whitespace
+set noexpandtab          " tab is tab, whitespace is whitespace
 set cursorline
 set hidden
 set autowrite
@@ -48,7 +48,7 @@ set noundofile
 set spo=camel
 set splitbelow
 set splitright
-set listchars=lead:⋅,tab:\|\ ,trail:. " 设置分隔符可视
+set listchars=lead:⋅,tab:\▸\ ,trail:. " 设置分隔符可视
 set clipboard^=unnamed,unnamedplus                  " y/d/c copy to/from system clipboard
 set foldenable
 set foldlevelstart=99
