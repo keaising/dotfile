@@ -69,8 +69,8 @@ augroup filetypes
 
 	autocmd FileType go   setlocal tabstop=4 shiftwidth=4
 
-	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2
-	autocmd FileType json setlocal tabstop=2 shiftwidth=2
+	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
 
 	autocmd FileType lua  setlocal foldmarker={,}
 	autocmd FileType lua  setlocal foldmethod=marker
