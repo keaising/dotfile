@@ -14,19 +14,14 @@ window:
   # opacity: 0.9
 
 font:
-  # family: Iosevka Term SS01
-  # family: Source Code Pro for Powerline
-  # family: RecursiveCodeiCursiveCg Nerd Font
-  # family: Hasklug Nerd Font
-  # family: JetBrainsMono Nerd Font
   normal:
-    family: RecursiveCodeiCursiveCgNerdFont Nerd Font
+    family: Recursive Nerd Font
     style: Regular
-    # family: RecMonoTaiga Nerd Font
-    # family: Rec Mono Wang
-    # style: Regular
+    # family: Iosevka Term SS01
+    # family: Source Code Pro for Powerline
     # family: RecursiveCodeiCursiveCg Nerd Font
-    # style: Regular
+    # family: Hasklug Nerd Font
+    # family: JetBrainsMono Nerd Font
   size: 10
   offset:
     x: 1
