@@ -244,7 +244,8 @@ return {
         config = function()
             require("lsp-lens").setup({
                 sections = {
-                    definition = function() end,
+                    definition = false,
+                    git_authors = false,
                 },
             })
         end,

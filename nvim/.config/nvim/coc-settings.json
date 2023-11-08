@@ -1,8 +1,13 @@
 {
   "sumneko-lua.enableNvimLuaDev": true,
   "Lua": {
-    "workspace.checkThirdParty": false,
-    "hint.enable": false,
+    "workspace": {
+      "checkThirdParty": false,
+      "library": [
+        "${3rd}/luv/libray"
+      ]
+    },
+    "hint.enable": false
   },
   "git.addGBlameToVirtualText": true,
   "coc.source.emoji.filetypes": null,
