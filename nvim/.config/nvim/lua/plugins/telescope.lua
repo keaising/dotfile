@@ -29,6 +29,12 @@ return {
                     sorting_strategy = "ascending",
                 })
             end, bufopts)
+            vim.keymap.set("n", "<C-o>", function()
+                builtin.oldfiles({
+                    cwd_only = true,
+                    sorting_strategy = "ascending",
+                })
+            end, bufopts)
             vim.keymap.set("n", "<CR>", function()
                 builtin.resume()
             end, bufopts)
