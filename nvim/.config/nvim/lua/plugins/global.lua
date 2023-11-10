@@ -24,6 +24,14 @@ return {
         end,
     },
     {
+        "keaising/startup.nvim",
+        -- dir = "~/code/github.com/keaising/startup.nvim",
+        -- dev = true,
+        config = function()
+            require("startup").setup({})
+        end,
+    },
+    {
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
