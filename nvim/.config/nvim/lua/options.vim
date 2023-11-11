@@ -3,7 +3,7 @@ set autoindent
 set tabstop=4            " 按下 Tab 键时，Vim 显示的空格数
 set shiftwidth=4
 set softtabstop=0        " 关闭softtabstop 永远不要将空格和tab混合输入
-set noexpandtab          " tab is tab, whitespace is whitespace
+" set noexpandtab          " tab is tab, whitespace is whitespace
 set cursorline
 set hidden
 set autowrite
@@ -62,21 +62,6 @@ autocmd BufReadPost *
 	\	 exe "normal! g`\"" |
 	\ endif
 
-augroup filetypes
-	autocmd!
-	autocmd FileType zsh  setlocal foldmethod=marker
-	autocmd FileType tmux setlocal foldmethod=marker
-
-	autocmd FileType go   setlocal tabstop=4 shiftwidth=4
-
-	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
-
-	autocmd FileType lua  setlocal foldmarker={,}
-	autocmd FileType lua  setlocal foldmethod=marker
-	autocmd FileType lua  setlocal expandtab
-augroup END
-
 " let g:sonokai_style = 'shusia'
 " colorscheme sonokai
 " colorscheme gruvbox-material
@@ -97,3 +82,21 @@ highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine
 highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine
 highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
 highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine
+
+
+augroup filetypes
+	autocmd!
+	autocmd FileType zsh  setlocal foldmethod=marker
+	autocmd FileType tmux setlocal foldmethod=marker
+
+	autocmd FileType go   setlocal tabstop=4 shiftwidth=4 noexpandtab
+
+	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
+
+	autocmd FileType lua  setlocal foldmarker={,}
+	autocmd FileType lua  setlocal foldmethod=marker
+	autocmd FileType lua  setlocal expandtab
+augroup END
+

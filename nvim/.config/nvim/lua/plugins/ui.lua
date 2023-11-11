@@ -70,7 +70,7 @@ return {
             vim.opt.listchars:append("extends:>")
             vim.opt.listchars:append("precedes:<")
 
-            vim.g.indent_blankline_filetype = { "yml", "yaml", "json", "lua", "python" }
+            vim.g.indent_blankline_filetype = { "yml", "yaml", "json", "lua" }
 
             require("indent_blankline").setup({
                 space_char_blankline = " ",

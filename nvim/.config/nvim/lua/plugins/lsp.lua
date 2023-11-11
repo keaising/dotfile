@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls" }, clt.name)
+                return vim.tbl_contains({ "null-ls", "gopls", "pyright", "lua_ls", "bashls" }, clt.name)
             end,
             bufnr = buf,
         })

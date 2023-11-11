@@ -17,9 +17,14 @@
     "/"
   ],
   "coc.preferences.colorSupport": true,
-  "snippets.ultisnips.directories": [
-    "$HOME/.config/nvim/ultisnips",
-  ],
+  "snippets": {
+    "ultisnips": {
+      "directories": [
+        "$HOME/.config/nvim/ultisnips"
+      ],
+      "pythonPrompt": false
+    }
+  },
   "cSpell.userWords": [
     "Anys",
     "Authed",
