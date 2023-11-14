@@ -15,7 +15,6 @@ set ruler                " 显示光标位置
 set autoread             " auto reload when file on disk changed
 set ignorecase           " 智能搜索大小写判断，默认忽略大小写，除非搜索内容包含大写字母
 set smartcase            "
-set hlsearch             " 高亮搜索内容
 set incsearch            " 查找输入时动态增量显示查找结果
 set showmatch            " 显示匹配的括号
 set matchtime=2          " 显示括号匹配的时间
@@ -55,7 +54,7 @@ set foldlevelstart=99
 set foldlevel=99                                    " 默认打开所有缩进
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
-                 
+
 " 恢复上次打开位置
 autocmd BufReadPost *
 	\ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -99,4 +98,3 @@ augroup filetypes
 	autocmd FileType lua  setlocal foldmethod=marker
 	autocmd FileType lua  setlocal expandtab
 augroup END
-
