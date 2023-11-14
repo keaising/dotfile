@@ -9,14 +9,30 @@
     },
     "hint.enable": false
   },
-  "git.addGBlameToVirtualText": true,
-  "coc.source.emoji.filetypes": null,
-  "coc.source.word.priority": -1,
-  "coc.source.dictionary.priority": -1,
-  "coc.source.emoji.triggerCharacters": [
-    "/"
-  ],
-  "coc.preferences.colorSupport": true,
+  "pyright": {
+    "inlayHints": {
+      "variableTypes": false,
+      "functionReturnTypes": true
+    }
+  },
+  "git": {
+    "addGBlameToVirtualText": true
+  },
+  "coc": {
+    "preferences": {
+      "colorSupport": true
+    },
+    "source": {
+      "emoji": {
+        "filetypes": null,
+        "triggerCharacters": [
+          "/"
+        ]
+      },
+      "word.priority": -1,
+      "dictionary.priority": -1
+    }
+  },
   "snippets": {
     "ultisnips": {
       "directories": [
@@ -44,6 +60,7 @@
     "Errorf",
     "Errorln",
     "Fapiao",
+    "Furnishment",
     "GOPROXY",
     "Groupmsg",
     "Hasklug",
