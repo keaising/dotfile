@@ -89,12 +89,8 @@ augroup filetypes
 	autocmd FileType tmux setlocal foldmethod=marker
 
 	autocmd FileType go   setlocal tabstop=4 shiftwidth=4 noexpandtab
-
 	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4
-
-	autocmd FileType lua  setlocal foldmarker={,}
-	autocmd FileType lua  setlocal foldmethod=marker
-	autocmd FileType lua  setlocal expandtab
+	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
+	autocmd FileType lua  setlocal foldmarker={,} foldmethod=marker expandtab
 augroup END
