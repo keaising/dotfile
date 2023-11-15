@@ -112,7 +112,21 @@ return {
             })
 
             -- pyright depends on nodejs
-            lspconfig.pyright.setup({})
+            lspconfig.pyright.setup({
+                handlers = handlers,
+                on_attach = on_attach,
+                settings = {
+                    python = {
+                        analysis = {
+                            autoSearchPaths = true,
+                            useLibraryCodeForTypes = true,
+                            -- diagnosticMode = "openFilesOnly",
+                            typeCheckingMode = "basic",
+                            stubPath = vim.fn.stdpath("data") .. "/site/pack/packer/start/python-type-stubs",
+                        },
+                    },
+                },
+            })
             lspconfig.bashls.setup({
                 handlers = handlers,
                 -- capabilities = capabilities,
