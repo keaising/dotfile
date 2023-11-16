@@ -203,29 +203,6 @@ return {
                     null_ls.builtins.formatting.fish_indent,
                     cspell.diagnostics.with(cspell_config),
                     cspell.code_actions.with(cspell_config),
-                    -- null_ls.builtins.diagnostics.cspell.with({
-                    --     extra_args = { "--config", "~/.config/nvim/cspell.json" },
-                    --     diagnostics_postprocess = function(diagnostic)
-                    --         diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
-                    --     end,
-                    -- }),
-                    -- null_ls.builtins.code_actions.cspell.with({
-                    --     config = {
-                    --         find_json = function(_)
-                    --             return vim.fn.expand("~/.config/nvim/cspell.json")
-                    --             -- return "/home/taiga/.config/nvim/cspell.json"
-                    --         end,
-                    --         on_success = function(cspell_config_file)
-                    --             os.execute(
-                    --                 string.format(
-                    --                     "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                    --                     cspell_config_file,
-                    --                     cspell_config_file
-                    --                 )
-                    --             )
-                    --         end,
-                    --     },
-                    -- }),
                     null_ls.builtins.formatting.jq.with({
                         filetypes = { "json" },
                     }),
