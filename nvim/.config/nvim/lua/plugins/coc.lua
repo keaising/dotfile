@@ -4,9 +4,9 @@ return {
     config = function()
         vim.g.coc_global_extensions = {
             "coc-go",
-            "coc-json",
-            "coc-pyright",
-            "coc-spell-checker",
+            -- "coc-json",
+            -- "coc-pyright",
+            -- "coc-spell-checker",
             "coc-snippets",
             "coc-sumneko-lua",
         }
@@ -72,7 +72,7 @@ return {
         keyset("n", "<leader>c", "<Plug>(coc-codeaction-selected)", opts2)
 
         -- Remap keys for apply code actions at the cursor position.
-        keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts2)
+        -- keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts2)
         -- Remap keys for apply source code actions for current file.
         keyset("n", "<leader>cl", "<Plug>(coc-codeaction-line)", opts2)
 

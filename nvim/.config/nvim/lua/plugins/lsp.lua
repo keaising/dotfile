@@ -45,7 +45,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<m-k>", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    -- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
     vim.keymap.set("n", "`", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "K", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "gr", function()
@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls", "pyright", "lua_ls", "bashls" }, clt.name)
+                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls" }, clt.name)
             end,
             bufnr = buf,
         })
@@ -166,17 +166,43 @@ return {
         end,
     },
     {
-        "jose-elias-alvarez/null-ls.nvim",
+        "nvimtools/none-ls.nvim",
         -- "keaising/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
         -- dev = true,
         -- branch = "add_hook_for_cspell",
+        dependencies = "davidmh/cspell.nvim",
         config = function()
             local null_ls = require("null-ls")
+            local cspell = require("cspell")
+            local cspell_config = {
+                diagnostics_postprocess = function(diagnostic)
+                    diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+                end,
+                config = {
+                    find_json = function(_)
+                        return vim.fn.expand("~/.config/nvim/cspell.json")
+                        -- return "/home/taiga/.config/nvim/cspell.json"
+                    end,
+                    on_success = function(cspell_config_file_path, params, action_name)
+                        if action_name == "add_to_json" then
+                            os.execute(
+                                string.format(
+                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                                    cspell_config_file_path,
+                                    cspell_config_file_path
+                                )
+                            )
+                        end
+                    end,
+                },
+            }
             null_ls.setup({
                 sources = {
                     null_ls.builtins.diagnostics.fish,
                     null_ls.builtins.formatting.fish_indent,
+                    cspell.diagnostics.with(cspell_config),
+                    cspell.code_actions.with(cspell_config),
                     -- null_ls.builtins.diagnostics.cspell.with({
                     --     extra_args = { "--config", "~/.config/nvim/cspell.json" },
                     --     diagnostics_postprocess = function(diagnostic)
@@ -187,6 +213,7 @@ return {
                     --     config = {
                     --         find_json = function(_)
                     --             return vim.fn.expand("~/.config/nvim/cspell.json")
+                    --             -- return "/home/taiga/.config/nvim/cspell.json"
                     --         end,
                     --         on_success = function(cspell_config_file)
                     --             os.execute(
@@ -199,17 +226,17 @@ return {
                     --         end,
                     --     },
                     -- }),
-                    -- null_ls.builtins.formatting.jq.with({
-                    --     filetypes = { "json" },
-                    -- }),
+                    null_ls.builtins.formatting.jq.with({
+                        filetypes = { "json" },
+                    }),
                     null_ls.builtins.formatting.stylua.with({
                         condition = function(utils)
                             return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                         end,
                     }),
-                    -- null_ls.builtins.formatting.pg_format.with({
-                    --     extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
-                    -- }),
+                    null_ls.builtins.formatting.pg_format.with({
+                        extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
+                    }),
                     null_ls.builtins.formatting.prettier.with({
                         filetypes = { "yaml", "md", "markdown", "javascript" },
                     }),
