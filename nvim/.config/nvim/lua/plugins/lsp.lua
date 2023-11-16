@@ -234,6 +234,14 @@ return {
                             return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
                         end,
                     }),
+                    -- null_ls.builtins.diagnostics.selene.with({
+                    --     cwd = function(_)
+                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
+                    --         return vim.fs.dirname(
+                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
+                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
+                    --     end,
+                    -- }),
                     null_ls.builtins.formatting.pg_format.with({
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
                     }),
@@ -243,15 +251,8 @@ return {
                     -- null_ls.builtins.formatting.shfmt.with({
                     --     filetypes = { "sh", "zsh" },
                     -- }),
-                    null_ls.builtins.formatting.black,
-                    -- null_ls.builtins.diagnostics.selene.with({
-                    --     cwd = function(_)
-                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
-                    --         return vim.fs.dirname(
-                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
-                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
-                    --     end,
-                    -- }),
+                    null_ls.builtins.diagnostics.ruff,
+                    null_ls.builtins.formatting.ruff_format,
                 },
                 handlers = handlers,
                 on_attach = on_attach,
