@@ -33,6 +33,12 @@
       "dictionary.priority": -1
     }
   },
+  "diagnostic": {
+    "errorSign": "",
+    "warningSign": "",
+    "infoSign": "",
+    "hintSign": ""
+  },
   "snippets": {
     "ultisnips": {
       "directories": [

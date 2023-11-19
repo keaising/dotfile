@@ -140,7 +140,7 @@ return {
         },
         config = function()
             require("circles").setup({
-                icons = { empty = "", "", filled = "", lsp_prefix = "" },
+                icons = { empty = "", filled = "", lsp_prefix = "" },
             })
         end,
     },
