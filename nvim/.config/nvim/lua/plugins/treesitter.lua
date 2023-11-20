@@ -44,6 +44,7 @@ return {
             ensure_installed = {
                 -- "go",
                 -- "gomod",
+                "python",
                 "query",
                 "comment", -- highlight for "TOOD", "FIXME"
             },
