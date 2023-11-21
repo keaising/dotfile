@@ -127,6 +127,15 @@ return {
                     },
                 },
             })
+            lspconfig.ruff_lsp.setup({
+                on_attach = on_attach,
+                handlers = handlers,
+                init_options = {
+                    settings = {
+                        args = {},
+                    },
+                },
+            })
             lspconfig.bashls.setup({
                 handlers = handlers,
                 -- capabilities = capabilities,
@@ -301,6 +310,7 @@ return {
                     "jsonls",
                     "lua_ls",
                     "pyright",
+                    "ruff_lsp",
                     "terraformls",
                     "tsserver",
                     "vimls",
@@ -321,6 +331,7 @@ return {
                     "cspell",
                     "jq",
                     "prettier",
+                    "ruff",
                     "selene",
                     "shfmt",
                     "stylua",
