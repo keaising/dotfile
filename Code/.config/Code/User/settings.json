@@ -1,0 +1,243 @@
+{
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": false,
+    "editor.snippetSuggestions": "inline"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[lua]": {
+    "editor.defaultFormatter": "sumneko.lua"
+  },
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "application.shellEnvironmentResolutionTimeout": 120,
+  "cSpell.userWords": [
+    "Aggs",
+    "agollo",
+    "bson",
+    "CDNURL",
+    "CQRs",
+    "crondatalib",
+    "curioim",
+    "curioretail",
+    "dbname",
+    "dtask",
+    "Errorln",
+    "eshop",
+    "Gitlab",
+    "gjson",
+    "golibs",
+    "instanceid",
+    "jinzhu",
+    "JSID",
+    "Lookupd",
+    "mediaid",
+    "mongodb",
+    "mongoh",
+    "Neovim",
+    "nsqd",
+    "nsqh",
+    "nsqlookupd",
+    "nvim",
+    "oexcel",
+    "olivere",
+    "Openid",
+    "oper",
+    "parentid",
+    "postgres",
+    "qrcode",
+    "qrcodes",
+    "Repos",
+    "resty",
+    "signup",
+    "structs",
+    "sysphoto",
+    "tagid",
+    "Tampermonkey",
+    "Unionid",
+    "wechat",
+    "Weixin",
+    "Wesociety",
+    "wxwork",
+    "yorozuya"
+  ],
+  "diffEditor.wordWrap": "off",
+  "editor.fontFamily": "'IntoneMono Nerd Font', 'Recursive Nerd Font', 'Source Code Pro',  Menlo,  monospace",
+  "editor.fontWeight": "400",
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineHeight": 19,
+  "editor.lineNumbers": "relative",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.suggest.snippetsPreventQuickSuggestions": false,
+  "editor.suggestSelection": "first",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "editor.wordWrapColumn": 100,
+  "emmet.includeLanguages": {
+    "wxml": "html"
+  },
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "extensions.ignoreRecommendations": true,
+  "files.associations": {
+    "*.cjson": "jsonc",
+    "*.dae": "shellscript",
+    "*.wxs": "javascript",
+    "*.wxss": "css"
+  },
+  "files.autoSaveDelay": 300,
+  "files.defaultLanguage": "json",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.git": false,
+    "**/.project": true,
+    "**/.settings": true
+  },
+  "git.enableSmartCommit": true,
+  "git.openRepositoryInParentFolders": "never",
+  "go.formatTool": "goimports",
+  "go.lintTool": "golangci-lint",
+  "go.testEnvVars": {
+    "APP_ENV": "dev"
+  },
+  "go.toolsManagement.autoUpdate": true,
+  "go.useLanguageServer": true,
+  "go.vetOnSave": "off",
+  "gopls": {
+    "ui.completion.usePlaceholders": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "python.languageServer": "Pylance",
+  "search.exclude": {
+    "**/node_modules": false
+  },
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.profiles.osx": {
+    "bash": {
+      "args": [
+        "-l"
+      ],
+      "icon": "terminal-bash",
+      "path": "bash"
+    },
+    "fish": {
+      "args": [
+        "-l"
+      ],
+      "path": "fish"
+    },
+    "pwsh": {
+      "icon": "terminal-powershell",
+      "path": "pwsh"
+    },
+    "tmux": {
+      "icon": "terminal-tmux",
+      "path": "tmux"
+    },
+    "zsh": {
+      "args": [
+        "-l"
+      ],
+      "path": "zsh"
+    }
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "vim.autoSwitchInputMethod.defaultIM": "keyboard-us",
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.obtainIMCmd": "fcitx5-remote -n",
+  "vim.autoSwitchInputMethod.switchIMCmd": "fcitx5-remote -s {im}",
+  "vim.cursorStylePerMode.replace": "block-outline",
+  "vim.easymotion": true,
+  "vim.easymotionKeys": "hklyuiopnmqwertzxcvbasdgjf",
+  "vim.leader": "<Space>",
+  "vim.useSystemClipboard": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "after": [
+        "C-y",
+        "C-y",
+        "C-y",
+        "C-y",
+        "C-y",
+        "C-y",
+        "C-y"
+      ],
+      "before": [
+        "C-y"
+      ]
+    },
+    {
+      "after": [
+        "C-e",
+        "C-e",
+        "C-e",
+        "C-e",
+        "C-e",
+        "C-e",
+        "C-e",
+        "C-e"
+      ],
+      "before": [
+        "C-e"
+      ]
+    },
+    {
+      "after": [
+        "leader",
+        "leader",
+        "2",
+        "s"
+      ],
+      "before": [
+        "s"
+      ]
+    }
+  ],
+  "vim.useCtrlKeys": true,
+  "window.title": "${dirty}${rootName}",
+  "window.titleBarStyle": "native",
+  "workbench.editor.wrapTabs": true,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.iconTheme": "symbols",
+  "workbench.layoutControl.enabled": false,
+  "workbench.startupEditor": "none",
+  "workbench.colorTheme": "Atom One Dark",
+  "symbols.hidesExplorerArrows": false
+}
