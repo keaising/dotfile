@@ -19,6 +19,18 @@ return {
         end,
     },
     {
+        "axkirillov/hbac.nvim",
+        config = function()
+            require("hbac").setup({
+                autoclose = true,
+                threshold = 7,
+            })
+            vim.keymap.set("n", "<C-Enter>", function()
+                require("telescope").extensions.hbac.buffers()
+            end, { noremap = true, silent = true })
+        end,
+    },
+    {
         "nvim-lualine/lualine.nvim",
         event = "VeryLazy",
         config = function()
