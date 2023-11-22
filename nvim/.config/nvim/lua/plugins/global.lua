@@ -81,6 +81,7 @@ return {
         opts = {
             search = {
                 multi_window = false,
+                -- max_length = 2,
             },
             jump = {
                 nohlsearch = true,
@@ -88,8 +89,9 @@ return {
             },
             label = {
                 uppercase = false,
-                after = false,
-                before = true,
+                after = true,
+                before = false,
+                -- style = "overlay",
                 current = true,
             },
             modes = {
