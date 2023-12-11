@@ -117,6 +117,14 @@ return {
                 end,
                 desc = "Remote Flash",
             },
+            {
+                ";",
+                mode = { "n" },
+                function()
+                    require("flash").jump({ continue = true })
+                end,
+                desc = "Flash",
+            },
         },
     },
     {
