@@ -16,11 +16,12 @@ window:
 font:
   normal:
     family: Recursive Nerd Font
-    style: Regular
+    # family: IntoneMono Nerd Font
+    # family: Consolas Nerd Font
     # family: Iosevka Term SS01
-    # family: RecursiveCodeiCursiveCg Nerd Font
     # family: Hasklug Nerd Font
     # family: JetBrainsMono Nerd Font
+    style: Regular
   size: 10
   offset:
     x: 1
