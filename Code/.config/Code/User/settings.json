@@ -238,6 +238,7 @@
   "workbench.iconTheme": "symbols",
   "workbench.layoutControl.enabled": false,
   "workbench.startupEditor": "none",
-  "workbench.colorTheme": "Atom One Dark",
-  "symbols.hidesExplorerArrows": false
+  "workbench.colorTheme": "Default Light Modern",
+  "symbols.hidesExplorerArrows": false,
+  "redhat.telemetry.enabled": true
 }
