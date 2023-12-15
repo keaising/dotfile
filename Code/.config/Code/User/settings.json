@@ -92,7 +92,7 @@
     "yorozuya"
   ],
   "diffEditor.wordWrap": "off",
-  "editor.fontFamily": "'IntoneMono Nerd Font', 'Recursive Nerd Font', 'Source Code Pro',  Menlo,  monospace",
+  "editor.fontFamily": "'Recursive Nerd Font', 'Source Code Pro',  Menlo,  monospace",
   "editor.fontWeight": "400",
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
