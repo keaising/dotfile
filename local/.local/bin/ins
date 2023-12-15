@@ -39,32 +39,17 @@ function ins_gotools
 
     set -l REPOS \
         golang.org/x/tools/gopls \
-        golang.org/x/tools/cmd/gorename \
-        golang.org/x/tools/cmd/goimports \
-        github.com/uudashr/gopkgs/cmd/gopkgs \
-        mvdan.cc/gofumpt \
-        github.com/segmentio/golines \
-        github.com/ramya-rao-a/go-outline \
+        github.com/go-delve/delve/cmd/dlv \
         github.com/haya14busa/goplay/cmd/goplay \
         github.com/fatih/gomodifytags \
-        github.com/mgechev/revive \
-        golang.org/x/tools/cmd/guru \
-        github.com/davidrjenni/reftools/cmd/fillstruct \
-        github.com/rogpeppe/godef \
-        github.com/fatih/motion \
-        github.com/kisielk/errcheck \
-        github.com/klauspost/asmfmt/cmd/asmfmt \
-        honnef.co/go/tools/cmd/staticcheck \
-        honnef.co/go/tools/cmd/keyify \
-        github.com/jstemmer/gotags \
-        github.com/koron/iferr \
         github.com/josharian/impl \
         github.com/cweill/gotests/... \
+        honnef.co/go/tools/cmd/staticcheck \
         github.com/golangci/golangci-lint/cmd/golangci-lint \
         github.com/rinchsan/gosimports/cmd/gosimports \
-        golang.org/x/vuln/cmd/govulncheck \
         github.com/segmentio/golines \
-        github.com/ryancurrah/gomodguard/cmd/gomodguard
+        github.com/kisielk/errcheck \
+        golang.org/x/vuln/cmd/govulncheck
 
     for repo in $REPOS
         set -l run "go install $repo@latest"
