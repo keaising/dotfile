@@ -16,15 +16,13 @@ font:
   # family: Iosevka Term SS01
   # family: Source Code Pro for Powerline
   normal:
-    family: RecursiveCodeiCursiveCgNerdFont Nerd Font
+    family: Recursive Nerd Font
     style: Regular
     # family: Hasklug Nerd Font
     # family: JetBrainsMono Nerd Font
     # family: CodeNewRoman Nerd Font
     # family: Consolas Nerd Font
     # style: Book
-  # normal:
-  # family: RecMonoTaiga Nerd Font
 
   size: 14
   offset:
@@ -157,8 +155,8 @@ key_bindings:
   - { key: Key9, mods: Alt, chars: "\x1b9" }
   - { key: Key0, mods: Alt, chars: "\x1b0" }
   - { key: Space, mods: Control, chars: "\x00" } # Ctrl + Space
-  - { key: Grave, mods: Alt, chars: "\x1b`" } # Alt + `
-  - { key: Grave, mods: Alt|Shift, chars: "\x1b~" } # Alt + ~
+  - { key: "`", mods: Alt, chars: "\x1b`" } # Alt + `
+  - { key: "~", mods: Alt|Shift, chars: "\x1b~" } # Alt + ~
   - { key: Period, mods: Alt, chars: "\x1b." } # Alt + .
   - { key: Period, mods: Alt|Shift, chars: "\x1b>" } # Alt + >
   - { key: Comma, mods: Alt|Shift, chars: "\x1b<" } # Alt + <
