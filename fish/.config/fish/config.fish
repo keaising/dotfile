@@ -419,6 +419,7 @@ switch (uname)
         alias dnsm='sudo brew services restart dnsmasq'
         alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
         alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        set -Ux SSH_AUTH_SOCK "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
         # ocr, source: https://www.kawabangga.com/posts/4876
         # brew install tesseract pngpaste
