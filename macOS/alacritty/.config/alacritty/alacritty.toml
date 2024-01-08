@@ -14,12 +14,9 @@ dynamic_title = false
 option_as_alt = "Both"
 
 [font]
-# normal = { family = "Recursive Nerd Font", style = "Regular" }
-# size = 13
-# offset = { x = 1, y = 1 }
-normal = { family = "Consolas Nerd Font", style = "Regular" }
-size = 16
-offset = { x = 1, y = 5 }
+normal = { family = "Recursive Nerd Font", style = "Regular" }
+size = 14
+offset = { x = 1, y = 1 }
 
 [keyboard]
 bindings = [
