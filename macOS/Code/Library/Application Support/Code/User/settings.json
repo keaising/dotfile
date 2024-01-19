@@ -241,5 +241,8 @@
   "workbench.colorTheme": "Default Light Modern",
   "symbols.hidesExplorerArrows": false,
   "redhat.telemetry.enabled": true,
-  "editor.fontSize": 13
+  "editor.fontSize": 13,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
