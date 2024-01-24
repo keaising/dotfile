@@ -37,6 +37,7 @@ return {
                         ["aa"] = "@parameter.outer",
                         ["ic"] = "@call_expression",
                         ["ie"] = "@expression_list",
+                        ["ik"] = "@keyed_element",
                     },
                 },
             },

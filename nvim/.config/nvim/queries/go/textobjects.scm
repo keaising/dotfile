@@ -8,6 +8,8 @@
 
 (keyed_element) @parameter.outer
 
+(literal_element) @keyed_element
+
 (return_statement
   (expression_list
     "," @_start .
