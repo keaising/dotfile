@@ -82,9 +82,9 @@ set -Ux RUST_BACKTRACE 1
 # misc
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
 set -Ux XDG_CACHE_HOME "$HOME/.cache"
-set -Ux VISUAL vi
-set -Ux EDITOR vi
-set -Ux GIT_EDITOR vi
+set -Ux VISUAL nvim
+set -Ux EDITOR nvim
+set -Ux GIT_EDITOR nvim
 set -Ux LANG "en_US.UTF-8"
 set -Ux LC_CTYPE "en_US.UTF-8"
 set -Ux LC_ALL "en_US.UTF-8"
