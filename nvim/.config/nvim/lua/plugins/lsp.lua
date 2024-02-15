@@ -232,7 +232,15 @@ return {
                         extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
                     }),
                     null_ls.builtins.formatting.prettier.with({
-                        filetypes = { "yaml", "md", "markdown", "javascript" },
+                        filetypes = {
+                            "yaml",
+                            "markdown",
+                            "javascript",
+                            "javascriptreact",
+                            "typescript",
+                            "typescriptreact",
+                            "css",
+                        },
                     }),
                     -- null_ls.builtins.formatting.shfmt.with({
                     --     filetypes = { "sh", "zsh" },
