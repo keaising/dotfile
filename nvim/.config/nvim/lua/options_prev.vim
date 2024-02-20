@@ -2,9 +2,7 @@
 set autoindent
 set tabstop=4            " 按下 Tab 键时，Vim 显示的空格数
 set shiftwidth=4
-set softtabstop=0        " 关闭softtabstop 永远不要将空格和tab混合输入
-" set noexpandtab          " tab is tab, whitespace is whitespace
-set cursorline
+set softtabstop=0        " 关闭softtabstop 永远不要将空格和tabset cursorline
 set hidden
 set autowrite
 set winaltkeys=no        " Windows 禁用 ALT 操作菜单（使得 ALT 可以用到 Vim里）
@@ -61,35 +59,18 @@ autocmd BufReadPost *
 	\	 exe "normal! g`\"" |
 	\ endif
 
-" let g:sonokai_style = 'shusia'
-" colorscheme sonokai
-" colorscheme gruvbox-material
-" let g:gruvbox_contrast_dark = 'soft'
-" set bg=light
-" colorscheme gruvbox
-let g:gruvbox_material_current_word = "underline"
-colorscheme gruvbox-material
-
-set termguicolors
-set t_Co=256             " 允许256色
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-highlight IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine
-highlight IndentBlanklineIndent2 guifg=#E5C07B gui=nocombine
-highlight IndentBlanklineIndent3 guifg=#98C379 gui=nocombine
-highlight IndentBlanklineIndent4 guifg=#56B6C2 gui=nocombine
-highlight IndentBlanklineIndent5 guifg=#61AFEF gui=nocombine
-highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine
-
-
 augroup filetypes
 	autocmd!
 	autocmd FileType zsh  setlocal foldmethod=marker
 	autocmd FileType tmux setlocal foldmethod=marker
+	autocmd FileType fish setlocal expandtab
 
-	autocmd FileType go   setlocal tabstop=4 shiftwidth=4 noexpandtab
+	autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
 	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
+	autocmd BufRead,BufNewFile *.tsx setlocal shiftwidth=2 tabstop=2 expandtab
 	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
 	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 	autocmd FileType lua  setlocal foldmarker={,} foldmethod=marker expandtab

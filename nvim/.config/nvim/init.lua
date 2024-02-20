@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
 vim.cmd("source ~/.config/nvim/lua/vim-plugins.vim")
 vim.cmd("source ~/.config/nvim/lua/keymaps.vim")
+vim.cmd("source ~/.config/nvim/lua/options_prev.vim")
 
 require("lazy").setup("plugins", {
     change_detection = {
@@ -24,4 +25,4 @@ require("lazy").setup("plugins", {
     },
 })
 
-vim.cmd("source ~/.config/nvim/lua/options.vim")
+vim.cmd("source ~/.config/nvim/lua/options_post.vim")
