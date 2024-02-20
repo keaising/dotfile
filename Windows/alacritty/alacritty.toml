@@ -1,0 +1,21 @@
+shell = "Arch.exe"
+
+[window]
+padding = { x = 3, y = 3 }
+
+[font]
+normal = { family = "Consolas Nerd Font", style = "Regular" }
+bold = { family = "Consolas Nerd Font", style = "Bold" }
+italic = { family = "Consolas Nerd Font", style = "Italic" }
+bold_italic = { family = "Consolas Nerd Font", style = "Bold Italic" }
+offset = { x = 1, y = 5 }
+
+
+[terminal]
+osc52 = "CopyPaste"
+
+[keyboard]
+bindings = [
+    { key = "C", mods = "Alt", action = "Copy" },
+    { key = "V", mods = "Alt", action = "Paste" },
+]
