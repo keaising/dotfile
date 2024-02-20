@@ -69,6 +69,8 @@ set -Ux GEM_HOME "$HOME/code/gems"
 
 # Added by n-install (see http://git.io/n-install-repo).
 set -Ux N_PREFIX "$HOME/code/n"
+# pnpm
+set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 
 # pyenv
 set -Ux PYENV_ROOT "$HOME/.pyenv"
