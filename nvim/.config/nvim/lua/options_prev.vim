@@ -70,7 +70,6 @@ augroup filetypes
 	autocmd FileType javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
 	autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd BufRead,BufNewFile *.tsx setlocal shiftwidth=2 tabstop=2 expandtab
 	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
 	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
 	autocmd FileType lua  setlocal foldmarker={,} foldmethod=marker expandtab

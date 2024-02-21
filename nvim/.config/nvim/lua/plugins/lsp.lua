@@ -34,7 +34,7 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<m-b>", function()
         require("telescope.builtin").lsp_definitions()
     end, bufopts)
-    vim.keymap.set("n", "dh", vim.lsp.buf.hover, bufopts)
+    vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "gi", function()
         require("telescope.builtin").lsp_implementations({
             show_line = false,
