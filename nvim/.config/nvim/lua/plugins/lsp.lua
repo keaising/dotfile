@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls" }, clt.name)
+                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "ruff_lsp" }, clt.name)
             end,
             bufnr = buf,
         })
@@ -110,25 +110,11 @@ return {
                     },
                 },
             })
-
-            -- pyright depends on nodejs
-            lspconfig.pyright.setup({
-                handlers = handlers,
-                on_attach = on_attach,
-                settings = {
-                    python = {
-                        analysis = {
-                            autoSearchPaths = true,
-                            useLibraryCodeForTypes = true,
-                            -- diagnosticMode = "openFilesOnly",
-                            typeCheckingMode = "basic",
-                            stubPath = vim.fn.stdpath("data") .. "/site/pack/packer/start/python-type-stubs",
-                        },
-                    },
-                },
-            })
             lspconfig.ruff_lsp.setup({
-                on_attach = on_attach,
+                on_attach = function(client, bufnr)
+                    client.server_capabilities.documentFormattingProvider = true
+                    on_attach(client, bufnr)
+                end,
                 handlers = handlers,
                 init_options = {
                     settings = {
@@ -179,7 +165,6 @@ return {
         -- "keaising/null-ls.nvim",
         -- dir = "~/code/github.com/keaising/null-ls.nvim",
         -- dev = true,
-        -- branch = "add_hook_for_cspell",
         dependencies = "davidmh/cspell.nvim",
         config = function()
             local null_ls = require("null-ls")
@@ -191,7 +176,6 @@ return {
                 config = {
                     find_json = function(_)
                         return vim.fn.expand("~/.config/nvim/cspell.json")
-                        -- return "/home/taiga/.config/nvim/cspell.json"
                     end,
                     on_success = function(cspell_config_file_path, params, action_name)
                         if action_name == "add_to_json" then
@@ -212,9 +196,6 @@ return {
                     null_ls.builtins.formatting.fish_indent,
                     cspell.diagnostics.with(cspell_config),
                     cspell.code_actions.with(cspell_config),
-                    null_ls.builtins.formatting.jq.with({
-                        filetypes = { "json" },
-                    }),
                     null_ls.builtins.formatting.stylua.with({
                         condition = function(utils)
                             return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
@@ -233,20 +214,16 @@ return {
                     }),
                     null_ls.builtins.formatting.prettier.with({
                         filetypes = {
-                            "yaml",
-                            "markdown",
+                            "css",
                             "javascript",
                             "javascriptreact",
+                            "json",
+                            "markdown",
                             "typescript",
                             "typescriptreact",
-                            "css",
+                            "yaml",
                         },
                     }),
-                    -- null_ls.builtins.formatting.shfmt.with({
-                    --     filetypes = { "sh", "zsh" },
-                    -- }),
-                    null_ls.builtins.diagnostics.ruff,
-                    null_ls.builtins.formatting.ruff_format,
                 },
                 handlers = handlers,
                 on_attach = on_attach,
@@ -267,7 +244,6 @@ return {
                 },
                 server = { -- pass options to lspconfig's setup method
                     handlers = handlers,
-                    -- capabilities = capabilities,
                     on_attach = function(client, bufnr)
                         on_attach(client, bufnr)
                     end,

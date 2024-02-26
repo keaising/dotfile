@@ -3,18 +3,11 @@
   "Lua": {
     "workspace": {
       "checkThirdParty": false,
-      "library": [
-        "${3rd}/luv/libray"
-      ]
+      "library": ["${3rd}/luv/libray"]
     },
     "hint.enable": false
   },
-  "pyright": {
-    "inlayHints": {
-      "variableTypes": false,
-      "functionReturnTypes": true
-    }
-  },
+  "ruff.autoFixOnSave": true,
   "git": {
     "addGBlameToVirtualText": true
   },
@@ -25,9 +18,7 @@
     "source": {
       "emoji": {
         "filetypes": null,
-        "triggerCharacters": [
-          "/"
-        ]
+        "triggerCharacters": ["/"]
       },
       "word.priority": -1,
       "dictionary.priority": -1
@@ -41,9 +32,7 @@
   },
   "snippets": {
     "ultisnips": {
-      "directories": [
-        "$HOME/.config/nvim/ultisnips"
-      ],
+      "directories": ["$HOME/.config/nvim/ultisnips"],
       "pythonPrompt": false
     }
   }
