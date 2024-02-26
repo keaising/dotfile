@@ -5,8 +5,7 @@ return {
         vim.g.coc_global_extensions = {
             "coc-go",
             "coc-tsserver",
-            -- "coc-json",
-            -- "coc-pyright",
+            "coc-pyright",
             -- "coc-spell-checker",
             "coc-snippets",
             "coc-sumneko-lua",
