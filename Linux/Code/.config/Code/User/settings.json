@@ -92,7 +92,7 @@
     "yorozuya"
   ],
   "diffEditor.wordWrap": "off",
-  "editor.fontFamily": "'Recursive Nerd Font', 'Source Code Pro',  Menlo,  monospace",
+  "editor.fontFamily": "'Consolas Nerd Font', 'Recursive Nerd Font', 'Source Code Pro',  Menlo,  monospace",
   "editor.fontWeight": "400",
   "editor.formatOnSave": true,
   "editor.inlineSuggest.enabled": true,
@@ -230,15 +230,19 @@
   ],
   "vim.useCtrlKeys": true,
   "window.title": "${dirty}${rootName}",
-  "window.titleBarStyle": "native",
   "workbench.editor.wrapTabs": true,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "workbench.iconTheme": "symbols",
   "workbench.layoutControl.enabled": false,
   "workbench.startupEditor": "none",
   "workbench.colorTheme": "Default Light Modern",
   "symbols.hidesExplorerArrows": false,
-  "redhat.telemetry.enabled": true
+  "redhat.telemetry.enabled": true,
+  "editor.fontSize": 13,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.largeFileOptimizations": false,
+  "window.customTitleBarVisibility": "never"
 }
