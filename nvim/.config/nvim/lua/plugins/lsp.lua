@@ -92,10 +92,8 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local lspconfig = require("lspconfig")
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
             lspconfig.gopls.setup({
                 handlers = handlers,
-                -- capabilities = capabilities,
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
                 end,
@@ -110,9 +108,9 @@ return {
                     },
                 },
             })
+
             lspconfig.ruff_lsp.setup({
                 on_attach = function(client, bufnr)
-                    client.server_capabilities.documentFormattingProvider = true
                     on_attach(client, bufnr)
                 end,
                 handlers = handlers,
@@ -148,7 +146,7 @@ return {
             lspconfig.lua_ls.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
-                    client.server_capabilities.documentFormattingProvider = false
+                    -- client.server_capabilities.documentFormattingProvider = false
                     on_attach(client, bufnr)
                 end,
                 settings = {
