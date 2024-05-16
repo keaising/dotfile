@@ -17,10 +17,10 @@ function ins_nvim
         rm nvim-linux64.tar.gz
         mv nvim-linux64 ~/.local/bin/nvim
     else
-        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-macos.tar.gz
-        tar -zxf nvim-macos.tar.gz
-        rm nvim-macos.tar.gz
-        mv nvim-macos ~/.local/bin/nvim
+        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-macos-arm64.tar.gz
+        tar -zxf nvim-macos-arm64.tar.gz
+        rm nvim-macos-arm64.tar.gz
+        mv nvim-macos-arm64 ~/.local/bin/nvim
     end
 
     rm -r $WORKDIR
