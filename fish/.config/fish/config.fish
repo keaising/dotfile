@@ -49,7 +49,7 @@ alias tx='tmuxp'
 
 # go
 set -gx GOPATH $HOME/code/go
-set -gx GOPROXY https://goproxy.cn,direct
+# set -gx GOPROXY https://goproxy.cn,direct
 alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
 alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
 alias fmt='goimports -w . && go mod tidy'
