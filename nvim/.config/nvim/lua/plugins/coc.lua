@@ -10,6 +10,7 @@ return {
             "coc-snippets",
             "coc-sumneko-lua",
             "@yaegassy/coc-ruff",
+            "@yaegassy/coc-tailwindcss3",
         }
         -- Some servers have issues with backup files, see #649
         vim.opt.backup = false

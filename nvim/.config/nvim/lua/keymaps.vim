@@ -160,3 +160,13 @@ vnoremap <M-/>      <plug>NERDCommenterToggle
 nnoremap <leader>lr :LspStop<CR>:LspStart<CR>:LspRestart<CR>
 
 " xnoremap i` <Plug>(textobj-backticks-backticks-ii)
+
+" kylechui/nvim-surround
+onoremap ir i[
+onoremap ar a[
+onoremap ia i<
+onoremap aa a<
+xnoremap ir i[
+xnoremap ar a[
+xnoremap ia i<
+xnoremap aa a<
