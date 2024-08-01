@@ -106,6 +106,7 @@ set -l _paths \
     $HOME/.dotnet/tools \
     # macOS JDK
     /usr/local/opt/openjdk/bin \
+    /opt/homebrew/opt/openjdk/bin \
     # CUDA: Ubuntu/Debian
     /usr/local/cuda/bin \
     # CUDA: Arch
