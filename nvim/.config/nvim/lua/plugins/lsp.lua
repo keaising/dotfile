@@ -244,27 +244,27 @@ return {
             })
         end,
     },
-    {
-        -- typescript/javascript
-        "jose-elias-alvarez/typescript.nvim",
-        enabled = true,
-        config = function()
-            -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-            require("typescript").setup({
-                disable_commands = true, -- prevent the plugin from creating Vim commands
-                debug = false, -- enable debug logging for commands
-                go_to_source_definition = {
-                    fallback = true, -- fall back to standard LSP definition on failure
-                },
-                server = { -- pass options to lspconfig's setup method
-                    handlers = handlers,
-                    on_attach = function(client, bufnr)
-                        on_attach(client, bufnr)
-                    end,
-                },
-            })
-        end,
-    },
+    -- {
+    --     -- typescript/javascript
+    --     "jose-elias-alvarez/typescript.nvim",
+    --     enabled = true,
+    --     config = function()
+    --         -- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+    --         require("typescript").setup({
+    --             disable_commands = true, -- prevent the plugin from creating Vim commands
+    --             debug = false, -- enable debug logging for commands
+    --             go_to_source_definition = {
+    --                 fallback = true, -- fall back to standard LSP definition on failure
+    --             },
+    --             server = { -- pass options to lspconfig's setup method
+    --                 handlers = handlers,
+    --                 on_attach = function(client, bufnr)
+    --                     on_attach(client, bufnr)
+    --                 end,
+    --             },
+    --         })
+    --     end,
+    -- },
     {
         "VidocqH/lsp-lens.nvim",
         config = function()
