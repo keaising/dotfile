@@ -13,6 +13,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias exa=eza
 alias ll='exa -al --group-directories-first'
 alias vi=vim
 if type -q nvim
