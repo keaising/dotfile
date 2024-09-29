@@ -308,7 +308,7 @@ return {
                     "pyright",
                     "ruff_lsp",
                     "terraformls",
-                    "tsserver",
+                    -- "tsserver",
                     "vimls",
                     "yamlls",
                 },
