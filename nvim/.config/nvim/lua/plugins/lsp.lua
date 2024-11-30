@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "ruff_lsp" }, clt.name)
+                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls" }, clt.name)
             end,
             bufnr = buf,
         })
@@ -109,16 +109,12 @@ return {
                 },
             })
 
-            lspconfig.ruff_lsp.setup({
+            lspconfig.ruff.setup({
                 on_attach = function(client, bufnr)
                     on_attach(client, bufnr)
                 end,
                 handlers = handlers,
-                init_options = {
-                    settings = {
-                        args = {},
-                    },
-                },
+                init_options = { settings = {} },
             })
             lspconfig.pyright.setup({
                 on_attach = on_attach,
@@ -290,7 +286,6 @@ return {
                     "jsonls",
                     "lua_ls",
                     "pyright",
-                    "ruff_lsp",
                     "terraformls",
                     "ts_ls",
                     "vimls",
