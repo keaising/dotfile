@@ -4,4 +4,6 @@ return {
     "gruvbox-community/gruvbox",
     "jonathanfilip/vim-lucius",
     "Mofiqul/dracula.nvim",
+    "rebelot/kanagawa.nvim",
+    "EdenEast/nightfox.nvim",
 }

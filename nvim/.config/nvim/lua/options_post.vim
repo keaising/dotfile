@@ -8,6 +8,8 @@
 " colorscheme gruvbox
 let g:gruvbox_material_current_word = "underline"
 colorscheme gruvbox-material
+" colorscheme kanagawa-lotus
+colorscheme dayfox
 
 set termguicolors
 set t_Co=256             " 允许256色
