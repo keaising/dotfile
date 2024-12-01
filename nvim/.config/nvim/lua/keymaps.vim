@@ -30,13 +30,14 @@ nnoremap <C-e> 9<C-e>
 nnoremap <C-y> 9<C-y>
 
 " move in insert mode
-inoremap <m-h> <left>
-inoremap <m-j> <down>
-inoremap <m-k> <up>
-inoremap <m-l> <right>
-inoremap <m-b> <C-o>b
-inoremap <m-w> <C-o>w
-inoremap <m-e> <C-o>e
+inoremap <m-h>  <left>
+inoremap <m-j>  <down>
+inoremap <m-k>  <up>
+inoremap <m-l>  <right>
+inoremap <m-b>  <C-o>b
+inoremap <m-w>  <C-o>w
+inoremap <m-e>  <C-o>e
+inoremap <m-BS> <C-w>
 
 " Keep search pattern at the center of the screen.
 nnoremap <silent> n     nzzzv
@@ -130,9 +131,9 @@ vnoremap gs :EasyAlign
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nnoremap ga <Plug>(EasyAlign)
 
-" ALT_+/- 用于按分隔符扩大缩小 v 选区, terryma/vim-expand-region
-vnoremap v     <Plug>(expand_region_expand)
-vnoremap <C-v> <Plug>(expand_region_shrink)
+" swap position for parameters
+nnoremap <leader>, :SidewaysLeft<cr>
+nnoremap <leader>. :SidewaysRight<cr>
 
 " vim-move
 let g:move_map_keys = 0
@@ -164,9 +165,11 @@ nnoremap <leader>lr :LspStop<CR>:LspStart<CR>:LspRestart<CR>
 " kylechui/nvim-surround
 onoremap ir i[
 onoremap ar a[
-onoremap ia i<
-onoremap aa a<
 xnoremap ir i[
 xnoremap ar a[
-xnoremap ia i<
-xnoremap aa a<
+
+" AndrewRadev/sideways.vim
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI

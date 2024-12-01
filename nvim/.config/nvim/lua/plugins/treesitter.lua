@@ -10,7 +10,7 @@ return {
             playground = {
                 enable = true,
                 disable = {},
-                updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+                updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
                 persist_queries = false, -- Whether the query persists across vim sessions
                 keybindings = {
                     toggle_query_editor = "o",
@@ -25,6 +25,13 @@ return {
                     show_help = "?",
                 },
             },
+            incremental_selection = {
+                enable = true,
+                keymaps = {
+                    node_incremental = "v",
+                    node_decremental = "V",
+                },
+            },
             textobjects = {
                 select = {
                     enable = true,
@@ -33,8 +40,6 @@ return {
                     keymaps = {
                         ["af"] = "@function.outer",
                         ["if"] = "@function.inner",
-                        ["ia"] = "@parameter.inner",
-                        ["aa"] = "@parameter.outer",
                         ["ic"] = "@call_expression",
                         ["ie"] = "@expression_list",
                         ["ik"] = "@keyed_element",
@@ -47,7 +52,7 @@ return {
                 -- "gomod",
                 "python",
                 "query",
-                "comment", -- highlight for "TOOD", "FIXME"
+                "comment",       -- highlight for "TOOD", "FIXME"
             },
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
