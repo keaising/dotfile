@@ -60,6 +60,9 @@ xnoremap p P
 
 nnoremap <leader>x :silent !chmod +x %<CR>
 
+" select all
+nnoremap ga ggVG
+
 " move to line start/end
 noremap H ^
 noremap L $
@@ -129,7 +132,7 @@ xnoremap ga <Plug>(EasyAlign)
 " :'<,'>EasyAlign /regex/
 vnoremap gs :EasyAlign
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nnoremap ga <Plug>(EasyAlign)
+" nnoremap ga <Plug>(EasyAlign)
 
 " swap position for parameters
 nnoremap <leader>, :SidewaysLeft<cr>
