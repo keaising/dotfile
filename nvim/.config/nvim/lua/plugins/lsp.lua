@@ -24,7 +24,7 @@ local function on_attach(client, bufnr)
             col = entry.col,
             display = function(item)
                 return displayer({
-                    { item.lnum, "Aqua" },
+                    { item.lnum,                               "Aqua" },
                     { utils.transform_path({}, item.filename), "" },
                 })
             end,
@@ -65,7 +65,7 @@ local function on_attach(client, bufnr)
     local function lsp_formatting(buf)
         vim.lsp.buf.format({
             filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls" }, clt.name)
+                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "yamlls" }, clt.name)
             end,
             bufnr = buf,
         })
@@ -162,6 +162,18 @@ return {
                 on_attach = on_attach,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
+            lspconfig.yamlls.setup({
+                handlers = handlers,
+                on_attach = on_attach,
+                filetypes = { "yaml" },
+                settings = {
+                    yaml = {
+                        format = {
+                            enable = true,
+                        },
+                    },
+                },
+            })
 
             local signs = {
                 { name = "DiagnosticSignError", text = "" },
@@ -236,7 +248,7 @@ return {
                             "markdown",
                             "typescript",
                             "typescriptreact",
-                            "yaml",
+                            -- "yaml",
                         },
                     }),
                 },
