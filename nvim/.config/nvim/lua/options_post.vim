@@ -1,13 +1,13 @@
 " cSpell:disable
 
-set background=light
+" set background=dark
 
 " let g:sonokai_style = 'shusia'
 " colorscheme sonokai
 " colorscheme kanagawa-lotus
 
-let g:gruvbox_contrast_light = 'soft'
-colorscheme gruvbox
+let g:gruvbox_material_current_word = "underline"
+colorscheme gruvbox-material
 
 set termguicolors
 set t_Co=256             " 允许256色
