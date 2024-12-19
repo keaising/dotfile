@@ -7,6 +7,9 @@
 " colorscheme kanagawa-lotus
 
 let g:gruvbox_material_current_word = "underline"
+let g:gruvbox_material_background = 'medium'
+let g:gruvbox_material_enable_bold = 1
+let g:gruvbox_material_diagnostic_text_highlight = 1
 colorscheme gruvbox-material
 
 set termguicolors
