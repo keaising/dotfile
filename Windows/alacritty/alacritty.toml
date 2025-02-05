@@ -1,21 +1,33 @@
-shell = "Arch.exe"
+[terminal.shell]
+program = "Arch"
 
-[window]
-padding = { x = 3, y = 3 }
+[general]
+# import = ["gruvbox.toml"]
 
-[font]
-normal = { family = "Consolas Nerd Font", style = "Regular" }
-bold = { family = "Consolas Nerd Font", style = "Bold" }
-italic = { family = "Consolas Nerd Font", style = "Italic" }
-bold_italic = { family = "Consolas Nerd Font", style = "Bold Italic" }
-offset = { x = 1, y = 5 }
-
+[env]
+TERM = "screen-256color"
 
 [terminal]
 osc52 = "CopyPaste"
 
+[window]
+dimensions = { columns = 120, lines = 45 }
+padding = { x = 1, y = 1 }
+decorations = "full"
+dynamic_title = false
+# opacity = 0.9
+
+[font]
+# normal = { family = "Recursive Nerd Font", style = "Regular" }
+# size = 11
+# offset = { x = 1, y = 1 }
+normal = { family = "Consolas Nerd Font", style = "Regular" }
+# normal = { family = "IosevkaTaiga Nerd Font", style = "Regular" }
+size = 12
+offset = { x = 1, y = 1 }
+
 [keyboard]
 bindings = [
-    { key = "C", mods = "Alt", action = "Copy" },
-    { key = "V", mods = "Alt", action = "Paste" },
+    { action = "Paste", key = "V", mods = "Alt" },
+    { action = "Copy", key = "C", mods = "Alt" },
 ]
