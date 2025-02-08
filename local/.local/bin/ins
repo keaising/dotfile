@@ -11,17 +11,12 @@ function ins_nvim
     set -l VERSION nightly
     [ $argv[1] ] && set -l VERSION $argv[1]
 
-    if [ (uname) = Linux ]
-        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-linux64.tar.gz
-        tar -zxf nvim-linux64.tar.gz
-        rm nvim-linux64.tar.gz
-        mv nvim-linux64 ~/.local/bin/nvim
-    else
-        wget https://github.com/neovim/neovim/releases/download/$VERSION/nvim-macos-arm64.tar.gz
-        tar -zxf nvim-macos-arm64.tar.gz
-        rm nvim-macos-arm64.tar.gz
-        mv nvim-macos-arm64 ~/.local/bin/nvim
-    end
+    set -l NVIM_FILE nvim-linux-x86_64
+    [ (uname) != Linux ] && set -l NVIM_FILE nvim-macos-arm64
+    wget https://github.com/neovim/neovim/releases/download/$VERSION/$NVIM_FILE.tar.gz
+    tar -zxf $NVIM_FILE.tar.gz
+    rm $NVIM_FILE.tar.gz
+    mv $NVIM_FILE ~/.local/bin/nvim
 
     rm -r $WORKDIR
 
