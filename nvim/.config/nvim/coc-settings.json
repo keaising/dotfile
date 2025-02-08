@@ -7,7 +7,10 @@
     },
     "hint.enable": false
   },
-  "ruff.autoFixOnSave": true,
+  "ruff": {
+    "autoFixOnSave": true,
+    "nativeServer": true
+  },
   "git": {
     "addGBlameToVirtualText": true
   },

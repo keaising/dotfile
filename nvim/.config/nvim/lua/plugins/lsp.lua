@@ -114,7 +114,7 @@ return {
                     on_attach(client, bufnr)
                 end,
                 handlers = handlers,
-                init_options = {},
+                -- init_options = {},
             })
             lspconfig.pyright.setup({
                 on_attach = on_attach,
