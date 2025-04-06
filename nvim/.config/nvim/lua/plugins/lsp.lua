@@ -24,7 +24,7 @@ local function on_attach(client, bufnr)
             col = entry.col,
             display = function(item)
                 return displayer({
-                    { item.lnum,                               "Aqua" },
+                    { item.lnum, "Aqua" },
                     { utils.transform_path({}, item.filename), "" },
                 })
             end,
@@ -62,29 +62,29 @@ local function on_attach(client, bufnr)
     end, bufopts)
 
     -- format
-    local function lsp_formatting(buf)
-        vim.lsp.buf.format({
-            filter = function(clt)
-                return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "yamlls" }, clt.name)
-            end,
-            bufnr = buf,
-        })
-    end
-    local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-    if client.server_capabilities.documentFormattingProvider then
-        vim.keymap.set("n", "<leader>gn", function()
-            lsp_formatting(bufnr)
-        end, bufopts)
-        vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-        vim.api.nvim_create_autocmd("BufWritePre", {
-            buffer = bufnr,
-            group = group,
-            callback = function()
-                lsp_formatting(bufnr)
-            end,
-            desc = "[lsp] format on save",
-        })
-    end
+    -- local function lsp_formatting(buf)
+    --     vim.lsp.buf.format({
+    --         filter = function(clt)
+    --             return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "yamlls" }, clt.name)
+    --         end,
+    --         bufnr = buf,
+    --     })
+    -- end
+    -- local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+    -- if client.server_capabilities.documentFormattingProvider then
+    --     vim.keymap.set("n", "<leader>gn", function()
+    --         lsp_formatting(bufnr)
+    --     end, bufopts)
+    --     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+    --     vim.api.nvim_create_autocmd("BufWritePre", {
+    --         buffer = bufnr,
+    --         group = group,
+    --         callback = function()
+    --             lsp_formatting(bufnr)
+    --         end,
+    --         desc = "[lsp] format on save",
+    --     })
+    -- end
 end
 
 return {
@@ -114,7 +114,6 @@ return {
                     on_attach(client, bufnr)
                 end,
                 handlers = handlers,
-                -- init_options = {},
             })
             lspconfig.pyright.setup({
                 on_attach = on_attach,
@@ -132,13 +131,12 @@ return {
                     },
                 },
             })
-            lspconfig.bashls.setup({
-                handlers = handlers,
-                -- capabilities = capabilities,
-                on_attach = on_attach,
-                filetypes = { "sh", "zsh" },
-            })
-
+            -- lspconfig.bashls.setup({
+            --     handlers = handlers,
+            --     -- capabilities = capabilities,
+            --     on_attach = on_attach,
+            --     filetypes = { "sh", "zsh" },
+            -- })
             lspconfig.lua_ls.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
@@ -162,16 +160,16 @@ return {
                 on_attach = on_attach,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
-            lspconfig.yamlls.setup({
-                handlers = handlers,
-                on_attach = on_attach,
-                filetypes = { "yaml" },
-                settings = {
-                    yaml = {
-                        format = {
-                            enable = true,
-                        },
-                    },
+            lspconfig.typos_lsp.setup({
+                -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
+                cmd_env = { RUST_LOG = "error" },
+                -- root_dir = function(fname)
+                --     return require("lspconfig.util").root_pattern("typos.toml", "_typos.toml", ".typos.toml")(fname)
+                --         or vim.fn.getcwd()
+                -- end,
+                init_options = {
+                    config = "~/.config/nvim/typos.toml",
+                    diagnosticSeverity = "Error",
                 },
             })
 
@@ -181,82 +179,81 @@ return {
                 { name = "DiagnosticSignHint", text = "" },
                 { name = "DiagnosticSignInfo", text = "" },
             }
-
             for _, sign in ipairs(signs) do
                 vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
             end
         end,
     },
-    {
-        "nvimtools/none-ls.nvim",
-        -- "keaising/null-ls.nvim",
-        -- dir = "~/code/github.com/keaising/null-ls.nvim",
-        -- dev = true,
-        dependencies = "davidmh/cspell.nvim",
-        config = function()
-            local null_ls = require("null-ls")
-            local cspell = require("cspell")
-            local cspell_config = {
-                diagnostics_postprocess = function(diagnostic)
-                    diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
-                end,
-                config = {
-                    find_json = function(_)
-                        return vim.fn.expand("~/.config/nvim/cspell.json")
-                    end,
-                    on_success = function(cspell_config_file_path, params, action_name)
-                        if action_name == "add_to_json" then
-                            os.execute(
-                                string.format(
-                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                                    cspell_config_file_path,
-                                    cspell_config_file_path
-                                )
-                            )
-                        end
-                    end,
-                },
-            }
-            null_ls.setup({
-                sources = {
-                    null_ls.builtins.diagnostics.fish,
-                    null_ls.builtins.formatting.fish_indent,
-                    cspell.diagnostics.with(cspell_config),
-                    cspell.code_actions.with(cspell_config),
-                    null_ls.builtins.formatting.stylua.with({
-                        condition = function(utils)
-                            return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
-                        end,
-                    }),
-                    -- null_ls.builtins.diagnostics.selene.with({
-                    --     cwd = function(_)
-                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
-                    --         return vim.fs.dirname(
-                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
-                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
-                    --     end,
-                    -- }),
-                    null_ls.builtins.formatting.pg_format.with({
-                        extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
-                    }),
-                    null_ls.builtins.formatting.prettier.with({
-                        filetypes = {
-                            "css",
-                            "javascript",
-                            "javascriptreact",
-                            "json",
-                            "markdown",
-                            "typescript",
-                            "typescriptreact",
-                            -- "yaml",
-                        },
-                    }),
-                },
-                handlers = handlers,
-                on_attach = on_attach,
-            })
-        end,
-    },
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     -- "keaising/null-ls.nvim",
+    --     -- dir = "~/code/github.com/keaising/null-ls.nvim",
+    --     -- dev = true,
+    --     dependencies = "davidmh/cspell.nvim",
+    --     config = function()
+    --         local null_ls = require("null-ls")
+    --         local cspell = require("cspell")
+    --         local cspell_config = {
+    --             diagnostics_postprocess = function(diagnostic)
+    --                 diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+    --             end,
+    --             config = {
+    --                 find_json = function(_)
+    --                     return vim.fn.expand("~/.config/nvim/cspell.json")
+    --                 end,
+    --                 on_success = function(cspell_config_file_path, params, action_name)
+    --                     if action_name == "add_to_json" then
+    --                         os.execute(
+    --                             string.format(
+    --                                 "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+    --                                 cspell_config_file_path,
+    --                                 cspell_config_file_path
+    --                             )
+    --                         )
+    --                     end
+    --                 end,
+    --             },
+    --         }
+    --         null_ls.setup({
+    --             sources = {
+    --                 null_ls.builtins.diagnostics.fish,
+    --                 null_ls.builtins.formatting.fish_indent,
+    --                 cspell.diagnostics.with(cspell_config),
+    --                 cspell.code_actions.with(cspell_config),
+    --                 null_ls.builtins.formatting.stylua.with({
+    --                     condition = function(utils)
+    --                         return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
+    --                     end,
+    --                 }),
+    --                 -- null_ls.builtins.diagnostics.selene.with({
+    --                 --     cwd = function(_)
+    --                 --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
+    --                 --         return vim.fs.dirname(
+    --                 --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
+    --                 --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
+    --                 --     end,
+    --                 -- }),
+    --                 null_ls.builtins.formatting.pg_format.with({
+    --                     extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
+    --                 }),
+    --                 null_ls.builtins.formatting.prettier.with({
+    --                     filetypes = {
+    --                         "css",
+    --                         "javascript",
+    --                         "javascriptreact",
+    --                         "json",
+    --                         "markdown",
+    --                         "typescript",
+    --                         "typescriptreact",
+    --                         -- "yaml",
+    --                     },
+    --                 }),
+    --             },
+    --             handlers = handlers,
+    --             on_attach = on_attach,
+    --         })
+    --     end,
+    -- },
     {
         "VidocqH/lsp-lens.nvim",
         config = function()
@@ -300,6 +297,7 @@ return {
                     "pyright",
                     "terraformls",
                     "ts_ls",
+                    "typos_lsp",
                     "vimls",
                     "yamlls",
                 },

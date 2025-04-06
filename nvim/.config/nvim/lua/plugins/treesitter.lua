@@ -10,7 +10,7 @@ return {
             playground = {
                 enable = true,
                 disable = {},
-                updatetime = 25,         -- Debounced time for highlighting nodes in the playground from source code
+                updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
                 persist_queries = false, -- Whether the query persists across vim sessions
                 keybindings = {
                     toggle_query_editor = "o",
@@ -52,7 +52,7 @@ return {
                 -- "gomod",
                 "python",
                 "query",
-                "comment",       -- highlight for "TOOD", "FIXME"
+                "comment", -- highlight for "TODO", "FIXME"
             },
             ignore_install = {}, -- List of parsers to ignore installing
             highlight = {
