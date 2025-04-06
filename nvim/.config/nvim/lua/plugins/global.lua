@@ -15,14 +15,14 @@ return {
             })
         end,
     },
-    {
-        "keaising/textobj-backtick.nvim",
-        -- dir = "~/code/github.com/keaising/textobj-backtick.nvim",
-        -- dev = true,
-        config = function()
-            require("textobj-backtick").setup({})
-        end,
-    },
+    -- {
+    --     "keaising/textobj-backtick.nvim",
+    --     -- dir = "~/code/github.com/keaising/textobj-backtick.nvim",
+    --     -- dev = true,
+    --     config = function()
+    --         require("textobj-backtick").setup({})
+    --     end,
+    -- },
     {
         "keaising/startup.nvim",
         -- dir = "~/code/github.com/keaising/startup.nvim",
