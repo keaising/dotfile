@@ -161,12 +161,7 @@ return {
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
             lspconfig.typos_lsp.setup({
-                -- Logging level of the language server. Logs appear in :LspLog. Defaults to error.
                 cmd_env = { RUST_LOG = "error" },
-                -- root_dir = function(fname)
-                --     return require("lspconfig.util").root_pattern("typos.toml", "_typos.toml", ".typos.toml")(fname)
-                --         or vim.fn.getcwd()
-                -- end,
                 init_options = {
                     config = "~/.config/nvim/typos.toml",
                     diagnosticSeverity = "Error",

@@ -17,7 +17,6 @@ return {
                 ["<C-p>"] = { "select_prev", "fallback" },
                 ["<C-n>"] = { "select_next", "fallback" },
                 ["<Enter>"] = { "select_and_accept", "fallback" },
-
                 ["<Tab>"] = {
                     function(cmp)
                         if cmp.snippet_active() then
@@ -59,6 +58,18 @@ return {
             cmdline = {
                 completion = {
                     menu = { auto_show = true },
+                },
+                keymap = {
+                    ["<Enter>"] = {
+                        function(cmp)
+                            if cmp.snippet_active() then
+                                return cmp.accept()
+                            else
+                                return cmp.select_accept_and_enter()
+                            end
+                        end,
+                        "fallback",
+                    },
                 },
             },
         },
