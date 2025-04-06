@@ -160,14 +160,6 @@ return {
                 on_attach = on_attach,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
-            lspconfig.typos_lsp.setup({
-                cmd_env = { RUST_LOG = "error" },
-                init_options = {
-                    config = "~/.config/nvim/typos.toml",
-                    diagnosticSeverity = "Error",
-                },
-            })
-
             local signs = {
                 { name = "DiagnosticSignError", text = "" },
                 { name = "DiagnosticSignWarn", text = "" },
@@ -179,76 +171,66 @@ return {
             end
         end,
     },
-    -- {
-    --     "nvimtools/none-ls.nvim",
-    --     -- "keaising/null-ls.nvim",
-    --     -- dir = "~/code/github.com/keaising/null-ls.nvim",
-    --     -- dev = true,
-    --     dependencies = "davidmh/cspell.nvim",
-    --     config = function()
-    --         local null_ls = require("null-ls")
-    --         local cspell = require("cspell")
-    --         local cspell_config = {
-    --             diagnostics_postprocess = function(diagnostic)
-    --                 diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
-    --             end,
-    --             config = {
-    --                 find_json = function(_)
-    --                     return vim.fn.expand("~/.config/nvim/cspell.json")
-    --                 end,
-    --                 on_success = function(cspell_config_file_path, params, action_name)
-    --                     if action_name == "add_to_json" then
-    --                         os.execute(
-    --                             string.format(
-    --                                 "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-    --                                 cspell_config_file_path,
-    --                                 cspell_config_file_path
-    --                             )
-    --                         )
-    --                     end
-    --                 end,
-    --             },
-    --         }
-    --         null_ls.setup({
-    --             sources = {
-    --                 null_ls.builtins.diagnostics.fish,
-    --                 null_ls.builtins.formatting.fish_indent,
-    --                 cspell.diagnostics.with(cspell_config),
-    --                 cspell.code_actions.with(cspell_config),
-    --                 null_ls.builtins.formatting.stylua.with({
-    --                     condition = function(utils)
-    --                         return utils.root_has_file({ "stylua.toml", ".stylua.toml" })
-    --                     end,
-    --                 }),
-    --                 -- null_ls.builtins.diagnostics.selene.with({
-    --                 --     cwd = function(_)
-    --                 --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
-    --                 --         return vim.fs.dirname(
-    --                 --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
-    --                 --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
-    --                 --     end,
-    --                 -- }),
-    --                 null_ls.builtins.formatting.pg_format.with({
-    --                     extra_args = { "--keyword-case", "2", "--wrap-limit", "80" },
-    --                 }),
-    --                 null_ls.builtins.formatting.prettier.with({
-    --                     filetypes = {
-    --                         "css",
-    --                         "javascript",
-    --                         "javascriptreact",
-    --                         "json",
-    --                         "markdown",
-    --                         "typescript",
-    --                         "typescriptreact",
-    --                         -- "yaml",
-    --                     },
-    --                 }),
-    --             },
-    --             handlers = handlers,
-    --             on_attach = on_attach,
-    --         })
-    --     end,
-    -- },
+    {
+        "nvimtools/none-ls.nvim",
+        -- "keaising/null-ls.nvim",
+        -- dir = "~/code/github.com/keaising/null-ls.nvim",
+        -- dev = true,
+        dependencies = "davidmh/cspell.nvim",
+        config = function()
+            local null_ls = require("null-ls")
+            local cspell = require("cspell")
+            local cspell_config = {
+                diagnostics_postprocess = function(diagnostic)
+                    diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+                end,
+                config = {
+                    find_json = function(_)
+                        return vim.fn.expand("~/.config/nvim/cspell.json")
+                    end,
+                    on_success = function(cspell_config_file_path, params, action_name)
+                        if action_name == "add_to_json" then
+                            os.execute(
+                                string.format(
+                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                                    cspell_config_file_path,
+                                    cspell_config_file_path
+                                )
+                            )
+                        end
+                    end,
+                },
+            }
+            null_ls.setup({
+                sources = {
+                    cspell.diagnostics.with(cspell_config),
+                    cspell.code_actions.with(cspell_config),
+                    -- null_ls.builtins.diagnostics.selene.with({
+                    --     cwd = function(_)
+                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
+                    --         return vim.fs.dirname(
+                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
+                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
+                    --     end,
+                    -- }),
+                    -- null_ls.builtins.formatting.prettier.with({
+                    --     filetypes = {
+                    --         "css",
+                    --         "javascript",
+                    --         "javascriptreact",
+                    --         "json",
+                    --         "markdown",
+                    --         "typescript",
+                    --         "typescriptreact",
+                    --         -- "yaml",
+                    --     },
+                    -- }),
+                },
+                handlers = handlers,
+                on_attach = on_attach,
+            })
+        end,
+    },
     {
         "VidocqH/lsp-lens.nvim",
         config = function()
@@ -313,6 +295,7 @@ return {
                     "selene",
                     "shfmt",
                     "stylua",
+                    "isort",
                 },
             })
         end,
