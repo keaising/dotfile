@@ -296,6 +296,8 @@ return {
                     "shfmt",
                     "stylua",
                     "isort",
+                    "yamllint",
+                    "eslint_d",
                 },
             })
         end,

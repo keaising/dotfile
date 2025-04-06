@@ -6,9 +6,11 @@ return {
         config = function()
             local lint = require("lint")
             lint.linters_by_ft = {
-                javascript = { "eslint_d" },
                 fish = { "fish" },
                 lua = { "selene" },
+                python = { "ruff" },
+                go = { "gofmt", "golines", "goimports" },
+                yaml = { "yamllint" },
             }
         end,
     },
@@ -50,7 +52,6 @@ return {
             format_on_save = {
                 timeout_ms = 500,
                 lsp_fallback = true,
-                async = true,
             },
             formatters = {
                 shfmt = {
