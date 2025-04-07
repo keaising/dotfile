@@ -5,7 +5,6 @@ local handlers = {
 }
 
 local function on_attach(client, bufnr)
-    -- mappings.
     local utils = require("telescope.utils")
     local entry_display = require("telescope.pickers.entry_display")
     local displayer = entry_display.create({
@@ -60,31 +59,6 @@ local function on_attach(client, bufnr)
     vim.keymap.set("n", "<m-j>", function()
         vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, bufopts)
-
-    -- format
-    -- local function lsp_formatting(buf)
-    --     vim.lsp.buf.format({
-    --         filter = function(clt)
-    --             return vim.tbl_contains({ "null-ls", "gopls", "lua_ls", "yamlls" }, clt.name)
-    --         end,
-    --         bufnr = buf,
-    --     })
-    -- end
-    -- local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-    -- if client.server_capabilities.documentFormattingProvider then
-    --     vim.keymap.set("n", "<leader>gn", function()
-    --         lsp_formatting(bufnr)
-    --     end, bufopts)
-    --     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-    --     vim.api.nvim_create_autocmd("BufWritePre", {
-    --         buffer = bufnr,
-    --         group = group,
-    --         callback = function()
-    --             lsp_formatting(bufnr)
-    --         end,
-    --         desc = "[lsp] format on save",
-    --     })
-    -- end
 end
 
 return {
@@ -120,23 +94,15 @@ return {
                 handlers = handlers,
                 settings = {
                     pyright = {
-                        -- Using Ruff's import organizer
                         disableOrganizeImports = true,
                     },
                     python = {
                         analysis = {
-                            -- Ignore all files for analysis to exclusively use Ruff for linting
                             ignore = { "*", "*/*" },
                         },
                     },
                 },
             })
-            -- lspconfig.bashls.setup({
-            --     handlers = handlers,
-            --     -- capabilities = capabilities,
-            --     on_attach = on_attach,
-            --     filetypes = { "sh", "zsh" },
-            -- })
             lspconfig.lua_ls.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
@@ -160,32 +126,6 @@ return {
                 on_attach = on_attach,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
-            -- local signs = {
-            --     { name = "DiagnosticSignError", text = "" },
-            --     { name = "DiagnosticSignWarn", text = "" },
-            --     { name = "DiagnosticSignHint", text = "" },
-            --     { name = "DiagnosticSignInfo", text = "" },
-            -- }
-            -- for _, sign in ipairs(signs) do
-            --     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-            -- end
-            -- vim.diagnostic.config({
-            --     virtual_text = false,
-            --     signs = {
-            --         text = {
-            --             [vim.diagnostic.severity.ERROR] = "",
-            --             [vim.diagnostic.severity.WARN] = "",
-            --             [vim.diagnostic.severity.HINT] = "",
-            --             [vim.diagnostic.severity.INFO] = "",
-            --         },
-            --         linehl = {
-            --             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-            --         },
-            --         numhl = {
-            --             [vim.diagnostic.severity.WARN] = "WarningMsg",
-            --         },
-            --     },
-            -- })
         end,
     },
     {
@@ -199,7 +139,7 @@ return {
             local cspell = require("cspell")
             local cspell_config = {
                 diagnostics_postprocess = function(diagnostic)
-                    diagnostic.severity = vim.diagnostic.severity["HINT"] -- ERROR, WARN, INFO, HINT
+                    diagnostic.severity = vim.diagnostic.severity["HINT"]
                 end,
                 config = {
                     find_json = function(_)
@@ -222,26 +162,6 @@ return {
                 sources = {
                     cspell.diagnostics.with(cspell_config),
                     cspell.code_actions.with(cspell_config),
-                    -- null_ls.builtins.diagnostics.selene.with({
-                    --     cwd = function(_)
-                    --         -- https://github.com/Kampfkarren/selene/issues/339#issuecomment-1191992366
-                    --         return vim.fs.dirname(
-                    --             vim.fs.find({ "selene.toml" }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1]
-                    --         ) or vim.fn.expand("~/.config/selene/") -- fallback value
-                    --     end,
-                    -- }),
-                    -- null_ls.builtins.formatting.prettier.with({
-                    --     filetypes = {
-                    --         "css",
-                    --         "javascript",
-                    --         "javascriptreact",
-                    --         "json",
-                    --         "markdown",
-                    --         "typescript",
-                    --         "typescriptreact",
-                    --         -- "yaml",
-                    --     },
-                    -- }),
                 },
                 handlers = handlers,
                 on_attach = on_attach,
@@ -287,14 +207,8 @@ return {
                         [vim.diagnostic.severity.HINT] = "",
                         [vim.diagnostic.severity.INFO] = "",
                     },
-                    -- linehl = {
-                    --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
-                    -- },
-                    -- numhl = {
-                    --     [vim.diagnostic.severity.WARN] = "WarningMsg",
-                    -- },
                 },
-            }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+            })
         end,
     },
     {
