@@ -160,15 +160,32 @@ return {
                 on_attach = on_attach,
                 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
-            local signs = {
-                { name = "DiagnosticSignError", text = "" },
-                { name = "DiagnosticSignWarn", text = "" },
-                { name = "DiagnosticSignHint", text = "" },
-                { name = "DiagnosticSignInfo", text = "" },
-            }
-            for _, sign in ipairs(signs) do
-                vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
-            end
+            -- local signs = {
+            --     { name = "DiagnosticSignError", text = "" },
+            --     { name = "DiagnosticSignWarn", text = "" },
+            --     { name = "DiagnosticSignHint", text = "" },
+            --     { name = "DiagnosticSignInfo", text = "" },
+            -- }
+            -- for _, sign in ipairs(signs) do
+            --     vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+            -- end
+            -- vim.diagnostic.config({
+            --     virtual_text = false,
+            --     signs = {
+            --         text = {
+            --             [vim.diagnostic.severity.ERROR] = "",
+            --             [vim.diagnostic.severity.WARN] = "",
+            --             [vim.diagnostic.severity.HINT] = "",
+            --             [vim.diagnostic.severity.INFO] = "",
+            --         },
+            --         linehl = {
+            --             [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            --         },
+            --         numhl = {
+            --             [vim.diagnostic.severity.WARN] = "WarningMsg",
+            --         },
+            --     },
+            -- })
         end,
     },
     {
@@ -240,6 +257,44 @@ return {
                     git_authors = false,
                 },
             })
+        end,
+    },
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup({
+                preset = "ghost",
+                -- preset = "minimal",
+                signs = {
+                    left = "",
+                    right = "",
+                    diag = "",
+                    arrow = "",
+                    vertical_end = "",
+                },
+                options = {
+                    show_source = true,
+                },
+            })
+            vim.diagnostic.config({
+                virtual_text = false,
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.HINT] = "",
+                        [vim.diagnostic.severity.INFO] = "",
+                    },
+                    -- linehl = {
+                    --     [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+                    -- },
+                    -- numhl = {
+                    --     [vim.diagnostic.severity.WARN] = "WarningMsg",
+                    -- },
+                },
+            }) -- Only if needed in your configuration, if you already have native LSP diagnostics
         end,
     },
     {
