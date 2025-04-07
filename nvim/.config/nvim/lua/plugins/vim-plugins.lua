@@ -1,11 +1,5 @@
 return {
-    -- {
-    --     "kana/vim-textobj-user",
-    --     priority = 100,
-    -- },
-    -- "fvictorio/vim-textobj-backticks",
     "voldikss/vim-floaterm",
-    -- "sbdchd/neoformat",
     {
         "junegunn/vim-easy-align",
         lazy = false,
