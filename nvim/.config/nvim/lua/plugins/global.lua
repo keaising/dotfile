@@ -27,6 +27,7 @@ return {
         "keaising/startup.nvim",
         -- dir = "~/code/github.com/keaising/startup.nvim",
         -- dev = true,
+        dependencies = { "nvim-neo-tree/neo-tree.nvim" },
         config = function()
             require("startup").setup({})
         end,

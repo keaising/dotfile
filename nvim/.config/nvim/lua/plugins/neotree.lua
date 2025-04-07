@@ -1,23 +1,27 @@
 return {
     {
         "nvim-neo-tree/neo-tree.nvim",
-        branch = "v2.x",
-        lazy = false,
+        branch = "v3.x",
         priority = 1000,
-        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+        lazy = false,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
         keys = {
             { "<C-n>", "<cmd>Neotree toggle<CR>", mode = "n", silent = true },
             { "<C-b>", "<cmd>Neotree buffers<CR>", mode = "n", silent = true },
         },
         config = function()
             require("neo-tree").setup({
-                close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+                close_if_last_window = true,
                 window = {
                     mappings = {
                         ["<space>"] = "none",
                         ["o"] = "open",
                         ["c"] = "close_node",
-                        ["<A-a>"] = "add_directory", -- also accepts the optional config.show_path option like "add".
+                        ["<A-a>"] = "add_directory",
                     },
                 },
                 filesystem = {
@@ -26,10 +30,7 @@ return {
                         hide_by_name = {
                             "node_modules",
                         },
-                        hide_by_pattern = { -- uses glob style patterns
-                            --"*.meta"
-                        },
-                        never_show = { -- remains hidden even if visible is toggled to true
+                        never_show = {
                             ".DS_Store",
                             "thumbs.db",
                         },
@@ -41,7 +42,9 @@ return {
                             ["<c-n>"] = "next_git_modified",
                         },
                     },
-                    follow_current_file = true,
+                    follow_current_file = {
+                        enabled = true,
+                    },
                 },
             })
         end,
