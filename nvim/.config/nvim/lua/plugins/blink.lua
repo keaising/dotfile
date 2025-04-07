@@ -11,7 +11,6 @@ return {
                 ["<C-b>"] = { "scroll_documentation_up" },
                 ["<C-f>"] = { "scroll_documentation_down" },
                 ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
-
                 ["<Up>"] = { "select_prev", "fallback" },
                 ["<Down>"] = { "select_next", "fallback" },
                 ["<C-p>"] = { "select_prev", "fallback" },
@@ -30,7 +29,6 @@ return {
                 },
                 ["<S-Tab>"] = { "snippet_backward", "fallback" },
             },
-
             completion = {
                 documentation = { auto_show = true },
             },
@@ -50,7 +48,6 @@ return {
             fuzzy = {
                 sorts = {
                     "exact",
-                    -- defaults
                     "score",
                     "sort_text",
                 },
