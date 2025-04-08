@@ -67,6 +67,7 @@ return {
                         end,
                         "fallback",
                     },
+                    ["<C-f>"] = { "accept" },
                 },
             },
         },
