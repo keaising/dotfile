@@ -1,8 +1,24 @@
 -- cSpell:disable
-local handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
-}
+local handlers = {}
+
+local signature_help = vim.lsp.buf.signature_help
+vim.lsp.buf.signature_help = function()
+    return signature_help({
+        border = vim.g.border_style,
+        focusable = false,
+        max_height = math.floor(vim.o.lines * 0.5),
+        max_width = math.floor(vim.o.columns * 0.4),
+    })
+end
+
+local hover = vim.lsp.buf.hover
+vim.lsp.buf.hover = function()
+    return hover({
+        border = vim.g.border_style,
+        max_height = math.floor(vim.o.lines * 0.5),
+        max_width = math.floor(vim.o.columns * 0.4),
+    })
+end
 
 local function on_attach(client, bufnr)
     local utils = require("telescope.utils")
