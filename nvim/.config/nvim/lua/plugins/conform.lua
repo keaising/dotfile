@@ -35,7 +35,7 @@ return {
                 lua = { "stylua" },
                 bash = { "shfmt" },
                 python = { "isort", "ruff_organize_imports", "ruff_format" },
-                go = { "goimports", "gofmt", "golines" },
+                go = { "gosimports", "gofmt", "golines" },
                 sql = { "pg_format" },
                 fish = { "fish_indent" },
                 css = { "prettierd", "prettier", stop_after_first = true },
