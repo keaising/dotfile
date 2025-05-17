@@ -75,6 +75,7 @@ return {
         config = function()
             local fzf = require("fzf-lua")
             fzf.setup({
+                "hide",
                 winopts = {
                     row = 1,
                     height = 0.62,
