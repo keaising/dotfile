@@ -5,6 +5,7 @@ local rg_opts = table.concat({
     "--color=always",
     "--smart-case",
     "--max-columns=4096",
+    "-j1",
     "--hidden",
     "-g '!{.git,node_modules}/'",
     "--fixed-strings",
@@ -28,8 +29,7 @@ return {
                 function()
                     require("fzf-lua").live_grep({
                         rg_opts = rg_opts,
-                        -- previewer = false,
-                        multiline = 2,
+                        multiline = 1,
                     })
                 end,
             },
@@ -68,7 +68,7 @@ return {
             {
                 "<leader>gw",
                 function()
-                    require("fzf-lua").grep_cword({ rg_opts = rg_opts })
+                    require("fzf-lua").grep_cword()
                 end,
             },
         },
@@ -83,10 +83,18 @@ return {
                     preview = {
                         border = "single",
                         horizontal = "right:45%",
+                        wrap = true,
                     },
                     border = "single",
                 },
                 fzf_opts = { ["--cycle"] = true },
+                lsp = {
+                    jump1 = true,
+                    includeDeclaration = false,
+                    ignore_current_line = true,
+                    unique_line_items = true,
+                    code_actions = { previewer = "codeaction_native" },
+                },
             })
         end,
     },

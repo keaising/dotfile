@@ -1,3 +1,4 @@
+---@diagnostic disable: duplicate-set-field
 -- cSpell:disable
 local handlers = {}
 
@@ -21,56 +22,28 @@ vim.lsp.buf.hover = function()
 end
 
 local function on_attach(client, bufnr)
-    local utils = require("telescope.utils")
-    local entry_display = require("telescope.pickers.entry_display")
-    local displayer = entry_display.create({
-        separator = " ",
-        items = {
-            { width = 4 },
-            { width = nil },
-        },
-    })
-    local function make_entry(entry)
-        return {
-            value = entry.filename,
-            filename = entry.filename,
-            ordinal = utils.transform_path({}, entry.filename),
-            lnum = entry.lnum,
-            col = entry.col,
-            display = function(item)
-                return displayer({
-                    { item.lnum, "Aqua" },
-                    { utils.transform_path({}, item.filename), "" },
-                })
-            end,
-        }
-    end
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set("n", "<m-b>", function()
-        require("telescope.builtin").lsp_definitions()
+        require("fzf-lua").lsp_definitions()
     end, bufopts)
     vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "gi", function()
-        require("telescope.builtin").lsp_implementations({
-            show_line = false,
-            entry_maker = make_entry,
-        })
+        require("fzf-lua").lsp_implementations({ show_line = false, multiline = 1 })
     end, bufopts)
     -- vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
     vim.keymap.set("n", "<m-k>", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set("n", "<leader>ca", function()
+        require("fzf-lua").lsp_code_actions({ previewer = false })
+    end, bufopts)
     vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
     vim.keymap.set("n", "`", vim.diagnostic.open_float, bufopts)
     vim.keymap.set("n", "gr", function()
-        require("telescope.builtin").lsp_references({
-            include_current_line = false,
-            entry_maker = make_entry,
-        })
+        require("fzf-lua").lsp_references({ include_current_line = false, multiline = 1 })
     end, bufopts)
     vim.keymap.set("n", "<leader>ls", function()
-        require("telescope.builtin").lsp_document_symbols()
+        require("fzf-lua").lsp_document_symbols()
     end, bufopts)
     vim.keymap.set("n", "<m-j>", function()
         vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
@@ -136,11 +109,6 @@ return {
                         },
                     },
                 },
-            })
-            lspconfig.ts_ls.setup({
-                handlers = handlers,
-                on_attach = on_attach,
-                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
             })
         end,
     },
