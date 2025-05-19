@@ -74,6 +74,7 @@ return {
         },
         config = function()
             local fzf = require("fzf-lua")
+            fzf.register_ui_select()
             fzf.setup({
                 "hide",
                 winopts = {
@@ -87,7 +88,10 @@ return {
                     },
                     border = "single",
                 },
-                fzf_opts = { ["--cycle"] = true },
+                fzf_opts = {
+                    ["--cycle"] = true,
+                    ["--no-scrollbar"] = true,
+                },
                 lsp = {
                     jump1 = true,
                     includeDeclaration = false,
