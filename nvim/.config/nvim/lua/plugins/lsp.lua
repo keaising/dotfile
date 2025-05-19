@@ -124,11 +124,11 @@ return {
                     },
                 },
             })
-            lspconfig.ts_ls.setup({
-                handlers = handlers,
-                on_attach = on_attach,
-                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            })
+            -- lspconfig.ts_ls.setup({
+            --     handlers = handlers,
+            --     on_attach = on_attach,
+            --     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            -- })
             lspconfig.biome.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
