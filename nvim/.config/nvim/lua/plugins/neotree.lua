@@ -49,4 +49,31 @@ return {
             })
         end,
     },
+    {
+        "hedyhli/outline.nvim",
+        lazy = true,
+        cmd = { "Outline", "OutlineOpen" },
+        keys = {
+            { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+        },
+        config = function()
+            require("outline").setup({
+                outline_window = {
+                    auto_jump = true,
+                },
+                keymaps = {
+                    fold = "c", -- close
+                    unfold = "o", -- open
+                },
+                outline_items = {
+                    show_symbol_lineno = true,
+                },
+                symbols = {
+                    icon_fetcher = function()
+                        return ""
+                    end,
+                },
+            })
+        end,
+    },
 }
