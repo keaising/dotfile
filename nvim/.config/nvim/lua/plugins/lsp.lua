@@ -23,29 +23,45 @@ end
 
 local function on_attach(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "<m-b>", function()
-        require("fzf-lua").lsp_definitions()
+    local fzf = require("fzf-lua")
+    local k = vim.keymap.set
+    k("n", "<m-b>", function()
+        fzf.lsp_definitions({
+            jump1 = true,
+            ignore_current_line = true,
+        })
     end, bufopts)
-    vim.keymap.set("n", "gh", vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "gi", function()
-        require("fzf-lua").lsp_implementations({ show_line = false, multiline = 1 })
+    k("n", "gh", vim.lsp.buf.hover, bufopts)
+    k("n", "gi", function()
+        fzf.lsp_implementations({
+            jump1 = true,
+            ignore_current_line = true,
+            show_line = false,
+            multiline = 1,
+        })
     end, bufopts)
     -- vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
-    vim.keymap.set("n", "<m-k>", function()
+    k("n", "<m-k>", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    vim.keymap.set("n", "<leader>ca", function()
-        require("fzf-lua").lsp_code_actions({ previewer = false })
+    k("n", "<leader>ca", function()
+        fzf.lsp_code_actions({ previewer = false })
     end, bufopts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
-    vim.keymap.set("n", "`", vim.diagnostic.open_float, bufopts)
-    vim.keymap.set("n", "gr", function()
-        require("fzf-lua").lsp_references({ include_current_line = false, multiline = 1 })
+    -- k("n", "K", vim.lsp.buf.hover, bufopts)
+    k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
+    k("n", "`", vim.diagnostic.open_float, bufopts)
+    k("n", "gr", function()
+        fzf.lsp_references({
+            jump1 = true,
+            ignore_current_line = true,
+            include_current_line = false,
+            multiline = 1,
+        })
     end, bufopts)
-    vim.keymap.set("n", "<leader>ls", function()
-        require("fzf-lua").lsp_document_symbols()
+    k("n", "<leader>ls", function()
+        fzf.lsp_document_symbols()
     end, bufopts)
-    vim.keymap.set("n", "<m-j>", function()
+    k("n", "<m-j>", function()
         vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
     end, bufopts)
 end
@@ -110,6 +126,17 @@ return {
                     },
                 },
             })
+            lspconfig.ts_ls.setup({
+                handlers = handlers,
+                on_attach = on_attach,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            })
+            lspconfig.biome.setup({
+                handlers = handlers,
+                on_attach = function(client, bufnr)
+                    on_attach(client, bufnr)
+                end,
+            })
         end,
     },
     {
@@ -162,6 +189,28 @@ return {
                 },
             })
         end,
+    },
+    -- {
+    --     "pmizio/typescript-tools.nvim",
+    --     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    --     enabled = false,
+    --     config = function()
+    --         require("typescript-tools").setup({
+    --             handlers = handlers,
+    --             on_attach = function(client, bufnr)
+    --                 on_attach(client, bufnr)
+    --             end,
+    --             settings = {
+    --                 expose_as_code_action = { "all" },
+    --                 code_lens = "all",
+    --             },
+    --         })
+    --     end,
+    -- },
+    {
+        "Fildo7525/pretty_hover",
+        event = "LspAttach",
+        opts = {},
     },
     {
         "rachartier/tiny-inline-diagnostic.nvim",
@@ -240,6 +289,7 @@ return {
         config = function()
             require("mason-tool-installer").setup({
                 ensure_installed = {
+                    "biome",
                     "black",
                     "cspell",
                     "jq",

@@ -1,3 +1,8 @@
+local biome = {
+    "biome",
+    "biome-check",
+    "biome-organize-imports",
+}
 return {
     {
         -- := vim.bo.filetype
@@ -38,13 +43,13 @@ return {
                 go = { "gosimports", "gofmt", "golines" },
                 sql = { "pg_format" },
                 fish = { "fish_indent" },
-                css = { "prettierd", "prettier", stop_after_first = true },
-                javascript = { "prettierd", "prettier", stop_after_first = true },
-                javascriptreact = { "prettierd", "prettier", stop_after_first = true },
-                json = { "prettierd", "prettier", stop_after_first = true },
+                css = biome,
+                javascript = biome,
+                javascriptreact = biome,
+                json = biome,
                 markdown = { "prettierd", "prettier", stop_after_first = true },
-                typescript = { "prettierd", "prettier", stop_after_first = true },
-                typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+                typescript = biome,
+                typescriptreact = biome,
             },
             default_format_opts = {
                 lsp_format = "fallback",
