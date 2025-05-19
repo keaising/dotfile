@@ -1,7 +1,7 @@
 local biome = {
     "biome",
     "biome-check",
-    "biome-organize-imports",
+    -- "biome-organize-imports",
 }
 return {
     {

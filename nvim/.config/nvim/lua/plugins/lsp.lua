@@ -25,12 +25,12 @@ local function on_attach(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     local fzf = require("fzf-lua")
     local k = vim.keymap.set
-    k("n", "<m-b>", function()
-        fzf.lsp_definitions({
-            jump1 = true,
-            ignore_current_line = true,
-        })
-    end, bufopts)
+    -- k("n", "<m-b>", function()
+    --     fzf.lsp_definitions({
+    --         jump1 = true,
+    --         ignore_current_line = true,
+    --     })
+    -- end, bufopts)
     k("n", "gh", vim.lsp.buf.hover, bufopts)
     k("n", "gi", function()
         fzf.lsp_implementations({
@@ -40,14 +40,12 @@ local function on_attach(client, bufnr)
             multiline = 1,
         })
     end, bufopts)
-    -- vim.keymap.set("n", "<m-k>", vim.lsp.buf.rename, bufopts)
-    k("n", "<m-k>", function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-    end, { expr = true, noremap = true, silent = true, buffer = bufnr })
+    -- k("n", "<m-k>", function()
+    --     return ":IncRename " .. vim.fn.expand("<cword>")
+    -- end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     k("n", "<leader>ca", function()
         fzf.lsp_code_actions({ previewer = false })
     end, bufopts)
-    -- k("n", "K", vim.lsp.buf.hover, bufopts)
     k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
     k("n", "`", vim.diagnostic.open_float, bufopts)
     k("n", "gr", function()
@@ -158,13 +156,16 @@ return {
                     end,
                     on_success = function(cspell_config_file_path, params, action_name)
                         if action_name == "add_to_json" then
-                            os.execute(
-                                string.format(
-                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                                    cspell_config_file_path,
-                                    cspell_config_file_path
-                                )
-                            )
+                            os.execute(string.format(
+                                "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                                -- table.concat({
+                                --     "cat %s | jq -S '.words |= sort' > /tmp/temp_cspell.json",
+                                --     -- "biome format /tmp/temp_cspell.json --write",
+                                --     "cat /tmp/temp_cspell.json > %s",
+                                -- }, " && "),
+                                cspell_config_file_path,
+                                cspell_config_file_path
+                            ))
                         end
                     end,
                 },
@@ -212,38 +213,38 @@ return {
         event = "LspAttach",
         opts = {},
     },
-    {
-        "rachartier/tiny-inline-diagnostic.nvim",
-        event = "VeryLazy",
-        priority = 1000,
-        config = function()
-            require("tiny-inline-diagnostic").setup({
-                preset = "ghost",
-                -- preset = "minimal",
-                signs = {
-                    left = "",
-                    right = "",
-                    diag = "",
-                    arrow = "",
-                    vertical_end = "",
-                },
-                options = {
-                    show_source = true,
-                },
-            })
-            vim.diagnostic.config({
-                virtual_text = false,
-                signs = {
-                    text = {
-                        [vim.diagnostic.severity.ERROR] = "",
-                        [vim.diagnostic.severity.WARN] = "",
-                        [vim.diagnostic.severity.HINT] = "",
-                        [vim.diagnostic.severity.INFO] = "",
-                    },
-                },
-            })
-        end,
-    },
+    -- {
+    --     "rachartier/tiny-inline-diagnostic.nvim",
+    --     event = "VeryLazy",
+    --     priority = 1000,
+    --     config = function()
+    --         require("tiny-inline-diagnostic").setup({
+    --             preset = "ghost",
+    --             -- preset = "minimal",
+    --             signs = {
+    --                 left = "",
+    --                 right = "",
+    --                 diag = "",
+    --                 arrow = "",
+    --                 vertical_end = "",
+    --             },
+    --             options = {
+    --                 show_source = true,
+    --             },
+    --         })
+    --         vim.diagnostic.config({
+    --             virtual_text = false,
+    --             signs = {
+    --                 text = {
+    --                     [vim.diagnostic.severity.ERROR] = "",
+    --                     [vim.diagnostic.severity.WARN] = "",
+    --                     [vim.diagnostic.severity.HINT] = "",
+    --                     [vim.diagnostic.severity.INFO] = "",
+    --                 },
+    --             },
+    --         })
+    --     end,
+    -- },
     {
         "j-hui/fidget.nvim",
         branch = "legacy",
