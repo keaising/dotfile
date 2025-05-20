@@ -25,19 +25,20 @@ local function on_attach(client, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     local fzf = require("fzf-lua")
     local k = vim.keymap.set
-    -- k("n", "<m-b>", function()
-    --     fzf.lsp_definitions({
-    --         jump1 = true,
-    --         ignore_current_line = true,
-    --     })
-    -- end, bufopts)
+    k("n", "<m-b>", function()
+        fzf.lsp_definitions({
+            jump1 = true,
+            ignore_current_line = true,
+            multiline = 2,
+        })
+    end, bufopts)
     k("n", "gh", vim.lsp.buf.hover, bufopts)
     k("n", "gi", function()
         fzf.lsp_implementations({
             jump1 = true,
             ignore_current_line = true,
             show_line = false,
-            multiline = 1,
+            multiline = 2,
         })
     end, bufopts)
     -- k("n", "<m-k>", function()
@@ -53,7 +54,7 @@ local function on_attach(client, bufnr)
             jump1 = true,
             ignore_current_line = true,
             include_current_line = false,
-            multiline = 1,
+            multiline = 2,
         })
     end, bufopts)
     k("n", "<leader>ls", function()
@@ -213,38 +214,38 @@ return {
         event = "LspAttach",
         opts = {},
     },
-    -- {
-    --     "rachartier/tiny-inline-diagnostic.nvim",
-    --     event = "VeryLazy",
-    --     priority = 1000,
-    --     config = function()
-    --         require("tiny-inline-diagnostic").setup({
-    --             preset = "ghost",
-    --             -- preset = "minimal",
-    --             signs = {
-    --                 left = "",
-    --                 right = "",
-    --                 diag = "",
-    --                 arrow = "",
-    --                 vertical_end = "",
-    --             },
-    --             options = {
-    --                 show_source = true,
-    --             },
-    --         })
-    --         vim.diagnostic.config({
-    --             virtual_text = false,
-    --             signs = {
-    --                 text = {
-    --                     [vim.diagnostic.severity.ERROR] = "",
-    --                     [vim.diagnostic.severity.WARN] = "",
-    --                     [vim.diagnostic.severity.HINT] = "",
-    --                     [vim.diagnostic.severity.INFO] = "",
-    --                 },
-    --             },
-    --         })
-    --     end,
-    -- },
+    {
+        "rachartier/tiny-inline-diagnostic.nvim",
+        event = "VeryLazy",
+        priority = 1000,
+        config = function()
+            require("tiny-inline-diagnostic").setup({
+                preset = "ghost",
+                -- preset = "minimal",
+                signs = {
+                    left = "",
+                    right = "",
+                    diag = "",
+                    arrow = "",
+                    vertical_end = "",
+                },
+                options = {
+                    show_source = true,
+                },
+            })
+            vim.diagnostic.config({
+                virtual_text = false,
+                signs = {
+                    text = {
+                        [vim.diagnostic.severity.ERROR] = "",
+                        [vim.diagnostic.severity.WARN] = "",
+                        [vim.diagnostic.severity.HINT] = "",
+                        [vim.diagnostic.severity.INFO] = "",
+                    },
+                },
+            })
+        end,
+    },
     {
         "j-hui/fidget.nvim",
         branch = "legacy",
@@ -277,7 +278,7 @@ return {
                     "pyright",
                     "terraformls",
                     "ts_ls",
-                    "typos_lsp",
+                    -- "typos_lsp",
                     "vimls",
                     "yamlls",
                 },

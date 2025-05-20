@@ -3,7 +3,7 @@
 	"Lua": {
 		"workspace": {
 			"checkThirdParty": false,
-			"library": ["${3rd}/luv/libray"]
+			"library": ["${3rd}/luv/library"]
 		},
 		"hint.enable": false
 	},
@@ -28,6 +28,7 @@
 		}
 	},
 	"diagnostic": {
+		"enable": false,
 		"errorSign": "",
 		"warningSign": "",
 		"infoSign": "",

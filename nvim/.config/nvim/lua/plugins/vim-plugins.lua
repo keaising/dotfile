@@ -29,4 +29,5 @@ return {
     },
     "svban/YankAssassin.vim",
     "AndrewRadev/sideways.vim",
+    "prisma/vim-prisma",
 }

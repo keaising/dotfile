@@ -71,8 +71,7 @@ return {
         -- Apply codeAction to the selected region
         -- Example: `<leader>aap` for current paragraph
         local opts2 = { silent = true, nowait = true }
-        -- keyset("n", "<leader>ca", "<Plug>(coc-codeaction-line)", opts2)
-        keyset("n", "<m-b>", "<Plug>(coc-definition)", { silent = true })
+        -- keyset("n", "<m-b>", "<Plug>(coc-definition)", { silent = true })
         keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
         keyset("n", "<m-k>", "<Plug>(coc-rename)", { silent = true })
         keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })

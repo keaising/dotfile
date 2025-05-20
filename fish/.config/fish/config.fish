@@ -92,6 +92,7 @@ set -Ux LANG "en_US.UTF-8"
 set -Ux LC_CTYPE "en_US.UTF-8"
 set -Ux LC_ALL "en_US.UTF-8"
 set -Ux GPG_TTY (tty)
+set -Ux MISE_ENV_FILE ".env"
 # for tmux in wezterm, kitty
 # set -x TERM "screen-256color"
 
