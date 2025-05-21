@@ -29,7 +29,7 @@ return {
                 function()
                     require("fzf-lua").live_grep({
                         rg_opts = rg_opts,
-                        multiline = 1,
+                        multiline = 2,
                     })
                 end,
             },
@@ -56,13 +56,17 @@ return {
             {
                 "<leader>dd",
                 function()
-                    require("fzf-lua").diagnostics_document()
+                    require("fzf-lua").diagnostics_document({
+                        multiline = 2,
+                    })
                 end,
             },
             {
                 "<leader>dw",
                 function()
-                    require("fzf-lua").diagnostics_workspace()
+                    require("fzf-lua").diagnostics_workspace({
+                        multiline = 2,
+                    })
                 end,
             },
             {

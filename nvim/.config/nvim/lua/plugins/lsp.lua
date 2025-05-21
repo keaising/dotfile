@@ -61,7 +61,13 @@ local function on_attach(client, bufnr)
         fzf.lsp_document_symbols()
     end, bufopts)
     k("n", "<m-j>", function()
-        vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+        vim.diagnostic.jump({
+            count = 1,
+            severity = {
+                vim.diagnostic.severity.ERROR,
+                vim.diagnostic.severity.WARN,
+            },
+        })
     end, bufopts)
 end
 
