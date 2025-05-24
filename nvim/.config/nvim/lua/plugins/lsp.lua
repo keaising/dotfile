@@ -74,6 +74,7 @@ end
 return {
     {
         "neovim/nvim-lspconfig",
+        event = "BufRead",
         config = function()
             local lspconfig = require("lspconfig")
             lspconfig.gopls.setup({
@@ -131,11 +132,13 @@ return {
                     },
                 },
             })
-            -- lspconfig.ts_ls.setup({
-            --     handlers = handlers,
-            --     on_attach = on_attach,
-            --     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            -- })
+            lspconfig.ts_ls.setup({
+                handlers = handlers,
+                on_attach = function(client, bufnr)
+                    on_attach(client, bufnr)
+                end,
+                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            })
             lspconfig.biome.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
@@ -308,7 +311,6 @@ return {
                     "stylua",
                     "isort",
                     "yamllint",
-                    "eslint_d",
                 },
             })
         end,

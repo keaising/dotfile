@@ -1,6 +1,7 @@
 return {
     "neoclide/coc.nvim",
     branch = "release",
+    event = "BufRead",
     config = function()
         vim.g.coc_global_extensions = {
             "coc-go",
@@ -49,8 +50,6 @@ return {
         keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
         -- Use <c-j> to trigger snippets
         keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
-        -- Use <s-space> to trigger completion
-        keyset("i", "<s-space>", "coc#refresh()", { silent = true, expr = true })
 
         -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
         vim.api.nvim_create_augroup("CocGroup", {})

@@ -41,7 +41,7 @@ return {
                 bash = { "shfmt" },
                 python = { "isort", "ruff_organize_imports", "ruff_format" },
                 go = { "gosimports", "gofmt", "golines" },
-                sql = { "pg_format" },
+                -- sql = { "pg_format" },
                 fish = { "fish_indent" },
                 css = biome,
                 javascript = biome,
