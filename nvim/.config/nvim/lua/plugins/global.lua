@@ -29,7 +29,7 @@ return {
         -- dev = true,
         dependencies = { "nvim-neo-tree/neo-tree.nvim" },
         config = function()
-            require("startup").setup({})
+            require("startup").setup()
         end,
     },
     {
@@ -43,7 +43,7 @@ return {
     {
         "smjonas/inc-rename.nvim",
         config = function()
-            require("inc_rename").setup()
+            require("inc_rename").setup({})
         end,
     },
     {

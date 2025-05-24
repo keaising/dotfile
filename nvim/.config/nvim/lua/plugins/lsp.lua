@@ -21,7 +21,7 @@ vim.lsp.buf.hover = function()
     })
 end
 
-local function on_attach(client, bufnr)
+local function on_attach(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     local fzf = require("fzf-lua")
     local k = vim.keymap.set
@@ -63,6 +63,7 @@ local function on_attach(client, bufnr)
     k("n", "<m-j>", function()
         vim.diagnostic.jump({
             count = 1,
+            float = true,
             severity = {
                 vim.diagnostic.severity.ERROR,
                 vim.diagnostic.severity.WARN,
@@ -76,33 +77,21 @@ return {
         "neovim/nvim-lspconfig",
         event = "BufRead",
         config = function()
-            local lspconfig = require("lspconfig")
-            lspconfig.gopls.setup({
-                handlers = handlers,
-                on_attach = function(client, bufnr)
-                    on_attach(client, bufnr)
-                end,
+            vim.lsp.config("gopls", {
                 settings = {
-                    filetypes = { "go", "gomod" },
+                    filetypes = { "go", "gotempl", "gowork", "gomod" },
+                    root_markers = { ".git", "go.mod", "go.work", vim.uv.cwd() },
                     gopls = {
-                        env = {
-                            GOFLAGS = "-tags=stage",
+                        completeUnimported = true,
+                        usePlaceholders = false,
+                        analyses = {
+                            unusedparams = true,
                         },
-                        usePlaceholders = false, -- no placeholder fillfulment
-                        vulncheck = "Imports",
                     },
                 },
             })
-
-            lspconfig.ruff.setup({
-                on_attach = function(client, bufnr)
-                    on_attach(client, bufnr)
-                end,
-                handlers = handlers,
-            })
-            lspconfig.pyright.setup({
-                on_attach = on_attach,
-                handlers = handlers,
+            vim.lsp.config("ruff", {})
+            vim.lsp.config("basedpyright", {
                 settings = {
                     pyright = {
                         disableOrganizeImports = true,
@@ -114,37 +103,36 @@ return {
                     },
                 },
             })
-            lspconfig.lua_ls.setup({
-                handlers = handlers,
-                on_attach = function(client, bufnr)
-                    -- client.server_capabilities.documentFormattingProvider = false
-                    on_attach(client, bufnr)
-                end,
+            -- vim.lsp.config("lua_ls", {
+            --     settings = {
+            --         Lua = {
+            --             workspace = {
+            --                 library = {
+            --                     vim.fn.expand("$VIMRUNTIME"),
+            --                     vim.fn.expand("$VIMRUNTIME/lua"),
+            --                     vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
+            --                 },
+            --             },
+            --         },
+            --     },
+            -- })
+            vim.lsp.config("ts_ls", {
                 settings = {
-                    Lua = {
-                        workspace = {
-                            library = {
-                                vim.fn.expand("$VIMRUNTIME"),
-                                vim.fn.expand("$VIMRUNTIME/lua"),
-                                vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-                            },
-                        },
+                    filetypes = {
+                        "javascript",
+                        "javascriptreact",
+                        "javascript.jsx",
+                        "typescript",
+                        "typescriptreact",
+                        "typescript.tsx",
+                    },
+                    root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+                    init_options = {
+                        hostInfo = "neovim",
                     },
                 },
             })
-            -- lspconfig.ts_ls.setup({
-            --     handlers = handlers,
-            --     on_attach = function(client, bufnr)
-            --         on_attach(client, bufnr)
-            --     end,
-            --     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            -- })
-            lspconfig.biome.setup({
-                handlers = handlers,
-                on_attach = function(client, bufnr)
-                    on_attach(client, bufnr)
-                end,
-            })
+            vim.lsp.config("biome", {})
         end,
     },
     {
@@ -199,6 +187,17 @@ return {
         end,
     },
     {
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+    {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
         enabled = false,
@@ -249,6 +248,18 @@ return {
                         [vim.diagnostic.severity.INFO] = "",
                     },
                 },
+                update_in_insert = true,
+                underline = true,
+                severity_sort = true,
+                float = {
+                    focusable = false,
+                    style = "minimal",
+                    border = "single",
+                    source = "always",
+                    header = "",
+                    prefix = "",
+                    suffix = "",
+                },
             })
         end,
     },
@@ -281,7 +292,8 @@ return {
                     "dockerls",
                     "jsonls",
                     "lua_ls",
-                    "pyright",
+                    -- "pyright",
+                    "basedpyright",
                     "terraformls",
                     "ts_ls",
                     -- "typos_lsp",
