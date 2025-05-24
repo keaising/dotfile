@@ -2,6 +2,7 @@ return {
     "neoclide/coc.nvim",
     branch = "release",
     event = "BufRead",
+    enabled = false,
     config = function()
         vim.g.coc_global_extensions = {
             "coc-go",

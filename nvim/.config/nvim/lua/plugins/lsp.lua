@@ -41,9 +41,9 @@ local function on_attach(client, bufnr)
             multiline = 2,
         })
     end, bufopts)
-    -- k("n", "<m-k>", function()
-    --     return ":IncRename " .. vim.fn.expand("<cword>")
-    -- end, { expr = true, noremap = true, silent = true, buffer = bufnr })
+    k("n", "<m-k>", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     k("n", "<leader>ca", function()
         fzf.lsp_code_actions({ previewer = false })
     end, bufopts)
@@ -132,13 +132,13 @@ return {
                     },
                 },
             })
-            lspconfig.ts_ls.setup({
-                handlers = handlers,
-                on_attach = function(client, bufnr)
-                    on_attach(client, bufnr)
-                end,
-                filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-            })
+            -- lspconfig.ts_ls.setup({
+            --     handlers = handlers,
+            --     on_attach = function(client, bufnr)
+            --         on_attach(client, bufnr)
+            --     end,
+            --     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+            -- })
             lspconfig.biome.setup({
                 handlers = handlers,
                 on_attach = function(client, bufnr)
@@ -166,16 +166,13 @@ return {
                     end,
                     on_success = function(cspell_config_file_path, params, action_name)
                         if action_name == "add_to_json" then
-                            os.execute(string.format(
-                                "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                                -- table.concat({
-                                --     "cat %s | jq -S '.words |= sort' > /tmp/temp_cspell.json",
-                                --     -- "biome format /tmp/temp_cspell.json --write",
-                                --     "cat /tmp/temp_cspell.json > %s",
-                                -- }, " && "),
-                                cspell_config_file_path,
-                                cspell_config_file_path
-                            ))
+                            os.execute(
+                                string.format(
+                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
+                                    cspell_config_file_path,
+                                    cspell_config_file_path
+                                )
+                            )
                         end
                     end,
                 },
@@ -201,23 +198,23 @@ return {
             })
         end,
     },
-    -- {
-    --     "pmizio/typescript-tools.nvim",
-    --     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    --     enabled = false,
-    --     config = function()
-    --         require("typescript-tools").setup({
-    --             handlers = handlers,
-    --             on_attach = function(client, bufnr)
-    --                 on_attach(client, bufnr)
-    --             end,
-    --             settings = {
-    --                 expose_as_code_action = { "all" },
-    --                 code_lens = "all",
-    --             },
-    --         })
-    --     end,
-    -- },
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        enabled = false,
+        config = function()
+            require("typescript-tools").setup({
+                handlers = handlers,
+                on_attach = function(client, bufnr)
+                    on_attach(client, bufnr)
+                end,
+                settings = {
+                    expose_as_code_action = { "all" },
+                    code_lens = "all",
+                },
+            })
+        end,
+    },
     {
         "Fildo7525/pretty_hover",
         event = "LspAttach",
