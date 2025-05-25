@@ -21,45 +21,76 @@ vim.lsp.buf.hover = function()
     })
 end
 
+-- comes from https://github.com/jdhao/nvim-config/blob/082111fa4eb86a307e489a2e9e3d14c1250b1127/lua/config/lsp.lua#L23-L61
+local go_to_definition = function()
+    vim.lsp.buf.definition({
+        on_list = function(options)
+            -- custom logic to avoid showing multiple definition when you use this style of code:
+            -- `local M.my_fn_name = function() ... end`.
+            -- See also post here: https://www.reddit.com/r/neovim/comments/19cvgtp/any_way_to_remove_redundant_definition_in_lua_file/
+
+            -- vim.print(options.items)
+            local unique_defs = {}
+            local def_loc_hash = {}
+
+            -- each item in options.items contain the location info for a definition provided by LSP server
+            for _, def_location in pairs(options.items) do
+                -- use filename and line number to uniquelly indentify a definition,
+                -- we do not expect/want multiple definition in single line!
+                local hash_key = def_location.filename .. def_location.lnum
+
+                if not def_loc_hash[hash_key] then
+                    def_loc_hash[hash_key] = true
+                    table.insert(unique_defs, def_location)
+                end
+            end
+
+            options.items = unique_defs
+
+            -- set the location list
+            ---@diagnostic disable-next-line: param-type-mismatch
+            vim.fn.setloclist(0, {}, " ", options)
+
+            -- open the location list when we have more than 1 definitions found,
+            -- otherwise, jump directly to the definition
+            if #options.items > 1 then
+                vim.cmd.lopen()
+            else
+                vim.cmd([[silent! lfirst]])
+            end
+        end,
+    })
+end
+
 local function on_attach(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     local fzf = require("fzf-lua")
     local k = vim.keymap.set
-    k("n", "<m-b>", function()
-        fzf.lsp_definitions({
-            jump1 = true,
-            ignore_current_line = true,
-            multiline = 2,
-        })
-    end, bufopts)
+    k("n", "<m-b>", go_to_definition, bufopts)
+    k("n", "gd", fzf.lsp_definitions({ jump1 = true, ignore_current_line = true, multiline = 2 }), bufopts)
     k("n", "gh", vim.lsp.buf.hover, bufopts)
-    k("n", "gi", function()
-        fzf.lsp_implementations({
-            jump1 = true,
-            ignore_current_line = true,
-            show_line = false,
-            multiline = 2,
-        })
-    end, bufopts)
-    k("n", "<m-k>", function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-    end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    k("n", "<leader>ca", function()
-        fzf.lsp_code_actions({ previewer = false })
-    end, bufopts)
+    k(
+        "n",
+        "gi",
+        fzf.lsp_implementations({ jump1 = true, ignore_current_line = true, show_line = false, multiline = 2 }),
+        bufopts
+    )
+    k(
+        "n",
+        "<m-k>",
+        ":IncRename " .. vim.fn.expand("<cword>"),
+        { expr = true, noremap = true, silent = true, buffer = bufnr }
+    )
+    k("n", "<leader>ca", fzf.lsp_code_actions({ previewer = false }), bufopts)
     k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
     k("n", "`", vim.diagnostic.open_float, bufopts)
-    k("n", "gr", function()
-        fzf.lsp_references({
-            jump1 = true,
-            ignore_current_line = true,
-            include_current_line = false,
-            multiline = 2,
-        })
-    end, bufopts)
-    k("n", "<leader>ls", function()
-        fzf.lsp_document_symbols()
-    end, bufopts)
+    k(
+        "n",
+        "gr",
+        fzf.lsp_references({ jump1 = true, ignore_current_line = true, include_current_line = false, multiline = 2 }),
+        bufopts
+    )
+    k("n", "<leader>ls", fzf.lsp_document_symbols(), bufopts)
     k("n", "<m-j>", function()
         vim.diagnostic.jump({
             count = 1,
@@ -90,7 +121,14 @@ return {
                     },
                 },
             })
-            vim.lsp.config("ruff", {})
+            vim.lsp.config("ruff", {
+                init_options = {
+                    settings = {
+                        organizeImports = true,
+                        showSyntaxErrors = true,
+                    },
+                },
+            })
             vim.lsp.config("basedpyright", {
                 settings = {
                     pyright = {
@@ -103,19 +141,6 @@ return {
                     },
                 },
             })
-            -- vim.lsp.config("lua_ls", {
-            --     settings = {
-            --         Lua = {
-            --             workspace = {
-            --                 library = {
-            --                     vim.fn.expand("$VIMRUNTIME"),
-            --                     vim.fn.expand("$VIMRUNTIME/lua"),
-            --                     vim.fn.expand("$VIMRUNTIME/lua/vim/lsp"),
-            --                 },
-            --             },
-            --         },
-            --     },
-            -- })
             vim.lsp.config("ts_ls", {
                 settings = {
                     filetypes = {
@@ -188,11 +213,9 @@ return {
     },
     {
         "folke/lazydev.nvim",
-        ft = "lua", -- only load on lua files
+        ft = "lua",
         opts = {
             library = {
-                -- See the configuration section for more details
-                -- Load luvit types when the `vim.uv` word is found
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
         },
