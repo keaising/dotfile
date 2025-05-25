@@ -25,9 +25,6 @@ return {
                 autoclose = true,
                 threshold = 7,
             })
-            vim.keymap.set("n", "<C-Enter>", function()
-                require("telescope").extensions.hbac.buffers()
-            end, { noremap = true, silent = true })
         end,
     },
     {
