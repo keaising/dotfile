@@ -61,16 +61,15 @@ autocmd BufReadPost *
 
 augroup filetypes
 	autocmd!
-	autocmd FileType zsh  setlocal foldmethod=marker
-	autocmd FileType tmux setlocal foldmethod=marker
-	autocmd FileType fish setlocal expandtab
-
-	autocmd FileType go setlocal tabstop=4 shiftwidth=4 noexpandtab
-	autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd FileType javascriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd FileType typescriptreact setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd FileType json setlocal tabstop=2 shiftwidth=2 expandtab
-	autocmd Filetype python setlocal tabstop=4 shiftwidth=4 expandtab
-	autocmd FileType lua  setlocal foldmarker={,} foldmethod=marker expandtab
+	autocmd FileType fish            setlocal expandtab
+	autocmd FileType go              setlocal tabstop=4      shiftwidth=4      noexpandtab
+	autocmd FileType javascript      setlocal tabstop=2      shiftwidth=2      expandtab
+	autocmd FileType javascriptreact setlocal tabstop=2      shiftwidth=2      expandtab
+	autocmd FileType json            setlocal tabstop=2      shiftwidth=2      expandtab
+	autocmd FileType lua             setlocal foldmarker={,} foldmethod=marker expandtab
+	autocmd FileType python          setlocal tabstop=4      shiftwidth=4      expandtab
+	autocmd FileType tmux            setlocal foldmethod=marker
+	autocmd FileType typescript      setlocal tabstop=2      shiftwidth=2      expandtab
+	autocmd FileType typescriptreact setlocal tabstop=2      shiftwidth=2      expandtab
+	autocmd FileType zsh             setlocal foldmethod=marker
 augroup END

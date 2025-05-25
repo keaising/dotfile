@@ -6,7 +6,6 @@ return {
     },
     "kshenoy/vim-signature", -- 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
     "tpope/vim-abolish", -- crs/crm/crc
-    "ruanyl/vim-gh-line",
     "preservim/nerdcommenter",
     "tpope/vim-repeat",
     "matze/vim-move",

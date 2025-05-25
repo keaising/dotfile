@@ -9,12 +9,12 @@ let g:floaterm_width=0.85
 let g:floaterm_height=0.95
 
 " 'ruanyl/vim-gh-line' " invoke github/gitlab from vim
-let g:gh_line_map_default = 0
-let g:gh_line_blame_map_default = 1
-let g:gh_line_map = '<leader>gh'
-let g:gh_line_blame_map = '<leader>gb'
-let g:gh_gitlab_domain = "git.curiostack.com"
-let g:gh_use_canonical = 0
+" let g:gh_line_map_default = 0
+" let g:gh_line_blame_map_default = 1
+" let g:gh_line_map = '<leader>gh'
+" let g:gh_line_blame_map = '<leader>gb'
+" let g:gh_gitlab_domain = "git.curiostack.com"
+" let g:gh_use_canonical = 0
 
 " text object
 let g:vim_textobj_parameter_mapping = 'a'
