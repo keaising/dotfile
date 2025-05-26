@@ -15,23 +15,6 @@ return {
             })
         end,
     },
-    -- {
-    --     "keaising/textobj-backtick.nvim",
-    --     -- dir = "~/code/github.com/keaising/textobj-backtick.nvim",
-    --     -- dev = true,
-    --     config = function()
-    --         require("textobj-backtick").setup({})
-    --     end,
-    -- },
-    {
-        "keaising/startup.nvim",
-        -- dir = "~/code/github.com/keaising/startup.nvim",
-        -- dev = true,
-        dependencies = { "nvim-neo-tree/neo-tree.nvim" },
-        config = function()
-            require("startup").setup()
-        end,
-    },
     {
         "kylechui/nvim-surround",
         version = "*", -- Use for stability; omit to use `main` branch for the latest features

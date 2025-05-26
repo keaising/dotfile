@@ -50,6 +50,29 @@ return {
         end,
     },
     {
+        "rmagatti/auto-session",
+        dependencies = { "nvim-neo-tree/neo-tree.nvim" },
+        config = function()
+            -- https://github.com/nvim-neo-tree/neo-tree.nvim/issues/357
+            vim.api.nvim_create_autocmd({ "VimEnter" }, {
+                callback = function()
+                    vim.defer_fn(function()
+                        vim.cmd("Neotree show")
+                    end, 10)
+                end,
+            })
+
+            -- fix https://github.com/neovim/neovim/issues/21856
+            vim.api.nvim_create_autocmd({ "VimLeave" }, {
+                callback = function()
+                    vim.fn.jobstart("", { detach = true })
+                end,
+            })
+
+            require("auto-session").setup()
+        end,
+    },
+    {
         "hedyhli/outline.nvim",
         lazy = true,
         cmd = { "Outline", "OutlineOpen" },
