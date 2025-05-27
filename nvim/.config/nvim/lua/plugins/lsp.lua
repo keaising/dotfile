@@ -41,12 +41,9 @@ local function on_attach(_, bufnr)
             multiline = 2,
         })
     end, bufopts)
-    k(
-        "n",
-        "<m-k>",
-        ":IncRename " .. vim.fn.expand("<cword>"),
-        { expr = true, noremap = true, silent = true, buffer = bufnr }
-    )
+    k("n", "<m-k>", function()
+        return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { expr = true, noremap = true, silent = true, buffer = bufnr })
     k("n", "<leader>ca", function()
         fzf.lsp_code_actions({ previewer = false })
     end, bufopts)

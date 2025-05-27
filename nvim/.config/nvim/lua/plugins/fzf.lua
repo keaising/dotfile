@@ -34,7 +34,7 @@ return {
                 end,
             },
             {
-                "<C-f>",
+                "<A-f>",
                 function()
                     require("fzf-lua").blines({
                         previewer = false,
