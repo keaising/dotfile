@@ -110,22 +110,23 @@ return {
                 },
             })
             -- typescript
-            vim.lsp.config("ts_ls", {
-                settings = {
-                    filetypes = {
-                        "javascript",
-                        "javascriptreact",
-                        "javascript.jsx",
-                        "typescript",
-                        "typescriptreact",
-                        "typescript.tsx",
-                    },
-                    root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-                    init_options = {
-                        hostInfo = "neovim",
-                    },
-                },
-            })
+            -- vim.lsp.config("ts_ls", {
+            --     settings = {
+            --         filetypes = {
+            --             "javascript",
+            --             "javascriptreact",
+            --             "javascript.jsx",
+            --             "typescript",
+            --             "typescriptreact",
+            --             "typescript.tsx",
+            --         },
+            --         root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+            --         init_options = {
+            --             hostInfo = "neovim",
+            --         },
+            --     },
+            -- })
+            vim.lsp.config("vtsls", {})
             vim.lsp.config("biome", {})
         end,
     },
@@ -285,7 +286,8 @@ return {
                     -- "pyright",
                     "basedpyright",
                     "terraformls",
-                    "ts_ls",
+                    -- "ts_ls",
+                    "vtsls",
                     -- "typos_lsp",
                     "vimls",
                     "yamlls",
