@@ -21,13 +21,16 @@ return {
             {
                 "<leader>s",
                 function()
-                    require("fzf-lua").files()
+                    require("fzf-lua").files({
+                        multiprocess = false,
+                    })
                 end,
             },
             {
                 "<leader>f",
                 function()
                     require("fzf-lua").live_grep({
+                        multiprocess = false,
                         rg_opts = rg_opts,
                         multiline = 2,
                     })
@@ -38,6 +41,7 @@ return {
                 function()
                     require("fzf-lua").blines({
                         previewer = false,
+                        fzf_opts = { ["--no-sort"] = true },
                     })
                 end,
             },
@@ -58,6 +62,7 @@ return {
                 function()
                     require("fzf-lua").diagnostics_document({
                         multiline = 2,
+                        sort = 1,
                     })
                 end,
             },
@@ -66,13 +71,16 @@ return {
                 function()
                     require("fzf-lua").diagnostics_workspace({
                         multiline = 2,
+                        sort = 1,
                     })
                 end,
             },
             {
                 "<leader>gw",
                 function()
-                    require("fzf-lua").grep_cword()
+                    require("fzf-lua").grep_cword({
+                        fzf_opts = { ["--no-sort"] = true },
+                    })
                 end,
             },
         },
