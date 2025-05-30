@@ -129,7 +129,6 @@ for path in $_paths[-1..1]
         fish_add_path --move --path --prepend "$path"
 end
 
-
 function hostip
     # Honors belong to ChatGPT
     # 1. 过滤出数字开头的行和 inet 开头的行
@@ -328,7 +327,6 @@ function note
     end
 end
 
-
 function extract
     set ext zip rar bz2 gz tar tbz2 tgz Z 7z xz exe tar.bz2 tar.gz tar.xz lzma
     if test -z "$argv"
@@ -403,7 +401,6 @@ if type -q fzf
     end
 end
 
-
 # os
 switch (uname)
     case Linux
@@ -431,10 +428,9 @@ switch (uname)
         alias pocr='pngpaste - | tesseract stdin stdout'
 end
 
-
 # confidential
 [ -e $HOME/.config/fish/cc.fish ] && source $HOME/.config/fish/cc.fish
-
+[ -e $HOME/.config/fish/mewtant.fish ] && source $HOME/.config/fish/mewtant.fish
 
 # key bindings
 bind \ee "nvim; commandline -f repaint"
