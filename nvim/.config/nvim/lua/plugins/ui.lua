@@ -23,7 +23,7 @@ return {
         config = function()
             require("hbac").setup({
                 autoclose = true,
-                threshold = 7,
+                threshold = 11,
             })
         end,
     },

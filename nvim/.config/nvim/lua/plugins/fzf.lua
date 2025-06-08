@@ -9,7 +9,7 @@ local rg_opts = table.concat({
     "--hidden",
     "-g '!{.git,node_modules}/'",
     "--fixed-strings",
-    "--sort path",
+    -- "--sort path",
     -- "-e",
 }, " ")
 
