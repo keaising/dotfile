@@ -48,6 +48,8 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-seesion -t'
 alias tx='tmuxp'
 
+alias c='cursor'
+
 # go
 set -gx GOPATH $HOME/code/go
 # set -gx GOPROXY https://goproxy.cn,direct
