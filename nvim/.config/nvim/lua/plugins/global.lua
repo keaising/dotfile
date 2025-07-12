@@ -8,11 +8,7 @@ return {
         -- dir = "~/code/github.com/keaising/im-select.nvim",
         -- dev = true,
         config = function()
-            require("im_select").setup({
-                set_previous_events = {},
-                set_default_events = { "VimEnter", "InsertLeave", "CmdlineLeave" },
-                keep_quiet_on_no_binary = true,
-            })
+            require("im_select").setup({})
         end,
     },
     {
