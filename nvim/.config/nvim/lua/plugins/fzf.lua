@@ -5,7 +5,7 @@ local rg_opts = table.concat({
     "--color=always",
     "--smart-case",
     "--max-columns=4096",
-    "-j1",
+    -- "-j1",
     "--hidden",
     "-g '!{.git,node_modules}/'",
     -- "--fixed-strings",
@@ -41,7 +41,7 @@ return {
                 function()
                     require("fzf-lua").blines({
                         previewer = false,
-                        fzf_opts = { ["--no-sort"] = true },
+                        -- fzf_opts = { ["--no-sort"] = true },
                     })
                 end,
             },
