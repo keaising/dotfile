@@ -412,9 +412,6 @@ switch (uname)
         type -q apt && alias i='sudo apt install'
         alias ts='sudo tailscale'
 
-        # macOS guest in qemu
-        alias macos='cd $HOME/code/github.com/keaising/quickemu && quickemu --vm macos-big-sur.conf'
-
     case Darwin
         set -gx HOMEBREW_NO_AUTO_UPDATE 1
         set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
@@ -425,6 +422,11 @@ switch (uname)
         alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
         set -Ux SSH_AUTH_SOCK "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
+        if not set -q __DISABLE_CAPSLOCK_DELAY
+            # disable delay in when switch Input Method
+            hidutil property --set '{"CapsLockDelayOverride":0}' &>/dev/null
+            set -U __DISABLE_CAPSLOCK_DELAY
+        end
         # ocr, source: https://www.kawabangga.com/posts/4876
         # brew install tesseract pngpaste
         alias pocr='pngpaste - | tesseract stdin stdout'
