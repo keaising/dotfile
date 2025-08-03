@@ -135,8 +135,8 @@ vnoremap gs :EasyAlign
 " nnoremap ga <Plug>(EasyAlign)
 
 " swap position for parameters
-nnoremap <leader>, :SidewaysLeft<cr>
-nnoremap <leader>. :SidewaysRight<cr>
+" nnoremap <leader>, :SidewaysLeft<cr>
+" nnoremap <leader>. :SidewaysRight<cr>
 
 " vim-move
 let g:move_map_keys = 0
@@ -172,7 +172,7 @@ xnoremap ir i[
 xnoremap ar a[
 
 " AndrewRadev/sideways.vim
-omap aa <Plug>SidewaysArgumentTextobjA
-xmap aa <Plug>SidewaysArgumentTextobjA
-omap ia <Plug>SidewaysArgumentTextobjI
-xmap ia <Plug>SidewaysArgumentTextobjI
+" omap aa <Plug>SidewaysArgumentTextobjA
+" xmap aa <Plug>SidewaysArgumentTextobjA
+" omap ia <Plug>SidewaysArgumentTextobjI
+" xmap ia <Plug>SidewaysArgumentTextobjI

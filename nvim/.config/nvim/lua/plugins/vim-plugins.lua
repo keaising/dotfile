@@ -12,7 +12,7 @@ return {
     "szw/vim-maximizer",
     {
         "ojroques/vim-oscyank",
-        tag = "v1.0.0", -- new version breaks, old version is good enough
+        -- tag = "v1.0.0", -- new version breaks, old version is good enough
     },
     {
         "fatih/vim-go",
@@ -27,6 +27,5 @@ return {
         event = "VeryLazy",
     },
     "svban/YankAssassin.vim",
-    "AndrewRadev/sideways.vim",
     "prisma/vim-prisma",
 }
