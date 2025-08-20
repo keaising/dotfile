@@ -97,10 +97,10 @@ return {
                     },
                 },
             })
-            vim.lsp.config("basedpyright", {
+            vim.lsp.config("pyright", {
                 settings = {
                     pyright = {
-                        disableOrganizeImports = true,
+                        disableOrganizeImports = false,
                     },
                     python = {
                         analysis = {
@@ -283,8 +283,8 @@ return {
                     "dockerls",
                     "jsonls",
                     "lua_ls",
-                    -- "pyright",
-                    "basedpyright",
+                    "pyright",
+                    -- "basedpyright",
                     "terraformls",
                     -- "ts_ls",
                     "vtsls",
