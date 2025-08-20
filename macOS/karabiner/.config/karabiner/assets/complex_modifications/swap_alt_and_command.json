@@ -1,17 +1,15 @@
 {
-  "title": "ALT <=> CMD in com.microsoft.VSCode",
+  "title": "Swap ALT and Command",
   "rules": [
     {
-      "description": "Swap option and command in com.microsoft.VSCode",
+      "description": "Swap option and command",
       "manipulators": [
         {
           "type": "basic",
           "from": {
             "key_code": "left_option",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -23,7 +21,10 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "com.microsoft.VSCode"
+                "org.alacritty",
+                "com.valvesoftware.dota2",
+                "com.microsoft.VSCode",
+                "dev.zed.Zed"
               ]
             }
           ]
@@ -33,9 +34,7 @@
           "from": {
             "key_code": "left_command",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -47,7 +46,10 @@
             {
               "type": "frontmost_application_if",
               "bundle_identifiers": [
-                "com.microsoft.VSCode"
+                "org.alacritty",
+                "com.valvesoftware.dota2",
+                "com.microsoft.VSCode",
+                "dev.zed.Zed"
               ]
             }
           ]
