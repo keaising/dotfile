@@ -49,6 +49,7 @@ alias tk='tmux kill-seesion -t'
 alias tx='tmuxp'
 
 alias c='cursor'
+alias k='kubectl'
 
 # go
 set -gx GOPATH $HOME/code/go

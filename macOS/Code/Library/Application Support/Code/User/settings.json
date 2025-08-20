@@ -58,13 +58,17 @@
 		"admob",
 		"asgi",
 		"asyncio",
+		"bouldin",
+		"calinski",
 		"cpython",
 		"dssm",
 		"fastapi",
+		"harabasz",
 		"httptools",
 		"kaisou",
 		"mori",
 		"msgpack",
+		"ndarray",
 		"olap",
 		"pixai",
 		"Pydantic",
@@ -83,5 +87,6 @@
 	"vim.autoSwitchInputMethod.enable": true,
 	"vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
 	"vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
-	"vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}"
+	"vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
+	"editor.wordWrap": "on"
 }
