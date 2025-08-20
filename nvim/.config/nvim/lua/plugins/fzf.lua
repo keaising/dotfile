@@ -39,10 +39,7 @@ return {
             {
                 "<A-f>",
                 function()
-                    require("fzf-lua").blines({
-                        previewer = false,
-                        -- fzf_opts = { ["--no-sort"] = true },
-                    })
+                    require("fzf-lua").blines()
                 end,
             },
             {
@@ -89,13 +86,24 @@ return {
             fzf.register_ui_select()
             fzf.setup({
                 "hide",
+                keymap = {
+                    builtin = {
+                        ["<C-e>"] = "preview-down",
+                        ["<C-y>"] = "preview-up",
+                        ["<Down>"] = "preview-down",
+                        ["<Up>"] = "preview-up",
+                        ["<C-z>"] = "toggle-fullscreen",
+                        ["<C-d>"] = "toggle-preview",
+                        ["<C-t>"] = "toggle-preview",
+                    },
+                },
                 winopts = {
                     row = 1,
-                    height = 0.62,
+                    height = 0.72,
                     width = 1.0,
                     preview = {
                         border = "single",
-                        horizontal = "right:45%",
+                        horizontal = "right:62%",
                         wrap = true,
                     },
                     border = "single",
