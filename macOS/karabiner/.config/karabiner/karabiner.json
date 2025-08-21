@@ -1,165 +1,103 @@
 {
-  "global": {
-    "show_in_menu_bar": false
-  },
-  "profiles": [
-    {
-      "devices": [
+    "global": { "show_in_menu_bar": false },
+    "profiles": [
         {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 20778,
-            "vendor_id": 1155
-          },
-          "manipulate_caps_lock_led": false,
-          "simple_modifications": [
-            {
-              "from": {
-                "key_code": "caps_lock"
-              },
-              "to": [
+            "devices": [
                 {
-                  "key_code": "left_control"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "left_command"
-              },
-              "to": [
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 20778,
+                        "vendor_id": 1155
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "caps_lock" },
+                            "to": [{ "key_code": "left_control" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_control" },
+                            "to": [{ "key_code": "caps_lock" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                },
                 {
-                  "key_code": "left_option"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "left_control"
-              },
-              "to": [
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 20778,
+                        "vendor_id": 1155
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false
+                },
                 {
-                  "key_code": "caps_lock"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "left_option"
-              },
-              "to": [
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 272,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false
+                },
                 {
-                  "key_code": "left_command"
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 49734,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 21034,
+                        "vendor_id": 1155
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
                 }
-              ]
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "key_code": "mission_control" }]
+                },
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "launchpad" }]
+                },
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "illumination_decrement" }]
+                },
+                {
+                    "from": { "key_code": "f6" },
+                    "to": [{ "key_code": "illumination_increment" }]
+                }
+            ],
+            "name": "MacBook",
+            "selected": true,
+            "virtual_hid_keyboard": {
+                "country_code": 0,
+                "keyboard_type_v2": "ansi"
             }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "is_pointing_device": true,
-            "product_id": 20778,
-            "vendor_id": 1155
-          },
-          "ignore": false,
-          "manipulate_caps_lock_led": false
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "is_pointing_device": true,
-            "product_id": 272,
-            "vendor_id": 1452
-          },
-          "ignore": false
-        },
-        {
-          "identifiers": {
-            "is_pointing_device": true,
-            "product_id": 49734,
-            "vendor_id": 1133
-          },
-          "ignore": false
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 21034,
-            "vendor_id": 1155
-          },
-          "simple_modifications": [
-            {
-              "from": {
-                "key_code": "left_command"
-              },
-              "to": [
-                {
-                  "key_code": "left_option"
-                }
-              ]
-            },
-            {
-              "from": {
-                "key_code": "left_option"
-              },
-              "to": [
-                {
-                  "key_code": "left_command"
-                }
-              ]
-            }
-          ]
         }
-      ],
-      "fn_function_keys": [
-        {
-          "from": {
-            "key_code": "f3"
-          },
-          "to": [
-            {
-              "key_code": "mission_control"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f4"
-          },
-          "to": [
-            {
-              "key_code": "launchpad"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f5"
-          },
-          "to": [
-            {
-              "key_code": "illumination_decrement"
-            }
-          ]
-        },
-        {
-          "from": {
-            "key_code": "f6"
-          },
-          "to": [
-            {
-              "key_code": "illumination_increment"
-            }
-          ]
-        }
-      ],
-      "name": "MacBook",
-      "selected": true,
-      "virtual_hid_keyboard": {
-        "country_code": 0,
-        "keyboard_type_v2": "ansi"
-      }
-    }
-  ]
+    ]
 }

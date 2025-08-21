@@ -23,7 +23,6 @@
               "bundle_identifiers": [
                 "org.alacritty",
                 "com.valvesoftware.dota2",
-                "com.microsoft.VSCode",
                 "dev.zed.Zed"
               ]
             }
@@ -48,7 +47,32 @@
               "bundle_identifiers": [
                 "org.alacritty",
                 "com.valvesoftware.dota2",
-                "com.microsoft.VSCode",
+                "dev.zed.Zed"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["left_option"]
+            },
+            "key_code": "spacebar"
+          },
+          "to": [
+            {
+              "repeat": false,
+              "key_code": "spacebar",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "org.alacritty",
+                "com.valvesoftware.dota2",
                 "dev.zed.Zed"
               ]
             }
