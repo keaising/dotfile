@@ -197,7 +197,7 @@
 		"when": "editorTextFocus && !editorReadonly"
 	},
 	{
-		"key": "cmd+h",
+		"key": "shift+cmd+h",
 		"command": "workbench.action.previousEditor"
 	},
 	{
@@ -233,7 +233,15 @@
 		"when": "editorTextFocus"
 	},
 	{
-		"key": "cmd+l",
+		"key": "shift+cmd+l",
 		"command": "workbench.action.nextEditor"
+	},
+	{
+		"key": "cmd+l",
+		"command": "github.copilot.chat.attachSelection"
+	},
+	{
+		"key": "cmd+m",
+		"command": "workbench.action.togglePanel"
 	}
 ]

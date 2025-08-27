@@ -88,5 +88,6 @@
 	"vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
 	"vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
 	"vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
-	"editor.wordWrap": "on"
+	"editor.wordWrap": "on",
+	"workbench.startupEditor": "none"
 }
