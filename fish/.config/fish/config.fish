@@ -35,10 +35,7 @@ alias drmi='docker rmi'
 alias ga='git add .'
 alias gc='git commit -m'
 alias g='gitui'
-alias glp='gl -p'
-alias glm='gl -m'
-alias glb='gl -b'
-alias glc='gl -c'
+alias glm='git_open'
 
 # tmux
 alias t='tmux'

@@ -1,0 +1,14 @@
+#!/bin/bash
+# 获取当前分支名
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# 检查当前分支是否已有PR
+PR_URL=$(gh pr list --head "$CURRENT_BRANCH" --state open --json url --jq '.[0].url')
+
+if [ -n "$PR_URL" ]; then
+	# 已有PR，打开PR页面
+	gh pr view --web
+else
+	# 没有PR，打开创建PR页面
+	gh pr create --web
+fi
