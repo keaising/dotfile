@@ -78,10 +78,11 @@ return {
         "neovim/nvim-lspconfig",
         event = "BufRead",
         config = function()
+            vim.lsp.enable("gopls")
             vim.lsp.config("gopls", {
+                filetypes = { "go", "gomod" },
+                root_markers = { ".git", "go.mod", "go.work", vim.uv.cwd() },
                 settings = {
-                    filetypes = { "go", "gotempl", "gowork", "gomod" },
-                    root_markers = { ".git", "go.mod", "go.work", vim.uv.cwd() },
                     gopls = {
                         completeUnimported = true,
                         usePlaceholders = false,
