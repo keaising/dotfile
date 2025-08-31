@@ -266,6 +266,11 @@ function extract
     end
 end
 
+function icon
+    cp $HOME/code/github.com/keaising/dotfile/logo/asprite.icns /Applications/Cursor.app/Contents/Resources/Cursor.icns
+    sudo killall Finder Dock
+end
+
 # starship
 set -x STARSHIP_CONFIG $HOME/.config/fish/starship.toml
 if [ -e $STARSHIP_CONFIG ]
