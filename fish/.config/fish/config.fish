@@ -65,22 +65,8 @@ alias gdv='godotenv'
 alias gt='APP_ENV=dev go test --cover --race ./...'
 alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...' # skip some test
 
-# gem
-set -Ux GEM_HOME "$HOME/code/gems"
-
 # Added by n-install (see http://git.io/n-install-repo).
 set -Ux N_PREFIX "$HOME/code/n"
-# pnpm
-set -gx PNPM_HOME "$HOME/.local/share/pnpm"
-
-# pyenv
-set -Ux PYENV_ROOT "$HOME/.pyenv"
-command -v pyenv >/dev/null && eval (pyenv init - | source)
-
-alias yay='yay --noconfirm'
-
-# rust
-set -Ux RUST_BACKTRACE 1
 
 # misc
 set -Ux XDG_CONFIG_HOME "$HOME/.config"
@@ -127,17 +113,6 @@ for path in $_paths[-1..1]
     # only add to $PATH when path exist and path not in $PATH
     test -d "$path" &&
         fish_add_path --move --path --prepend "$path"
-end
-
-function hostip
-    # Honors belong to ChatGPT
-    # 1. 过滤出数字开头的行和 inet 开头的行
-    # 2. 将第一行和第二行合并
-    # 3. 过滤掉 lo 和 interface 后面的冒号，interface至少占15个字符，打印出来
-    ip a \
-        | awk '{if ($1 ~ /^[[:digit:]]/) {print $2} else if ($1 == "inet" && $2 !~ /^inet6/) {print $2}}' \
-        | awk '{ORS = (NR%2 == 0 ? "\n" : ""); if (NR%2 == 1) {printf "%-20s", $0} else {printf "%s\n", $0}}' \
-        | awk '{if ($1 ~ /^lo:/) next; sub(/:$/, "", $1); printf "%-15s %s\n", $1, $2}'
 end
 
 # from /usr/share/fish/functions/cd.fish, add fzf for search
@@ -208,12 +183,6 @@ function glone
     cd (cat /tmp/goclone | head -n 1 | awk '{print $4}')
 end
 
-function v
-    govulncheck ./... >/tmp/govulncheck 2>&1
-    [ $status -ne 0 ] && cat /tmp/govulncheck
-    echo -n "" >/tmp/govulncheck
-end
-
 # ping tailscale with name
 function tsping
     tailscale ping $(
@@ -226,57 +195,8 @@ function tsping
     )
 end
 
-function now
-    if test (count $argv) -gt 0
-        for arg in $argv
-            date --iso-8601=seconds -d "@$arg"
-        end
-    else
-        date --rfc-3339=seconds
-        date +%s
-    end
-end
-
-function rmf
-    fd --hidden --follow | fzf | xargs rm -rf
-end
-
 function mc
     mkdir -p -- $argv[1] && cd -P -- $argv[1]
-end
-
-function setpx
-    set -gx https_proxy http://$argv[1]
-    set -gx http_proxy http://$argv[1]
-    set -gx all_proxy socks5://$argv[1]
-    echo "set proxy to $argv[1]"
-end
-
-function px1
-    setpx 127.0.0.1:1080
-end
-
-function px3
-    set px3_proxy "socks5://10.10.43.3:1080"
-    set -gx https_proxy $px3_proxy
-    set -gx http_proxy $px3_proxy
-    set -gx all_proxy $px3_proxy
-    echo "set proxy to $px3_proxy"
-end
-
-function px5
-    setpx "10.10.43.5:1080"
-end
-
-function px127
-    setpx "127.0.0.1:1080"
-end
-
-function nopx
-    set -e HTTPS_PROXY
-    set -e HTTP_PROXY
-    set -e ALL_PROXY
-    echo "set proxy to nil"
 end
 
 function open
@@ -296,34 +216,6 @@ function open
     if uname -r | grep -iq arch
         xdg-open $argv &>/dev/null 2>&1
         return
-    end
-end
-
-function note
-    switch $argv[1]
-        case l ls # ls
-            docker container ls | grep jupyter
-        case k ki kill # kill
-            set containers (docker container ls | grep $argv[2] | awk '{ print $1 }')
-            for container in $containers
-                docker container kill $container
-            end
-        case '*' # new
-            set port 8888
-            test -n "$argv[1]" && set port $argv[1]
-
-            set name (basename (dirname $PWD))_(basename $PWD)
-            test -n "$argv[2]" && set name $argv[2]
-
-            echo container: $name http://127.0.0.1:$port/lab
-            docker run -d \
-                --rm --name $name \
-                -p $port:8888 \
-                -v $PWD:/home/jovyan jupyter/scipy-notebook \
-                jupyter-lab \
-                --NotebookApp.token= \
-                --NotebookApp.password=
-            open "http://127.0.0.1:$port/lab"
     end
 end
 
@@ -413,9 +305,6 @@ switch (uname)
     case Darwin
         set -gx HOMEBREW_NO_AUTO_UPDATE 1
         set -gx HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK 1
-        alias i='brew install'
-        alias ic='brew install --cask'
-        alias dnsm='sudo brew services restart dnsmasq'
         alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
         alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
         set -Ux SSH_AUTH_SOCK "~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock"
