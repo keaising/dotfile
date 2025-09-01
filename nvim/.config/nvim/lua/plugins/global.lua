@@ -107,4 +107,5 @@ return {
             },
         },
     },
+    { "sitiom/nvim-numbertoggle" },
 }
