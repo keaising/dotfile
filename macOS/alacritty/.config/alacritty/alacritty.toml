@@ -16,7 +16,7 @@ option_as_alt = "Both"
 # size = 14
 # offset = { x = 1, y = 1 }
 normal = { family = "Consolas Nerd Font", style = "Regular" }
-size = 15
+size = 16
 offset = { x = 1, y = 2 }
 
 [keyboard]
