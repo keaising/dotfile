@@ -128,7 +128,8 @@ return {
             --         },
             --     },
             -- })
-            vim.lsp.config("vtsls", {})
+            -- vim.lsp.config("vtsls", {})
+            vim.lsp.config("tsgo", {})
             vim.lsp.config("biome", {})
         end,
     },
@@ -289,7 +290,7 @@ return {
                     -- "basedpyright",
                     "terraformls",
                     -- "ts_ls",
-                    "vtsls",
+                    -- "vtsls",
                     -- "typos_lsp",
                     "vimls",
                     "yamlls",
