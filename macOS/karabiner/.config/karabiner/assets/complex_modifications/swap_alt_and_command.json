@@ -77,6 +77,32 @@
               ]
             }
           ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "modifiers": {
+              "mandatory": ["left_option"]
+            },
+            "key_code": "tab"
+          },
+          "to": [
+            {
+              "repeat": false,
+              "key_code": "tab",
+              "modifiers": ["left_command"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "org.alacritty",
+                "com.valvesoftware.dota2",
+                "dev.zed.Zed"
+              ]
+            }
+          ]
         }
       ]
     }
