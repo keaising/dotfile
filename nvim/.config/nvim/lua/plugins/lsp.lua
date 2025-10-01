@@ -1,24 +1,5 @@
 ---@diagnostic disable: duplicate-set-field
 
-local signature_help = vim.lsp.buf.signature_help
-vim.lsp.buf.signature_help = function()
-    return signature_help({
-        border = vim.g.border_style,
-        focusable = false,
-        max_height = math.floor(vim.o.lines * 0.5),
-        max_width = math.floor(vim.o.columns * 0.4),
-    })
-end
-
-local hover = vim.lsp.buf.hover
-vim.lsp.buf.hover = function()
-    return hover({
-        border = vim.g.border_style,
-        max_height = math.floor(vim.o.lines * 0.5),
-        max_width = math.floor(vim.o.columns * 0.4),
-    })
-end
-
 local function general_on_attach(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     local fzf = require("fzf-lua")
@@ -32,7 +13,6 @@ local function general_on_attach(_, bufnr)
     end
     k("n", "<m-b>", go_to_definition, bufopts)
     k("n", "gd", go_to_definition, bufopts)
-    k("n", "gh", vim.lsp.buf.hover, bufopts)
     k("n", "gi", function()
         fzf.lsp_implementations({
             jump1 = true,
@@ -50,6 +30,7 @@ local function general_on_attach(_, bufnr)
     k("n", "<leader>ca", function()
         fzf.lsp_code_actions({ previewer = false })
     end, bufopts)
+    k("n", "gh", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
     k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
     k("n", "`", vim.diagnostic.open_float, bufopts)
     k("n", "gr", function()
@@ -73,71 +54,18 @@ local function general_on_attach(_, bufnr)
     end, bufopts)
 end
 
-local function vtsls_on_attach(_, bufnr)
-    local bufopts = { noremap = true, silent = true, buffer = bufnr }
-    local fzf = require("fzf-lua")
-    local k = vim.keymap.set
-    -- local go_to_definition = function()
-    --     fzf.lsp_definitions({
-    --         jump1 = true,
-    --         ignore_current_line = true,
-    --         multiline = 2,
-    --     })
-    -- end
-    -- k("n", "<m-b>", go_to_definition, bufopts)
-    -- k("n", "gd", go_to_definition, bufopts)
-    -- k("n", "gi", function()
-    --     fzf.lsp_implementations({
-    --         jump1 = true,
-    --         ignore_current_line = true,
-    --         show_line = false,
-    --         multiline = 2,
-    --     })
-    -- end, bufopts)
-    -- k("n", "<m-k>", function()
-    --     return ":IncRename " .. vim.fn.expand("<cword>")
-    -- end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    k("n", "<m-.>", function()
-        fzf.lsp_code_actions({ previewer = false })
-    end, bufopts)
-    k("n", "<leader>ca", function()
-        fzf.lsp_code_actions({ previewer = false })
-    end, bufopts)
-    k("n", "gh", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
-    k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
-    -- k("n", "`", vim.diagnostic.open_float, bufopts)
-    -- k("n", "gr", function()
-    --     fzf.lsp_references({
-    --         jump1 = true,
-    --         ignore_current_line = true,
-    --         include_current_line = false,
-    --         multiline = 2,
-    --     })
-    -- end, bufopts)
-    -- k("n", "<leader>ls", fzf.lsp_document_symbols, bufopts)
-    -- k("n", "<m-j>", function()
-    --     vim.diagnostic.jump({
-    --         count = 1,
-    --         float = true,
-    --         severity = {
-    --             vim.diagnostic.severity.ERROR,
-    --             vim.diagnostic.severity.WARN,
-    --         },
-    --     })
-    -- end, bufopts)
-end
-
 return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            vim.lsp.enable("gopls")
-            -- python
-            vim.lsp.enable("ruff")
-            vim.lsp.enable("pyright")
-            -- vim.lsp.enable("vtsls")
-            vim.lsp.enable("tsgo")
-            vim.lsp.enable("biome")
+            vim.lsp.enable({
+                "biome",
+                "gopls",
+                "pyright",
+                "ruff",
+                "tsgo",
+                --"vtsls"
+            })
         end,
     },
     {
@@ -202,17 +130,32 @@ return {
     {
         "pmizio/typescript-tools.nvim",
         dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        -- enabled = false,
+        enabled = false,
         config = function()
             require("typescript-tools").setup({
                 on_attach = function(client, bufnr)
-                    if client.name == "typescript-tools" then
-                        client.server_capabilities.completionProvider = nil
-                        client.server_capabilities.referencesProvider = nil
-                        client.server_capabilities.documentSymbolProvider = nil
-                        client.handlers["textDocument/publishDiagnostics"] = function() end
+                    local keptCapabilities = {
+                        "codeActionProvider",
+                        "textDocumentSync",
+                        "workspace",
+                        "executeCommandProvider",
+                    }
+                    for key, _ in ipairs(client.server_capabilities) do
+                        if vim.tbl_contains(keptCapabilities, key) then
+                            goto continue
+                        end
+                        local value = client.server_capabilities[key]
+                        local value_type = type(value)
+
+                        if value_type == "boolean" then
+                            client.server_capabilities[key] = false
+                        end
+                        if value_type == "table" then
+                            client.server_capabilities[key] = nil
+                        end
+                        ::continue::
                     end
-                    vtsls_on_attach(_, bufnr)
+                    general_on_attach(_, bufnr)
                 end,
                 settings = {
                     expose_as_code_action = { "all" },
@@ -225,6 +168,16 @@ return {
         "Fildo7525/pretty_hover",
         event = "LspAttach",
         opts = {},
+    },
+    {
+        "ray-x/lsp_signature.nvim",
+        event = "InsertEnter",
+        opts = {
+            max_width = function()
+                return math.floor(vim.api.nvim_win_get_width(0) * 0.6)
+            end,
+            hint_enable = false,
+        },
     },
     {
         "rachartier/tiny-inline-diagnostic.nvim",

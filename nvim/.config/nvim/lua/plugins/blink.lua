@@ -44,7 +44,7 @@ return {
                     },
                 },
             },
-            signature = { enabled = true },
+            -- signature = { enabled = true },
             fuzzy = {
                 sorts = {
                     "exact",

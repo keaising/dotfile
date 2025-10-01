@@ -9,8 +9,8 @@ local function tsgo_on_attach(_, bufnr)
             multiline = 2,
         })
     end
-    k("n", "<m-b>", ":lua vim.lsp.buf.definition()<CR>", bufopts)
-    -- k("n", "<m-b>", go_to_definition, bufopts)
+    -- k("n", "<m-b>", ":lua vim.lsp.buf.definition()<CR>", bufopts)
+    k("n", "<m-b>", go_to_definition, bufopts)
     k("n", "gd", go_to_definition, bufopts)
     k("n", "gi", function()
         fzf.lsp_implementations({
@@ -24,14 +24,14 @@ local function tsgo_on_attach(_, bufnr)
     k("n", "<m-k>", function()
         return ":IncRename " .. vim.fn.expand("<cword>")
     end, { expr = true, noremap = true, silent = true, buffer = bufnr })
-    -- k("n", "<m-.>", function()
-    --     fzf.lsp_code_actions({ previewer = false })
-    -- end, bufopts)
-    -- k("n", "<leader>ca", function()
-    --     fzf.lsp_code_actions({ previewer = false })
-    -- end, bufopts)
-    -- k("n", "gh", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
-    -- k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
+    k("n", "<m-.>", function()
+        fzf.lsp_code_actions({ previewer = false })
+    end, bufopts)
+    k("n", "<leader>ca", function()
+        fzf.lsp_code_actions({ previewer = false })
+    end, bufopts)
+    k("n", "gh", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
+    k("n", "K", "<cmd>lua require('pretty_hover').hover()<CR>", bufopts)
     k("n", "`", vim.diagnostic.open_float, bufopts)
     k("n", "gr", function()
         fzf.lsp_references({
@@ -58,7 +58,6 @@ end
 return {
     cmd = { "tsgo", "--lsp", "--stdio" },
     on_attach = function(client, bufnr)
-        client.server_capabilities.hoverProvider = nil
-        tsgo_on_attach()
+        tsgo_on_attach(client, bufnr)
     end,
 }
