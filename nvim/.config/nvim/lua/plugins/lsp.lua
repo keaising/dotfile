@@ -66,7 +66,7 @@ return {
                 "tsgo",
                 "vtsls",
             }
-            
+
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
             -- Load from ~/.config/nvim/lsp/*.lua
             vim.tbl_map(function(server)
@@ -78,7 +78,7 @@ return {
                     end
                 end
             end, lsp_servers)
-            
+
             -- Enable all LSP servers
             vim.lsp.enable(lsp_servers)
         end,
@@ -141,43 +141,6 @@ return {
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
         },
-    },
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        enabled = false,
-        config = function()
-            require("typescript-tools").setup({
-                on_attach = function(client, bufnr)
-                    local keptCapabilities = {
-                        "codeActionProvider",
-                        "textDocumentSync",
-                        "workspace",
-                        "executeCommandProvider",
-                    }
-                    for key, _ in ipairs(client.server_capabilities) do
-                        if vim.tbl_contains(keptCapabilities, key) then
-                            goto continue
-                        end
-                        local value = client.server_capabilities[key]
-                        local value_type = type(value)
-
-                        if value_type == "boolean" then
-                            client.server_capabilities[key] = false
-                        end
-                        if value_type == "table" then
-                            client.server_capabilities[key] = nil
-                        end
-                        ::continue::
-                    end
-                    general_on_attach(_, bufnr)
-                end,
-                settings = {
-                    expose_as_code_action = { "all" },
-                    code_lens = "all",
-                },
-            })
-        end,
     },
     {
         "Fildo7525/pretty_hover",
