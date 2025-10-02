@@ -58,7 +58,7 @@ return {
     {
         "neovim/nvim-lspconfig",
         config = function()
-            local lsp_servers = {
+            local servers = {
                 "biome",
                 "gopls",
                 "pyright",
@@ -69,7 +69,7 @@ return {
 
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
             -- Load from ~/.config/nvim/lsp/*.lua
-            vim.tbl_map(function(server)
+            for _, server in ipairs(servers) do
                 local config_file = lsp_dir .. "/" .. server .. ".lua"
                 if vim.fn.filereadable(config_file) == 1 then
                     local ok, config = pcall(dofile, config_file)
@@ -77,10 +77,10 @@ return {
                         vim.lsp.config(server, config)
                     end
                 end
-            end, lsp_servers)
+            end
 
             -- Enable all LSP servers
-            vim.lsp.enable(lsp_servers)
+            vim.lsp.enable(servers)
         end,
     },
     {
