@@ -4,4 +4,4 @@
 
 require("clock")
 require("window")
-require("pr")
+-- require("pr")
