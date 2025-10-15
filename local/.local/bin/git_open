@@ -2,6 +2,12 @@
 # 获取当前分支名
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
+# 如果是在主分支（main 或 master），直接打开项目主页
+if [ "$CURRENT_BRANCH" = "main" ] || [ "$CURRENT_BRANCH" = "master" ]; then
+	gh repo view --web
+	exit 0
+fi
+
 # 检查当前分支是否已有PR
 PR_URL=$(gh pr list --head "$CURRENT_BRANCH" --state open --json url --jq '.[0].url')
 
