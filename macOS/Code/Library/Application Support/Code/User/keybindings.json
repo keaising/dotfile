@@ -115,10 +115,6 @@
 		"when": "inSearchEditor && searchInputBoxFocus"
 	},
 	{
-		"key": "alt+c",
-		"command": "editor.action.clipboardCopyAction"
-	},
-	{
 		"key": "ctrl+j",
 		"command": "-editor.action.joinLines",
 		"when": "editorTextFocus && !editorReadonly"

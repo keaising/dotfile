@@ -93,5 +93,10 @@
 	"vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
 	"vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
 	"editor.wordWrap": "on",
-	"workbench.startupEditor": "none"
+	"workbench.startupEditor": "none",
+	"remote.SSH.useLocalServer": false,
+	"remote.SSH.remotePlatform": {
+		"song": "linux"
+	},
+	"explorer.confirmDragAndDrop": false
 }
