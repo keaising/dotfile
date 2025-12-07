@@ -1,0 +1,8 @@
+zsh-users/zsh-autosuggestions
+
+# 如果需要，可以从 oh-my-zsh 添加插件
+# ohmyzsh/ohmyzsh path:plugins/git
+# ohmyzsh/ohmyzsh path:plugins/macos
+
+# 语法高亮（必须在最后加载！）
+zsh-users/zsh-syntax-highlighting
