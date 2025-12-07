@@ -284,7 +284,7 @@ if [ -e $STARSHIP_CONFIG ]
 end
 
 # z.lua
-set -x ZLUA_FILE $HOME/.config/fish/z.lua
+set -x ZLUA_FILE $HOME/.local/bin/z.lua
 if [ -e $ZLUA_FILE ]
     set -gx _ZL_MATCH_MODE 1
     set -gx _ZL_CMD z

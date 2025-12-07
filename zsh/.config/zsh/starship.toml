@@ -1,0 +1,57 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+command_timeout = 1000
+
+[directory]
+truncation_length = 0
+truncate_to_repo = false
+
+[git_branch]
+format = "[$branch]($style) "
+# format = "[$symbol$branch]($style) "
+
+[golang]
+format = "[$symbol()]($style)"
+disabled = true
+
+[cmd_duration]
+format = "[$duration]($style) "
+min_time = 3_000
+
+[character]
+success_symbol = "[Δ](bold green)"
+error_symbol = "[✘](bold red)"
+vicmd_symbol = "[Ε](bold blue) "
+
+[username]
+style_user = "yellow bold"
+style_root = "black bold"
+format = "[$user@]($style)"
+disabled = false
+
+[hostname]
+ssh_only = true
+format =  "[$hostname](bold yellow) "
+disabled = false
+
+[git_status]
+format = '([\[$conflicted$deleted$renamed$modified$staged$untracked\]]($style))'
+conflicted = '!'
+
+[package]
+disabled = true
+
+[gcloud]
+disabled = true
+
+[aws]
+disabled = true
+
+[dotnet]
+disabled = true
+
+[lua]
+disabled = true
+
+[docker_context]
+disabled = true
