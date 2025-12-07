@@ -46,6 +46,9 @@ alias tx='tmuxp'
 
 alias c='cursor'
 alias k='kubectl'
+alias kctx='echo "Current config: $KUBECONFIG"; and kubectl config current-context'
+alias kprod="set -gx KUBECONFIG ~/.kube/prod.config; and echo '🟡Switched to prod'"
+alias ktest="set -gx KUBECONFIG ~/.kube/test.config; and echo '🔵Switched to test'"
 
 # go
 set -gx GOPATH $HOME/code/go

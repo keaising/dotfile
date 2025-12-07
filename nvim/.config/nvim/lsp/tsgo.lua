@@ -78,11 +78,13 @@ return {
             ".git",
         }
         local project_root = vim.fs.root(bufnr, root_markers)
-        
         -- Use the project root if found, otherwise use tsconfig directory
         on_dir(project_root or tsconfig_root)
     end,
     on_attach = function(client, bufnr)
         tsgo_on_attach(client, bufnr)
     end,
+    flags = {
+        debounce_text_changes = 150,
+    },
 }
