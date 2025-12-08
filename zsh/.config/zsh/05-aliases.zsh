@@ -13,6 +13,9 @@ alias ci='git add -A && git amend && git push -f'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+
+# modern unix tools
+alias cat='bat'
 alias ll='lsd -al'
 alias vi='vim'
 if command -v nvim &>/dev/null; then
