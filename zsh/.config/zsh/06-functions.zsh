@@ -113,3 +113,21 @@ icon() {
        "/Applications/Cursor.app/Contents/Resources/Cursor.icns"
     sudo killall Finder Dock
 }
+
+envup() {
+    if [[ -f .env ]]; then
+        set -a
+        source .env
+        set +a
+	fi
+}
+
+envdown() {
+    if [[ -f .env ]]; then
+        local count=0
+        for key in $(grep -oE '^[A-Z_][A-Z0-9_]*=' .env | sed 's/=$//'); do
+            unset "$key" 2>/dev/null && ((count++))
+        done
+        echo "unset $count env"
+    fi
+}
