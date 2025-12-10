@@ -13,13 +13,7 @@ fi
 
 # fzf key bindings
 if command -v fzf &>/dev/null; then
-    # Load fzf key bindings if available
-    [[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
-    # Or from Homebrew
-    [[ -f $(brew --prefix)/opt/fzf/shell/key-bindings.zsh ]] && \
-        source $(brew --prefix)/opt/fzf/shell/key-bindings.zsh
-    [[ -f $(brew --prefix)/opt/fzf/shell/completion.zsh ]] && \
-        source $(brew --prefix)/opt/fzf/shell/completion.zsh
+	source <(fzf --zsh)
 fi
 
 # macOS specific initialization
