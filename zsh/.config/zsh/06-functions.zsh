@@ -14,7 +14,7 @@ cd() {
     if [[ $# -eq 0 ]]; then
         # No arguments: use fzf to search directories
         if command -v fzf &>/dev/null && command -v fd &>/dev/null; then
-            local dir=$(fd --type d --hidden --max-depth 3 --follow . "$HOME/code" | fzf)
+            local dir=$(fd --type d --hidden --max-depth 4 --follow . "$HOME/code" | fzf)
             [[ -d "$dir" ]] && builtin cd "$dir"
         else
             builtin cd
@@ -130,4 +130,18 @@ envdown() {
         done
         echo "unset $count env"
     fi
+}
+
+
+z() {
+  if [ $# -eq 0 ]; then
+    local dir
+    dir=$(_zlua -l 2>&1 | fzf --height 40% --reverse --nth 2.. --tac +s | sed 's/^[0-9,.]* *//')
+    if [ -n "$dir" ]; then
+      cd "$dir"
+    fi
+  else
+    # With arguments: use normal mode
+    _zlua "$@"
+  fi
 }

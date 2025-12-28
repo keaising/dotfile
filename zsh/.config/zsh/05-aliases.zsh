@@ -10,6 +10,7 @@ alias ap='ansible-playbook'
 alias ci='git add -A && git amend && git push -f'
 
 # dir
+alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
