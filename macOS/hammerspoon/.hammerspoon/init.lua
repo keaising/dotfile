@@ -2,6 +2,6 @@
 --     hs.eventtap.keyStrokes(hs.pasteboard.getContents())
 -- end)
 
-require("clock")
-require("window")
+-- require("clock")
 -- require("pr")
+require("window")
