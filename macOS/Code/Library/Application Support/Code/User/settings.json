@@ -98,5 +98,7 @@
 	"remote.SSH.remotePlatform": {
 		"song": "linux"
 	},
-	"explorer.confirmDragAndDrop": false
+	"explorer.confirmDragAndDrop": false,
+	"prisma.hidePrisma6Prompts": true,
+	"chat.viewSessions.orientation": "stacked"
 }
