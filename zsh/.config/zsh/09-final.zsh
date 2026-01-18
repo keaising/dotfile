@@ -32,6 +32,7 @@ fi
 
 # Key bindings
 # Alt+E: Open nvim
+bindkey -e
 bindkey -s '\ee' 'nvim\n'
 # Alt+I: Edit command in editor
 autoload -z edit-command-line
@@ -39,6 +40,5 @@ zle -N edit-command-line
 bindkey '\ei' edit-command-line
 
 # Emacs keymap
-bindkey -e
 bindkey "\eb" backward-word
 bindkey "\ef" forward-word
