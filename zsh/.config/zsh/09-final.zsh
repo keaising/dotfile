@@ -37,3 +37,8 @@ bindkey -s '\ee' 'nvim\n'
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey '\ei' edit-command-line
+
+# Emacs keymap
+bindkey -e
+bindkey "\eb" backward-word
+bindkey "\ef" forward-word
