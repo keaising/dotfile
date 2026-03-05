@@ -49,7 +49,8 @@ alias tk='tmux kill-session -t'
 alias tx='tmuxp'
 
 # cursor
-alias c='cursor'
+alias c='claude --dangerously-skip-permissions'
+alias p='pnpm'
 
 # kubernetes
 alias k='kubectl'

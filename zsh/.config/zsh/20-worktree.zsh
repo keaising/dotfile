@@ -45,11 +45,23 @@ wt() {
   case "$cmd" in
     co)
       if [ $# -eq 0 ]; then
-        # Select from existing worktrees
-        local worktree
-        worktree=$(git worktree list --porcelain | grep -E '^worktree ' | sed 's/^worktree //' | fzf --height=40% --reverse --prompt="Select worktree: ") || return 0
-        
-        if [ -n "$worktree" ]; then
+        # Select from existing worktrees, show "branch (path)" format
+        local selected
+        selected=$(git worktree list --porcelain | awk '
+          /^worktree / { wt_path=$2 }
+          /^branch / {
+            branch=$2
+            gsub(/^refs\/heads\//, "", branch)
+            if (branch != "" && wt_path != "") {
+              print wt_path "|" branch
+            }
+            wt_path=""
+            branch=""
+          }
+        ' | fzf --height=40% --reverse --prompt="Select worktree: " --delimiter='|' --with-nth=2) || return 0
+
+        if [ -n "$selected" ]; then
+          local worktree="${selected%%|*}"
           cd "$worktree"
         fi
       else
@@ -158,12 +170,13 @@ wt() {
     dd)
       # Remove worktrees and optionally branches
       local worktrees
-      worktrees=$(git worktree list --porcelain | awk '
+      local main_repo=$(_wt_get_main_repo_root)
+      worktrees=$(git worktree list --porcelain | awk -v main_repo="$main_repo" '
         /^worktree / { wt_path=$2 }
-        /^branch / { 
+        /^branch / {
           branch=$2
           gsub(/^refs\/heads\//, "", branch)
-          if (branch != "" && wt_path != "") {
+          if (branch != "" && wt_path != "" && wt_path != main_repo) {
             print wt_path "|" branch
           }
           wt_path=""
