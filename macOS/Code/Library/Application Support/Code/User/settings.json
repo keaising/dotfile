@@ -23,7 +23,7 @@
 		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[typescript]": {
-		"editor.defaultFormatter": "biomejs.biome"
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[javascript]": {
 		"editor.defaultFormatter": "biomejs.biome"
@@ -100,5 +100,14 @@
 	},
 	"explorer.confirmDragAndDrop": false,
 	"prisma.hidePrisma6Prompts": true,
-	"chat.viewSessions.orientation": "stacked"
+	"chat.viewSessions.orientation": "stacked",
+	"json.schemaDownload.trustedDomains": {
+		"https://schemastore.azurewebsites.net/": true,
+		"https://raw.githubusercontent.com/": true,
+		"https://www.schemastore.org/": true,
+		"https://json.schemastore.org/": true,
+		"https://json-schema.org/": true,
+		"https://biomejs.dev": true
+	},
+	"git.openRepositoryInParentFolders": "always"
 }
