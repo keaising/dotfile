@@ -59,12 +59,10 @@ return {
         "neovim/nvim-lspconfig",
         config = function()
             local servers = {
-                "biome",
                 "gopls",
                 "pyright",
                 "ruff",
                 "tsgo",
-                "vtsls",
             }
 
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
@@ -229,7 +227,6 @@ return {
                     -- "basedpyright",
                     "terraformls",
                     -- "ts_ls",
-                    "vtsls",
                     -- "typos_lsp",
                     "vimls",
                     "yamlls",
@@ -246,6 +243,8 @@ return {
                     "black",
                     "cspell",
                     "jq",
+                    "oxlint",
+                    "oxfmt",
                     "prettier",
                     "ruff",
                     "selene",

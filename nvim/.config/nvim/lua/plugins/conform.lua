@@ -1,8 +1,3 @@
-local biome = {
-    "biome",
-    "biome-check",
-    -- "biome-organize-imports",
-}
 return {
     {
         -- := vim.bo.filetype
@@ -43,13 +38,20 @@ return {
                 go = { "gosimports", "gofmt", "golines" },
                 -- sql = { "pg_format" },
                 fish = { "fish_indent" },
-                css = biome,
-                javascript = biome,
-                javascriptreact = biome,
-                json = biome,
-                markdown = { "prettierd", "prettier", stop_after_first = true },
-                typescript = biome,
-                typescriptreact = biome,
+                css = { "oxfmt" },
+                javascript = { "oxfmt" },
+                javascriptreact = { "oxfmt" },
+                json = { "oxfmt" },
+                jsonc = { "oxfmt" },
+                typescript = { "oxfmt" },
+                typescriptreact = { "oxfmt" },
+                html = { "oxfmt" },
+                scss = { "oxfmt" },
+                less = { "oxfmt" },
+                graphql = { "oxfmt" },
+                toml = { "oxfmt" },
+                yaml = { "oxfmt" },
+                markdown = { "oxfmt" },
             },
             default_format_opts = {
                 lsp_format = "fallback",
@@ -59,6 +61,11 @@ return {
                 lsp_fallback = true,
             },
             formatters = {
+                oxfmt = {
+                    command = "oxfmt",
+                    args = { "$FILENAME" },
+                    stdin = false,
+                },
                 shfmt = {
                     prepend_args = { "-i", "2" },
                 },
