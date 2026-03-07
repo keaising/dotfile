@@ -1,0 +1,49 @@
+# TERM: use xterm-256color for consistent color rendering with tmux (tmux-256color inside)
+term = xterm-256color
+
+# Colors: match alacritty default (Tomorrow Night)
+background = #1d1f21
+foreground = #c5c8c6
+
+# Clipboard: allow OSC 52 read and write
+clipboard-read = allow
+clipboard-write = allow
+
+# Window size (in cells)
+window-width = 180
+window-height = 60
+
+# Window padding (in points)
+# window-padding-x = 1
+# window-padding-y = 1
+
+# Disable shell integration cursor control so cursor-style = block is preserved at prompt
+# (tmux uses Se=\E[2 q block as default; ghostty shell integration would override to bar)
+shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
+title = Ghostty
+
+# Treat both Option keys as Alt on macOS
+macos-option-as-alt = true
+
+# Font
+font-family = Consolas Nerd Font
+font-size = 16
+# macOS font thickening to match alacritty's subpixel antialiasing rendering
+# strength range: 0 (lightest) - 255 (heaviest), tune to taste
+font-thicken = true
+font-thicken-strength = 100
+
+# adjust-cell-width = 1
+# adjust-cell-height = 1
+
+# Cursor: block to match tmux default (Se=\E[2 q)
+cursor-style = block
+
+# Disable close confirmation dialog
+confirm-close-surface = false
+
+# Keybindings
+# alacritty: { action = "Paste", key = "V", mods = "Alt" }
+keybind = alt+v=paste_from_clipboard
+# alacritty: { action = "Copy", key = "C", mods = "Alt" }
+keybind = alt+c=copy_to_clipboard
