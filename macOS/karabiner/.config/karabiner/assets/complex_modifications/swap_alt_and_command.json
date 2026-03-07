@@ -22,6 +22,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "org.alacritty",
+                "com.mitchellh.ghostty",
                 "com.valvesoftware.dota2",
                 "dev.zed.Zed"
               ]
@@ -46,6 +47,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "org.alacritty",
+                "com.mitchellh.ghostty",
                 "com.valvesoftware.dota2",
                 "dev.zed.Zed"
               ]
@@ -72,6 +74,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "org.alacritty",
+                "com.mitchellh.ghostty",
                 "com.valvesoftware.dota2",
                 "dev.zed.Zed"
               ]
@@ -98,6 +101,7 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "org.alacritty",
+                "com.mitchellh.ghostty",
                 "com.valvesoftware.dota2",
                 "dev.zed.Zed"
               ]
