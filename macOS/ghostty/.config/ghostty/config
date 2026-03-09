@@ -20,7 +20,7 @@ window-height = 60
 # Disable shell integration cursor control so cursor-style = block is preserved at prompt
 # (tmux uses Se=\E[2 q block as default; ghostty shell integration would override to bar)
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
-title = Ghostty
+title = Rubber Duck
 
 # Treat both Option keys as Alt on macOS
 macos-option-as-alt = true
