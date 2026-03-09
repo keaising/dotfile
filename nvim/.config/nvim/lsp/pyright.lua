@@ -22,6 +22,7 @@ local new_capability = {
 }
 
 return {
+    -- npm install -g @delance/runtime
     cmd = { "delance-langserver", "--stdio" },
     settings = {
         pyright = {

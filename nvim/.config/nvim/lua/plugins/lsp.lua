@@ -66,12 +66,18 @@ return {
             }
 
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
+            local blink_caps = require("blink.cmp").get_lsp_capabilities()
             -- Load from ~/.config/nvim/lsp/*.lua
             for _, server in ipairs(servers) do
                 local config_file = lsp_dir .. "/" .. server .. ".lua"
                 if vim.fn.filereadable(config_file) == 1 then
                     local ok, config = pcall(dofile, config_file)
                     if ok and config then
+                        config.capabilities = vim.tbl_deep_extend(
+                            "force",
+                            blink_caps,
+                            config.capabilities or {}
+                        )
                         vim.lsp.config(server, config)
                     end
                 end
@@ -223,7 +229,7 @@ return {
                     "dockerls",
                     "jsonls",
                     "lua_ls",
-                    "pyright",
+                    -- "pyright",
                     -- "basedpyright",
                     "terraformls",
                     -- "ts_ls",
