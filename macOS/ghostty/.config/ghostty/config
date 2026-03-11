@@ -1,9 +1,11 @@
 # TERM: use xterm-256color for consistent color rendering with tmux (tmux-256color inside)
-term = xterm-256color
+# term = xterm-256color
 
 # Colors: match alacritty default (Tomorrow Night)
-background = #1d1f21
-foreground = #c5c8c6
+#background = #1d1f21
+#foreground = #c5c8c6
+
+theme = Everforest Dark Hard
 
 # Clipboard: allow OSC 52 read and write
 clipboard-read = allow
