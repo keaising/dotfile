@@ -13,10 +13,6 @@ clipboard-write = allow
 window-width = 180
 window-height = 60
 
-# Window padding (in points)
-# window-padding-x = 1
-# window-padding-y = 1
-
 # Disable shell integration cursor control so cursor-style = block is preserved at prompt
 # (tmux uses Se=\E[2 q block as default; ghostty shell integration would override to bar)
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
@@ -33,9 +29,6 @@ font-size = 16
 font-thicken = true
 font-thicken-strength = 100
 
-# adjust-cell-width = 1
-# adjust-cell-height = 1
-
 # Cursor: block to match tmux default (Se=\E[2 q)
 cursor-style = block
 
@@ -43,7 +36,11 @@ cursor-style = block
 confirm-close-surface = false
 
 # Keybindings
-# alacritty: { action = "Paste", key = "V", mods = "Alt" }
 keybind = alt+v=paste_from_clipboard
-# alacritty: { action = "Copy", key = "C", mods = "Alt" }
 keybind = alt+c=copy_to_clipboard
+
+# Send proper xterm escape sequences for Alt+Arrow keys
+keybind = alt+left=csi:1;3D
+keybind = alt+right=csi:1;3C
+keybind = alt+up=csi:1;3A
+keybind = alt+down=csi:1;3B
