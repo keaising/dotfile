@@ -8,7 +8,11 @@ export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # z.lua initialization
 if [[ -f "$HOME/.local/bin/z.lua" ]]; then
-    eval "$(lua "$HOME/.local/bin/z.lua" --init zsh)"
+    if command -v lua &>/dev/null; then
+        eval "$(lua "$HOME/.local/bin/z.lua" --init zsh)"
+    else
+        echo "[warn] z.lua: lua not found in PATH" >&2
+    fi
 fi
 
 # fzf key bindings
