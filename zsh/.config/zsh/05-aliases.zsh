@@ -7,7 +7,7 @@ alias an='ansible'
 alias ap='ansible-playbook'
 
 # ci
-alias ci='git add -A && git amend && git push -f'
+alias ci='git add -A && git commit --amend --no-edit && git push --force-with-lease'
 
 # dir
 alias ..='cd ..'
@@ -22,7 +22,7 @@ alias vi='vim'
 if command -v nvim &>/dev/null; then
     alias vi='nvim'
 fi
-alias which='type'
+
 
 # docker
 alias d='docker'

@@ -1,13 +1,12 @@
 # History
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
-SAVEHIST=8000
+SAVEHIST=10000
 setopt SHARE_HISTORY           # 共享历史
 setopt HIST_IGNORE_ALL_DUPS    # 忽略重复
 setopt HIST_FIND_NO_DUPS       # 搜索时不显示重复
 setopt HIST_IGNORE_SPACE       # 忽略空格开头的命令
 setopt HIST_REDUCE_BLANKS      # 删除多余空格
-setopt INC_APPEND_HISTORY      # 实时追加历史
 
 # Completion
 autoload -Uz compinit

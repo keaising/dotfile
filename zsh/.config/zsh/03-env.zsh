@@ -37,7 +37,6 @@ export STARSHIP_CONFIG="$HOME/.config/zsh/starship.toml"
 
 # z.lua
 export _ZL_MATCH_MODE=1
-export _ZL_CMD=zz
 export _ZL_ADD_ONCE=1
 
 # fzf

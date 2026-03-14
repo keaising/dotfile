@@ -22,12 +22,7 @@ fi
 
 # macOS specific initialization
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    # Disable CapsLock delay when switching Input Method
-    if [[ ! -f "$HOME/.cache/capslock_delay_disabled" ]]; then
-        hidutil property --set '{"CapsLockDelayOverride":0}' &>/dev/null
-        mkdir -p "$HOME/.cache"
-        touch "$HOME/.cache/capslock_delay_disabled"
-    fi
+    hidutil property --set '{"CapsLockDelayOverride":0}' &>/dev/null
 fi
 
 # Load confidential configurations (if exist)

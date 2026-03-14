@@ -1,7 +1,7 @@
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#585858"
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 bindkey '^F' autosuggest-accept
 
 # zsh-syntax-highlighting

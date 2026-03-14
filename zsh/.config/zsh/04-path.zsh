@@ -16,9 +16,6 @@ path=(
     # Node (n)
     $N_PREFIX/bin
 
-    # Python
-    $PYENV_ROOT/bin
-
     # JDK (macOS)
     /usr/local/opt/openjdk/bin
     /opt/homebrew/opt/openjdk/bin
@@ -33,7 +30,6 @@ path=(
     /opt/homebrew/sbin
     /usr/local/bin
     /usr/local/sbin
-    /usr/local
     /usr/bin
     /usr/sbin
     

@@ -20,11 +20,11 @@ cd() {
             builtin cd
         fi
     else
-        # Try normal cd first
-        builtin cd "$@" 2>/dev/null
-        # If failed and z.lua is available, try z.lua
-        if [[ $? -ne 0 ]] && typeset -f _zlua &>/dev/null; then
-            _zlua "$@"
+        # Try normal cd first, fallback to z.lua
+        if ! builtin cd "$@"; then
+            if typeset -f _zlua &>/dev/null; then
+                _zlua "$@"
+            fi
         fi
     fi
 }

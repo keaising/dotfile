@@ -2,7 +2,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	# Homebrew
 	eval "$(/opt/homebrew/bin/brew shellenv)"
 	# Load antidote
-	source $(brew --prefix)/opt/antidote/share/antidote/antidote.zsh
+	source $HOMEBREW_PREFIX/opt/antidote/share/antidote/antidote.zsh
 else
 	source ~/.antidote/antidote.zsh
 fi

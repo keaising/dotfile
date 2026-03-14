@@ -5,4 +5,4 @@ zsh-users/zsh-autosuggestions
 # ohmyzsh/ohmyzsh path:plugins/macos
 
 # 语法高亮（必须在最后加载！）
-zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
