@@ -1,10 +1,6 @@
 # TERM: use xterm-256color for consistent color rendering with tmux (tmux-256color inside)
 # term = xterm-256color
 
-# Colors: match alacritty default (Tomorrow Night)
-#background = #1d1f21
-#foreground = #c5c8c6
-
 theme = Everforest Dark Hard
 
 # Clipboard: allow OSC 52 read and write
@@ -20,8 +16,8 @@ window-height = 60
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
 title = Rubber Duck
 
-# Treat both Option keys as Alt on macOS
-macos-option-as-alt = true
+# Treat left Option key as Alt on macOS, keep right Option for macOS native (e.g. special chars)
+macos-option-as-alt = left
 
 # Font
 font-family = Consolas Nerd Font
@@ -33,6 +29,9 @@ font-thicken-strength = 100
 
 # Cursor: block to match tmux default (Se=\E[2 q)
 cursor-style = block
+
+# Disable scrollback since tmux manages scroll history
+scrollback-limit = 0
 
 # Disable close confirmation dialog
 confirm-close-surface = false
