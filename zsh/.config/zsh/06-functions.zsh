@@ -12,15 +12,27 @@ timezsh() {
 # Enhanced cd with fzf and z.lua fallback
 cd() {
     if [[ $# -eq 0 ]]; then
-        # No arguments: use fzf to search directories
-        if command -v fzf &>/dev/null && command -v fd &>/dev/null; then
-            local dir=$(fd --type d --hidden --max-depth 4 --follow . "$HOME/code" | fzf)
+        if command -v fzf &>/dev/null; then
+            local dir
+            dir=$({
+                # z.lua history
+                if typeset -f _zlua &>/dev/null; then
+                    _zlua -l 2>/dev/null | awk '{print $2}'
+                fi
+                echo "$HOME/code/github.com/troph-team/workspace/pixai"
+                if [[ -d "$HOME/code/github.com/troph-team/workspace/worktrees" ]]; then
+                    fd --type d --max-depth 1 . "$HOME/code/github.com/troph-team/workspace/worktrees"
+                fi
+                # ~/code
+                if command -v fd &>/dev/null; then
+                    fd --type d --hidden --max-depth 4 --follow . "$HOME/code"
+                fi
+            } | sed 's|/$||' | awk '!seen[$0]++' | fzf --height 40% --reverse)
             [[ -d "$dir" ]] && builtin cd "$dir"
         else
             builtin cd
         fi
     else
-        # Try normal cd first, fallback to z.lua
         if ! builtin cd "$@"; then
             if typeset -f _zlua &>/dev/null; then
                 _zlua "$@"
