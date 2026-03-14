@@ -37,10 +37,12 @@ return {
                 diagnosticMode = "workspace",
                 typeCheckingMode = "standard",
                 useLibraryCodeForTypes = true,
-                -- we can this setting below to redefine some diagnostics
+                -- suppress diagnostics that duplicate ruff's lint rules
                 diagnosticSeverityOverrides = {
-
                     deprecateTypingAliases = false,
+                    reportUnusedImport = "none",
+                    reportUnusedVariable = "none",
+                    reportMissingModuleSource = "none",
                 },
                 -- inlay hint settings are provided by pylance?
                 inlayHints = {

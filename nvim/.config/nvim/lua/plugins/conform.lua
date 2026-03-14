@@ -9,7 +9,7 @@ return {
                 fish = { "fish" },
                 lua = { "selene" },
                 python = { "ruff" },
-                go = { "gofmt", "golines", "goimports" },
+                -- go: diagnostics handled by gopls, format tools belong in conform
                 yaml = { "yamllint" },
             }
         end,

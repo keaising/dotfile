@@ -22,7 +22,7 @@ set fdm=indent           " 代码折叠默认使用缩进
 set backup               " 允许备份
 set writebackup          " 保存时备份
 set scrolloff=5          " 垂直滚动时，光标距离顶部/底部的位置（单位：行）
-set sidescrolloff=15     " 水平滚动时，光标距离行首或行尾的位置（单位：字符）
+set sidescrolloff=5      " 水平滚动时，光标距离行首或行尾的位置（单位：字符）
 set relativenumber
 set number
 set list                 " 设置显示制表符等隐藏字符
@@ -41,7 +41,9 @@ set backupdir=~/.vim/tmp " 备份文件地址，统一管理
 set backupext=.bak       " 备份文件扩展名
 set mouse=
 set noswapfile
-set noundofile
+set undofile
+set undodir=~/.vim/undo//
+silent! call mkdir($HOME.'/.vim/undo', 'p')
 set spo=camel
 set splitbelow
 set splitright
