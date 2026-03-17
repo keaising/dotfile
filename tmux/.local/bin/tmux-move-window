@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Move current window to another session
+# Lists all sessions via fzf, then moves the current window to the selected session
+
+current_session=$(tmux display-message -p '#{session_name}')
+
+selected=$(tmux list-sessions -F '#{session_name}' |
+	grep -v "^${current_session}$" |
+	fzf --reverse --border=none --height=100% --prompt='move to: ' --pointer='▶')
+
+[[ -z "$selected" ]] && exit 0
+
+tmux move-window -t "$selected:"
