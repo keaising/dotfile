@@ -110,5 +110,6 @@
 		"https://biomejs.dev": true
 	},
 	"git.openRepositoryInParentFolders": "always",
-	"typescript.experimental.useTsgo": true
+	"typescript.experimental.useTsgo": true,
+	"editor.accessibilitySupport": "off"
 }
