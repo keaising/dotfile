@@ -1,0 +1,15 @@
+{
+  "enabledPlugins": {
+    "fastapi-for-ai@fastapi-for-ai": true,
+    "lua-lsp@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "fastapi-for-ai": {
+      "source": {
+        "source": "github",
+        "repo": "troph-team/fastapi-for-ai-skill"
+      }
+    }
+  },
+  "skipDangerousModePermissionPrompt": true
+}
