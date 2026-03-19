@@ -1,7 +1,9 @@
 {
   "enabledPlugins": {
     "fastapi-for-ai@fastapi-for-ai": true,
-    "lua-lsp@claude-plugins-official": true
+    "lua-lsp@claude-plugins-official": true,
+    "software-design-philosophy@software-design-philosophy": true,
+    "humanizer-zh@humanizer-zh": true
   },
   "extraKnownMarketplaces": {
     "fastapi-for-ai": {
@@ -9,7 +11,23 @@
         "source": "github",
         "repo": "troph-team/fastapi-for-ai-skill"
       }
+    },
+    "software-design-philosophy": {
+      "source": {
+        "source": "github",
+        "repo": "luoling8192/software-design-philosophy-skill"
+      }
+    },
+    "humanizer-zh": {
+      "source": {
+        "source": "github",
+        "repo": "op7418/Humanizer-zh"
+      }
     }
   },
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.local/bin/statusline-command.sh"
+  }
 }
