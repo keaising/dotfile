@@ -16,11 +16,10 @@ target=$(echo "$result" | tail -1)
 if tmux has-session -t "=$target" 2>/dev/null; then
 	tmux move-window -s "$current_window" -t "$target:"
 else
-	# create session by linking current window directly via move
-	# first create an empty session using a temp window, then swap
 	tmux new-session -d -s "$target" -x 1 -y 1
 	tmux move-window -s "$current_window" -t "$target:"
-	# kill the initial placeholder window (it's always index 0 with base-index 0, or 1 with base-index 1)
 	first_win=$(tmux list-windows -t "$target" -F '#{window_index}' | head -1)
 	tmux kill-window -t "$target:$first_win"
 fi
+
+tmux switch-client -t "$target"
