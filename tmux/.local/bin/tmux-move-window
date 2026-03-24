@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 
-# Move current window to another session
-# Lists all sessions via fzf, then moves the current window to the selected session
+# Move current window to another session or a new session
 
 current_session=$(tmux display-message -p '#{session_name}')
+current_window=$(tmux display-message -p '#{window_id}')
 
-selected=$(tmux list-sessions -F '#{session_name}' |
+result=$(tmux list-sessions -F '#{session_name}' |
 	grep -v "^${current_session}$" |
-	fzf --reverse --border=none --height=100% --prompt='move to: ' --pointer='▶')
+	fzf --reverse --border=none --height=100% --prompt='move to: ' --pointer='▶' \
+	    --print-query --bind 'enter:replace-query+print-query')
 
-[[ -z "$selected" ]] && exit 0
+target=$(echo "$result" | tail -1)
+[[ -z "$target" ]] && exit 0
 
-tmux move-window -t "$selected:"
+if tmux has-session -t "=$target" 2>/dev/null; then
+	tmux move-window -s "$current_window" -t "$target:"
+else
+	# create session by linking current window directly via move
+	# first create an empty session using a temp window, then swap
+	tmux new-session -d -s "$target" -x 1 -y 1
+	tmux move-window -s "$current_window" -t "$target:"
+	# kill the initial placeholder window (it's always index 0 with base-index 0, or 1 with base-index 1)
+	first_win=$(tmux list-windows -t "$target" -F '#{window_index}' | head -1)
+	tmux kill-window -t "$target:$first_win"
+fi
