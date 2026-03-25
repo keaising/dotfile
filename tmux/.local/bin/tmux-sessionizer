@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(fd --type d --min-depth 3 --max-depth 3 . ~/code | fzf)
+	selected=$(fd --type d --min-depth 3 --max-depth 3 . ~/code | fzf --cycle)
 fi
 
 if [[ -z $selected ]]; then

@@ -7,7 +7,7 @@ current_window=$(tmux display-message -p '#{window_id}')
 
 result=$(tmux list-sessions -F '#{session_name}' |
 	grep -v "^${current_session}$" |
-	fzf --reverse --border=none --height=100% --prompt='move to: ' --pointer='▶' \
+	fzf --reverse --border=none --height=100% --prompt='move to: ' --pointer='▶' --cycle \
 	    --print-query --bind 'enter:replace-query+print-query')
 
 target=$(echo "$result" | tail -1)

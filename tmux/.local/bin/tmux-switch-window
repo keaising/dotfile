@@ -8,7 +8,7 @@
 selected=$(tmux list-windows -a -F '#{session_id}|#{session_name}|#{window_index}|#{window_name}' |
 	sort -t'$' -k2 -n |
 	awk -F'|' '{printf "%-20s\t%-4s\t%s\t%s\n", $2, (substr($1,2)+1)$3, $4, $1":"$3}' |
-	fzf --reverse --border=none --height=100% --prompt=' ' --pointer='▶' \
+	fzf --reverse --border=none --height=100% --prompt=' ' --pointer='▶' --cycle \
 	    --delimiter='\t' --with-nth=1,2,3 --nth=2,3 |
 	awk -F'\t' '{print $NF}')
 
