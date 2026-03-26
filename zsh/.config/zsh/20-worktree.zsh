@@ -5,7 +5,12 @@ _wt_main_root() {
 }
 
 _wt_base() {
-  echo "$(dirname "$(_wt_main_root)")/worktrees"
+  local main_root=$(_wt_main_root)
+  echo "$(dirname "$main_root")/worktree/$(basename "$main_root")"
+}
+
+_wt_sanitize() {
+  echo "$1" | tr -c 'a-zA-Z0-9\n' '-'
 }
 
 # Output: path|branch per line
@@ -20,22 +25,9 @@ _wt_find() {
   _wt_list | awk -F'|' -v b="$1" '$2==b {print $1; exit}'
 }
 
-_wt_check_allowed_dir() {
-  local ALLOWED_DIRS=("$HOME/code/github.com/troph-team/workspace")
-  local cwd=$(pwd)
-  for dir in "${ALLOWED_DIRS[@]}"; do
-    if [[ "$cwd" == "$dir" ]] || [[ "$cwd" == "$dir"/* ]]; then
-      return 0
-    fi
-  done
-  echo "Error: Not in allowed directory. Current: $cwd" >&2
-  return 1
-}
-
 # ── Commands ─────────────────────────────────────────────────
 
 wt() {
-  _wt_check_allowed_dir || return 1
   local cmd=${1:-""}; shift 2>/dev/null
 
   case "$cmd" in
@@ -59,7 +51,7 @@ wt() {
       if [[ -n "$existing" ]]; then
         cd "$existing"
       else
-        local wt_path="$(_wt_base)/${selected//\//-}"
+        local wt_path="$(_wt_base)/$(_wt_sanitize "$selected")"
         git worktree add "$wt_path" "$selected"
         cd "$wt_path"
       fi
@@ -71,7 +63,7 @@ wt() {
         return 1
       fi
       local branch="$1" base="${2:-HEAD}"
-      local wt_path="$(_wt_base)/${branch//\//-}"
+      local wt_path="$(_wt_base)/$(_wt_sanitize "$branch")"
 
       if [[ -d "$wt_path" ]]; then
         echo "Error: $wt_path already exists" >&2
@@ -107,16 +99,16 @@ wt() {
       [[ -z "$selected" ]] && return 0
 
       local cwd=$(pwd)
-      while IFS='|' read -r path branch; do
-        if [[ "$cwd" == "$path"* ]]; then
-          echo "Error: You're in $path, run 'wt com' first" >&2
+      while IFS='|' read -r wt_path branch; do
+        if [[ "$cwd" == "$wt_path"* ]]; then
+          echo "Error: You're in $wt_path, run 'wt com' first" >&2
           return 1
         fi
       done <<< "$selected"
 
-      while IFS='|' read -r path branch; do
-        echo "Removing: $path ($branch)"
-        git worktree remove "$path" --force
+      while IFS='|' read -r wt_path branch; do
+        echo "Removing: $wt_path ($branch)"
+        git worktree remove "$wt_path" --force
         read -q "REPLY?Delete branch '$branch'? [y/N] " </dev/tty || true; echo
         [[ $REPLY =~ ^[Yy]$ ]] && git branch -D "$branch" || echo "Kept: $branch"
       done <<< "$selected"
