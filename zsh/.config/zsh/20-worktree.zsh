@@ -10,7 +10,10 @@ _wt_base() {
 }
 
 _wt_sanitize() {
-  echo "$1" | tr -c 'a-zA-Z0-9\n' '-'
+  local name="$1"
+  # Strip prefix before first / (feat/, fix/, chore/, etc.)
+  [[ "$name" == */* ]] && name="${name#*/}"
+  echo "$name" | tr -c 'a-zA-Z0-9\n' '-'
 }
 
 # Output: path|branch per line
