@@ -37,7 +37,7 @@ alias drmi='docker rmi'
 # git
 alias ga='git add .'
 alias gc='git commit -m'
-alias g='gitui'
+alias g='lazygit'
 alias glm='git_open'
 
 # tmux
@@ -48,9 +48,8 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-session -t'
 alias tx='tmuxp'
 
-# cursor
-alias c='claude --dangerously-skip-permissions'
-alias p='pnpm'
+alias c='claude'
+alias w='wt'
 
 # kubernetes
 alias k='kubectl'
