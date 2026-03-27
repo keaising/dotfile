@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
+
+gui:
+  nerdFontsVersion: "3"
+  showFileTree: true
+  showRandomTip: false
+  border: rounded
+  filterMode: fuzzy
+
+os:
+  editPreset: nvim
+
+git:
+  autoFetch: true
+  autoRefresh: true
+  mainBranches:
+    - main
+    - master
+  log:
+    order: topo-order
+    showGraph: always
