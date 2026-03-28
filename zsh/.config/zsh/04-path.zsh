@@ -16,9 +16,8 @@ path=(
     # Node (n)
     $N_PREFIX/bin
 
-    # JDK (macOS)
-    /usr/local/opt/openjdk/bin
-    /opt/homebrew/opt/openjdk/bin
+    # Rust
+    $HOME/.cargo/bin
 
     # CUDA (Linux)
     /usr/local/cuda/bin  # Ubuntu/Debian
@@ -32,7 +31,7 @@ path=(
     /usr/local/sbin
     /usr/bin
     /usr/sbin
-    
+
     # Keep existing PATH
     $path
 )
