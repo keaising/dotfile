@@ -5,7 +5,7 @@
 let g:floaterm_keymap_toggle = '<m-m>'
 let g:floaterm_keymap_prev   = '<m-Left>'
 let g:floaterm_keymap_next   = '<m-Right>'
-let g:floaterm_width=0.85
+let g:floaterm_width=0.95
 let g:floaterm_height=0.95
 
 " 'ruanyl/vim-gh-line' " invoke github/gitlab from vim
