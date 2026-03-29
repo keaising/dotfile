@@ -4,15 +4,16 @@ gui:
   nerdFontsVersion: "3"
   showFileTree: true
   showRandomTip: false
-  border: rounded
+  border: single
   filterMode: fuzzy
-
 os:
   editPreset: nvim
-
 git:
-  autoFetch: true
+  autoFetch: false
   autoRefresh: true
+  pagers:
+    - colorArg: always
+      pager: delta
   mainBranches:
     - main
     - master
