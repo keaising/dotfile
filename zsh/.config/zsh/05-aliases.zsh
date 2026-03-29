@@ -48,7 +48,7 @@ alias tka='tmux kill-session -a'
 alias tk='tmux kill-session -t'
 alias tx='tmuxp'
 
-alias c='claude'
+alias c='claude --dangerously-skip-permissions'
 alias w='wt'
 
 # kubernetes
