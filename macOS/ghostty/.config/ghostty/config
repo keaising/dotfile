@@ -16,6 +16,10 @@ window-height = 60
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
 title = Rubber Duck
 
+# Custom app icon
+macos-icon = custom
+macos-custom-icon = ~/code/github.com/keaising/dotfile/logo/rubber-duck/rubber-duck.png
+
 # Treat left Option key as Alt on macOS, keep right Option for macOS native (e.g. special chars)
 macos-option-as-alt = left
 
