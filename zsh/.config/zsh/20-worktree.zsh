@@ -112,8 +112,7 @@ wt() {
       while IFS='|' read -r wt_path branch; do
         echo "Removing: $wt_path ($branch)"
         git worktree remove "$wt_path" --force
-        read -q "REPLY?Delete branch '$branch'? [y/N] " </dev/tty || true; echo
-        [[ $REPLY =~ ^[Yy]$ ]] && git branch -D "$branch" || echo "Kept: $branch"
+        git branch -D "$branch"
       done <<< "$selected"
       ;;
 
