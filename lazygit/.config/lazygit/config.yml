@@ -11,9 +11,7 @@ os:
 git:
   autoFetch: false
   autoRefresh: true
-  pagers:
-    - colorArg: always
-      pager: delta
+  externalDiffCommand: "difft --color=always"
   mainBranches:
     - main
     - master
