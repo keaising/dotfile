@@ -37,7 +37,7 @@ alias drmi='docker rmi'
 # git
 alias ga='git add .'
 alias gc='git commit -m'
-alias g='lazygit'
+alias g='gitui'
 alias glm='git_open'
 
 # tmux
