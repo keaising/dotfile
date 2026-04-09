@@ -27,7 +27,7 @@ pos=$(echo "$list" | awk -F'\t' -v cur="$current" '$NF == cur {print NR; exit}')
 selected=$(echo "$list" |
 	fzf --ansi --reverse --border=none --height=100% --prompt=' ' --pointer='▶' --cycle \
 	    --delimiter='\t' --with-nth=1,2,3 --nth=2,3 \
-	    --bind "load:pos(${pos:-1})" |
+	    --bind "load:pos(${pos:-1})" --bind "change:first" |
 	awk -F'\t' '{print $NF}')
 
 [[ -n "$selected" ]] && tmux switch-client -t "$selected"
