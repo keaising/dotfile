@@ -16,6 +16,9 @@ path=(
     # Node (n)
     $N_PREFIX/bin
 
+    # Bun
+    $BUN_INSTALL/bin
+
     # Rust
     $HOME/.cargo/bin
 

@@ -39,5 +39,8 @@ export STARSHIP_CONFIG="$HOME/.config/zsh/starship.toml"
 export _ZL_MATCH_MODE=1
 export _ZL_ADD_ONCE=1
 
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+
 # fzf
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
