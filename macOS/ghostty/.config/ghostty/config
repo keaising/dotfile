@@ -34,8 +34,8 @@ font-thicken-strength = 100
 # Cursor: block to match tmux default (Se=\E[2 q)
 cursor-style = block
 
-# Disable scrollback since tmux manages scroll history
-scrollback-limit = 0
+# Scrollback for non-tmux sessions; inside tmux, tmux manages scroll history
+scrollback-limit = 100000
 
 # Disable close confirmation dialog
 confirm-close-surface = false
