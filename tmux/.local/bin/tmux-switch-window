@@ -8,6 +8,7 @@
 current=$(tmux display-message -p '#{session_id}:#{window_index}')
 
 list=$(tmux list-windows -a -F '#{session_id}|#{session_name}|#{window_index}|#{window_name}' |
+	grep -v '^[^|]*|_' | # ignore session created by Ataraxy-Labs/opensessions
 	sort -t'$' -k2 -n |
 	awk -F'|' 'BEGIN {
 		# Catppuccin Mocha: peach, green, mauve, sapphire, red, yellow, teal
@@ -26,8 +27,8 @@ pos=$(echo "$list" | awk -F'\t' -v cur="$current" '$NF == cur {print NR; exit}')
 
 selected=$(echo "$list" |
 	fzf --ansi --reverse --border=none --height=100% --prompt=' ' --pointer='▶' --cycle \
-	    --delimiter='\t' --with-nth=1,2,3 --nth=2,3 \
-	    --bind "load:pos(${pos:-1})" --bind "change:first" |
+		--delimiter='\t' --with-nth=1,2,3 --nth=2,3 \
+		--bind "load:pos(${pos:-1})" --bind "change:first" |
 	awk -F'\t' '{print $NF}')
 
 [[ -n "$selected" ]] && tmux switch-client -t "$selected"
