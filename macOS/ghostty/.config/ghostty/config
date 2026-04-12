@@ -11,6 +11,9 @@ clipboard-write = allow
 window-width = 180
 window-height = 60
 
+# Balance extra pixels evenly around the window so tmux fills the full terminal
+window-padding-balance = true
+
 # Disable shell integration cursor control so cursor-style = block is preserved at prompt
 # (tmux uses Se=\E[2 q block as default; ghostty shell integration would override to bar)
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
