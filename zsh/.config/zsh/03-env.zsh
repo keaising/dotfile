@@ -44,3 +44,6 @@ export BUN_INSTALL="$HOME/.bun"
 
 # fzf
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+
+# difftastic config
+export DFT_CONTEXT=20
