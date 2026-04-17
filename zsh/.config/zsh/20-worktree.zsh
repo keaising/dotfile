@@ -111,7 +111,7 @@ wt() {
 
       while IFS='|' read -r wt_path branch; do
         echo "Removing: $wt_path ($branch)"
-        git worktree remove "$wt_path" --force
+        git worktree remove "$wt_path" -f -f
         git branch -D "$branch"
       done <<< "$selected"
       ;;
