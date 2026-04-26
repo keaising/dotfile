@@ -18,6 +18,7 @@ window-padding-balance = true
 # (tmux uses Se=\E[2 q block as default; ghostty shell integration would override to bar)
 shell-integration-features = no-cursor,no-sudo,no-title,no-ssh-env,no-ssh-terminfo,path
 title = Rubber Duck
+macos-titlebar-proxy-icon = hidden
 
 # Custom app icon
 macos-icon = custom
