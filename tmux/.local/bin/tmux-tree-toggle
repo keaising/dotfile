@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# Toggle the tree-sidebar mode. On -> create sidebars; off -> kill every
+# flagged sidebar pane. Logic lives here (not inline in .tmux.conf) to avoid
+# nested if-shell/run-shell quoting pitfalls.
+
+kill_all_sidebars() {
+	local p
+	for p in $(tmux list-panes -a -F '#{@is-tree-sidebar} #{pane_id}' | awk '$1==1{print $2}'); do
+		tmux kill-pane -t "$p" 2>/dev/null
+	done
+}
+
+if [[ "$(tmux show-option -gqv '@tree-sidebar')" == "on" ]]; then
+	tmux set -g @tree-sidebar off
+	kill_all_sidebars
+else
+	tmux set -g @tree-sidebar on
+	exec ~/.local/bin/tmux-tree-ensure
+fi

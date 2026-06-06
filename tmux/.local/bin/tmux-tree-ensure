@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Idempotently ensure every attached client's current window has a tree-sidebar
+# pane pinned to the far left, but only while sidebar mode is enabled
+# (global option @tree-sidebar = on). Called from tmux hooks so the sidebar
+# "follows" the user across windows and sessions.
+#
+# Identity is tracked with the pane-level option @is-tree-sidebar=1 (set right
+# after the split), because pane_title gets overwritten by the fzf TUI and is
+# not a reliable marker.
+#
+# A mkdir-based lock serializes concurrent invocations: multiple hooks can fire
+# for a single switch, and without the lock they race between "no sidebar yet"
+# and "split done + flagged", spawning duplicate sidebars.
+
+[[ "$(tmux show-option -gqv '@tree-sidebar')" == "on" ]] || exit 0
+
+LOCK=/tmp/tmux-tree-ensure.lock
+# A normal run holds the lock for milliseconds, so a lock older than ~10s
+# (0.16 min) can only be debris from a crashed run — reclaim it.
+if [[ -d "$LOCK" ]] && find "$LOCK" -mmin +0.16 2>/dev/null | grep -q .; then
+	rmdir "$LOCK" 2>/dev/null
+fi
+mkdir "$LOCK" 2>/dev/null || exit 0
+trap 'rmdir "$LOCK" 2>/dev/null' EXIT
+
+window_has_sidebar() {
+	tmux list-panes -t "$1" -F '#{@is-tree-sidebar}' 2>/dev/null | grep -qx 1
+}
+
+ensure_window() {
+	local win="$1"
+	window_has_sidebar "$win" && return
+
+	# Remember the active pane to restore focus afterward.
+	local active
+	active=$(tmux list-panes -t "$win" -F '#{?pane_active,#{pane_id},}' 2>/dev/null | grep .)
+	[[ -z "$active" ]] && return
+
+	# Split from the LEFTMOST pane (smallest pane_left), so only that pane gives
+	# up 30 columns; every other pane keeps its position. Minimizes layout churn.
+	local leftmost
+	leftmost=$(tmux list-panes -t "$win" -F '#{pane_left} #{pane_id}' 2>/dev/null |
+		sort -n | head -1 | cut -d' ' -f2)
+	[[ -z "$leftmost" ]] && leftmost="$active"
+
+	# -h splits horizontally, -b places the new pane before (left of) the source.
+	# Splitting the leftmost pane itself means only it shrinks; on kill, tmux
+	# returns the freed columns to that same neighbor, so width is restored.
+	local new
+	new=$(tmux split-window -hb -l 30 -t "$leftmost" -P -F '#{pane_id}' \
+		"exec tmux-tree-sidebar")
+	[[ -n "$new" ]] && tmux set -t "$new" -p @is-tree-sidebar 1
+	tmux select-pane -t "$active"
+}
+
+# Cover the window currently shown on each attached client so the sidebar lands
+# in the right window after a session/window switch.
+tmux list-clients -F '#{session_id}' 2>/dev/null | sort -u | while read -r sid; do
+	win=$(tmux display-message -p -t "$sid" '#{window_id}' 2>/dev/null)
+	[[ -n "$win" ]] && ensure_window "$win"
+done
