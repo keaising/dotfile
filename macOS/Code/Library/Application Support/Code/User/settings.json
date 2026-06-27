@@ -15,23 +15,23 @@
     "editor.tabSize": 2,
     "editor.autoIndent": "advanced",
     "diffEditor.ignoreTrimWhitespace": false,
-    "editor.defaultColorDecorators": "never"
+    "editor.defaultColorDecorators": "never",
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "[typescript]": {
-    "editor.defaultFormatter": "oxc.oxc-vscode"
+    "editor.defaultFormatter": "oxc.oxc-vscode",
   },
   "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome"
+    "editor.defaultFormatter": "biomejs.biome",
   },
   "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
   },
   "workbench.editor.pinnedTabsOnSeparateRow": true,
   "vim.neovimUseConfigFile": true,
-"editor.lineNumbers": "relative",
+  "editor.lineNumbers": "relative",
   "python.analysis.typeCheckingMode": "standard",
   "terminal.integrated.enableMultiLinePasteWarning": "never",
   "git.confirmSync": false,
@@ -41,7 +41,7 @@
   "cSpell.enabledFileTypes": {
     "shellscript": false,
     "json": false,
-    "yaml": false
+    "yaml": false,
   },
   "cSpell.ignorePaths": [
     "package-lock.json",
@@ -50,7 +50,7 @@
     ".git/{info,lfs,logs,refs,objects}/**",
     ".git/{index,*refs,*HEAD}",
     ".vscode",
-    ".vscode-insiders"
+    ".vscode-insiders",
   ],
   "cSpell.userWords": [
     "admob",
@@ -83,18 +83,18 @@
     "UMAP",
     "uvicorn",
     "uvloop",
-    "venv"
+    "venv",
   ],
   "files.defaultLanguage": "json",
-"vim.autoSwitchInputMethod.enable": true,
-"vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-"vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
-"vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
+  "vim.autoSwitchInputMethod.enable": true,
+  "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
+  "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/macism",
+  "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/macism {im}",
   "editor.wordWrap": "on",
   "workbench.startupEditor": "none",
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "song": "linux"
+    "song": "linux",
   },
   "explorer.confirmDragAndDrop": false,
   "prisma.hidePrisma6Prompts": true,
@@ -105,7 +105,7 @@
     "https://www.schemastore.org/": true,
     "https://json.schemastore.org/": true,
     "https://json-schema.org/": true,
-    "https://biomejs.dev": true
+    "https://biomejs.dev": true,
   },
   "git.openRepositoryInParentFolders": "always",
   "typescript.experimental.useTsgo": true,
@@ -120,5 +120,7 @@
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "scm.repositories.selectionMode": "single",
-  "go.toolsManagement.autoUpdate": true
+  "go.toolsManagement.autoUpdate": true,
+  "workbench.browser.showInTitleBar": false,
+  "chat.titleBar.openInAgentsWindow.enabled": false,
 }
