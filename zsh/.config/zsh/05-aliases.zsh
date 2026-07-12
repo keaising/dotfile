@@ -84,6 +84,7 @@ case "$OSTYPE" in
     darwin*)
         alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
         alias ts="sudo /Applications/Tailscale.app/Contents/MacOS/Tailscale"
+        alias brewup='sudo -v && brew update && brew upgrade --greedy --no-ask && brew cleanup'
         # OCR (requires: brew install tesseract pngpaste)
         alias pocr='pngpaste - | tesseract stdin stdout'
         ;;

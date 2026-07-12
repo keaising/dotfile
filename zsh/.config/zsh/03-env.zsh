@@ -29,6 +29,7 @@ export MISE_ENV_FILE=".env"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     export HOMEBREW_NO_AUTO_UPDATE=1
     export HOMEBREW_NO_BOTTLE_SOURCE_FALLBACK=1
+    export HOMEBREW_NO_ASK=1
     export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 fi
 
