@@ -62,7 +62,7 @@ return {
                 "gopls",
                 "pyright",
                 "ruff",
-                "tsgo",
+                "tsc",
             }
 
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
@@ -73,11 +73,7 @@ return {
                 if vim.fn.filereadable(config_file) == 1 then
                     local ok, config = pcall(dofile, config_file)
                     if ok and config then
-                        config.capabilities = vim.tbl_deep_extend(
-                            "force",
-                            blink_caps,
-                            config.capabilities or {}
-                        )
+                        config.capabilities = vim.tbl_deep_extend("force", blink_caps, config.capabilities or {})
                         vim.lsp.config(server, config)
                     end
                 end
