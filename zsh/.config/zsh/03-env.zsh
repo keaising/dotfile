@@ -8,12 +8,12 @@ export EDITOR=nvim
 export GIT_EDITOR=nvim
 
 # Locale
+# No LC_ALL: it overrides every LC_* and blocks per-category overrides.
 export LANG="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
 
 # GPG
-export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
 
 # Go
 export GOPATH="$HOME/code/go"

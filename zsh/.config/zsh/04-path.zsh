@@ -4,13 +4,11 @@ typeset -U path  # Keep unique entries only
 path=(
     # Go
     /usr/local/go/bin
-    $HOME/code/go/bin
     $GOPATH/bin
 
     # Development tools
     $HOME/.local/share/nvim/mason/bin
     $HOME/code/gems/bin
-    $HOME/.cargo/bin
     $HOME/.dotnet/tools
 
     # Node (n)
@@ -38,4 +36,8 @@ path=(
     # Keep existing PATH
     $path
 )
+
+# Drop entries that do not exist, so command lookup stops stat-ing them.
+# Cost: a dir created after startup needs a new shell to enter PATH.
+path=( ${^path}(N-/) )
 

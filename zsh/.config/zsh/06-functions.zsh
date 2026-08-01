@@ -3,10 +3,18 @@
 # ============================================================
 
 # Measure zsh start time
+# Uses $EPOCHREALTIME rather than /usr/bin/time: the BSD and GNU builds print
+# incompatible formats, and the BSD one put the number where awk read a word.
 timezsh() {
-    for i in {1..3}; do
-        /usr/bin/time zsh -i -c exit 2>&1 | grep real
-    done | awk '/real/ {sum += $2; count++} END {printf "average: %.2fs\n", sum/count}'
+    zmodload zsh/datetime
+    local -i runs=5
+    local start total=0 i
+    for (( i = 1; i <= runs; i++ )); do
+        start=$EPOCHREALTIME
+        zsh -i -c exit
+        total=$(( total + EPOCHREALTIME - start ))
+    done
+    printf "average of %d runs: %.3fs\n" $runs $(( total / runs ))
 }
 
 # Enhanced cd with fzf and z.lua fallback
@@ -19,12 +27,15 @@ cd() {
                 if typeset -f _zlua &>/dev/null; then
                     _zlua -l 2>/dev/null | awk '{print $2}'
                 fi
-                echo "$HOME/code/github.com/troph-team/workspace/pixai"
-                if [[ -d "$HOME/code/github.com/troph-team/workspace/worktrees" ]]; then
-                    fd --type d --max-depth 1 . "$HOME/code/github.com/troph-team/workspace/worktrees"
-                fi
-                # ~/code
+                # Pinned dirs and scan roots are declared by a private config,
+                # since the useful ones are not shareable.
+                (( ${#ZSH_CD_PINNED} )) && print -l -- $ZSH_CD_PINNED
                 if command -v fd &>/dev/null; then
+                    local root
+                    for root in $ZSH_CD_SCAN_ROOTS; do
+                        [[ -d $root ]] && fd --type d --max-depth 2 . "$root"
+                    done
+                    # ~/code
                     fd --type d --hidden --max-depth 4 --follow . "$HOME/code"
                 fi
             } | sed 's|/$||' | awk '!seen[$0]++' | fzf --height 40% --reverse)
@@ -33,9 +44,13 @@ cd() {
             builtin cd
         fi
     else
-        if ! builtin cd "$@"; then
+        # Silenced: a miss is the normal path into z.lua. Re-run to surface the
+        # real error only when there is no z.lua to fall back to.
+        if ! builtin cd "$@" 2>/dev/null; then
             if typeset -f _zlua &>/dev/null; then
                 _zlua "$@"
+            else
+                builtin cd "$@"
             fi
         fi
     fi
@@ -44,8 +59,11 @@ cd() {
 # Clone and cd into directory
 glone() {
     [[ $# -ne 1 ]] && return 1
-    clone "$1" | tee /tmp/goclone
-    local dir=$(head -n 1 /tmp/goclone | awk '{print $4}')
+    local out
+    out=$(mktemp) || return 1
+    clone "$1" | tee "$out"
+    local dir=$(head -n 1 "$out" | awk '{print $4}')
+    rm -f "$out"
     [[ -d "$dir" ]] && cd "$dir"
 }
 
@@ -71,23 +89,18 @@ mc() {
     mkdir -p -- "$1" && cd -P -- "$1"
 }
 
-# Cross-platform open command
-open() {
-    case "$OSTYPE" in
-        darwin*)
-            /usr/bin/open "$@"
-            ;;
-        linux*)
-            if [[ -n "$WSL_DISTRO_NAME" ]]; then
-                wslview "$@"
-            elif uname -r | grep -iq arch; then
-                xdg-open "$@" &>/dev/null 2>&1
-            else
-                xdg-open "$@" 2>/dev/null
-            fi
-            ;;
-    esac
-}
+# Give Linux an `open`; on macOS the builtin /usr/bin/open is left alone.
+if [[ "$OSTYPE" == linux* ]]; then
+    open() {
+        if [[ -n "$WSL_DISTRO_NAME" ]]; then
+            wslview "$@"
+        elif uname -r | grep -iq arch; then
+            xdg-open "$@" &>/dev/null 2>&1
+        else
+            xdg-open "$@" 2>/dev/null
+        fi
+    }
+fi
 
 # Extract various archive formats
 extract() {
@@ -126,22 +139,31 @@ icon() {
     sudo killall Finder Dock
 }
 
+# Parsed line by line rather than sourced: `source .env` executes any $(...) in
+# it, so entering an untrusted repo and running envup would run its code.
 envup() {
-    if [[ -f .env ]]; then
-        set -a
-        source .env
-        set +a
-	fi
+    [[ -f .env ]] || return 0
+    local key val count=0
+    while IFS='=' read -r key val; do
+        # One match does trimming, `export` stripping and identifier validation,
+        # so comments and blank lines fall out as non-matches. Key lands in $match[2].
+        [[ $key =~ '^[[:space:]]*(export[[:space:]]+)?([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*$' ]] || continue
+        val=${val#[\"\']}
+        val=${val%[\"\']}
+        export "$match[2]=$val"
+        (( count++ ))
+    done < .env
+    echo "exported $count env"
 }
 
 envdown() {
-    if [[ -f .env ]]; then
-        local count=0
-        for key in $(grep -oE '^[A-Z_][A-Z0-9_]*=' .env | sed 's/=$//'); do
-            unset "$key" 2>/dev/null && ((count++))
-        done
-        echo "unset $count env"
-    fi
+    [[ -f .env ]] || return 0
+    local key count=0
+    while IFS='=' read -r key _; do
+        [[ $key =~ '^[[:space:]]*(export[[:space:]]+)?([A-Za-z_][A-Za-z0-9_]*)[[:space:]]*$' ]] || continue
+        unset "$match[2]" 2>/dev/null && (( count++ ))
+    done < .env
+    echo "unset $count env"
 }
 
 

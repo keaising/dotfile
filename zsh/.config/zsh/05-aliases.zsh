@@ -6,8 +6,22 @@
 alias an='ansible'
 alias ap='ansible-playbook'
 
-# ci
-alias ci='git add -A && git commit --amend --no-edit && git push --force-with-lease'
+# ci: amend everything into the last commit and force-push. Guarded because a
+# stray run on a shared branch rewrites other people's commits.
+ci() {
+    local branch
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null) || {
+        echo "ci: not on a branch" >&2
+        return 1
+    }
+    case "$branch" in
+        main|master|develop|release/*)
+            echo "ci: refusing to amend and force-push on '$branch'" >&2
+            return 1
+            ;;
+    esac
+    git add -A && git commit --amend --no-edit && git push --force-with-lease
+}
 
 # dir
 alias ..='cd ..'
@@ -16,8 +30,12 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 # modern unix tools
-alias cat='bat'
-alias ll='lsd -al'
+command -v bat &>/dev/null && alias cat='bat'
+if command -v lsd &>/dev/null; then
+    alias ll='lsd -al'
+else
+    alias ll='ls -al'
+fi
 alias vi='vim'
 if command -v nvim &>/dev/null; then
     alias vi='nvim'

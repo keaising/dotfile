@@ -18,9 +18,10 @@ _wt_sanitize() {
 
 # Output: path|branch per line
 _wt_list() {
+  # substr, not $2: a worktree path may contain spaces.
   git worktree list --porcelain | awk '
-    /^worktree / { p=$2 }
-    /^branch /   { b=$2; sub(/refs\/heads\//, "", b); print p"|"b; p=b="" }
+    /^worktree / { p=substr($0, 10) }
+    /^branch /   { b=substr($0, 8); sub(/^refs\/heads\//, "", b); print p"|"b; p=b="" }
   '
 }
 
@@ -112,7 +113,15 @@ wt() {
       while IFS='|' read -r wt_path branch; do
         echo "Removing: $wt_path ($branch)"
         git worktree remove "$wt_path" -f -f
-        git branch -D "$branch"
+        # Removing a worktree is reversible, deleting an unmerged branch is not,
+        # so -d gets to refuse first and only then do we ask.
+        if ! git branch -d "$branch" 2>/dev/null; then
+          if read -q "?Branch '$branch' is not merged. Force delete? [y/N] "; then
+            echo; git branch -D "$branch"
+          else
+            echo; echo "Kept branch '$branch'"
+          fi
+        fi
       done <<< "$selected"
       ;;
 
