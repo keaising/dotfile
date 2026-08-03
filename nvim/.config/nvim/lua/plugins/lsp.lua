@@ -63,6 +63,7 @@ return {
                 "pyright",
                 "ruff",
                 "tsc",
+                "codebook",
             }
 
             local lsp_dir = vim.fn.stdpath("config") .. "/lsp"
@@ -80,56 +81,20 @@ return {
             end
 
             -- Enable all LSP servers
-            vim.lsp.enable(servers)
-        end,
-    },
-    {
-        "nvimtools/none-ls.nvim",
-        -- "keaising/null-ls.nvim",
-        -- dir = "~/code/github.com/keaising/null-ls.nvim",
-        -- dev = true,
-        dependencies = "davidmh/cspell.nvim",
-        config = function()
-            local null_ls = require("null-ls")
-            local cspell = require("cspell")
-            local cspell_config = {
-                diagnostics_postprocess = function(diagnostic)
-                    diagnostic.severity = vim.diagnostic.severity["HINT"]
-                end,
-                config = {
-                    find_json = function(_)
-                        return vim.fn.expand("~/.config/nvim/cspell.json")
-                    end,
-                    on_success = function(cspell_config_file_path, params, action_name)
-                        if action_name == "add_to_json" then
-                            os.execute(
-                                string.format(
-                                    "cat %s | jq -S '.words |= sort' | tee %s > /dev/null",
-                                    cspell_config_file_path,
-                                    cspell_config_file_path
-                                )
-                            )
-                        end
-                    end,
+            vim.lsp.config("codebook", {
+                init_options = {
+                    diagnosticSeverity = "hint",
                 },
-            }
-            null_ls.setup({
-                sources = {
-                    cspell.diagnostics.with(cspell_config),
-                    cspell.code_actions.with(cspell_config),
-                },
-                on_attach = general_on_attach,
             })
-        end,
-    },
-    {
-        "VidocqH/lsp-lens.nvim",
-        config = function()
-            require("lsp-lens").setup({
-                sections = {
-                    definition = false,
-                    git_authors = false,
-                },
+            vim.lsp.enable(servers)
+
+            -- Attach common keymaps to every LSP client (replaces the former
+            -- null-ls on_attach, which used to cover all buffers)
+            vim.api.nvim_create_autocmd("LspAttach", {
+                callback = function(args)
+                    general_on_attach(nil, args.buf)
+                    vim.lsp.codelens.enable()
+                end,
             })
         end,
     },
@@ -202,11 +167,7 @@ return {
     },
     {
         "j-hui/fidget.nvim",
-        opts = {
-            progress = {
-                ignore = { "null-ls" },
-            },
-        },
+        opts = {},
     },
     {
         "williamboman/mason.nvim",
@@ -243,7 +204,6 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     "black",
-                    "cspell",
                     "jq",
                     "oxlint",
                     "oxfmt",
