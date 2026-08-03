@@ -10,15 +10,6 @@ return {
     "tpope/vim-repeat",
     "matze/vim-move",
     "szw/vim-maximizer",
-    {
-        "ojroques/vim-oscyank",
-        -- tag = "v1.0.0", -- new version breaks, old version is good enough
-    },
-    {
-        "fatih/vim-go",
-        ft = "go",
-        event = "VeryLazy",
-    },
     -- https://github.com/buoto/gotests-vim/pull/10
     {
         "jakereps/gotests-vim",
