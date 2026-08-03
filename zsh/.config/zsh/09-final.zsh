@@ -37,9 +37,6 @@ autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M emacs '\ei' edit-command-line
 
-bindkey -M emacs "\eb" backward-word
-bindkey -M emacs "\ef" forward-word
-
 # Up/Down search history by what is already typed, instead of walking every entry
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
