@@ -71,9 +71,22 @@ return {
             vim.opt.listchars:append("precedes:<")
             vim.opt.listchars:append("lead: ")
             vim.opt.listchars:append("space: ")
+            local colors = { "#E06C75", "#E5C07B", "#98C379", "#56B6C2", "#61AFEF", "#C678DD" }
+            local highlights = {}
+            local function define_ibl_highlights()
+                for i, color in ipairs(colors) do
+                    vim.api.nvim_set_hl(0, "IblIndent" .. i, { fg = color, nocombine = true })
+                end
+            end
+            define_ibl_highlights()
+            vim.api.nvim_create_autocmd("ColorScheme", { callback = define_ibl_highlights })
+            for i = 1, #colors do
+                highlights[i] = "IblIndent" .. i
+            end
             require("ibl").setup({
                 indent = {
                     char = "▏",
+                    highlight = highlights,
                 },
                 scope = {
                     show_start = false,
