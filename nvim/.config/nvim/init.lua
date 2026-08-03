@@ -14,13 +14,14 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.cmd("source ~/.config/nvim/lua/vim-plugins.vim")
-vim.cmd("source ~/.config/nvim/lua/keymaps.vim")
-vim.cmd("source ~/.config/nvim/lua/options_prev.vim")
+vim.g.mapleader = " "
+
+require("keymaps")
+require("options")
 
 require("lazy").setup({
     spec = { { import = "plugins" } },
     change_detection = { notify = false },
 })
 
-vim.cmd("source ~/.config/nvim/lua/options_post.vim")
+require("colorscheme")
