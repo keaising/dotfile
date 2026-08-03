@@ -1,5 +1,4 @@
 return {
-    "famiu/bufdelete.nvim",
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
@@ -141,18 +140,6 @@ return {
                 silent = true,
             },
         },
-    },
-    {
-        "projekt0n/circles.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("circles").setup({
-                icons = { empty = "", filled = "", lsp_prefix = "" },
-                lsp = true,
-            })
-        end,
     },
     {
         "utilyre/sentiment.nvim",

@@ -1,6 +1,17 @@
 return {
     "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
+    {
+        "nvim-tree/nvim-web-devicons",
+        config = function()
+            -- circles.nvim replacement: uniform file icons everywhere
+            local devicons = require("nvim-web-devicons")
+            devicons.setup({ default = true })
+            devicons.set_default_icon("")
+            for _, icon in pairs(devicons.get_icons()) do
+                icon.icon = ""
+            end
+        end,
+    },
     "RRethy/vim-illuminate",
     {
         "keaising/im-select.nvim",
