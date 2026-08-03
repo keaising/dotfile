@@ -1,14 +1,6 @@
 local map = vim.keymap.set
 
 vim.g.move_map_keys = 0
-vim.g.maximizer_set_default_mapping = 0
-
--- floaterm
-vim.g.floaterm_keymap_toggle = "<m-m>"
-vim.g.floaterm_keymap_prev = "<m-Left>"
-vim.g.floaterm_keymap_next = "<m-Right>"
-vim.g.floaterm_width = 0.95
-vim.g.floaterm_height = 0.95
 
 -- nerdcommenter
 vim.g.NERDDefaultAlign = "left"
@@ -123,7 +115,9 @@ map("n", "<leader>wh", ":BufferLineCloseLeft<CR>", { silent = true })
 map("n", "<leader>wl", ":BufferLineCloseRight<CR>", { silent = true })
 map("n", "<leader>wa", ":BufferLineCloseOthers<CR>", { silent = true })
 map("n", "<m-e>", ":BufferLinePick<CR>", { silent = true })
-map("n", "<m-w>", ":Bdelete<CR>", { silent = true })
+map("n", "<m-w>", function()
+    require("mini.bufremove").delete(0, false)
+end, { silent = true })
 
 -- easy align
 map("x", "ga", "<Plug>(EasyAlign)")
@@ -140,9 +134,20 @@ map("v", "<C-A-j>", "<Plug>MoveBlockDown", { silent = true })
 map("v", "<C-A-k>", "<Plug>MoveBlockUp", { silent = true })
 
 -- vim maximizer
-map("n", "<C-z>", ":MaximizerToggle<CR>", { silent = true })
-map("v", "<C-z>", ":MaximizerToggle<CR>gv", { silent = true })
-map("i", "<C-z>", "<C-o>:MaximizerToggle<CR>", { silent = true })
+local maximize_restore = nil
+local function toggle_maximize()
+    if maximize_restore then
+        vim.cmd("silent! " .. maximize_restore)
+        maximize_restore = nil
+    else
+        maximize_restore = vim.fn.winrestcmd()
+        vim.cmd("silent! vertical resize " .. vim.o.columns)
+        vim.cmd("silent! resize " .. vim.o.lines)
+    end
+end
+map("n", "<C-z>", toggle_maximize, { silent = true })
+map("v", "<C-z>", toggle_maximize, { silent = true })
+map("i", "<C-z>", toggle_maximize, { silent = true })
 
 map("n", "<leader>cc", "<plug>NERDCommenterToggle")
 map("v", "<leader>cc", "<plug>NERDCommenterToggle")
@@ -157,3 +162,19 @@ map("o", "ir", "i[")
 map("o", "ar", "a[")
 map("x", "ir", "i[")
 map("x", "ar", "a[")
+
+-- YankAssassin replacement: keep cursor position after yanking
+local pre_yank_pos = vim.fn.getpos(".")
+vim.api.nvim_create_autocmd("CursorMoved", {
+    callback = function()
+        pre_yank_pos = vim.fn.getpos(".")
+    end,
+})
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        if vim.v.event.operator == "y" and vim.g.MoveYankMappings ~= 0 and pre_yank_pos then
+            vim.fn.setpos(".", pre_yank_pos)
+        end
+        vim.g.MoveYankMappings = 1
+    end,
+})
