@@ -16,11 +16,6 @@ let g:floaterm_height=0.95
 " let g:gh_gitlab_domain = "git.curiostack.com"
 " let g:gh_use_canonical = 0
 
-" text object
-let g:vim_textobj_parameter_mapping = 'a'
-
-let g:UltiSnipsSnippetDirectories=[ "ultisnips" ]
-
 "let g:winresizer_start_key = '<C-T>'
 
 let g:NERDDefaultAlign = 'left'
@@ -68,8 +63,4 @@ let g:SignatureMap = {
   \ 'GotoPrevSpotAlpha'  :  "",
   \ }
 
-" for coc
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+
