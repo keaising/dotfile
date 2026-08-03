@@ -1,7 +1,6 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
         config = function()
             require("nvim-treesitter.configs").setup({
                 incremental_selection = {
@@ -9,20 +8,6 @@ return {
                     keymaps = {
                         node_incremental = "v",
                         node_decremental = "V",
-                    },
-                },
-                textobjects = {
-                    select = {
-                        enable = true,
-                        -- Automatically jump forward to textobj, similar to targets.vim
-                        lookahead = true,
-                        keymaps = {
-                            ["af"] = "@function.outer",
-                            ["if"] = "@function.inner",
-                            ["ic"] = "@call_expression",
-                            ["ie"] = "@expression_list",
-                            ["ik"] = "@keyed_element",
-                        },
                     },
                 },
                 -- ensure_installed = "all", -- one of "all" or a list of languages
