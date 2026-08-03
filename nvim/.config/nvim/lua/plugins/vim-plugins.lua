@@ -2,23 +2,17 @@ return {
     {
         "akinsho/toggleterm.nvim",
         version = "*",
-        keys = {
-            {
-                "<m-m>",
-                "<cmd>ToggleTerm<CR>",
-                desc = "Toggle terminal",
-            },
-        },
         config = function()
             require("toggleterm").setup({
-                size = 0.95,
+                size = 0.9,
+                open_mapping = "<m-m>",
                 direction = "float",
                 float_opts = {
                     width = function()
-                        return math.floor(vim.o.columns * 0.95)
+                        return math.floor(vim.o.columns * 0.9)
                     end,
                     height = function()
-                        return math.floor(vim.o.lines * 0.95)
+                        return math.floor(vim.o.lines * 0.9)
                     end,
                 },
             })
