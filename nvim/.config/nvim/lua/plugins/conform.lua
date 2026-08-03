@@ -12,6 +12,13 @@ return {
                 -- go: diagnostics handled by gopls, format tools belong in conform
                 yaml = { "yamllint" },
             }
+            lint.linters.selene.args = {
+                "--config",
+                vim.fn.expand("~/.config/selene/selene.toml"),
+                "--display-style",
+                "json",
+                "-",
+            }
         end,
     },
     {
