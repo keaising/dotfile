@@ -2,6 +2,7 @@ return {
     {
         "nvim-treesitter/nvim-treesitter",
         config = function()
+            ---@diagnostic disable: missing-fields
             require("nvim-treesitter.configs").setup({
                 incremental_selection = {
                     enable = true,
