@@ -1,0 +1,65 @@
+onboarding = false
+# herdr configuration — mirrors ~/.tmux.conf habits
+# Concept mapping: tmux session -> workspace, tmux window -> tab, pane -> pane
+
+[theme]
+name = "gruvbox"
+
+[terminal]
+new_cwd = "follow"
+
+[keys]
+prefix = "ctrl+a"
+
+# --- workspace (tmux session) ---
+detach = "prefix+d"
+rename_workspace = "prefix+ctrl+r"
+workspace_picker = "prefix+w"
+goto = "prefix+s"
+toggle_sidebar = "prefix+g"
+settings = "prefix+shift+s"
+reload_config = "prefix+shift+r"
+
+# --- tab (tmux window) ---
+new_tab = "prefix+c"
+rename_tab = "prefix+r"
+next_tab = ["prefix+n", "prefix+right"]
+previous_tab = ["prefix+p", "prefix+left"]
+switch_tab = "prefix+1..9"
+close_tab = "prefix+shift+x"
+
+# --- pane ---
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+split_vertical = ["prefix+backslash", "prefix+shift+backslash"]
+split_horizontal = "prefix+minus"
+close_pane = "prefix+x"
+zoom = "prefix+z"
+rename_pane = "prefix+shift+p"
+edit_scrollback = "prefix+e"
+cycle_pane_next = "prefix+tab"
+cycle_pane_previous = "prefix+shift+tab"
+
+# tmux resizes with prefix+ctrl+hjkl; any of them enters herdr's resize mode
+resize_mode = ["prefix+ctrl+h", "prefix+ctrl+j", "prefix+ctrl+k", "prefix+ctrl+l"]
+
+[ui]
+sidebar_width = 30
+sidebar_max_width = 36
+prompt_new_tab_name = false
+accent = "#fabd2f"
+
+agent_panel_sort = "spaces"
+[ui.toast]
+delivery = "herdr"
+delay_seconds = 1
+
+[experimental]
+switch_ascii_input_source_in_prefix = true
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["claude"]
+
+[advanced]
+scrollback_limit_bytes = 50000000
