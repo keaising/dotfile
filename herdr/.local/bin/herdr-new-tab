@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+prefix=(
+	"$(pwd)"
+)
+
+suffix=(
+	"$HOME/.config"
+	"$HOME/.local"
+	"$HOME/Downloads"
+)
+
+search=$(fd --type d \
+	--max-depth 3 \
+	--hidden \
+	--exclude "bin" \
+	--exclude "go" \
+	--exclude "include" \
+	--exclude "lib" \
+	--exclude "n" \
+	--exclude "share" \
+	--follow \
+	. \
+	"$HOME/code")
+
+lines=$(
+	for p in "${prefix[@]}"; do
+		[[ -d "${p}" ]] && printf '%s\n' "$p"
+	done
+
+	printf '%s' "$search"
+
+	for p in "${suffix[@]}"; do
+		[[ -d "${p}" ]] && printf '%s\n' "$p"
+	done
+)
+
+selected="$(printf '%s\n' "$(echo "${lines}" | fzf)")"
+
+[[ ${#selected} != 0 ]] || exit 0
+
+selected_name=$(basename "$selected" | tr . _)
+
+herdr tab create --cwd "$selected" --label "$selected_name" --focus

@@ -24,7 +24,8 @@ settings = "prefix+shift+s"
 reload_config = "prefix+shift+r"
 
 # --- tab (tmux window) ---
-new_tab = "prefix+c"
+# new_tab replaced by the fzf directory picker below (tmux-new-window port)
+# new_tab = "prefix+c"
 rename_tab = "prefix+r"
 next_tab = ["prefix+n", "prefix+right"]
 previous_tab = ["prefix+p", "prefix+left"]
@@ -47,6 +48,15 @@ cycle_pane_previous = "prefix+shift+tab"
 
 # tmux resizes with prefix+ctrl+hjkl; any of them enters herdr's resize mode
 resize_mode = ["prefix+ctrl+h", "prefix+ctrl+j", "prefix+ctrl+k", "prefix+ctrl+l"]
+
+# tmux-new-window port: fzf directory picker, opens the picked dir as a new tab
+[[keys.command]]
+key = "prefix+c"
+type = "popup"
+command = "~/.local/bin/herdr-new-tab"
+description = "new tab from picked directory"
+width = "90%"
+height = "90%"
 
 [ui]
 sidebar_width = 34
