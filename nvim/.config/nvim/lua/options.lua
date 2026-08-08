@@ -37,12 +37,12 @@ vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "88"
 vim.opt.formatoptions:append("B")
 vim.opt.fileformats = "unix,dos,mac"
-vim.opt.backupdir = "~/.vim/tmp"
+vim.opt.backupdir = vim.fn.expand("~/.vim/tmp")
 vim.opt.backupext = ".bak"
 vim.opt.mouse = ""
 vim.opt.swapfile = false
 vim.opt.undofile = true
-vim.opt.undodir = "~/.vim/undo//"
+vim.opt.undodir = vim.fn.expand("~/.vim/undo") .. "//"
 vim.fn.mkdir(vim.fn.expand("~/.vim/undo"), "p")
 vim.opt.spelloptions = "camel"
 vim.opt.splitbelow = true
