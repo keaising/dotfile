@@ -38,6 +38,11 @@ font-thicken-strength = 100
 # Cursor: block to match tmux default (Se=\E[2 q)
 cursor-style = block
 
+# Split visibility: bright divider + color-tinted unfocused splits to show focus
+split-divider-color = #d3c6aa
+unfocused-split-opacity = 0.7
+unfocused-split-fill = #2a332c
+
 # Scrollback for non-tmux sessions; inside tmux, tmux manages scroll history
 scrollback-limit = 100000
 

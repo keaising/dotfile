@@ -78,18 +78,6 @@ kctx() {
 alias kprod='export KUBECONFIG=~/.kube/prod.config; echo "🟡Switched to prod"'
 alias ktest='export KUBECONFIG=~/.kube/test.config; echo "🔵Switched to test"'
 
-# go
-alias goci='golangci-lint run --config $HOME/.data/.golangci.yml'
-alias gostrict='golangci-lint run --config $HOME/.data/.golangci-strict.yml'
-alias fmt='goimports -w . && go mod tidy'
-alias fmtf='gofumpt -l -w . && go mod tidy'
-alias fmts='gosimports -w . && go mod tidy'
-alias gocc='fmt && goci --allow-parallel-runners'
-alias goss='fmtf && fmts && goci --allow-parallel-runners'
-alias gdv='godotenv'
-alias gt='APP_ENV=dev go test --cover --race ./...'
-alias gts='APP_ENV=dev SKIP_TEST=true go test --cover --race ./...'
-
 # OS-specific aliases
 case "$OSTYPE" in
     linux*)
@@ -105,6 +93,8 @@ case "$OSTYPE" in
         alias brewup='sudo -v && brew update && brew upgrade --greedy --no-ask && brew cleanup'
         # OCR (requires: brew install tesseract pngpaste)
         alias pocr='pngpaste - | tesseract stdin stdout'
+        # ghostty: launch with tmux keybindings
+        alias gt='open -na Ghostty.app --args --config-file="$HOME/.config/ghostty/tmux-keybinds.conf"'
         ;;
 esac
 
