@@ -117,8 +117,6 @@
   "editor.defaultFormatter": "oxc.oxc-vscode",
   "git.autoRepositoryDetection": "openEditors",
   "git.repositoryScanMaxDepth": 0,
-  "gitlens.ai.model": "vscode",
-  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "scm.repositories.selectionMode": "single",
   "go.toolsManagement.autoUpdate": true,
   "workbench.browser.showInTitleBar": false,
