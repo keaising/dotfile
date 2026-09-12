@@ -1,0 +1,55 @@
+// zellij config, keybindings migrated from tmux (prefix C-a)
+// config is hot-reloaded when changed
+
+// scrollback like tmux (history-limit 100000)
+scroll_buffer_size 100000
+
+keybinds {
+    // prefix: Ctrl+a enters tmux-like mode (same as tmux)
+    shared_except "tmux" "locked" {
+        bind "Ctrl a" { SwitchToMode "Tmux"; }
+    }
+
+    tmux {
+        // send the prefix itself to the shell (tmux send-prefix)
+        bind "Ctrl a" { Write 1; SwitchToMode "Normal"; }
+        // exit prefix mode
+        bind "Esc" "Ctrl g" { SwitchToMode "Normal"; }
+
+        // split (tmux |, \, -)
+        bind "|" "\\" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "-" { NewPane "Down"; SwitchToMode "Normal"; }
+
+        // focus pane (tmux h/j/k/l)
+        bind "h" "Left" { MoveFocus "Left"; SwitchToMode "Normal"; }
+        bind "j" "Down" { MoveFocus "Down"; SwitchToMode "Normal"; }
+        bind "k" "Up" { MoveFocus "Up"; SwitchToMode "Normal"; }
+        bind "l" "Right" { MoveFocus "Right"; SwitchToMode "Normal"; }
+
+        // resize pane (tmux C-k/C-j/C-h/C-l)
+        bind "Ctrl k" { Resize "Increase Up"; SwitchToMode "Normal"; }
+        bind "Ctrl j" { Resize "Increase Down"; SwitchToMode "Normal"; }
+        bind "Ctrl h" { Resize "Increase Left"; SwitchToMode "Normal"; }
+        bind "Ctrl l" { Resize "Increase Right"; SwitchToMode "Normal"; }
+
+        // tabs (tmux windows)
+        bind "n" { GoToNextTab; SwitchToMode "Normal"; }
+        bind "p" { GoToPreviousTab; SwitchToMode "Normal"; }
+        bind "c" "v" { NewTab; SwitchToMode "Normal"; }
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
+        bind "r" "Space" { SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "," { MoveTab "Left"; SwitchToMode "Normal"; }
+        bind "." { MoveTab "Right"; SwitchToMode "Normal"; }
+        bind "Left" { GoToPreviousTab; SwitchToMode "Normal"; }
+        bind "Right" { GoToNextTab; SwitchToMode "Normal"; }
+
+        // session switch (tmux s)
+        bind "s" {
+            LaunchOrFocusPlugin "session-manager" {
+                floating true
+                move_to_focused_tab true
+            }
+            SwitchToMode "Normal"
+        }
+    }
+}
