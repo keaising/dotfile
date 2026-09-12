@@ -1,4 +1,28 @@
-vim.g.clipboard = "osc52"
+-- OSC 52 only over SSH, and only for copy: its paste path queries the terminal and blocks
+-- p/P for 10s whenever tmux/zellij or the terminal swallows the reply, so paste is served
+-- from whatever this instance last copied.
+if vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
+    local osc52 = require("vim.ui.clipboard.osc52")
+    local cache = { { "" }, "v" }
+
+    local function copy(reg)
+        local send = osc52.copy(reg)
+        return function(lines, regtype)
+            cache = { lines, regtype }
+            send(lines, regtype)
+        end
+    end
+
+    local function paste()
+        return cache
+    end
+
+    vim.g.clipboard = {
+        name = "osc52-copy-only",
+        copy = { ["+"] = copy("+"), ["*"] = copy("*") },
+        paste = { ["+"] = paste, ["*"] = paste },
+    }
+end
 
 vim.opt.autoindent = true
 vim.opt.tabstop = 4
