@@ -111,6 +111,7 @@ return {
                 fzf_opts = {
                     ["--cycle"] = true,
                     ["--no-scrollbar"] = true,
+                    ["--info-command"] = [[printf "%s/%s" "$FZF_POS" "$FZF_INFO"]],
                 },
                 lsp = {
                     jump1 = true,
