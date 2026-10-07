@@ -111,7 +111,7 @@ return {
                 fzf_opts = {
                     ["--cycle"] = true,
                     ["--no-scrollbar"] = true,
-                    ["--info-command"] = [[printf "%s/%s" "$FZF_POS" "$FZF_INFO"]],
+                    ["--info-command"] = [[info=$FZF_INFO; [ "$FZF_MATCH_COUNT" = "$FZF_TOTAL_COUNT" ] && info=${info#*/}; printf "%s/%s" "$FZF_POS" "$info"]],
                 },
                 lsp = {
                     jump1 = true,
