@@ -28,7 +28,10 @@ macos-custom-icon = ~/code/github.com/keaising/dotfile/logo/rubber-duck/rubber-d
 macos-option-as-alt = left
 
 # Font
-font-family = Consolas Nerd Font
+#font-family = Consolas Nerd Font
+font-family = Recursive Nerd Font
+# https://github.com/ahatem/IoskeleyMono
+#font-family = IoskeleyMonoTerm Nerd Font Mono
 font-size = 16
 # macOS font thickening to match alacritty's subpixel antialiasing rendering
 # strength range: 0 (lightest) - 255 (heaviest), tune to taste
