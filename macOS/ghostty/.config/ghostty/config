@@ -36,11 +36,11 @@ font-family = ZeroTwoMono Nerd Font
 # ZeroTwoMono has no CJK glyphs; pin the fallback instead of letting CoreText pick one
 font-family = PingFang SC
 font-size = 16
-adjust-cell-height = 5%
+adjust-cell-height = 3%
 # macOS font thickening to match alacritty's subpixel antialiasing rendering
 # strength range: 0 (lightest) - 255 (heaviest), tune to taste
 font-thicken = true
-font-thicken-strength = 200
+font-thicken-strength = 50
 
 # Cursor: block to match tmux default (Se=\E[2 q)
 cursor-style = block
