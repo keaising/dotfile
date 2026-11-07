@@ -44,7 +44,10 @@ export _ZL_ADD_ONCE=1
 export BUN_INSTALL="$HOME/.bun"
 
 # fzf
-export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border'
+# --color=dark: fzf falls back to its 16-color theme when $TERM lacks "256" (as with
+# xterm-ghostty and tmux-direct), and Everforest maps bright black (selection bg)
+# to a light grey; force the 256-color dark theme instead
+export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --color=dark'
 
 # difftastic config
 export DFT_CONTEXT=20
