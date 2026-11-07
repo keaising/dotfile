@@ -1,5 +1,6 @@
 tap "hashicorp/tap", trusted: true
 tap "laishulu/homebrew", trusted: true
+tap "morantron/tmux-fingers", trusted: true
 tap "sxzz/brew", trusted: true
 
 brew "act"
@@ -59,6 +60,7 @@ brew "vim"
 brew "hashicorp/tap/packer"
 brew "hashicorp/tap/terraform"
 brew "laishulu/homebrew/macism"
+brew "morantron/tmux-fingers/tmux-fingers"
 
 cask "1password"
 cask "1password-cli"
