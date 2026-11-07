@@ -65,6 +65,7 @@ prompt_new_tab_name = false
 accent = "#d5c4a1"
 tab_bar_position = "bottom"
 sidebar_collapsed_mode = "hidden"
+sidebar_start_collapsed = true
 hide_tab_bar_when_single_tab = true
 
 agent_panel_sort = "priority"
