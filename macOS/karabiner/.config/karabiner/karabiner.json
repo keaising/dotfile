@@ -138,12 +138,9 @@
                 },
                 {
                     "identifiers": {
-                        "is_keyboard": true,
-                        "is_pointing_device": true,
-                        "product_id": 272,
-                        "vendor_id": 1452
+                        "is_built_in_keyboard": true,
+                        "is_keyboard": true
                     },
-                    "ignore": false,
                     "simple_modifications": [
                         {
                             "from": { "key_code": "caps_lock" },
