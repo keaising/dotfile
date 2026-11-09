@@ -19,10 +19,9 @@ export GPG_TTY=$TTY
 export GOPATH="$HOME/code/go"
 # export GOPROXY=https://goproxy.cn,direct
 
-# Node (n-install)
-export N_PREFIX="$HOME/code/n"
-
 # Mise
+# Must be set before `mise activate` (09-final.zsh); mise cannot read it from config.toml.
+export MISE_DATA_DIR="$HOME/code/mise"
 export MISE_ENV_FILE=".env"
 
 # macOS specific

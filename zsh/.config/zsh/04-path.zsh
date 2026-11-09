@@ -11,9 +11,6 @@ path=(
     $HOME/code/gems/bin
     $HOME/.dotnet/tools
 
-    # Node (n)
-    $N_PREFIX/bin
-
     # Bun
     $BUN_INSTALL/bin
 

@@ -25,6 +25,11 @@ if command -v fzf &>/dev/null; then
 	source <(fzf --zsh)
 fi
 
+# mise: activated after 04-path.zsh so its tool dirs end up ahead of Homebrew's node/go/python
+if command -v mise &>/dev/null; then
+	eval "$(mise activate zsh)"
+fi
+
 # hidutil lives in .zprofile — it is a system-wide one-shot, not per-shell.
 # Private configs are picked up by the *.zsh glob in .zshrc; sourcing them here
 # too would load them twice.
