@@ -39,9 +39,6 @@ export STARSHIP_CONFIG="$HOME/.config/zsh/starship.toml"
 export _ZL_MATCH_MODE=1
 export _ZL_ADD_ONCE=1
 
-# Bun
-export BUN_INSTALL="$HOME/.bun"
-
 # fzf
 # --color=dark: fzf falls back to its 16-color theme when $TERM lacks "256" (as with
 # xterm-ghostty and tmux-direct), and Everforest maps bright black (selection bg)

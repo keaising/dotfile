@@ -3,18 +3,12 @@ typeset -U path  # Keep unique entries only
 
 path=(
     # Go
-    /usr/local/go/bin
     $GOPATH/bin
 
     # Development tools
     $HOME/.local/share/nvim/mason/bin
-    $HOME/code/gems/bin
-    $HOME/.dotnet/tools
 
-    # Bun
-    $BUN_INSTALL/bin
-
-    # Rust
+    # Rust (mise installs it through rustup, which still uses ~/.cargo)
     $HOME/.cargo/bin
 
     # CUDA (Linux)
