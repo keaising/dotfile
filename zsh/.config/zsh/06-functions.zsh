@@ -179,3 +179,14 @@ z() {
     _zlua "$@"
   fi
 }
+
+# `function` keyword avoids a parse error in shells that still hold the old ccmute alias
+function ccmute {
+  local peon=~/.claude/hooks/peon-ping/peon.sh
+  case "$1" in
+    "") bash "$peon" pause ;;
+    undo) bash "$peon" resume ;;
+    status) bash "$peon" status ;;
+    *) echo "usage: ccmute [undo|status]" >&2; return 1 ;;
+  esac
+}
