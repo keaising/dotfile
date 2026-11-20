@@ -13,6 +13,7 @@
                                         "bundle_identifiers": [
                                             "org.alacritty",
                                             "com.mitchellh.ghostty",
+                                            "com.superlogical.rex",
                                             "com.valvesoftware.dota2",
                                             "dev.zed.Zed"
                                         ],
@@ -32,6 +33,7 @@
                                         "bundle_identifiers": [
                                             "org.alacritty",
                                             "com.mitchellh.ghostty",
+                                            "com.superlogical.rex",
                                             "com.valvesoftware.dota2",
                                             "dev.zed.Zed"
                                         ],
@@ -51,6 +53,7 @@
                                         "bundle_identifiers": [
                                             "org.alacritty",
                                             "com.mitchellh.ghostty",
+                                            "com.superlogical.rex",
                                             "com.valvesoftware.dota2",
                                             "dev.zed.Zed"
                                         ],
@@ -76,6 +79,7 @@
                                         "bundle_identifiers": [
                                             "org.alacritty",
                                             "com.mitchellh.ghostty",
+                                            "com.superlogical.rex",
                                             "com.valvesoftware.dota2",
                                             "dev.zed.Zed"
                                         ],
