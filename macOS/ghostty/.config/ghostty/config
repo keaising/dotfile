@@ -32,13 +32,14 @@ macos-option-as-alt = left
 # font-family = Recursive Nerd Font
 # https://github.com/ahatem/IoskeleyMono
 # font-family = IoskeleyMonoTerm Nerd Font Mono
-font-family = ZeroTwoMono Nerd Font
+# font-family = ZeroTwoMono Nerd Font
+font-family = SauceCodePro NFM
 # ZeroTwoMono has no CJK glyphs; pin the fallback instead of letting CoreText pick one
 font-family = PingFang SC
 # ZeroTwoMono puts its programming ligatures (->, --, {{ ...) under calt
 font-feature = -calt
 font-size = 15
-adjust-cell-height = 3%
+adjust-cell-height = 10%
 # macOS font thickening to match alacritty's subpixel antialiasing rendering
 # strength range: 0 (lightest) - 255 (heaviest), tune to taste
 font-thicken = true
