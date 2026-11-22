@@ -8,8 +8,13 @@ end
 bind("ctrl+a", "pane.send_key", { key = "ctrl+a" })
 bind("shift+r", "client.config.reload")
 
+-- Actions ported from tmux/.local/bin/tmux-* scripts; rex.ui.pick replaces fzf.
+require("scripts.new_tab")
+require("scripts.switch_tab")
+require("scripts.close_pane")
+
 -- Tabs (tmux windows)
-bind("c", "client.tab.new")
+bind("c", "tab_new_in_directory")
 bind("v", "client.tab.new")
 bind("r", "client.tab.rename")
 bind("shift+x", "client.tab.close")
@@ -24,7 +29,8 @@ for index = 1, 9 do
 end
 
 -- Sessions
-bind("s", "session.switch")
+bind("s", "tab_switch_any_session")
+bind("shift+s", "session.switch")
 bind("enter", "session.previous")
 bind("ctrl+r", "session.rename")
 bind("o", "client.sidebar.toggle")
@@ -33,7 +39,7 @@ bind("o", "client.sidebar.toggle")
 bind("shift+\\", "pane.split", { direction = "right" })
 bind("\\", "pane.split", { direction = "right" })
 bind("-", "pane.split", { direction = "down" })
-bind("x", "pane.close")
+bind("x", "pane_close_or_tab")
 bind("z", "pane.zoom")
 bind("]", "pane.balance")
 
